@@ -1,0 +1,7 @@
+---
+title: "Lecture 9 Slides"
+format: revealjs
+title-slide: true
+---
+
+## Lecture 9: Data Structures & base R

@@ -1,0 +1,20 @@
+---
+title: "Lecture 11: Control Structures 2"
+date: 2025-07-31
+summary: "<strong>Loops and Functions</strong>"
+url_slides: 11-slides.qmd
+url_code: https://github.com/brinsab/csp-materials/11-control-2
+page-layout: full
+draft: false
+---
+
+**Date**: {< meta date >}  
+**Summary**: {< meta summary >}  
+**Slides**: [View Slides]({< meta url_slides >})  
+**Code**: Copy and run in your console: `usethis::use_course("{< meta url_code >}")`
+
+## Topics
+
+## Before Class
+
+## Readings

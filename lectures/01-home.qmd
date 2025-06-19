@@ -1,0 +1,44 @@
+---
+title: "Lecture 1: Course Logistics, R, Markdown"
+date: 2025-06-24
+summary: "Course Logistics, R, Markdown"
+url_slides: 01-slides.qmd
+url_code: https://github.com/brinasab/csp-materials/01-r-markdown
+format: html
+page-layout: full
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Info and Materials
+
+* **Date**: {{< meta date >}}
+* **Topics**: {{< meta summary >}}
+* **Slides**: [View Slides]({{< meta url_slides >}})
+* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+
+
+## Learning Objectives
+
+- Recognize the basic features of the R programming language and RStudio
+- Write and run simple R code
+- Describe what R Markdown is and why it's useful
+- Create and edit a R Markdown document
+
+
+## Before Class
+
+- Complete the [pre-course survey]()
+- Create a GitHub account and [submit your username]()
+- Bring to class a laptop (every class)!
+
+
+## Readings
+
+Skim the readings before or after class to get the big picture and prep for quizzes or assignments:
+
+- [R Markdown, R4DS](https://r4ds.had.co.nz/r-markdown.html)
+- [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)

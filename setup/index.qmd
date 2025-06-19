@@ -1,0 +1,17 @@
+---
+title: "Setup"
+---
+
+## Git
+- [Git: Topic 1](git/page01.qmd)
+- [Git: Topic 2](git/page02.qmd)
+- [Git: Topic 3](git/page03.qmd)
+- [Git: Topic 4](git/page04.qmd)
+- [Git: Topic 5](git/page05.qmd)
+
+## R
+- [R: Topic 1](r/page01.qmd)
+- [R: Topic 2](r/page02.qmd)
+- [R: Topic 3](r/page03.qmd)
+- [R: Topic 4](r/page04.qmd)
+- [R: Topic 5](r/page05.qmd)

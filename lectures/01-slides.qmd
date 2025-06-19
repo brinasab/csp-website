@@ -470,8 +470,6 @@ x <- 5
 ```
 ````
 
-::: fragment
-But what do we see what we "Render" this R Markdown document?
 
 ```{=html}
 <!-- IN CLASS: 
@@ -764,7 +762,7 @@ R Markdown lets you create documents that combine text, code, and output, and "r
 
 -   **Set the format in the YAML header** such as `html_document`,`word_document`, `pdf_document`, `github_document`, etc.
 
-\_ **Use `render()`** in your console by typing `rmarkdown::render("my-document.Rmd", output_format: html_document`). More info [here](https://pkgs.rstudio.com/rmarkdown/reference/render.html)
+-   **Use `render()`** in your console by typing `rmarkdown::render("my-document.Rmd", output_format: html_document`). More info [here](https://pkgs.rstudio.com/rmarkdown/reference/render.html)
 :::
 
 ---
@@ -773,7 +771,7 @@ R Markdown lets you create documents that combine text, code, and output, and "r
 
 When you "knit" your document, the following sequential things happen:
 
-1.  R Markdown sends the `.Rmd` file to `knitr`: http://yihui.name/knitr/
+1.  R Markdown sends the `.Rmd` file to `knitr` http://yihui.name/knitr/
 
 2.  Knitr executes all of the code chunks and creates a new plain Markdown `.md` file which includes the code and its output
 
@@ -787,10 +785,10 @@ When you "knit" your document, the following sequential things happen:
 
 ## 💻 Practice R Markdown Syntax
 
--   Log into **Workbench** ADD LINK
--   Download today’s materials from Lecture 1 on our website
+-   Log into [**Workbench**](https://macss-r.uchicago.edu/auth-sign-in?appUri=%2F)
+-   Download today’s code from Lecture 1 on our website
 -   Complete the R Markdown in-class practice
--   Want more? Try the interactive tutorial linked under Lecture 1
+-   Want more? Try this [interactive tutorial](https://commonmark.org/help/)
 
 ---
 

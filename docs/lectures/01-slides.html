@@ -692,11 +692,9 @@ R Markdown: an extension of Markdown designed for R -->
 <span id="cb3-11"><a></a># create a variable</span>
 <span id="cb3-12"><a></a>x &lt;- 5</span>
 <span id="cb3-13"><a></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<p>But what do we see what we “Render” this R Markdown document?</p>
 <!-- IN CLASS: 
 copy this on a blank Rmd document on Workbench and render it -->
-</div>
+<p>:::</p>
 </section>
 <section id="yaml-yet-another-markup-language" class="slide level2 center">
 <h2>YAML: <strong>Y</strong>et <strong>A</strong>nother <strong>M</strong>arkup <strong>L</strong>anguage</h2>
@@ -1005,8 +1003,8 @@ Heading 3
 <ul>
 <li><p><strong>Click “Knit”</strong> in RStudio and choose an output</p></li>
 <li><p><strong>Set the format in the YAML header</strong> such as <code>html_document</code>,<code>word_document</code>, <code>pdf_document</code>, <code>github_document</code>, etc.</p></li>
+<li><p><strong>Use <code>render()</code></strong> in your console by typing <code>rmarkdown::render("my-document.Rmd", output_format: html_document</code>). More info <a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">here</a></p></li>
 </ul>
-<p>_ <strong>Use <code>render()</code></strong> in your console by typing <code>rmarkdown::render("my-document.Rmd", output_format: html_document</code>). More info <a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html">here</a></p>
 </div>
 </div>
 </div>
@@ -1016,7 +1014,7 @@ Heading 3
 <h2>R Markdown: Knitting process</h2>
 <p>When you “knit” your document, the following sequential things happen:</p>
 <ol type="1">
-<li><p>R Markdown sends the <code>.Rmd</code> file to <code>knitr</code>: http://yihui.name/knitr/</p></li>
+<li><p>R Markdown sends the <code>.Rmd</code> file to <code>knitr</code> http://yihui.name/knitr/</p></li>
 <li><p>Knitr executes all of the code chunks and creates a new plain Markdown <code>.md</code> file which includes the code and its output</p></li>
 <li><p>This plain Markdown file is then converted by <code>pandoc</code> into any number of output types including html, PDF, Word document, etc.: http://pandoc.org/</p></li>
 </ol>
@@ -1024,10 +1022,10 @@ Heading 3
 <section id="practice-r-markdown-syntax" class="slide level2 center">
 <h2>💻 Practice R Markdown Syntax</h2>
 <ul>
-<li>Log into <strong>Workbench</strong> ADD LINK</li>
-<li>Download today’s materials from Lecture 1 on our website</li>
+<li>Log into <a href="https://macss-r.uchicago.edu/auth-sign-in?appUri=%2F"><strong>Workbench</strong></a></li>
+<li>Download today’s code from Lecture 1 on our website</li>
 <li>Complete the R Markdown in-class practice</li>
-<li>Want more? Try the interactive tutorial linked under Lecture 1</li>
+<li>Want more? Try this <a href="https://commonmark.org/help/">interactive tutorial</a></li>
 </ul>
 </section>
 <section id="recap-what-we-learned-today" class="slide level2 center">

@@ -291,14 +291,14 @@
     "href": "lectures/03-home.html",
     "title": "Lecture 3: Intro to ggplot2, Coding Style",
     "section": "",
-    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/brinasab/csp-materials/03-ggplot2-style\")"
+    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/csp-materials/03-ggplot2-style\")"
   },
   {
     "objectID": "lectures/03-home.html#info-and-materials",
     "href": "lectures/03-home.html#info-and-materials",
     "title": "Lecture 3: Intro to ggplot2, Coding Style",
     "section": "",
-    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/brinasab/csp-materials/03-ggplot2-style\")"
+    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/csp-materials/03-ggplot2-style\")"
   },
   {
     "objectID": "lectures/03-home.html#learning-objectives",
@@ -326,14 +326,14 @@
     "href": "lectures/02-home.html",
     "title": "Lecture 2: Git and GitHub",
     "section": "",
-    "text": "Date: June 26, 2025\nTopics: Intro to Git and GitHub from RStudio\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/brinasab/csp-materials/02-git\")"
+    "text": "Date: June 26, 2025\nTopics: Intro to Git and GitHub from RStudio\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/git\")"
   },
   {
     "objectID": "lectures/02-home.html#info-and-materials",
     "href": "lectures/02-home.html#info-and-materials",
     "title": "Lecture 2: Git and GitHub",
     "section": "",
-    "text": "Date: June 26, 2025\nTopics: Intro to Git and GitHub from RStudio\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/brinasab/csp-materials/02-git\")"
+    "text": "Date: June 26, 2025\nTopics: Intro to Git and GitHub from RStudio\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/git\")"
   },
   {
     "objectID": "lectures/02-home.html#learning-objectives",
@@ -361,14 +361,14 @@
     "href": "lectures/01-home.html",
     "title": "Lecture 1: Course Logistics, R, Markdown",
     "section": "",
-    "text": "Date: June 24, 2025\nTopics: Course Logistics, R, Markdown\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/brinasab/csp-materials/01-r-markdown\")"
+    "text": "Date: June 24, 2025\nTopics: Course Logistics, R, Markdown\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/r-markdown\")"
   },
   {
     "objectID": "lectures/01-home.html#info-and-materials",
     "href": "lectures/01-home.html#info-and-materials",
     "title": "Lecture 1: Course Logistics, R, Markdown",
     "section": "",
-    "text": "Date: June 24, 2025\nTopics: Course Logistics, R, Markdown\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/brinasab/csp-materials/01-r-markdown\")"
+    "text": "Date: June 24, 2025\nTopics: Course Logistics, R, Markdown\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/r-markdown\")"
   },
   {
     "objectID": "lectures/01-home.html#learning-objectives",
@@ -564,7 +564,7 @@
     "href": "lectures/01-slides.html#r-markdown-example",
     "title": "Introduction to R: Lecture 1",
     "section": "R Markdown: Example",
-    "text": "R Markdown: Example\nThis is what we type (YAML, text, code):\n---\ntitle: \"Homework 1\"\nauthor: \"Sabrina Nardin\"\noutput: html_document\n---\n\nI write my homework description here. \nI can format the text in many ways, for example, by bolding **key concepts**.\n\n```{r}\n# create a variable\nx &lt;- 5\n```\n\nBut what do we see what we “Render” this R Markdown document?"
+    "text": "R Markdown: Example\nThis is what we type (YAML, text, code):\n---\ntitle: \"Homework 1\"\nauthor: \"Sabrina Nardin\"\noutput: html_document\n---\n\nI write my homework description here. \nI can format the text in many ways, for example, by bolding **key concepts**.\n\n```{r}\n# create a variable\nx &lt;- 5\n```\n\n:::"
   },
   {
     "objectID": "lectures/01-slides.html#yaml-yet-another-markup-language",
@@ -641,21 +641,21 @@
     "href": "lectures/01-slides.html#rendering-r-markdown-documents",
     "title": "Introduction to R: Lecture 1",
     "section": "Rendering R Markdown Documents",
-    "text": "Rendering R Markdown Documents\nR Markdown lets you create documents that combine text, code, and output, and “render” or “knit” them in formats like html, pdf, word, and more.\n\n\n\n\n\n\n\nRendering Tips\n\n\nThree ways to render your R Markdown document:\n\nClick “Knit” in RStudio and choose an output\nSet the format in the YAML header such as html_document,word_document, pdf_document, github_document, etc.\n\n_ Use render() in your console by typing rmarkdown::render(\"my-document.Rmd\", output_format: html_document). More info here"
+    "text": "Rendering R Markdown Documents\nR Markdown lets you create documents that combine text, code, and output, and “render” or “knit” them in formats like html, pdf, word, and more.\n\n\n\n\n\n\n\nRendering Tips\n\n\nThree ways to render your R Markdown document:\n\nClick “Knit” in RStudio and choose an output\nSet the format in the YAML header such as html_document,word_document, pdf_document, github_document, etc.\nUse render() in your console by typing rmarkdown::render(\"my-document.Rmd\", output_format: html_document). More info here"
   },
   {
     "objectID": "lectures/01-slides.html#r-markdown-knitting-process",
     "href": "lectures/01-slides.html#r-markdown-knitting-process",
     "title": "Introduction to R: Lecture 1",
     "section": "R Markdown: Knitting process",
-    "text": "R Markdown: Knitting process\nWhen you “knit” your document, the following sequential things happen:\n\nR Markdown sends the .Rmd file to knitr: http://yihui.name/knitr/\nKnitr executes all of the code chunks and creates a new plain Markdown .md file which includes the code and its output\nThis plain Markdown file is then converted by pandoc into any number of output types including html, PDF, Word document, etc.: http://pandoc.org/"
+    "text": "R Markdown: Knitting process\nWhen you “knit” your document, the following sequential things happen:\n\nR Markdown sends the .Rmd file to knitr http://yihui.name/knitr/\nKnitr executes all of the code chunks and creates a new plain Markdown .md file which includes the code and its output\nThis plain Markdown file is then converted by pandoc into any number of output types including html, PDF, Word document, etc.: http://pandoc.org/"
   },
   {
     "objectID": "lectures/01-slides.html#practice-r-markdown-syntax",
     "href": "lectures/01-slides.html#practice-r-markdown-syntax",
     "title": "Introduction to R: Lecture 1",
     "section": "💻 Practice R Markdown Syntax",
-    "text": "💻 Practice R Markdown Syntax\n\nLog into Workbench ADD LINK\nDownload today’s materials from Lecture 1 on our website\nComplete the R Markdown in-class practice\nWant more? Try the interactive tutorial linked under Lecture 1"
+    "text": "💻 Practice R Markdown Syntax\n\nLog into Workbench\nDownload today’s code from Lecture 1 on our website\nComplete the R Markdown in-class practice\nWant more? Try this interactive tutorial"
   },
   {
     "objectID": "lectures/01-slides.html#recap-what-we-learned-today",

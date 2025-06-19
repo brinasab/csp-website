@@ -53,21 +53,28 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Lecture 1\nCourse Logistics, R, Markdown June 24, 2025\n\n\n\nLecture 2\nGit and GitHub June 26, 2025\n\n\n\nLecture 3\nIntro to ggplot2, Coding Style July 1, 2025\n\n\n\nNo Lecture\nJuly 3, 2025\n\n\n\nLecture 4\nIntro to dplyr, Pipes July 8, 2025\n\n\n\nLecture 5\nEDA and Graphs July 10, 2025\n\n\n\nLecture 6\nFactors, More dplyr July 15, 2025\n\n\n\nLecture 7\nData Cleaning, Importing/Exporting Data July 17, 2025\n\n\n\nLecture 8\nIntro to tidyr July 22, 2025\n\n\n\nLecture 9\nData Structures, Base R July 24, 2025\n\n\n\nLecture 10\nControl Structures 1 July 29, 2025\n\n\n\nLecture 11\nControl Structures 2 July 31, 2025"
+    "text": "Lecture 1\nCourse Logistics, R, Markdown June 24, 2025\n\n\n\nLecture 2\nGit and GitHub June 26, 2025\n\n\n\nLecture 3\nIntro to ggplot2, Coding Style July 1, 2025\n\n\n\nNo Lecture\nJuly 3, 2025\n\n\n\nLecture 4\nIntro to dplyr, Pipes July 8, 2025\n\n\n\nLecture 5\nEDA and Graphs July 10, 2025\n\n\n\nLecture 6\nFactors, Intermediate dplyr July 15, 2025\n\n\n\nLecture 7\nData Cleaning, Importing/Exporting Data July 17, 2025\n\n\n\nLecture 8\nData Structures, Base R July 22, 2025\n\n\n\nLecture 9\nControl Flow 1 July 24, 2025\n\n\n\nLecture 10\nControl Flow 2 July 29, 2025\n\n\n\nLecture 11\nFunctions July 31, 2025"
   },
   {
     "objectID": "lectures/11-home.html",
     "href": "lectures/11-home.html",
     "title": "Lecture 11: Functions",
     "section": "",
-    "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
+    "text": "Date: July 31, 2025\nTopics: Organize and reuse code with functions\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/functions\")"
   },
   {
-    "objectID": "lectures/11-home.html#topics",
-    "href": "lectures/11-home.html#topics",
+    "objectID": "lectures/11-home.html#info-and-materials",
+    "href": "lectures/11-home.html#info-and-materials",
     "title": "Lecture 11: Functions",
-    "section": "Topics",
-    "text": "Topics"
+    "section": "",
+    "text": "Date: July 31, 2025\nTopics: Organize and reuse code with functions\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/functions\")"
+  },
+  {
+    "objectID": "lectures/11-home.html#learning-objectives",
+    "href": "lectures/11-home.html#learning-objectives",
+    "title": "Lecture 11: Functions",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
   },
   {
     "objectID": "lectures/11-home.html#before-class",
@@ -88,14 +95,21 @@
     "href": "lectures/10-home.html",
     "title": "Lecture 10: Control Flow 2",
     "section": "",
-    "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
+    "text": "Date: July 29, 2025\nTopics: Writing loops for iteration and repetition\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/loops\")"
   },
   {
-    "objectID": "lectures/10-home.html#topics",
-    "href": "lectures/10-home.html#topics",
+    "objectID": "lectures/10-home.html#info-and-materials",
+    "href": "lectures/10-home.html#info-and-materials",
     "title": "Lecture 10: Control Flow 2",
-    "section": "Topics",
-    "text": "Topics"
+    "section": "",
+    "text": "Date: July 29, 2025\nTopics: Writing loops for iteration and repetition\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/loops\")"
+  },
+  {
+    "objectID": "lectures/10-home.html#learning-objectives",
+    "href": "lectures/10-home.html#learning-objectives",
+    "title": "Lecture 10: Control Flow 2",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
   },
   {
     "objectID": "lectures/10-home.html#before-class",
@@ -116,14 +130,21 @@
     "href": "lectures/09-home.html",
     "title": "Lecture 9: Control Flow 1",
     "section": "",
-    "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
+    "text": "Date: July 24, 2025\nTopics: Writing conditionals with if, else, and else if\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/if-else\")"
   },
   {
-    "objectID": "lectures/09-home.html#topics",
-    "href": "lectures/09-home.html#topics",
+    "objectID": "lectures/09-home.html#info-and-materials",
+    "href": "lectures/09-home.html#info-and-materials",
     "title": "Lecture 9: Control Flow 1",
-    "section": "Topics",
-    "text": "Topics"
+    "section": "",
+    "text": "Date: July 24, 2025\nTopics: Writing conditionals with if, else, and else if\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/if-else\")"
+  },
+  {
+    "objectID": "lectures/09-home.html#learning-objectives",
+    "href": "lectures/09-home.html#learning-objectives",
+    "title": "Lecture 9: Control Flow 1",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
   },
   {
     "objectID": "lectures/09-home.html#before-class",
@@ -144,14 +165,21 @@
     "href": "lectures/08-home.html",
     "title": "Lecture 8: Data Structures, Base R",
     "section": "",
-    "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
+    "text": "Date: July 22, 2025\nTopics: Intro to Data Structures and Base R\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/base-r\")"
   },
   {
-    "objectID": "lectures/08-home.html#topics",
-    "href": "lectures/08-home.html#topics",
+    "objectID": "lectures/08-home.html#info-and-materials",
+    "href": "lectures/08-home.html#info-and-materials",
     "title": "Lecture 8: Data Structures, Base R",
-    "section": "Topics",
-    "text": "Topics"
+    "section": "",
+    "text": "Date: July 22, 2025\nTopics: Intro to Data Structures and Base R\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/base-r\")"
+  },
+  {
+    "objectID": "lectures/08-home.html#learning-objectives",
+    "href": "lectures/08-home.html#learning-objectives",
+    "title": "Lecture 8: Data Structures, Base R",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
   },
   {
     "objectID": "lectures/08-home.html#before-class",
@@ -172,14 +200,21 @@
     "href": "lectures/07-home.html",
     "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
     "section": "",
-    "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
+    "text": "Date: July 17, 2025\nTopics: Data Cleaning and Wrangling, Importing/Exporting Data\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/cleaning\")"
   },
   {
-    "objectID": "lectures/07-home.html#topics",
-    "href": "lectures/07-home.html#topics",
+    "objectID": "lectures/07-home.html#info-and-materials",
+    "href": "lectures/07-home.html#info-and-materials",
     "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
-    "section": "Topics",
-    "text": "Topics"
+    "section": "",
+    "text": "Date: July 17, 2025\nTopics: Data Cleaning and Wrangling, Importing/Exporting Data\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/cleaning\")"
+  },
+  {
+    "objectID": "lectures/07-home.html#learning-objectives",
+    "href": "lectures/07-home.html#learning-objectives",
+    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
   },
   {
     "objectID": "lectures/07-home.html#before-class",
@@ -198,28 +233,35 @@
   {
     "objectID": "lectures/06-home.html",
     "href": "lectures/06-home.html",
-    "title": "Lecture 6: Factors, More dplyr",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
     "section": "",
-    "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
+    "text": "Date: July 15, 2025\nTopics: Using Factors in R, Deep Dive into dplyr\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/factors-more-dplyr\")"
   },
   {
-    "objectID": "lectures/06-home.html#topics",
-    "href": "lectures/06-home.html#topics",
-    "title": "Lecture 6: Factors, More dplyr",
-    "section": "Topics",
-    "text": "Topics"
+    "objectID": "lectures/06-home.html#info-and-materials",
+    "href": "lectures/06-home.html#info-and-materials",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
+    "section": "",
+    "text": "Date: July 15, 2025\nTopics: Using Factors in R, Deep Dive into dplyr\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/factors-more-dplyr\")"
+  },
+  {
+    "objectID": "lectures/06-home.html#learning-objectives",
+    "href": "lectures/06-home.html#learning-objectives",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
   },
   {
     "objectID": "lectures/06-home.html#before-class",
     "href": "lectures/06-home.html#before-class",
-    "title": "Lecture 6: Factors, More dplyr",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
     "section": "Before Class",
     "text": "Before Class"
   },
   {
     "objectID": "lectures/06-home.html#readings",
     "href": "lectures/06-home.html#readings",
-    "title": "Lecture 6: Factors, More dplyr",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
     "section": "Readings",
     "text": "Readings"
   },
@@ -228,14 +270,21 @@
     "href": "lectures/05-home.html",
     "title": "Lecture 5: EDA and Graphs",
     "section": "",
-    "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
+    "text": "Date: July 10, 2025\nTopics: Data Analysis and Graphs\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/eda\")"
   },
   {
-    "objectID": "lectures/05-home.html#topics",
-    "href": "lectures/05-home.html#topics",
+    "objectID": "lectures/05-home.html#info-and-materials",
+    "href": "lectures/05-home.html#info-and-materials",
     "title": "Lecture 5: EDA and Graphs",
-    "section": "Topics",
-    "text": "Topics"
+    "section": "",
+    "text": "Date: July 10, 2025\nTopics: Data Analysis and Graphs\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/eda\")"
+  },
+  {
+    "objectID": "lectures/05-home.html#learning-objectives",
+    "href": "lectures/05-home.html#learning-objectives",
+    "title": "Lecture 5: EDA and Graphs",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
   },
   {
     "objectID": "lectures/05-home.html#before-class",
@@ -432,6 +481,20 @@
     "title": "Homework 4",
     "section": "",
     "text": "Content goes here."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to Introduction to R Programming!",
+    "section": "",
+    "text": "Meeting day and time: Tue & Thur 1:00 - 2:30 PM\nMeeting location:\nTeaching staff: * Instructor: Sabrina Nardin (she/her/hers) nardin@uchicago.edu * TA: Zach Meyer (he/him/his) zmeyer@uchicago.edu\nOffice Hours: * After every class from 2:30 to 3:30 PM: Drop-in Office Hours with Sabrina for lecture or homework-related questions or any course related questions, no appointment needed. Zach will have drop-in office hour once a week.\nRelevant Links: * R Workbench * Canvas * Summer 2025 Course Schedule"
+  },
+  {
+    "objectID": "index.html#course-information-summer-2025",
+    "href": "index.html#course-information-summer-2025",
+    "title": "Welcome to Introduction to R Programming!",
+    "section": "",
+    "text": "Meeting day and time: Tue & Thur 1:00 - 2:30 PM\nMeeting location:\nTeaching staff: * Instructor: Sabrina Nardin (she/her/hers) nardin@uchicago.edu * TA: Zach Meyer (he/him/his) zmeyer@uchicago.edu\nOffice Hours: * After every class from 2:30 to 3:30 PM: Drop-in Office Hours with Sabrina for lecture or homework-related questions or any course related questions, no appointment needed. Zach will have drop-in office hour once a week.\nRelevant Links: * R Workbench * Canvas * Summer 2025 Course Schedule"
   },
   {
     "objectID": "lectures/01-slides.html#teaching-team",
@@ -803,13 +866,6 @@
     "title": "Introduction to R: Lecture 2",
     "section": "Reminders",
     "text": "Reminders\n\nHomework 1 is now open and due next week. Please check the Course Schedule for the exact due date."
-  },
-  {
-    "objectID": "lectures/07-slides.html",
-    "href": "lectures/07-slides.html",
-    "title": "maybe add tidyr to this lecture if time allows otherwise remove from course",
-    "section": "",
-    "text": "maybe add tidyr to this lecture if time allows otherwise remove from course"
   },
   {
     "objectID": "setup/git/page01.html",

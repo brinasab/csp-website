@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R: Lecture 2"
-subtitle: "<b>Topics:</b> Git/GitHub with RStudio"
+subtitle: "Topics: Git/GitHub with RStudio"
 author: "Sabrina Nardin, Summer 2025"
 format:
   revealjs:

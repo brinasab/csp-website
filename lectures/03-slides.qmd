@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R: Lecture 3"
-subtitle: "<b>Topics:</b> Intro to `ggplot2`, Coding Style"
+subtitle: "Topics: Intro to ggplot2, Coding Style"
 author: "Sabrina Nardin, Summer 2025"
 format:
   revealjs:
@@ -16,4 +16,5 @@ format:
     center: true
 ---
 
+### Slides coming soon!
 

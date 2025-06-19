@@ -39,7 +39,7 @@ EDA and Graphs<br>
 ---
 
 #### [Lecture 6](./06-home.qmd)
-Factors, More `dplyr`<br>
+Factors, Intermediate `dplyr`<br>
 **July 15, 2025**
 
 ---
@@ -51,23 +51,23 @@ Data Cleaning, Importing/Exporting Data<br>
 ---
 
 #### [Lecture 8](./08-home.qmd)
-Intro to `tidyr`<br>
+Data Structures, Base R<br>
 **July 22, 2025**
 
 ---
 
 #### [Lecture 9](./09-home.qmd)
-Data Structures, Base R<br>
+Control Flow 1<br>
 **July 24, 2025**
 
 ---
 
 #### [Lecture 10](./10-home.qmd)
-Control Structures 1<br>
+Control Flow 2<br>
 **July 29, 2025**
 
 ---
 
-### [Lecture 11](11-home.qmd)
-Control Structures 2<br>
+#### [Lecture 11](11-home.qmd)
+Functions<br>
 **July 31, 2025**

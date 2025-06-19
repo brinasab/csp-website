@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R: Lecture 1"
-subtitle: "<b>Topics:</b> Course Logistics, R, Markdown"
+subtitle: "Topics: Course Logistics, R, Markdown"
 author: "Sabrina Nardin, Summer 2025"
 format:
   revealjs:

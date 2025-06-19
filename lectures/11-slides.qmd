@@ -1,7 +1,4 @@
 ---
-title: "Lecture 11 Slides"
-format: revealjs
-title-slide: true
+
 ---
 
-## Lecture 11: Control Structures 2

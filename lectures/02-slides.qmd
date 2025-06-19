@@ -67,20 +67,16 @@ Quiz and Attendance
 
 ::: {.columns}
 
-::: {.column width="42%"}
-### Why use programming for data analysis and version control to automatically keep track of changes in your work
+::: {.column width="47%"}
+### Use programming for data analysis, and use version control to automatically keep track of changes in your work?
+:::
+
+::: {.column width="6%"}
 
 :::
 
-::: {.column width="14%"}
-<div style="text-align: center; font-size: 2em;">
-vs.
-</div>
-:::
-
-::: {.column width="44%"}
-### using point-and-click software for data analysis, and and saving multiple copies of your work by hand to keep track of changes?
-
+::: {.column width="47%"}
+### Or use point-and-click software for data analysis, and save multiple copies of your work by hand to track changes?
 :::
 
 :::
@@ -460,7 +456,7 @@ git commit
 ### Rather than *solving* conflicts, we want to *avoid* them as much as possibile with good practices:
 
 + **Make changes locally**, then stage and commit (early and often)  
-_ **Push regularly** to keep your GitHub repo in sync  
++ **Push regularly** to keep your GitHub repo in sync  
 + **Always pull before you push** to avoid conflicts
 
 ### Key Sequence to Use: 
@@ -473,13 +469,12 @@ Want to practice? Complete the ["Using Git with RStudio"](https://computing-soc-
 
 ---
 
-## Burn it all down
+## Burn it All Down
 
-```{r echo = FALSE, out.width = "35%"}
-#include_graphics(path = "https://imgs.xkcd.com/comics/git.png")
-```
+<div style="text-align: center;">
+  <img src="https://imgs.xkcd.com/comics/git.png" />
+</div>
 
-.footnote[Source: [xkcd](https://xkcd.com/1597/)]
 
 ---
 
@@ -490,7 +485,6 @@ Want to practice? Complete the ["Using Git with RStudio"](https://computing-soc-
 
 ---
 
-## Next Time & Reminders
+## Reminders
 
-- Homework 1 opened today. Due next week (check Course Schedule for exact dates)
-- 
+- Homework 1 is now open and due next week. Please check the Course Schedule for the exact due date.

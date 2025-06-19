@@ -3,7 +3,7 @@ title: "Lecture 4: Intro to `dplyr`, Pipes"
 date: 2025-07-08
 summary: "Wrangling Data with `dplyr`, Using R Pipes"
 url_slides: 04-slides.qmd
-url_code: https://github.com/brinsab/csp-materials/04-dplyr-pipes
+url_code: csp-materials/dplyr-pipes
 page-layout: full
 draft: false
 ---

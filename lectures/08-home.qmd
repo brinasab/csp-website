@@ -1,9 +1,9 @@
 ---
-title: "Lecture 8: Intro to `tidyr`"
+title: "Lecture 8: Data Structures, Base R"
 date: 2025-07-22
-summary: "<strong>Tidying Data with `tidyr`</strong>"
+summary: "Intro to Data Structures and Base R"
 url_slides: 08-slides.qmd
-url_code: https://github.com/brinsab/csp-materials/08-tidyr
+url_code: csp-materials/base-r
 page-layout: full
 draft: false
 ---

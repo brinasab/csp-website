@@ -1,9 +1,9 @@
 ---
-title: "Lecture 10: Control Structures 1"
+title: "Lecture 10: Control Flow 2"
 date: 2025-07-29
-summary: "<strong>Conditional Statements and Loops</strong>"
+summary: "Writing loops for iteration and repetition"
 url_slides: 10-slides.qmd
-url_code: https://github.com/brinsab/csp-materials/10-control-1
+url_code: csp-materials/loops
 page-layout: full
 draft: false
 ---

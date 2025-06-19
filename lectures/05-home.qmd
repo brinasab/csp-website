@@ -1,9 +1,9 @@
 ---
 title: "Lecture 5: EDA and Graphs"
 date: 2025-07-10
-summary: "<strong>Data Analysis and Graphs</strong>"
+summary: "Data Analysis and Graphs"
 url_slides: 05-slides.qmd
-url_code: https://github.com/brinsab/csp-materials/05-eda
+url_code: csp-materials/eda
 page-layout: full
 draft: false
 ---

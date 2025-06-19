@@ -58,112 +58,112 @@
   {
     "objectID": "lectures/11-home.html",
     "href": "lectures/11-home.html",
-    "title": "Lecture 11: Control Structures 2",
+    "title": "Lecture 11: Functions",
     "section": "",
     "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
   },
   {
     "objectID": "lectures/11-home.html#topics",
     "href": "lectures/11-home.html#topics",
-    "title": "Lecture 11: Control Structures 2",
+    "title": "Lecture 11: Functions",
     "section": "Topics",
     "text": "Topics"
   },
   {
     "objectID": "lectures/11-home.html#before-class",
     "href": "lectures/11-home.html#before-class",
-    "title": "Lecture 11: Control Structures 2",
+    "title": "Lecture 11: Functions",
     "section": "Before Class",
     "text": "Before Class"
   },
   {
     "objectID": "lectures/11-home.html#readings",
     "href": "lectures/11-home.html#readings",
-    "title": "Lecture 11: Control Structures 2",
+    "title": "Lecture 11: Functions",
     "section": "Readings",
     "text": "Readings"
   },
   {
     "objectID": "lectures/10-home.html",
     "href": "lectures/10-home.html",
-    "title": "Lecture 10: Control Structures 1",
+    "title": "Lecture 10: Control Flow 2",
     "section": "",
     "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
   },
   {
     "objectID": "lectures/10-home.html#topics",
     "href": "lectures/10-home.html#topics",
-    "title": "Lecture 10: Control Structures 1",
+    "title": "Lecture 10: Control Flow 2",
     "section": "Topics",
     "text": "Topics"
   },
   {
     "objectID": "lectures/10-home.html#before-class",
     "href": "lectures/10-home.html#before-class",
-    "title": "Lecture 10: Control Structures 1",
+    "title": "Lecture 10: Control Flow 2",
     "section": "Before Class",
     "text": "Before Class"
   },
   {
     "objectID": "lectures/10-home.html#readings",
     "href": "lectures/10-home.html#readings",
-    "title": "Lecture 10: Control Structures 1",
+    "title": "Lecture 10: Control Flow 2",
     "section": "Readings",
     "text": "Readings"
   },
   {
     "objectID": "lectures/09-home.html",
     "href": "lectures/09-home.html",
-    "title": "Lecture 9: Data Structures, Base R",
+    "title": "Lecture 9: Control Flow 1",
     "section": "",
     "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
   },
   {
     "objectID": "lectures/09-home.html#topics",
     "href": "lectures/09-home.html#topics",
-    "title": "Lecture 9: Data Structures, Base R",
+    "title": "Lecture 9: Control Flow 1",
     "section": "Topics",
     "text": "Topics"
   },
   {
     "objectID": "lectures/09-home.html#before-class",
     "href": "lectures/09-home.html#before-class",
-    "title": "Lecture 9: Data Structures, Base R",
+    "title": "Lecture 9: Control Flow 1",
     "section": "Before Class",
     "text": "Before Class"
   },
   {
     "objectID": "lectures/09-home.html#readings",
     "href": "lectures/09-home.html#readings",
-    "title": "Lecture 9: Data Structures, Base R",
+    "title": "Lecture 9: Control Flow 1",
     "section": "Readings",
     "text": "Readings"
   },
   {
     "objectID": "lectures/08-home.html",
     "href": "lectures/08-home.html",
-    "title": "Lecture 8: Intro to tidyr",
+    "title": "Lecture 8: Data Structures, Base R",
     "section": "",
     "text": "Date: {&lt; meta date &gt;}\nSummary: {&lt; meta summary &gt;}\nSlides: View Slides\nCode: Copy and run in your console: usethis::use_course(\"{&lt; meta url_code &gt;}\")"
   },
   {
     "objectID": "lectures/08-home.html#topics",
     "href": "lectures/08-home.html#topics",
-    "title": "Lecture 8: Intro to tidyr",
+    "title": "Lecture 8: Data Structures, Base R",
     "section": "Topics",
     "text": "Topics"
   },
   {
     "objectID": "lectures/08-home.html#before-class",
     "href": "lectures/08-home.html#before-class",
-    "title": "Lecture 8: Intro to tidyr",
+    "title": "Lecture 8: Data Structures, Base R",
     "section": "Before Class",
     "text": "Before Class"
   },
   {
     "objectID": "lectures/08-home.html#readings",
     "href": "lectures/08-home.html#readings",
-    "title": "Lecture 8: Intro to tidyr",
+    "title": "Lecture 8: Data Structures, Base R",
     "section": "Readings",
     "text": "Readings"
   },
@@ -256,14 +256,14 @@
     "href": "lectures/04-home.html",
     "title": "Lecture 4: Intro to dplyr, Pipes",
     "section": "",
-    "text": "Date: July 8, 2025\nTopics: Wrangling Data with dplyr, Using R Pipes\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/brinsab/csp-materials/04-dplyr-pipes\")"
+    "text": "Date: July 8, 2025\nTopics: Wrangling Data with dplyr, Using R Pipes\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/dplyr-pipes\")"
   },
   {
     "objectID": "lectures/04-home.html#info-and-materials",
     "href": "lectures/04-home.html#info-and-materials",
     "title": "Lecture 4: Intro to dplyr, Pipes",
     "section": "",
-    "text": "Date: July 8, 2025\nTopics: Wrangling Data with dplyr, Using R Pipes\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/brinsab/csp-materials/04-dplyr-pipes\")"
+    "text": "Date: July 8, 2025\nTopics: Wrangling Data with dplyr, Using R Pipes\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/dplyr-pipes\")"
   },
   {
     "objectID": "lectures/04-home.html#learning-objectives",
@@ -291,14 +291,14 @@
     "href": "lectures/03-home.html",
     "title": "Lecture 3: Intro to ggplot2, Coding Style",
     "section": "",
-    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/csp-materials/03-ggplot2-style\")"
+    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/ggplot2-style\")"
   },
   {
     "objectID": "lectures/03-home.html#info-and-materials",
     "href": "lectures/03-home.html#info-and-materials",
     "title": "Lecture 3: Intro to ggplot2, Coding Style",
     "section": "",
-    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"https://github.com/csp-materials/03-ggplot2-style\")"
+    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/ggplot2-style\")"
   },
   {
     "objectID": "lectures/03-home.html#learning-objectives",
@@ -473,7 +473,7 @@
     "href": "lectures/01-slides.html#software-setup",
     "title": "Introduction to R: Lecture 1",
     "section": "Software Setup",
-    "text": "Software Setup\n\nGo to Setup in our course website and follow the instructions in the order provided there.\nYou have two options:\n\nUse RStudio Workbench (required for beginners; strongly recommended for others)\nInstall the software locally on your own machine (talk to me if you plan to do so)\n\n\n\n\n\n\n\n\nImportant\n\n\nComplete the setup BEFORE the next lecture!\nIf you’re having trouble with the setup, stay after class or come to Office Hours. Note that only enrolled students have access to R Workbench."
+    "text": "Software Setup\n\nGo to Setup in our course website and follow the instructions in the order provided there.\nYou have two options:\n\nOption required for beginners; strongly recommended for others: use RStudio Workbench\nOnly if you have alreayd experience with programming and talk to me first: install the software locally on your own machine\n\n\n\n\n\n\n\n\nImportant\n\n\nComplete the setup BEFORE the next lecture!\nIf you’re having trouble with the setup, stay after class or come to Office Hours. Note that only enrolled students have access to R Workbench."
   },
   {
     "objectID": "lectures/01-slides.html#activity-meet-share-goals",
@@ -564,7 +564,7 @@
     "href": "lectures/01-slides.html#r-markdown-example",
     "title": "Introduction to R: Lecture 1",
     "section": "R Markdown: Example",
-    "text": "R Markdown: Example\nThis is what we type (YAML, text, code):\n---\ntitle: \"Homework 1\"\nauthor: \"Sabrina Nardin\"\noutput: html_document\n---\n\nI write my homework description here. \nI can format the text in many ways, for example, by bolding **key concepts**.\n\n```{r}\n# create a variable\nx &lt;- 5\n```\n\n:::"
+    "text": "R Markdown: Example\nThis is what we type (YAML, text, code):\n---\ntitle: \"Homework 1\"\nauthor: \"Sabrina Nardin\"\noutput: html_document\n---\n\nI write my homework description here. \nI can format the text in many ways, for example, by bolding **key concepts**.\n\n```{r}\n# create a variable\nx &lt;- 5\n```"
   },
   {
     "objectID": "lectures/01-slides.html#yaml-yet-another-markup-language",
@@ -781,14 +781,14 @@
     "href": "lectures/02-slides.html#avoiding-most-git-conflicts",
     "title": "Introduction to R: Lecture 2",
     "section": "Avoiding (Most) Git Conflicts",
-    "text": "Avoiding (Most) Git Conflicts\nRather than solving conflicts, we want to avoid them as much as possibile with good practices:\n\nMake changes locally, then stage and commit (early and often)\n_ Push regularly to keep your GitHub repo in sync\n\nAlways pull before you push to avoid conflicts\n\nKey Sequence to Use:\ngit pull → make changes → git add + git commit → git push"
+    "text": "Avoiding (Most) Git Conflicts\nRather than solving conflicts, we want to avoid them as much as possibile with good practices:\n\nMake changes locally, then stage and commit (early and often)\n\nPush regularly to keep your GitHub repo in sync\n\nAlways pull before you push to avoid conflicts\n\nKey Sequence to Use:\ngit pull → make changes → git add + git commit → git push"
   },
   {
     "objectID": "lectures/02-slides.html#burn-it-all-down",
     "href": "lectures/02-slides.html#burn-it-all-down",
     "title": "Introduction to R: Lecture 2",
-    "section": "Burn it all down",
-    "text": "Burn it all down\n.footnote[Source: xkcd]"
+    "section": "Burn it All Down",
+    "text": "Burn it All Down"
   },
   {
     "objectID": "lectures/02-slides.html#recap-what-we-learned-today",
@@ -798,39 +798,18 @@
     "text": "Recap: What We Learned Today\n\nFamiliarized with Git & GitHub\nHow to use Git & GitHub within RStudio"
   },
   {
-    "objectID": "lectures/02-slides.html#next-time-reminders",
-    "href": "lectures/02-slides.html#next-time-reminders",
+    "objectID": "lectures/02-slides.html#reminders",
+    "href": "lectures/02-slides.html#reminders",
     "title": "Introduction to R: Lecture 2",
-    "section": "Next Time & Reminders",
-    "text": "Next Time & Reminders\n\nHomework 1 opened today. Due next week (check Course Schedule for exact dates)"
+    "section": "Reminders",
+    "text": "Reminders\n\nHomework 1 is now open and due next week. Please check the Course Schedule for the exact due date."
   },
   {
-    "objectID": "lectures/07-slides.html#lecture-7-data-cleaning",
-    "href": "lectures/07-slides.html#lecture-7-data-cleaning",
-    "title": "Lecture 7 Slides",
-    "section": "Lecture 7: Data Cleaning",
-    "text": "Lecture 7: Data Cleaning"
-  },
-  {
-    "objectID": "lectures/09-slides.html#lecture-9-data-structures-base-r",
-    "href": "lectures/09-slides.html#lecture-9-data-structures-base-r",
-    "title": "Lecture 9 Slides",
-    "section": "Lecture 9: Data Structures & base R",
-    "text": "Lecture 9: Data Structures & base R"
-  },
-  {
-    "objectID": "lectures/10-slides.html#lecture-10-control-structures-1",
-    "href": "lectures/10-slides.html#lecture-10-control-structures-1",
-    "title": "Lecture 10 Slides",
-    "section": "Lecture 10: Control Structures 1",
-    "text": "Lecture 10: Control Structures 1"
-  },
-  {
-    "objectID": "lectures/11-slides.html#lecture-11-control-structures-2",
-    "href": "lectures/11-slides.html#lecture-11-control-structures-2",
-    "title": "Lecture 11 Slides",
-    "section": "Lecture 11: Control Structures 2",
-    "text": "Lecture 11: Control Structures 2"
+    "objectID": "lectures/07-slides.html",
+    "href": "lectures/07-slides.html",
+    "title": "maybe add tidyr to this lecture if time allows otherwise remove from course",
+    "section": "",
+    "text": "maybe add tidyr to this lecture if time allows otherwise remove from course"
   },
   {
     "objectID": "setup/git/page01.html",

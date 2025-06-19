@@ -1,9 +1,9 @@
 ---
 title: "Lecture 6: Factors, More `dplyr`"
 date: 2025-07-15
-summary: "<strong>Using Factors in R, Deep Dive into `dplyr`</strong>"
+summary: "Using Factors in R, Deep Dive into `dplyr`"
 url_slides: 06-slides.qmd
-url_code: https://github.com/brinsab/csp-materials/06-factors-dplyr
+url_code: csp-materials/factors-more-dplyr
 page-layout: full
 draft: false
 ---

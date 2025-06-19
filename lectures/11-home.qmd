@@ -1,9 +1,9 @@
 ---
-title: "Lecture 11: Control Structures 2"
+title: "Lecture 11: Functions"
 date: 2025-07-31
-summary: "<strong>Loops and Functions</strong>"
+summary: "Organize and reuse code with functions"
 url_slides: 11-slides.qmd
-url_code: https://github.com/brinsab/csp-materials/11-control-2
+url_code: csp-materials/functions
 page-layout: full
 draft: false
 ---

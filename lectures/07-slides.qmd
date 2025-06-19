@@ -1,7 +1,6 @@
 ---
-title: "Lecture 7 Slides"
-format: revealjs
-title-slide: true
+
 ---
 
-## Lecture 7: Data Cleaning
+
+# maybe add tidyr to this lecture if time allows otherwise remove from course

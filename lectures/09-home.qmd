@@ -1,9 +1,9 @@
 ---
-title: "Lecture 9: Data Structures, Base R"
+title: "Lecture 9: Control Flow 1"
 date: 2025-07-24
-summary: "<strong>Intro to Data Structures and Base R</strong>"
+summary: "Writing conditionals with if, else, and else if to make decisions"
 url_slides: 09-slides.qmd
-url_code: https://github.com/brinsab/csp-materials/09-baser
+url_code: csp-materials/if-else
 page-layout: full
 draft: false
 ---

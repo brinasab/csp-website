@@ -194,8 +194,8 @@ Go to [Setup](https://computing-soc-sci.netlify.app/setup/) in our course websit
 
 You have two options:
 
-1.  Use RStudio Workbench (required for beginners; strongly recommended for others)
-2.  Install the software locally on your own machine (talk to me if you plan to do so)
+1.  **Option required for beginners; strongly recommended for others:** use RStudio Workbench
+2.  **Only if you have alreayd experience with programming and talk to me first:** install the software locally on your own machine 
 
 ::: {.fragment .setup-box .callout-important}
 **Complete the setup BEFORE the next lecture!**
@@ -475,7 +475,6 @@ x <- 5
 <!-- IN CLASS: 
 copy this on a blank Rmd document on Workbench and render it -->
 ```
-:::
 
 ---
 

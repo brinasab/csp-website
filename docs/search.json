@@ -483,18 +483,11 @@
     "text": "Content goes here."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to Introduction to R Programming!",
-    "section": "",
-    "text": "Meeting day and time: Tue & Thur 1:00 - 2:30 PM\nMeeting location:\nTeaching staff: * Instructor: Sabrina Nardin (she/her/hers) nardin@uchicago.edu * TA: Zach Meyer (he/him/his) zmeyer@uchicago.edu\nOffice Hours: * After every class from 2:30 to 3:30 PM: Drop-in Office Hours with Sabrina for lecture or homework-related questions or any course related questions, no appointment needed. Zach will have drop-in office hour once a week.\nRelevant Links: * R Workbench * Canvas * Summer 2025 Course Schedule"
-  },
-  {
     "objectID": "index.html#course-information-summer-2025",
     "href": "index.html#course-information-summer-2025",
-    "title": "Welcome to Introduction to R Programming!",
-    "section": "",
-    "text": "Meeting day and time: Tue & Thur 1:00 - 2:30 PM\nMeeting location:\nTeaching staff: * Instructor: Sabrina Nardin (she/her/hers) nardin@uchicago.edu * TA: Zach Meyer (he/him/his) zmeyer@uchicago.edu\nOffice Hours: * After every class from 2:30 to 3:30 PM: Drop-in Office Hours with Sabrina for lecture or homework-related questions or any course related questions, no appointment needed. Zach will have drop-in office hour once a week.\nRelevant Links: * R Workbench * Canvas * Summer 2025 Course Schedule"
+    "title": "Welcome to Intro to R Programming!",
+    "section": "Course Information Summer 2025",
+    "text": "Course Information Summer 2025\nMeeting day and time: Tue & Thur 1:00 - 2:30 PM\nMeeting location:\nTeaching staff:\n\nInstructor: Sabrina Nardin (she/her/hers) nardin@uchicago.edu\nTA: Zach Meyer (he/him/his) zmeyer@uchicago.edu\n\nOffice Hours:\n\nAfter every class from 2:30 to 3:30 PM: Drop-in Office Hours with Sabrina for lecture or homework-related questions or any course related questions, no appointment needed. Zach will have drop-in office hour once a week.\n\nRelevant Links:\n\nR Workbench\nCanvas\nSummer 2025 Course Schedule\n\n\nCourse Description\n\n\nLearning Objectives"
   },
   {
     "objectID": "lectures/01-slides.html#teaching-team",

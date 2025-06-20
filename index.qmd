@@ -6,29 +6,24 @@ title: "Welcome to Intro to R Programming!"
 
 ## Course Information Summer 2025
 
-**Meeting day and time**: Tue & Thur 1:00 - 2:30 PM
+**Meeting Time**: Tuesdays & Thursdays, 1:00–2:30 PM  
 
-**Meeting location**: 
+**Meeting Location**: Cobb Hall 319  
 
-**Teaching staff**:
+**Teaching Team**:  
 
-  * Instructor: Sabrina Nardin (she/her/hers) nardin@uchicago.edu
-  * TA: Zach Meyer (he/him/his) zmeyer@uchicago.edu
-
-**Office Hours**:
-
-* After every class from 2:30 to 3:30 PM: Drop-in Office Hours with Sabrina for lecture or homework-related questions or any course related questions, no appointment needed. Zach will have drop-in office hour once a week. 
-
-**Relevant Links**:
-
-  * [R Workbench](https://macss-r.uchicago.edu/)
-  * [Canvas]()
-  * [Summer 2025 Course Schedule]()
+- Instructor: Sabrina Nardin (she/her) – [nardin@uchicago.edu](mailto:nardin@uchicago.edu)  
+- Teaching Assistant: Zach Meyer (he/him) – [zmeyer@uchicago.edu](mailto:zmeyer@uchicago.edu)
 
 
+**Office Hours**:  
 
-### Course Description 
+- Sabrina: Drop-in after class (2:30–3:30 PM, Cobb Hall 319). No appointment needed — bring questions about lecture, homework, or anything course-related.  
+- Zach: Weekly drop-in (schedule TBD).
 
-### Learning Objectives
 
+**Quick Links**:  
 
+- [R Workbench](https://macss-r.uchicago.edu/)  
+- [Canvas](#)  
+- [Summer 2025 Course Schedule](#)

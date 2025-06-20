@@ -487,7 +487,7 @@
     "href": "index.html#course-information-summer-2025",
     "title": "Welcome to Intro to R Programming!",
     "section": "Course Information Summer 2025",
-    "text": "Course Information Summer 2025\nMeeting day and time: Tue & Thur 1:00 - 2:30 PM\nMeeting location:\nTeaching staff:\n\nInstructor: Sabrina Nardin (she/her/hers) nardin@uchicago.edu\nTA: Zach Meyer (he/him/his) zmeyer@uchicago.edu\n\nOffice Hours:\n\nAfter every class from 2:30 to 3:30 PM: Drop-in Office Hours with Sabrina for lecture or homework-related questions or any course related questions, no appointment needed. Zach will have drop-in office hour once a week.\n\nRelevant Links:\n\nR Workbench\nCanvas\nSummer 2025 Course Schedule\n\n\nCourse Description\n\n\nLearning Objectives"
+    "text": "Course Information Summer 2025\nMeeting Time: Tuesdays & Thursdays, 1:00–2:30 PM\nMeeting Location: Cobb Hall 319\nTeaching Team:\n\nInstructor: Sabrina Nardin (she/her) – nardin@uchicago.edu\n\nTeaching Assistant: Zach Meyer (he/him) – zmeyer@uchicago.edu\n\nOffice Hours:\n\nSabrina: Drop-in after class (2:30–3:30 PM, Cobb Hall 319). No appointment needed — bring questions about lecture, homework, or anything course-related.\n\nZach: Weekly drop-in (schedule TBD).\n\nQuick Links:\n\nR Workbench\n\nCanvas\n\nSummer 2025 Course Schedule"
   },
   {
     "objectID": "lectures/01-slides.html#teaching-team",
@@ -901,5 +901,12 @@
     "title": "R: Topic 5",
     "section": "",
     "text": "Content goes here."
+  },
+  {
+    "objectID": "index.html#welcome-to-introduction-to-r-programming",
+    "href": "index.html#welcome-to-introduction-to-r-programming",
+    "title": "Welcome to Intro to R Programming!",
+    "section": "Welcome to “Introduction to R Programming”!",
+    "text": "Welcome to “Introduction to R Programming”!\nMeeting Time: Tuesdays & Thursdays, 1:00–2:30 PM\nMeeting Location: Cobb Hall 319\nTeaching Team:\n- Instructor: Sabrina Nardin (she/her) – nardin@uchicago.edu\n- Teaching Assistant: Zach Meyer (he/him) – zmeyer@uchicago.edu\nOffice Hours:\n- Sabrina: Drop-in after every class from 2:30 to 3:30 PM in Cobb Hall 319. No appointment needed - come by with questions about lecture, homework, or anything course-related.\n- Zach: Weekly drop-in (schedule TBD).\nQuick Links:\n- R Workbench\n- Canvas\n- Summer 2025 Course Schedule"
   }
 ]

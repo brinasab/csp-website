@@ -10,7 +10,7 @@ Course Logistics, R, Markdown<br>
 ---
 
 #### [Lecture 2](./02-home.qmd)
-Git and GitHub<br>
+Git & GitHub<br>
 **June 26, 2025**
 
 ---

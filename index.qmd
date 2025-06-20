@@ -4,7 +4,7 @@ title: "Welcome to Intro to R Programming!"
 
 <br>
 
-## Course Information Summer 2025
+## Course Information CSP Summer 2025
 
 **Meeting Time**: Tuesdays & Thursdays, 1:00–2:30 PM  
 
@@ -25,5 +25,5 @@ title: "Welcome to Intro to R Programming!"
 **Quick Links**:  
 
 - [R Workbench](https://macss-r.uchicago.edu/)  
-- [Canvas](#)  
-- [Summer 2025 Course Schedule](#)
+- [Canvas](https://canvas.uchicago.edu/courses/64478)  
+- [Course Schedule](https://docs.google.com/spreadsheets/d/1CmuUXTp0uvhAVk3mmOQMEfb8BjdR-I36/edit?usp=sharing&ouid=112534119211880791899&rtpof=true&sd=true)

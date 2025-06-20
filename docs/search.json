@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "For Course Information (instructor, emails, Office Hours, etc.) see Home.\nThis course introduces core programming skills using social science data, with an emphasis on R and version control. Topics include coding fundamentals (e.g, data structures, control flow, etc.), data transformation, visualization, and exploratory analysis.\nIn class, students learn through slides, live coding, and hands-on exercises. Students will acquire foundational programming skills and the ability to adapt and expand them when faced with new questions, methods, and data. Open to all backgrounds, the course is ideal for those seeking an interactive, practice-based introduction to programming."
+  },
+  {
+    "objectID": "syllabus.html#course-description",
+    "href": "syllabus.html#course-description",
+    "title": "Syllabus",
+    "section": "",
+    "text": "For Course Information (instructor, emails, Office Hours, etc.) see Home.\nThis course introduces core programming skills using social science data, with an emphasis on R and version control. Topics include coding fundamentals (e.g, data structures, control flow, etc.), data transformation, visualization, and exploratory analysis.\nIn class, students learn through slides, live coding, and hands-on exercises. Students will acquire foundational programming skills and the ability to adapt and expand them when faced with new questions, methods, and data. Open to all backgrounds, the course is ideal for those seeking an interactive, practice-based introduction to programming."
+  },
+  {
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Syllabus",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\nBy the end of the course, students will be able to:\n\nConstruct and execute basic programs in R using programming techniques and tidyverse packages\nSearch for and use external libraries to enhance R’s base functions\nApply Git and GitHub workflows for version control within RStudio\nCreate and edit R Markdown documents to produce reproducible reports and presentations\nImport data from various sources\nClean raw and transform raw data\nVisualize and interpret data using descriptive methods"
+  },
+  {
+    "objectID": "syllabus.html#required-materials",
+    "href": "syllabus.html#required-materials",
+    "title": "Syllabus",
+    "section": "Required Materials",
+    "text": "Required Materials\nThe main textbook for this course is the 2nd edition of R for Data Science by Garrett Grolemund and Hadley Wickham. The book is freely accessible online.\nAll course materials and assignments will be available on the course website. No prior programming experience is required to take this course."
+  },
+  {
+    "objectID": "syllabus.html#course-content-and-schedule",
+    "href": "syllabus.html#course-content-and-schedule",
+    "title": "Syllabus",
+    "section": "Course Content and Schedule",
+    "text": "Course Content and Schedule\nSee the course schedule for details. The course schedule might be subject to change, but if changes occur students will be promptly informed."
+  },
+  {
+    "objectID": "syllabus.html#assessment",
+    "href": "syllabus.html#assessment",
+    "title": "Syllabus",
+    "section": "Assessment",
+    "text": "Assessment\nStudent learning in this course will be assessed primarily through take-home assignments and short in-class quizzes (one per lecture). Assignment 1 is evaluated on a Pass/Fail basis. The other assignments are evaluated using a point system. There will be a total of 10 in-class quizzes, but only the 8 highest scores will count toward your final grade (i.e., the lowest 2 scores will be dropped).\n\nDetailed Breakdown (100 total possible points):\n\n\n\nWhat\nPoints\nGrading Method\n\n\n\n\nAssignment 1\n15\nPass/Fail\n\n\nAssignment 2\n20\nPoints-Based\n\n\nAssignment 3\n20\nPoints-Based\n\n\nIn-Class Quizzes (8 x 5 points)\n40\nPoints-Based\n\n\nAttendance and Participation\n5\nPoints-Based\n\n\nTotal\n100\n\n\n\n\n\n\nGrading Scheme\nYour final grade is the cumulative score of all submitted work throughout the course. We use the following grading scheme to determine your final grade: A (95-100), A- (90-94), B+ (87-89), B (83-86), B- (80-82), C+ (77-79), C (73-76), C- (70-72). Grades below 70 are dealt on a case-by-case basis.\n\n\nDeadlines and Late Submission\nAll assignments are due by 11:59 PM Chicago time. Submit on Canvas the link to your GitHub repository. Each assignment includes a 24-hour grace period during which late submissions will not incur a penalty. After this period, a penalty of one point will be deducted for every additional 24-hour period the assignment is late. Example: If an assignment receives a grade of 20 points and you submit it one day after the grace period ends, your final score will be 19 points.\n\n\nMissed Assignments\nWe expect students to submit all assignments. A missed assignment is worth 0 points (0%) and, as such, will negatively affect your final grade. Please reach out if you miss an assignment due to extraordinary circumstances (illness or emergency). I may grant additional extensions on a case-by-case basis. Whenever possible, inform me before the deadline. Things like having a heavy workload in a given week or starting a given assignment too late do not qualify as extraordinary circumstances.\n\n\nIncomplete Assignments\nIf more than 25% of an assignment is missing, it will not be graded and will be treated as a missed assignment (see above). If less than 25% is missing but the assignment is not fully completed, the assignment will be graded with a penalty for each incomplete element based on the rubric.\n\n\nRubric\nYour assignments will be evaluated using the rubric below. In addition, each assignment will have specific guidelines that further explain our expectations. These will be posted in the assignment itself.\nYour assignment will score Excellent, Very Good, Good, Needs Improvement, or Not Sufficient on the following five categories:\n\nCoding Style: pertains to stylistic issues, not to whether your code works. It evaluates how well the code follows the R code conventions and how consistent it is. Examples include clarity of the code to read for a person who has not written it, use of comments (code should never be over-commented, nor under-commented), proper variables names, understandable/logical code organization, etc. See here for more and why this matters.\nCoding Strategy: the logic of your code (how it solves the problem); its correctness; sophistication (depth of the solution); use of class tools/techniques (e.g., conditionals, functions, tidyverse); and its efficiency in minimizing repetitions.\nPresentation: for assignments involving data visualization or presentation (tables, graphs, descriptive stats, data analyses), this evaluates the effectiveness of both the graphic execution and the conceptual choices in presenting data. In all assignments, presentation also assesses your proficiency with Markdown syntax.\nAchievement: evaluates your understanding of the concepts/tools required to complete the assignment (how well you master them) and your ability to go beyond the basics; it praises extraordinary work produced in the assignment.\nReproducibility: how well the assignment is in compliance with the course convention for reproducibility in this course (e.g., whether we can access your repo, whether all required elements are submitted, your use of Markdown and RMarkdown, of commit messages, README, etc.)\n\nTo achieve Excellent in a given category, all requirements described above must be satisfied. For the other categories, it might be that only one, or more than one, requirement is missing. For example, you could achieve Very Good on “Coding Style” if you are following all coding conventions, but the code could benefit from more refinement or is inconsistent.\nRoughly “Excellent” translates into A or A+, “Very Good” into A-, “Good” is B or B+, “Needs Improvement” is C, and “Not Sufficient” is below C."
+  },
+  {
+    "objectID": "syllabus.html#course-policies",
+    "href": "syllabus.html#course-policies",
+    "title": "Syllabus",
+    "section": "Course Policies",
+    "text": "Course Policies\n\nAttendance Policy\nRegular attendance is expected. Please inform the instructor in advance if you must miss a class. A maximum of two class sections can be missed without penalty. Class starts at 1 PM promptly. If you are late more than 3 times you will not receive credits for attendance.\n\n\nAccommodations\nStudents requiring accommodations should contact the instructor and the university’s disability services at the beginning of the term (more info below).\n\n\nPlagiarism and Academic Integrity\nEach student in this course is expected to abide by the University of Chicago Code of Academic Integrity. Under the provisions of the Code, anyone who gives or receives unauthorized assistance in the preparation of work at home or during tests in class will be subject to disciplinary action. A student’s name on any piece of work is our assurance that they have neither given nor received any unauthorized help in its preparation.\nIn this course, collaboration is encouraged, but plagiarism is prohibited. Students may assist each other on take-home assignments by answering questions and explaining various concepts. However, one student should not allow another student to copy their work directly. it is imperative that students learn how to write code, debug, etc. for themselves. That is, students need to understand, write, and submit their own work. We will run random checks, and if we detect plagiarized code, the whole assignment will be graded as 0.\n\n\nAccessibility, Support, and Inclusive Learning\nThe University of Chicago is committed to diversity and rigorous inquiry from multiple perspectives. Services and reasonable accommodations are available to persons with temporary and permanent disabilities, to students with DACA or undocumented status, to students facing mental health or other personal challenges, and to students with other kinds of learning challenges. Please, feel free to let me know if there are circumstances affecting your ability to participate in class.\nIf you have, or think you may have a disability, please contact Student Disability Services for a confidential discussion and for requesting accommodation: SDS. Once SDS approves your accommodation, it will be emailed to both you and me. Please, follow up with me to discuss the necessary logistics of your accommodations. If you need immediate accommodation, please speak with me after class or send an email message to me and SDS.\nSome resources that might be of use include: Office of Student Disability Services, UChicago Student Wellness, Center for Identity and Inclusion."
+  },
+  {
     "objectID": "setup/r/page04.html",
     "href": "setup/r/page04.html",
     "title": "R: Topic 4",
@@ -483,11 +532,11 @@
     "text": "Content goes here."
   },
   {
-    "objectID": "index.html#course-information-summer-2025",
-    "href": "index.html#course-information-summer-2025",
+    "objectID": "index.html#course-information-csp-summer-2025",
+    "href": "index.html#course-information-csp-summer-2025",
     "title": "Welcome to Intro to R Programming!",
-    "section": "Course Information Summer 2025",
-    "text": "Course Information Summer 2025\nMeeting Time: Tuesdays & Thursdays, 1:00–2:30 PM\nMeeting Location: Cobb Hall 319\nTeaching Team:\n\nInstructor: Sabrina Nardin (she/her) – nardin@uchicago.edu\n\nTeaching Assistant: Zach Meyer (he/him) – zmeyer@uchicago.edu\n\nOffice Hours:\n\nSabrina: Drop-in after class (2:30–3:30 PM, Cobb Hall 319). No appointment needed — bring questions about lecture, homework, or anything course-related.\n\nZach: Weekly drop-in (schedule TBD).\n\nQuick Links:\n\nR Workbench\n\nCanvas\n\nSummer 2025 Course Schedule"
+    "section": "Course Information CSP Summer 2025",
+    "text": "Course Information CSP Summer 2025\nMeeting Time: Tuesdays & Thursdays, 1:00–2:30 PM\nMeeting Location: Cobb Hall 319\nTeaching Team:\n\nInstructor: Sabrina Nardin (she/her) – nardin@uchicago.edu\n\nTeaching Assistant: Zach Meyer (he/him) – zmeyer@uchicago.edu\n\nOffice Hours:\n\nSabrina: Drop-in after class (2:30–3:30 PM, Cobb Hall 319). No appointment needed — bring questions about lecture, homework, or anything course-related.\n\nZach: Weekly drop-in (schedule TBD).\n\nQuick Links:\n\nR Workbench\n\nCanvas\n\nCourse Schedule"
   },
   {
     "objectID": "lectures/01-slides.html#teaching-team",
@@ -901,12 +950,5 @@
     "title": "R: Topic 5",
     "section": "",
     "text": "Content goes here."
-  },
-  {
-    "objectID": "index.html#welcome-to-introduction-to-r-programming",
-    "href": "index.html#welcome-to-introduction-to-r-programming",
-    "title": "Welcome to Intro to R Programming!",
-    "section": "Welcome to “Introduction to R Programming”!",
-    "text": "Welcome to “Introduction to R Programming”!\nMeeting Time: Tuesdays & Thursdays, 1:00–2:30 PM\nMeeting Location: Cobb Hall 319\nTeaching Team:\n- Instructor: Sabrina Nardin (she/her) – nardin@uchicago.edu\n- Teaching Assistant: Zach Meyer (he/him) – zmeyer@uchicago.edu\nOffice Hours:\n- Sabrina: Drop-in after every class from 2:30 to 3:30 PM in Cobb Hall 319. No appointment needed - come by with questions about lecture, homework, or anything course-related.\n- Zach: Weekly drop-in (schedule TBD).\nQuick Links:\n- R Workbench\n- Canvas\n- Summer 2025 Course Schedule"
   }
 ]

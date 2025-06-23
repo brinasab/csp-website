@@ -18,8 +18,10 @@ title: "Welcome to Intro to R Programming!"
 
 **Office Hours**:  
 
-- Sabrina: Drop-in after class (2:30–3:30 PM, Cobb Hall 319). No appointment needed — bring questions about lecture, homework, or anything course-related.  
-- Zach: Weekly drop-in (schedule TBA).
+- Sabrina: Drop-in after every class (2:30–3:30 PM, Cobb Hall 319)
+- Zach: Drop-in after Tuesday class (2:30–3:30 PM, Cobb Hall 319)
+
+No appointment needed for Office Hours — just stick around after class if you have questions about the lecture, homework, or anything course-related.
 
 
 **Quick Links**:  

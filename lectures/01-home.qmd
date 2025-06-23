@@ -1,0 +1,45 @@
+---
+title: "Lecture 1: Course Logistics, R, Markdown"
+date: 2025-06-24
+summary: "Course Logistics, R, Markdown"
+url_slides: 01-slides.qmd
+url_code: csp-materials/r-markdown
+format: html
+page-layout: full
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Info and Materials
+
+* **Date**: {{< meta date >}}
+* **Topics**: {{< meta summary >}}
+* **Slides**: [View Slides]({{< meta url_slides >}})
+* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+
+
+## Learning Objectives
+
+- Recognize the basic features of the R programming language and RStudio
+- Write and run simple R code
+- Describe what R Markdown is and why it's useful
+- Create and edit a R Markdown document
+
+
+## Before Class
+
+- Go to <https://github.com> and follow the instructions to create a free GitHub account. Choose a professional username (see [these tips](https://happygitwithr.com/github-acct) for guidance)
+- Once you have created a GitHub account [submit your GitHub username here](https://docs.google.com/spreadsheets/d/1g9WczTdEq0RxDPRvhCYL8JTL9xnsbQzV-lM8SgVEc8w/edit?usp=sharing) (we need it to run the course)
+- Complete this [short survey](https://forms.gle/pY7sCoCVEDEe7bYD7)
+- Bring your laptop to every class (let us know if that might be a problem!)
+
+
+## Readings
+
+Skim the readings before or after class to get the big picture and prep for quizzes and assignments:
+
+- [R Markdown, R4DS](https://r4ds.had.co.nz/r-markdown.html)
+- [R Markdown Cheatsheet](https://rmarkdown.rstudio.com/lesson-15.HTML)

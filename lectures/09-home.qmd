@@ -1,0 +1,29 @@
+---
+title: "Lecture 9: Control Flow 1"
+date: 2025-07-24
+summary: "Writing conditionals with if, else, and else if"
+url_slides: 09-slides.qmd
+url_code: csp-materials/if-else
+page-layout: full
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Info and Materials
+
+* **Date**: {{< meta date >}}
+* **Topics**: {{< meta summary >}}
+* **Slides**: [View Slides]({{< meta url_slides >}})
+* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+
+
+## Learning Objectives
+
+
+## Before Class
+
+
+## Readings

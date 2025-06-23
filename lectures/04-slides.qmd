@@ -1,0 +1,56 @@
+---
+title: "Introduction to R: Lecture 4"
+subtitle: "Topics: Intro to dplyr, Pipes"
+author: "Sabrina Nardin, Summer 2025"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    incremental: false
+    css: ../style/styles.css
+    code-overflow: wrap
+    highlight-style: github
+    ratio: 16:9
+    chalkboard: true
+    toc: false
+    center: true
+---
+
+### Slides coming soon!
+
+
+# Agenda {.center}
+
+::: {.agenda-list}
+1. Topic  
+2. Topic 
+3. Topic  
+:::
+
+---
+
+# 1. Title Section {.slide .center .middle}
+
+---
+
+## Subtitles
+
+---
+
+## 💻 Practice
+
+---
+
+## Recap: What We Learned Today
+
+---
+
+## Reminders
+
+---
+
+## To print these slides as pdf
+
+Click on the icon bottom-right corner \> Tools \> PDF Export Mode \> Print as a Pdf
+
+

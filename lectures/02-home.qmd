@@ -1,0 +1,44 @@
+---
+title: "Lecture 2: Git and GitHub"
+date: 2025-06-26
+summary: "Intro to Git and GitHub from RStudio"
+url_slides: 02-slides.qmd
+url_code: csp-materials/git
+format: html
+page-layout: full
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Info and Materials
+
+* **Date**: {{< meta date >}}
+* **Topics**: {{< meta summary >}}
+* **Slides**: [View Slides]({{< meta url_slides >}})
+* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+
+
+## Learning Objectives
+
+- Understand what Git is and why it's useful
+- Create a Git repository in RStudio
+- Connect your Git repository to GitHub
+- Practice staging, committing, and pushing changes
+
+
+## Before Class
+
+- Complete the Lecture 1 "Before Class" activities, if you haven't already
+- Review the Lecture 1 materials to get ready for today's in-class quiz
+- Bring your laptop to every class (let us know if that might be a problem!)
+- *Optional:* Read the [Software Setup](../setup/index.qmd) page. We'll go through this together in class today, but feel free to read the materials ahead of time if you want
+
+
+## Readings
+
+Skim the readings before or after class to get the big picture and prep for quizzes and assignments:
+
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/)

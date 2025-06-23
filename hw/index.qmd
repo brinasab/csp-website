@@ -1,0 +1,14 @@
+---
+title: "Homework"
+format: html
+---
+
+There will be a total of three take-home homework assignments, in addition to the in-class quizzes. 
+
+Each homework assignment will have its own page (listed below) containing specific guidelines. **Pages will be accessible once the homework is released — check our <a href="https://docs.google.com/spreadsheets/d/1CmuUXTp0uvhAVk3mmOQMEfb8BjdR-I36/edit?usp=sharing&ouid=112534119211880791899&rtpof=true&sd=true" target="_blank">Course Schedule</a> for release and due dates.**
+
+- [Homework 1](hw01.qmd)
+- [Homework 2](hw02.qmd)
+- [Homework 3](hw03.qmd)
+
+Refer to the [Syllabus](../syllabus.qmd) for assessment policies, including guidelines on late or missing submissions, the grading rubric, and more.

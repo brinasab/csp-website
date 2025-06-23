@@ -1,0 +1,31 @@
+---
+title: "Lecture 5: EDA and Graphs"
+date: 2025-07-10
+summary: "Data Analysis and Graphs"
+url_slides: 05-slides.qmd
+url_code: csp-materials/eda
+page-layout: full
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Info and Materials
+
+* **Date**: {{< meta date >}}
+* **Topics**: {{< meta summary >}}
+* **Slides**: [View Slides]({{< meta url_slides >}})
+* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+
+
+## Learning Objectives
+
+
+## Before Class
+
+
+## Readings
+
+

@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "csp-website"
+  page-navigation: true
+  navbar:
+    title: "Intro to R"
+    left:
+      - href: index.qmd
+        text: "Home"
+      - href: syllabus.qmd
+        text: "Syllabus"
+      - href: lectures/index.qmd
+        text: "Lectures"
+      - href: hw/index.qmd
+        text: "Homework"
+      - href: setup/index.qmd
+        text: "Software Setup"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    css: style/styles.css
+    link-external-newwindow: true
+
+execute: 
+  echo: false
+  

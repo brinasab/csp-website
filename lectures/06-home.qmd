@@ -1,0 +1,29 @@
+---
+title: "Lecture 6: Factors, Intermediate dplyr"
+date: 2025-07-15
+summary: "Using Factors in R, Deep Dive into dplyr"
+url_slides: 06-slides.qmd
+url_code: csp-materials/factors-more-dplyr
+page-layout: full
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Info and Materials
+
+* **Date**: {{< meta date >}}
+* **Topics**: {{< meta summary >}}
+* **Slides**: [View Slides]({{< meta url_slides >}})
+* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+
+
+## Learning Objectives
+
+
+## Before Class
+
+
+## Readings

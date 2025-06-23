@@ -1,0 +1,22 @@
+---
+title: "Introduction to R: Lecture 7"
+subtitle: "Topics: Data Cleaning, Importing/Exporting Data"
+author: "Sabrina Nardin, Summer 2025"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    incremental: false
+    css: ../style/styles.css
+    code-overflow: wrap
+    highlight-style: github
+    ratio: 16:9
+    chalkboard: true
+    toc: false
+    center: true
+---
+
+### Slides coming soon!
+
+<!-- maybe add tidyr to this lecture if time allows 
+otherwise remove from course -->

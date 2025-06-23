@@ -1,0 +1,34 @@
+---
+title: "Software Setup"
+format: html
+---
+
+This page walks you through the steps needed to get set up for this course. You’ll use RStudio Workbench, GitHub, and Git to complete and submit assignments.  
+
+If you're curious about what these tools are and how they work together, check out [What are these tools?](what.qmd)
+
+---
+
+### First, Configure your Setup
+
+Go to the [RStudio Workbench Setup](setup-workbench.qmd) page and follow the instructions there. This includes three steps:
+
+- Create a (free) GitHub account  
+- Log into RStudio Workbench  
+- Configure Git inside RStudio Workbench  
+
+Take your time with each step, especially the third one. Everything you set up here will make your workflow smoother later in the course.
+
+---
+
+### Then, Test Your Setup
+
+Once you've everything configured, test that it's working as expected by completing the [Git within RStudio Tutorial](setup-test.qmd). This will confirm that Git is properly connected and you are ready to go.
+
+---
+
+::: {.callout-note}
+
+These instructions are specifically for using **RStudio Workbench**, which is the platform we'll be using throughout the course. If you have prior programming experience and prefer to install R and RStudio on your own computer, feel free to reach out to discuss.
+
+:::

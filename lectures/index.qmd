@@ -1,0 +1,76 @@
+---
+title: "Lectures"
+format: html
+---
+
+Each lecture page contains materials, slides, and relevant assignments or readings. For an overview, see the <a href="https://docs.google.com/spreadsheets/d/1CmuUXTp0uvhAVk3mmOQMEfb8BjdR-I36/edit?usp=sharing&ouid=112534119211880791899&rtpof=true&sd=true" target="_blank">Course Schedule</a>.
+
+
+### [Lecture 1](01-home.qmd)
+Course Logistics, R, Markdown<br>
+**June 24, 2025**
+
+---
+
+### [Lecture 2](02-home.qmd)
+Git & GitHub<br>
+**June 26, 2025**
+
+---
+
+### [Lecture 3](03-home.qmd)
+Intro to `ggplot2`, Coding Style<br>
+**July 1, 2025**
+
+---
+
+### No Lecture
+**July 3, 2025**
+
+---
+
+### [Lecture 4](04-home.qmd)
+Intro to `dplyr`, Pipes<br>
+**July 8, 2025**
+
+---
+
+### [Lecture 5](05-home.qmd)
+EDA and Graphs<br>
+**July 10, 2025**
+
+---
+
+### [Lecture 6](06-home.qmd)
+Factors, Intermediate `dplyr`<br>
+**July 15, 2025**
+
+---
+
+### [Lecture 7](07-home.qmd)
+Data Cleaning, Importing/Exporting Data<br>
+**July 17, 2025**
+
+---
+
+### [Lecture 8](08-home.qmd)
+Data Structures, Base R<br>
+**July 22, 2025**
+
+---
+
+### [Lecture 9](09-home.qmd)
+Control Flow 1<br>
+**July 24, 2025**
+
+---
+
+### [Lecture 10](10-home.qmd)
+Control Flow 2<br>
+**July 29, 2025**
+
+---
+
+### [Lecture 11](11-home.qmd)
+Functions<br>
+**July 31, 2025**

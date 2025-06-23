@@ -1,0 +1,31 @@
+---
+title: "Welcome to Intro to R Programming!"
+---
+
+<br>
+
+## Course Information CSP Summer 2025
+
+**Meeting Time**: Tuesdays & Thursdays, 1:00–2:30 PM  
+
+**Meeting Location**: Cobb Hall 319  
+
+**Teaching Team**:  
+
+- Instructor: Sabrina Nardin (she/her) – [nardin@uchicago.edu](mailto:nardin@uchicago.edu)  
+- Teaching Assistant: Zach Meyer (he/him) – [zmeyer@uchicago.edu](mailto:zmeyer@uchicago.edu)
+
+
+**Office Hours**:  
+
+- Sabrina: Drop-in after class (2:30–3:30 PM, Cobb Hall 319). No appointment needed — bring questions about lecture, homework, or anything course-related.  
+- Zach: Weekly drop-in (schedule TBA).
+
+
+**Quick Links**:  
+
+- [R Workbench](https://macss-r.uchicago.edu/)  
+- [Canvas](https://canvas.uchicago.edu/courses/64478)  
+- [Ed Discussion](https://edstem.org/us/courses/80087/discussion/6784452)
+- [Course Schedule](https://docs.google.com/spreadsheets/d/1CmuUXTp0uvhAVk3mmOQMEfb8BjdR-I36/edit?usp=sharing&ouid=112534119211880791899&rtpof=true&sd=true)
+

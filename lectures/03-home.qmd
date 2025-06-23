@@ -1,0 +1,29 @@
+---
+title: "Lecture 3: Intro to ggplot2, Coding Style"
+date: 2025-07-01
+summary: "Visualizing Data with ggplot2, Coding Style in R"
+url_slides: 03-slides.qmd
+url_code: csp-materials/ggplot2-style
+page-layout: full
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Info and Materials
+
+* **Date**: {{< meta date >}}
+* **Topics**: {{< meta summary >}}
+* **Slides**: [View Slides]({{< meta url_slides >}})
+* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+
+
+## Learning Objectives
+
+
+## Before Class
+
+
+## Readings

@@ -1,0 +1,1024 @@
+[
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Last updated: June 23, 2025"
+  },
+  {
+    "objectID": "syllabus.html#course-description",
+    "href": "syllabus.html#course-description",
+    "title": "Syllabus",
+    "section": "Course Description",
+    "text": "Course Description\nFor Course Information (Emails, Office Hours, etc.) see Home.\nThis course introduces core programming skills using social science data, with an emphasis on R and version control. Topics include coding fundamentals (e.g, data structures, control flow, etc.), data transformation, visualization, and exploratory analysis.\nIn class, students learn through slides, live coding, and hands-on exercises. Students will acquire foundational programming skills and the ability to adapt and expand them when faced with new questions, methods, and data. Open to all backgrounds, the course is ideal for those seeking an interactive, practice-based introduction to programming."
+  },
+  {
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Syllabus",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\nBy the end of the course, students will be able to:\n\nConstruct and execute basic programs in R using programming techniques and tidyverse packages\nSearch for and use external libraries to enhance R’s base functions\nApply Git and GitHub workflows for version control within RStudio\nCreate and edit R Markdown documents to produce reproducible reports and presentations\nImport data from various sources\nClean raw and transform raw data\nVisualize and interpret data using descriptive methods"
+  },
+  {
+    "objectID": "syllabus.html#materials-and-schedule",
+    "href": "syllabus.html#materials-and-schedule",
+    "title": "Syllabus",
+    "section": "Materials and Schedule",
+    "text": "Materials and Schedule\n\nMaterials\nThe main textbook for this course is the 2nd edition of R for Data Science by Garrett Grolemund and Hadley Wickham. The book is freely accessible online.\nAll course materials and assignments will be available on the course website. No prior programming experience is required to take this course.\n\n\nSchedule and Content\n\nCourse Schedule\nCourse Content\n\nSchedule and Content might be subject to change, but if changes occur students will be promptly informed."
+  },
+  {
+    "objectID": "syllabus.html#assessment",
+    "href": "syllabus.html#assessment",
+    "title": "Syllabus",
+    "section": "Assessment",
+    "text": "Assessment\nStudent learning in this course will be assessed primarily through take-home assignments and short in-class quizzes (one per lecture). Assignment 1 is evaluated on a Pass/Fail basis. The other assignments are evaluated using a point system. There will be a total of 10 in-class quizzes, but only the 8 highest scores will count toward your final grade (i.e., the lowest 2 scores will be dropped).\n\nBreakdown\n\n\n\nWhat\nPoints\nGrading Method\n\n\n\n\nAssignment 1\n15\nPass/Fail\n\n\nAssignment 2\n20\nPoints-Based\n\n\nAssignment 3\n20\nPoints-Based\n\n\nIn-Class Quizzes (8 x 5 points)\n40\nPoints-Based\n\n\nAttendance and Participation\n5\nPoints-Based\n\n\nTotal\n100\n\n\n\n\n\n\nGrading Scheme\nYour final grade is the cumulative score of all submitted work throughout the course. We use the following grading scheme to determine your final grade: A (95-100), A- (90-94), B+ (87-89), B (83-86), B- (80-82), C+ (77-79), C (73-76), C- (70-72). Grades below 70 are dealt on a case-by-case basis.\n\n\nDeadlines and Late Submission\nAll assignments are due by 11:59 PM Chicago time. Submit on Canvas the link to your GitHub repository. Each assignment includes a 24-hour grace period during which late submissions will not incur a penalty. After this period, a penalty of one point will be deducted for every additional 24-hour period the assignment is late. Example: If an assignment receives a grade of 20 points and you submit it one day after the grace period ends, your final score will be 19 points.\n\n\nMissed or Incomplete Assignments\nWe expect students to submit all assignments in full and on time.\n\nMissed Assignments: Assignments that are not submitted will receive a grade of 0% and will impact your final grade. If you miss an assignment due to exceptional circumstances (e.g., illness or emergency), please contact me as soon as possible, ideally before the deadline. Extensions may be granted on a case-by-case basis. Note that starting an assignment late or having a busy week does not qualify as an exceptional circumstance.\nIncomplete Assignments: If more than 25% of an assignment is missing, it will not be graded and will be treated as a missed assignment. If less than 25% is missing, the assignment will be graded, with a penalty for each incomplete element.\n\n\n\nRubric\nYour assignments will be evaluated using the rubric below. In addition, each assignment will have specific guidelines that further explain our expectations. These will be posted in the assignment itself.\nYour assignment will score Excellent, Very Good, Good, Needs Improvement, or Not Sufficient on the following five categories:\n\nCoding Style: pertains to stylistic issues, not to whether your code works. It evaluates how well the code follows the R code conventions and how consistent it is. Examples include clarity of the code to read for a person who has not written it, use of comments (code should never be over-commented, nor under-commented), proper variables names, understandable/logical code organization, etc. See here for more and why this matters.\nCoding Strategy: the logic of your code (how it solves the problem); its correctness; sophistication (depth of the solution); use of class tools/techniques (e.g., conditionals, functions, tidyverse); and its efficiency in minimizing repetitions.\nPresentation: for assignments involving data visualization or presentation (tables, graphs, descriptive stats, data analyses), this evaluates the effectiveness of both the graphic execution and the conceptual choices in presenting data. In all assignments, presentation also assesses your proficiency with Markdown syntax.\nAchievement: evaluates your understanding of the concepts/tools required to complete the assignment (how well you master them) and your ability to go beyond the basics; it praises extraordinary work produced in the assignment.\nReproducibility: how well the assignment is in compliance with the course convention for reproducibility in this course (e.g., whether we can access your repo, whether all required elements are submitted, your use of Markdown and RMarkdown, of commit messages, README, etc.)\n\nTo achieve Excellent in a given category, all requirements described above must be satisfied. For the other categories, it might be that only one, or more than one, requirement is missing. For example, you could achieve Very Good on “Coding Style” if you are following all coding conventions, but the code could benefit from more refinement or is inconsistent.\nRoughly “Excellent” translates into A or A+, “Very Good” into A-, “Good” is B or B+, “Needs Improvement” is C, and “Not Sufficient” is below C."
+  },
+  {
+    "objectID": "syllabus.html#course-policies",
+    "href": "syllabus.html#course-policies",
+    "title": "Syllabus",
+    "section": "Course Policies",
+    "text": "Course Policies\n\nAttendance Policy\nRegular attendance is expected. Please inform the instructor in advance if you must miss a class. According to the Collegiate Scholars Program Policies, a maximum of two class sections can be missed without penalty. Class starts at 1 PM promptly. If you are late more than 3 times you will not receive credits for attendance.\n\n\nPlagiarism and Academic Integrity\nEach student in this course is expected to abide by the University of Chicago Code of Academic Integrity. Under the provisions of the Code, anyone who gives or receives unauthorized assistance in the preparation of work at home or during tests in class will be subject to disciplinary action. A student’s name on any piece of work is our assurance that they have neither given nor received any unauthorized help in its preparation.\nIn this course, collaboration is encouraged, but plagiarism is prohibited. Students may assist each other on take-home assignments by answering questions and explaining various concepts. However, one student should not allow another student to copy their work directly. it is imperative that students learn how to write code, debug, etc. for themselves. That is, students need to understand, write, and submit their own work. We will run random checks, and if we detect plagiarized code, the whole assignment will be graded as 0.\n\n\nAccessibility and Support\nThe University of Chicago is committed to diversity and rigorous inquiry from multiple perspectives. Services and reasonable accommodations are available to persons with temporary and permanent disabilities, to students with DACA or undocumented status, to students facing mental health or other personal challenges, and to students with other kinds of learning challenges. Please, contact me if there are circumstances affecting your ability to participate in class.\nIf you have, or think you may have a disability, please contact Student Disability Services for a confidential discussion and for requesting accommodation: SDS. Once SDS approves your accommodation, it will be emailed to both you and me. Please, follow up with me to discuss the necessary logistics of your accommodations. If you need immediate accommodation, please speak with me after class or send an email message to me and SDS.\nSome resources that might be of use include: Office of Student Disability Services, UChicago Student Wellness, Center for Identity and Inclusion."
+  },
+  {
+    "objectID": "setup/setup-workbench.html",
+    "href": "setup/setup-workbench.html",
+    "title": "RStudio Workbench Setup",
+    "section": "",
+    "text": "Go to https://github.com and follow the instructions there to create a free GitHub account. Choose a professional username (see these tips)"
+  },
+  {
+    "objectID": "setup/setup-workbench.html#step-1-create-a-github-account",
+    "href": "setup/setup-workbench.html#step-1-create-a-github-account",
+    "title": "RStudio Workbench Setup",
+    "section": "",
+    "text": "Go to https://github.com and follow the instructions there to create a free GitHub account. Choose a professional username (see these tips)"
+  },
+  {
+    "objectID": "setup/setup-workbench.html#step-2-log-into-rstudio-workbench",
+    "href": "setup/setup-workbench.html#step-2-log-into-rstudio-workbench",
+    "title": "RStudio Workbench Setup",
+    "section": "Step 2: Log into RStudio Workbench",
+    "text": "Step 2: Log into RStudio Workbench\n\nGo to https://macss-r.uchicago.edu/\nLogin with your UChicago CNetID and password to login; this is the same username/password you use for other UChicago online services\nYou’re done. You should see a clean RStudio window in your browser.\n\n\n\n\n\n\n\nNote\n\n\n\nOnly students approved by SSCS can access this server. If you can’t log in, chances are that you have not yet been added to the server. Email me at nardin@uchicago.edu. For network or cVPN issues, contact ITS."
+  },
+  {
+    "objectID": "setup/setup-workbench.html#step-3-configure-git-in-rstudio-workbench",
+    "href": "setup/setup-workbench.html#step-3-configure-git-in-rstudio-workbench",
+    "title": "RStudio Workbench Setup",
+    "section": "Step 3: Configure Git in RStudio Workbench",
+    "text": "Step 3: Configure Git in RStudio Workbench\nTo make Git work smoothly in this course, you’ll configure these settings: (3.1) Identify yourself to Git with your name and email, so Git can track your work and (3.2) Set up SSH Authentication, so GitHub knows it’s you\nYou only need to do this once per machine!\nYou can also watch a video walkthrough of the setup process.\n\n3.1 Identify yourself to Git\nTo track your work and link changes to you, Git needs to know your name and email address.\nGo to the Console tab in RStudio and run the code below, replacing name and email with your own:\n\nyour name can be your GitHub username or your actual first and last name\nyour email must be the same email you used to sign up for GitHub when you created an account\n\nlibrary(usethis)\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your@email.com\")\nTo confirm it worked (e.g., that Git got your credentials), go to Tools &gt; Shell and run the following command in the shell/terminal tab that opens up:\ngit config --global --list\nIf you see your name and email.\n\n\n\n3.2 Set Up SSH Authentication\n\nWhat is this?\nNow Git knows your name and email. But to send your work from Git (on your computer – in our case, Workbench) to GitHub (online), you need to prove to GitHub that’s really you — this is called authentication.\nWhen you log into GitHub in your browser, you use your username and password. But Git uses a different method for authentication: either SSH keys or HTTPS with a personal access token. Both options allow Git to connect to GitHub securely, so you can push and pull changes without entering your password each time.\nSince we are using the RStudio Workbench for the class, you will need to use SSH keys to authenticate. The server that host our Workbench does not have the ability to cache your personal access token for HTTPS.\nThe Secure Shell Protocol (SSH) is a secure way to prove your identity when connecting to GitHub. Unlike passwords, which can be vulnerable to brute-force attacks, SSH keys are much harder to crack.\nWhen you generate an SSH key pair, you get two long strings of characters:\n\na public key, which you upload to GitHub\na private key, which stays safely on your computer (or in RStudio Workbench)\n\nWhen you try to connect to GitHub, Git uses your private key to unlock the connection. If it matches the public key on GitHub, you’re authenticated!\nNote that on GitHub, the URL for SSH looks like git@github.com:&lt;OWNER&gt;/&lt;REPO&gt;.git (make sure you use this SSH URL to create a project or clone a repository. If you accidentally use the HTTPS version, the operation will not work).\n\n\nWhat you need to do to\nYou need to create and store an SSH key pair, by running following code in your R Console:\ncredentials::ssh_setup_github()\nYou’ll be guided through a few steps:\n\nIt should say “No SSH key found. Generate one now?” → Type Yes\nA long string of characters will appear in the Console — that’s your public SSH key\nYou will be asked to open a browser → Type Yes\nBefore or after opening a new browser, copy the entire SSH key (including the ssh-rsa or ssh-ed25519 at the beginning) from your Console\n\nOnce you are on the GitHub page that opened in your new browner:\n\nPaste your entire SSH key into the GitHub page that opened in your new browser (you can do this only if you registered a GitHub account, see step 1 above)\nUnder “Title”, give the key an informative name, something like csp-workbench-summer25 or another label to record the course and computer\nLeave “Key type” set to Authentication Key\nClick the green “Add SSH key” button\nIf prompted, complete GitHub’s security steps (e.g., enter a verification code or password or anything else asked)\n\nYou should now see your key listed in your GitHub account!\nTo confirm it worked, go back R, then to Tools &gt; Shell and run the following command in the shell/terminal tab that opens up:\nls -l ~/.ssh\nYou should see two lines showing the keys you just created: id_rsa is your private SSH key (keep it secure and do not share it), your id_rsa.pub is your public SSH key (the one you put on GitHub).\nIf you see more than these two files, it likely means you’ve set up extra SSH keys, which we want to avoid as it might create problems. Please contact us — we’ll help you reset and start fresh!"
+  },
+  {
+    "objectID": "setup/setup-workbench.html#whats-next",
+    "href": "setup/setup-workbench.html#whats-next",
+    "title": "RStudio Workbench Setup",
+    "section": "What’s next?",
+    "text": "What’s next?\nIf you completed this part successfully, you are ready to test your setup — go to the Git within RStudio Tutorial page and follow the instructions!"
+  },
+  {
+    "objectID": "setup/index.html",
+    "href": "setup/index.html",
+    "title": "Software Setup",
+    "section": "",
+    "text": "This page walks you through the steps needed to get set up for this course. You’ll use RStudio Workbench, GitHub, and Git to complete and submit assignments.\nIf you’re curious about what these tools are and how they work together, check out What are these tools?\n\n\nFirst, Configure your Setup\nGo to the RStudio Workbench Setup page and follow the instructions there. This includes three steps:\n\nCreate a (free) GitHub account\n\nLog into RStudio Workbench\n\nConfigure Git inside RStudio Workbench\n\nTake your time with each step, especially the third one. Everything you set up here will make your workflow smoother later in the course.\n\n\n\nThen, Test Your Setup\nOnce you’ve everything configured, test that it’s working as expected by completing the Git within RStudio Tutorial. This will confirm that Git is properly connected and you are ready to go.\n\n\n\n\n\n\n\nNote\n\n\n\nThese instructions are specifically for using RStudio Workbench, which is the platform we’ll be using throughout the course. If you have prior programming experience and prefer to install R and RStudio on your own computer, feel free to reach out to discuss."
+  },
+  {
+    "objectID": "lectures/04-slides.html#subtitles",
+    "href": "lectures/04-slides.html#subtitles",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Subtitles",
+    "text": "Subtitles"
+  },
+  {
+    "objectID": "lectures/04-slides.html#practice",
+    "href": "lectures/04-slides.html#practice",
+    "title": "Introduction to R: Lecture 4",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/04-slides.html#recap-what-we-learned-today",
+    "href": "lectures/04-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today"
+  },
+  {
+    "objectID": "lectures/04-slides.html#reminders",
+    "href": "lectures/04-slides.html#reminders",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Reminders",
+    "text": "Reminders"
+  },
+  {
+    "objectID": "lectures/04-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/04-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 4",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/03-slides.html#subtitles",
+    "href": "lectures/03-slides.html#subtitles",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Subtitles",
+    "text": "Subtitles"
+  },
+  {
+    "objectID": "lectures/03-slides.html#practice",
+    "href": "lectures/03-slides.html#practice",
+    "title": "Introduction to R: Lecture 3",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/03-slides.html#recap-what-we-learned-today",
+    "href": "lectures/03-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today"
+  },
+  {
+    "objectID": "lectures/03-slides.html#reminders",
+    "href": "lectures/03-slides.html#reminders",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Reminders",
+    "text": "Reminders"
+  },
+  {
+    "objectID": "lectures/03-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/03-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 3",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/02-slides.html#two-different-approaches",
+    "href": "lectures/02-slides.html#two-different-approaches",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Two Different Approaches",
+    "text": "Two Different Approaches\nTASK: Write a report on the relationship between ice cream consumption and crime in Chicago.\nAPPROACH: Jane and Sally approach this task differently…\n\n\n\nJane: GUI Workflow\n\nSearches for data files online\n\nCleans the data using Excel\n\nAnalyzes the data in Excel (or similar)\n\nWrites her report in Google Docs\nSaves different versions of her work manually\n\n\nSally: Programmatic Workflow\n\nSearches for data files online\n\nCleans the data using R\n\nAnalyzes the data in R\n\nWrites her report in R Markdown\nTracks changes automatically using Git"
+  },
+  {
+    "objectID": "lectures/02-slides.html#advantages-of-a-programmatic-workflow",
+    "href": "lectures/02-slides.html#advantages-of-a-programmatic-workflow",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Advantages of a Programmatic Workflow",
+    "text": "Advantages of a Programmatic Workflow\nAutomation\n\nUses scripts or programs to perform tasks systematically\n\nReduces manual effort and human error\n\nEnables fast and consistent repetition of analyses\n\n\nReproducibility\n\nScientific research should share both data and code used for analysis\n\nAllows verification and reuse by others\n\nEnables exact replication of results, even years later"
+  },
+  {
+    "objectID": "lectures/02-slides.html#often-used-together-but-different-tools",
+    "href": "lectures/02-slides.html#often-used-together-but-different-tools",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Often used together, but different tools",
+    "text": "Often used together, but different tools\n\n\n\nGit\n\nVersion control software\n\nRuns locally on your computer\nTracks changes in a folder called repository /n or repo\nYou work in this folder (your local repo)\n\n\n\nGitHub\n\nCloud-based platform\n\nRuns online\nStores copies of your local Git repo online, and enables backup, sharing, and collaboration\nYou push to and pull from GitHub\n\n\n\nLet’s unpack all of this…"
+  },
+  {
+    "objectID": "lectures/02-slides.html#what-is-version-control",
+    "href": "lectures/02-slides.html#what-is-version-control",
+    "title": "Introduction to R: Lecture 2",
+    "section": "What is Version Control?",
+    "text": "What is Version Control?\nVersion Control\nIs a system that automatically records every change you make to your files in a folder (what changed, who made it, and when) and lets you undo mistakes or restore previous versions of your files.\n\nWithout Version Control\nTracking changes manually can be messy and hard to manage, like:\n\nanalysis-1.R\nanalysis-2.R\nanalysis-final.R\nanalysis-final-FINAL.R"
+  },
+  {
+    "objectID": "lectures/02-slides.html#how-version-control-works",
+    "href": "lectures/02-slides.html#how-version-control-works",
+    "title": "Introduction to R: Lecture 2",
+    "section": "How Version Control works",
+    "text": "How Version Control works\n\nYou choose a folder on your computer to track: this becomes your local repository or repo\nA Version Control tool (like Git) records and saves changes to the files in that folder\nEvery change is saved with a time stamp, author info, and a message (that you type in)\n\nThis system lets you revisit your project’s history and restore earlier versions of a file if needed!\n\n\nGit + GitHub\nGit does this version control work locally, while GitHub provides an online storage/backup and facilitates collaboration with others\nMore here"
+  },
+  {
+    "objectID": "lectures/02-slides.html#git-github-comparison-with-rstudio-focus",
+    "href": "lectures/02-slides.html#git-github-comparison-with-rstudio-focus",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Git & GitHub Comparison with RStudio Focus",
+    "text": "Git & GitHub Comparison with RStudio Focus\n\n\n\n\n\n\n\n\nFeature\nGit\nGitHub\n\n\n\n\nWhat it is\nVersion control software\nCloud platform for storing Git repositories\n\n\nWhere it runs\nOn your computer (local)\nIn the cloud (web-based)\n\n\nWhat it does\nTracks and saves changes in your local repo\nHosts a remote copy of your repo for backup and sharing\n\n\nCollaboration\nNot built-in\nSupports pull requests, issues, and code review\n\n\nHow to use with RStudio\nGit pane for staging, committing, and pushing\nConnect to GitHub via RStudio’s project setup or terminal\n\n\nRepo terminology\nYour working folder is a local repo\nThe online copy is a remote repo, usually called origin\n\n\n\nNote we use Git and GitHub through RStudio only. They are also used with other tools like VS Code, GitHub Desktop, or the terminal."
+  },
+  {
+    "objectID": "lectures/02-slides.html#beginner-friendly-git-github-workflow",
+    "href": "lectures/02-slides.html#beginner-friendly-git-github-workflow",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Beginner-Friendly Git + GitHub Workflow",
+    "text": "Beginner-Friendly Git + GitHub Workflow\nIn your R Studio, follow these steps in order:\n\nMake & Save Changes Locally\nEdit your files locally (e.g., in RStudio or Workbench) and save them.\nPull from GitHub\nRefresh your local copy to get the latest changes—helps avoid conflicts when collaborating.\nStage Changes\nSelect which files you want Git to track in the next snapshot.\nCommit with a Message\nSave a snapshot of your staged changes in your local Git repo. Add a short, meaningful message.\nPush to GitHub\nUpload your committed changes to the online repository.\n\n\n\n\n\n\n\nImportant\n\n\nYou will complete this workflow for homework assigments!"
+  },
+  {
+    "objectID": "lectures/02-slides.html#practice-using-git-and-github-in-rstudio",
+    "href": "lectures/02-slides.html#practice-using-git-and-github-in-rstudio",
+    "title": "Introduction to R: Lecture 2",
+    "section": "💻 Practice using Git and GitHub in RStudio",
+    "text": "💻 Practice using Git and GitHub in RStudio\nComplete the Using Git with RStudio tutorial from our website\nAfter you complete the tutorial (and everything works as expected), accept Homework 1 from the course site and follow the instructions for the GitHub workflow. Don’t forget to send us your GitHub username and accept the invite to our GitHub organization!"
+  },
+  {
+    "objectID": "lectures/02-slides.html#git-reminders",
+    "href": "lectures/02-slides.html#git-reminders",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Git Reminders",
+    "text": "Git Reminders\n\nStage and commit often\nThink of commits as snapshots of your work. Save, stage, and commit regularly during your workflow.\nWrite clear, useful commit messages\nKeep messages concise but descriptive. They should explain what changed and why. Many tips online for “commit message best practices.”\nPush regularly, but not necessarily every time you commit\nSome people push every time they commit, while others push multiple commits at once. Experiment and find what works best for you.\nUse the Git interface that works for you\nIn this course, we’ll use RStudio’s Git. Alternatives include GitHub Desktop and the command line."
+  },
+  {
+    "objectID": "lectures/02-slides.html#what-to-commit-not-to-commit",
+    "href": "lectures/02-slides.html#what-to-commit-not-to-commit",
+    "title": "Introduction to R: Lecture 2",
+    "section": "What to Commit / Not to Commit",
+    "text": "What to Commit / Not to Commit\n\n\n✅ What to Commit\n\nCode files\nMarkdown or Quarto files\nSmall data files\nREADME and documentation\n\n\n🚫 What Not to Commit\n\nTemporary files (e.g., .Rproj.user/)\nLog or output files\nFiles with private information\nFiles larger than 100 MB\n\n\n\n\nWhat Not to Commit goes in the “.gitignore” file\n\nTells Git what to ignore from your folder\nUse a template (search for R-specific template, which works well for most class projects)"
+  },
+  {
+    "objectID": "lectures/02-slides.html#git-conflicts",
+    "href": "lectures/02-slides.html#git-conflicts",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Git Conflicts",
+    "text": "Git Conflicts\nA Git conflict happens when Git doesn’t know which version of a file to keep.\nGit gets confused because the same file was changed in two places.\nGit conflicts are more common when working in shared repositories, and they shouldn’t occur when you’re working alone in your own repository (as you will in this course), but they still can happen…"
+  },
+  {
+    "objectID": "lectures/02-slides.html#when-do-conflicts-happen",
+    "href": "lectures/02-slides.html#when-do-conflicts-happen",
+    "title": "Introduction to R: Lecture 2",
+    "section": "When Do Conflicts Happen?",
+    "text": "When Do Conflicts Happen?\nCollaborative Work\n- You and a teammate edit the same file (or even the same line)\n- You push changes without pulling the latest version from GitHub first\n- Tip: Always run git pull before git push\n\nWorking Solo\n- You make changes locally and also edit the same file directly on GitHub\n- Git can’t tell which version to keep\n- Tip: Always work in your local repository and use the workflow from the previous slide to push to Github"
+  },
+  {
+    "objectID": "lectures/02-slides.html#what-causes-a-conflict",
+    "href": "lectures/02-slides.html#what-causes-a-conflict",
+    "title": "Introduction to R: Lecture 2",
+    "section": "What Causes a Conflict?",
+    "text": "What Causes a Conflict?\nA Git conflict may happen when Git finds two competing versions of the same file: one in your local repo (Git, on your computer) VS. one in the remote repo (GitHub, online)\nThe local and remote repos are expected to match. If they don’t, Git tries to merge them automatically.\nTwo Possible Outcomes\n✅ No conflict:\nIf the changes are in different parts of the file, Git merges automatically and no action is needed.\n❌ Conflict:\nIf the same part of the file was changed in both versions, Git cannot decide what to keep.\n→ You must manually review and resolve the conflict."
+  },
+  {
+    "objectID": "lectures/02-slides.html#what-a-git-conflict-looks-like",
+    "href": "lectures/02-slides.html#what-a-git-conflict-looks-like",
+    "title": "Introduction to R: Lecture 2",
+    "section": "What a Git Conflict Looks Like",
+    "text": "What a Git Conflict Looks Like\nWhen a conflict happens, Git marks the file with special lines to show the two versions:\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nThis is your version (from your local repo)\n=======\nThis is the other version (from GitHub or your teammate)\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; main\nTo solve it, you need to use Git with the terminal (ask us for help if that occurs!)"
+  },
+  {
+    "objectID": "lectures/02-slides.html#avoiding-most-git-conflicts",
+    "href": "lectures/02-slides.html#avoiding-most-git-conflicts",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Avoiding (Most) Git Conflicts",
+    "text": "Avoiding (Most) Git Conflicts\nRather than solving conflicts, we want to avoid them as much as possibile with good practices:\n\nMake changes locally, then stage and commit (early and often)\n\nPush regularly to keep your GitHub repo in sync\n\nAlways pull before you push to avoid conflicts\n\nKey Sequence to Use:\ngit pull → make changes → git add + git commit → git push"
+  },
+  {
+    "objectID": "lectures/02-slides.html#burn-it-all-down",
+    "href": "lectures/02-slides.html#burn-it-all-down",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Burn it All Down",
+    "text": "Burn it All Down"
+  },
+  {
+    "objectID": "lectures/02-slides.html#recap-what-we-learned-today",
+    "href": "lectures/02-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today\n\nFamiliarized with Git & GitHub\nHow to use Git & GitHub within RStudio"
+  },
+  {
+    "objectID": "lectures/02-slides.html#reminders",
+    "href": "lectures/02-slides.html#reminders",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Reminders",
+    "text": "Reminders\n\nHomework 1 is now open and due next week. Check the Course Schedule on our website for the exact due date.\nIf you haven’t completed these yet, please do so ASAP, as you won’t be able to access and complete Homework 1 otherwise:\n\nRegister a GitHub account and submit your username (see Lecture 1 on our website)\nSetup your computer (see Lecture 2 on our website)"
+  },
+  {
+    "objectID": "lectures/02-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/02-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 2",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/01-slides.html#teaching-team",
+    "href": "lectures/01-slides.html#teaching-team",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Teaching Team",
+    "text": "Teaching Team\n\n\n\nRole\nName\nEmail\nOffice Hours\nContact Method\n\n\n\n\nInstructor\nSabrina Nardin\nnardin@uchicago.edu\nTue & Thu, 2:30–3:30 PM (after class)\nEmail or OHs\n\n\nTeaching Assistant\nZach Meyer\nzmeyer@uchicago.edu\nTBD\nEmail or OHs\n\n\n\n\n\nHow to Reach Out\n\nAsk questions during or after class\nAttend OHs (Office Hours, no appointment needed)!\nEmail us for course-related concerns\nUse the course platform for slides, class materials, etc."
+  },
+  {
+    "objectID": "lectures/01-slides.html#course-objectives",
+    "href": "lectures/01-slides.html#course-objectives",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Course Objectives",
+    "text": "Course Objectives\nThe goal of this course is to acquire basic computational skills. Specifically:\n\nLearning R, especially the “tidyverse”\nLearning best practices for reproducible research\n\n\nYou won’t become an R expert in a few weeks, BUT you will:\n\nlearn the basics and gain confidence to explore new techniques beyond this course\nuse R as a tool for analyzing social science data"
+  },
+  {
+    "objectID": "lectures/01-slides.html#course-topics",
+    "href": "lectures/01-slides.html#course-topics",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Course Topics",
+    "text": "Course Topics\n\nMain topics of this course:\n\nGit/GitHub via RStudio\nR Markdown\nData Visualization\nData Cleaning and Transformation\nExploratory Data Analysis\nR Programming: Control Structures, Data Structures, etc."
+  },
+  {
+    "objectID": "lectures/01-slides.html#how-well-do-this",
+    "href": "lectures/01-slides.html#how-well-do-this",
+    "title": "Introduction to R: Lecture 1",
+    "section": "How We’ll Do This",
+    "text": "How We’ll Do This\nWe start simple and build toward more complex code\n\n# create a variable and print it\nx &lt;- \"Hello!\"\nprint(x)\n\n[1] \"Hello!\"\n\n\n\nWe use a mix of lectures, in-class activities, assignments (take-home and in-class), and we rely on several platforms (e.g., course website, Canvas, Ed Discussion, Workbench, Git/GitHub, and Markdown).\nAll course materials are free and accessible from our website."
+  },
+  {
+    "objectID": "lectures/01-slides.html#homework-and-evaluation",
+    "href": "lectures/01-slides.html#homework-and-evaluation",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Homework and Evaluation",
+    "text": "Homework and Evaluation\nSee “Assessment” from our Syllabus and the Course Schedule:\n\nAssessment and Evaluation: There will be short quizzes in class and take-home assignments. Check the syllabus for the grading rubric and more details\nArrive on Time: Each class starts right at 1:00 PM with a quick quiz. These are short and meant to help you stay on track, so be here and ready to go by 1:00 PM.\nSubmission Policies: Info on how we handle late or missed assignments is in the syllabus."
+  },
+  {
+    "objectID": "lectures/01-slides.html#software-setup",
+    "href": "lectures/01-slides.html#software-setup",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Software Setup",
+    "text": "Software Setup\nNext lecture we will learn the basics of Git and GitHub and complete the Software Setup for the course.\nWe’ll be working in RStudio Workbench, which is cloud-based version of RStudio that runs in your browser.\nCheck our website under “Software Setup” for details."
+  },
+  {
+    "objectID": "lectures/01-slides.html#activity-meet-share-goals",
+    "href": "lectures/01-slides.html#activity-meet-share-goals",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Activity: Meet & Share Goals",
+    "text": "Activity: Meet & Share Goals\nIn groups of 4-5 people, please share:\n\nYour name, plus something about yourself that you’re comfortable sharing (e.g., a hobby, your favorite food, your high school, your experience with programming, etc.)\nWhat you hope to learn or achieve in this course\nAny questions or concerns you have, and strategies you plan to use to stay on track (we’ll go around the room and answer questions)\n\n\n\n\n\n\n\n\nDone early?\n\n\nIf your group finishes early, please complete this short survey if you haven’t already. It only takes a minute and helps us better understand your background and what you’re hoping to learn in this course."
+  },
+  {
+    "objectID": "lectures/01-slides.html#course-expectations",
+    "href": "lectures/01-slides.html#course-expectations",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Course Expectations",
+    "text": "Course Expectations\n\nAttend classes and bring a laptop (no cell phones)\nReview in-class materials and complete assigned work\nAsk questions and collaborate\n\n15-minute rule\nResources: AI (but see next slide) Google, StackOverflow, your peers (study group!)\nOffice Hours and ED Discussion"
+  },
+  {
+    "objectID": "lectures/01-slides.html#yes-to-collaboration-no-to-copying",
+    "href": "lectures/01-slides.html#yes-to-collaboration-no-to-copying",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Yes to Collaboration, No to Copying",
+    "text": "Yes to Collaboration, No to Copying\nResearchers collaborate on projects. Developers work in teams to write programs. AI is becoming part of our daily and academic lives.\n\n→ Collaboration is good and encouraged, but in this course you are also expected to:\n\nComplete your own work individually\nWrite your code and fully understand it\nBe ready to explain your code line-by-line to someone else"
+  },
+  {
+    "objectID": "lectures/01-slides.html#collaboration-vs.-plagiarism",
+    "href": "lectures/01-slides.html#collaboration-vs.-plagiarism",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Collaboration vs. Plagiarism",
+    "text": "Collaboration vs. Plagiarism\n\n\n✅ DO:\n\nDiscuss and debug with peers\nRewrite code found online in your own style and cite the source\nUse AI to help debug or clarify concepts\nSubmit code you wrote\nSubmit code you fully understand\n\n\n🚫 DON’T:\n\nCopy code from your classmaters or others\nSimply copy and paste chunks of code from the internet\nAsk AI to write code for you\nSubmit code you didn’t write\nSubmit code you can’t explain"
+  },
+  {
+    "objectID": "lectures/01-slides.html#tips-from-former-students",
+    "href": "lectures/01-slides.html#tips-from-former-students",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Tips from former students…",
+    "text": "Tips from former students…\n\n\n“One of the hardest things for me was remembering where I saw a concept or piece of code.”Advice: Stay organized (e.g., customize slides and notes, and create your own system to retrieve info)!\n\n\n\n\n“Homework took more time and effort than I expected.” Advice: Start early! You don’t need to know everything before you begin: just get started and review the materials as needed. Complete the in-class exercises before tackling a homework.\n\n\n\n\n“I’m in week 4, and I feel lost.”Advice: Reach out to us! Concepts build over time. The big picture will click IF you stay consistent with your efforts every week.\n\n\n\n\n“I found code that worked but wasn’t covered in class, so I wasn’t sure whether to use it.”Advice: Stick to class syntax and functions — they’re chosen for a reason. But you can show both approaches by comparing the function(s) covered in class with your own."
+  },
+  {
+    "objectID": "lectures/01-slides.html#what-are-these-tools",
+    "href": "lectures/01-slides.html#what-are-these-tools",
+    "title": "Introduction to R: Lecture 1",
+    "section": "What Are These Tools?",
+    "text": "What Are These Tools?\n\n\n\n\n\n\n\nTool\nWhat It Is\n\n\n\n\nR\nA programming language for data analysis, statistics, and visualization.\n\n\nRStudio\nA user-friendly interface (IDE) for using R.\n\n\nWorkbench\nA cloud-based version of R/RStudio with everything pre-installed. We will use it in this course to minimize setup issues."
+  },
+  {
+    "objectID": "lectures/01-slides.html#lets-start-by-exploring-our-software",
+    "href": "lectures/01-slides.html#lets-start-by-exploring-our-software",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Let’s start by exploring our Software",
+    "text": "Let’s start by exploring our Software\nWorkbench: https://macss-r.uchicago.edu/\n\nLog in\nLook at panels\nHow to export/import files between Workbench and your machine\nCreate an empty R Script"
+  },
+  {
+    "objectID": "lectures/01-slides.html#getting-started-with-r",
+    "href": "lectures/01-slides.html#getting-started-with-r",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Getting Started with R",
+    "text": "Getting Started with R\nToday we learn how to:\n\nUse R as a calculator\n\nCreate and use variables\n\nUnderstand variable types (e.g., number, text, logical, etc.)\n\nWrite comments and organize your code\n\nUse scripts (vs. console) for reproducibility\n\nClear your environment\n\nFix common errors\n\nGroup values using vectors"
+  },
+  {
+    "objectID": "lectures/01-slides.html#live-coding-activity-to-get-started-with-r",
+    "href": "lectures/01-slides.html#live-coding-activity-to-get-started-with-r",
+    "title": "Introduction to R: Lecture 1",
+    "section": "💻 Live Coding Activity to get Started with R",
+    "text": "💻 Live Coding Activity to get Started with R\nWe learn all of this via a live coding activity:\n\nLog into Workbench https://macss-r.uchicago.edu/\nType along with me as we write and run code together\nStop me anytime if you have questions"
+  },
+  {
+    "objectID": "lectures/01-slides.html#deep-dive-on-r-markown",
+    "href": "lectures/01-slides.html#deep-dive-on-r-markown",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Deep Dive on R Markown",
+    "text": "Deep Dive on R Markown\nR Markdown is a file format (with extension .Rmd) that combines R code, using code chunks, and text in a single document. It’s very popular because it makes it easy to create reproducible reports, analyses, and presentations.\nYou might hear about Quarto (with extension .qmd), which is a newer alternative to R Markdown. We won’t cover it, but if you know R Markdown, you can quickly adjust to Quarto."
+  },
+  {
+    "objectID": "lectures/01-slides.html#comparing-r-scripts-r-markdown-and-markdown",
+    "href": "lectures/01-slides.html#comparing-r-scripts-r-markdown-and-markdown",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Comparing R Scripts, R Markdown, and Markdown",
+    "text": "Comparing R Scripts, R Markdown, and Markdown\n\n\n\nFile Type\nExtension\nKey Differences\n\n\n\n\nR Script\n.R\nSupports code\n\n\nR Markdown\n.Rmd\nSupports code and formatted text\n\n\nMarkdown\n.md\nSupports formatted text\n\n\n\nWe use all three, but mainly .Rmd for assignments and .md for Git/GitHub documentation."
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-three-main-components",
+    "href": "lectures/01-slides.html#r-markdown-three-main-components",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Three Main Components",
+    "text": "R Markdown: Three Main Components\n\nYAML header for document title, author, output format, etc. Insert it at the top between ---\nText regular Markdown for headers, lists, links, etc.\nCode chunks for code. Insert it with triple backticks ```\n\n\n\n\n\n\n\n\nCode Chunk Tips\n\n\nThree ways to insert a code chunk in your R Markdown:\n\nUse the RStudio toolbar\n\nType manually ```{r} and ```\nUse a shortcut\n\nMac: ⌘ + ⌥ + I\n\nWindows: Ctrl + Alt + I"
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-example",
+    "href": "lectures/01-slides.html#r-markdown-example",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Example",
+    "text": "R Markdown: Example\nThis is what we type (YAML, text, code):\n---\ntitle: \"Homework 1\"\nauthor: \"Sabrina Nardin\"\noutput: html_document\n---\n\nI write my homework description here. \nI can format the text in many ways, for example, by bolding **key concepts**.\n\n```{r}\n# create a variable\nx &lt;- 5\n```"
+  },
+  {
+    "objectID": "lectures/01-slides.html#yaml-yet-another-markup-language",
+    "href": "lectures/01-slides.html#yaml-yet-another-markup-language",
+    "title": "Introduction to R: Lecture 1",
+    "section": "YAML: Yet Another Markup Language",
+    "text": "YAML: Yet Another Markup Language\nThe YAML header sits at the top of your .Rmd and tells R what the document is about and how to display it (e.g., as a html, PDF, Word, etc.).\nThe example below shows only three fields but many more can be added:\n---\ntitle: \"Homework 1\"\nauthor: \"Sabrina Nardin\"\noutput: html_document\n---"
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-formatting-text",
+    "href": "lectures/01-slides.html#r-markdown-formatting-text",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Formatting Text",
+    "text": "R Markdown: Formatting Text\n\n\nSyntax\n*Italics*  \n**Bold**  \n~~Strikethrough~~  \n`inline code`\n\nOutput\nItalics\nBold\nStrikethrough\ninline code"
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-unordered-lists",
+    "href": "lectures/01-slides.html#r-markdown-unordered-lists",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Unordered Lists",
+    "text": "R Markdown: Unordered Lists\n\n\nSyntax\n+ item 1  \n  + sub  \n  + sub  \n- item 2  \n  - sub  \n  - sub  \n+ item 3  \n  - sub  \n  * sub  \n\nOutput\n\nitem 1\n\nsub\nsub\n\nitem 2\n\nsub\nsub\n\nitem 3\n\nsub\nsub"
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-ordered-lists",
+    "href": "lectures/01-slides.html#r-markdown-ordered-lists",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Ordered Lists",
+    "text": "R Markdown: Ordered Lists\n\n\nSyntax\n1. item 1  \n    + sub  \n      + sub  \n    + sub  \n\n1. item 2  \n    * sub  \n      * sub  \n    * sub  \n\n1. item 3  \n    - sub  \n\nOutput\n\nitem 1\n\nsub\n\nsub\n\n\nsub\n\nitem 2\n\nsub\n\nsub\n\n\nsub\n\nitem 3\n\nsub"
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-formatting-headers",
+    "href": "lectures/01-slides.html#r-markdown-formatting-headers",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Formatting Headers",
+    "text": "R Markdown: Formatting Headers\n# Heading 1  \n## Heading 2  \n### Heading 3  \n\nHeading 1\n\n\nHeading 2\n\n\nHeading 3"
+  },
+  {
+    "objectID": "lectures/01-slides.html#in-code-vs.-markdown-text",
+    "href": "lectures/01-slides.html#in-code-vs.-markdown-text",
+    "title": "Introduction to R: Lecture 1",
+    "section": "# in Code vs. Markdown Text",
+    "text": "# in Code vs. Markdown Text\n\n\nIn Code\n# Assign number to variable\nx &lt;- 5 \n# Assign text to variable\nname &lt;- \"Sabrina\"\n\n# starts a COMMENT in R Scripts and R Markdown Code Chunks\nComments are ignored when the code runs\nUse one single # for code explanations or debugging, space doesn’t matter\n\n\nIn R Markdown Text\n# Title (h1)\n## Section (h2)\n### Subsection (h3)\n#### More Subsections (h4)\n\n# creates a HEADER in Markdown or R Markdown Text\nThe number of # signs = heading level\nUse as many # as needed for organizing document sections, space matters"
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-insert-links-images-and-tables",
+    "href": "lectures/01-slides.html#r-markdown-insert-links-images-and-tables",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Insert Links, Images, and Tables",
+    "text": "R Markdown: Insert Links, Images, and Tables\n\n\n\nElement\nSyntax Example\nNotes\nPreview\n\n\n\n\nLink\n[RStudio](https://www.rstudio.com/)\nText in [], URL in ()\nLink\n\n\nImage\n![Logo](images/logo.png \"Optional title\")\nStart with !, include optional \"title\"\nImage\n\n\nTable\n| Tool    | Use     ||---------|---------|| R       | Stats   |\nUse | for columns and --- for header\nTable"
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-handy-code-chunk-options",
+    "href": "lectures/01-slides.html#r-markdown-handy-code-chunk-options",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Handy Code Chunk Options",
+    "text": "R Markdown: Handy Code Chunk Options\n\n\n\n\n\n\n\n\n\nOption\nWhat it does\nDefault\n\n\n\n\neval = FALSE\nCode is not run, only shown; results do not appear. Useful for code examples or showing code with errors.\neval = TRUE\n\n\ninclude = FALSE\nCode is run, but both code and results are hidden. Useful for setup code you don’t want to display.\ninclude = TRUE\n\n\necho = FALSE\nCode is run, results are shown, but code is hidden. Good when readers only need the output.\necho = TRUE\n\n\nerror = TRUE\nCode is run and shown, even if it throws an error. Useful when demonstrating broken code.\nerror = FALSE\n\n\nmessage = FALSE / warning = FALSE\nCode is run, but messages and warnings are hidden from the output.\nmessage = TRUE / warning = TRUE\n\n\n\n\nCheck this table and options for more."
+  },
+  {
+    "objectID": "lectures/01-slides.html#rendering-r-markdown-documents",
+    "href": "lectures/01-slides.html#rendering-r-markdown-documents",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Rendering R Markdown Documents",
+    "text": "Rendering R Markdown Documents\nR Markdown lets you create documents that combine text, code, and output, and “render” or “knit” them in formats like html, pdf, word, and more.\n\n\n\n\n\n\n\nRendering Tips\n\n\nThree ways to render your R Markdown document:\n\nClick “Knit” in RStudio and choose an output\nSet the format in the YAML header such as html_document,word_document, pdf_document, github_document, etc.\nUse render() in your console by typing rmarkdown::render(\"my-document.Rmd\", output_format: html_document). More info here"
+  },
+  {
+    "objectID": "lectures/01-slides.html#r-markdown-knitting-process",
+    "href": "lectures/01-slides.html#r-markdown-knitting-process",
+    "title": "Introduction to R: Lecture 1",
+    "section": "R Markdown: Knitting process",
+    "text": "R Markdown: Knitting process\nWhen you “knit” your document, the following sequential things happen:\n\nR Markdown sends the .Rmd file to knitr http://yihui.name/knitr/\nKnitr executes all of the code chunks and creates a new plain Markdown .md file which includes the code and its output\nThis plain Markdown file is then converted by pandoc into any number of output types including html, PDF, Word document, etc.: http://pandoc.org/"
+  },
+  {
+    "objectID": "lectures/01-slides.html#practice-r-markdown-syntax",
+    "href": "lectures/01-slides.html#practice-r-markdown-syntax",
+    "title": "Introduction to R: Lecture 1",
+    "section": "💻 Practice R Markdown Syntax",
+    "text": "💻 Practice R Markdown Syntax\n\nLog into Workbench https://macss-r.uchicago.edu/\nDownload today’s code from Lecture 1 on our website\nComplete the R Markdown in-class practice\nWant more? Try this interactive tutorial"
+  },
+  {
+    "objectID": "lectures/01-slides.html#recap-what-we-learned-today",
+    "href": "lectures/01-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today\n\nFamiliarized with Workbench\nWrote simple R code\nKey components of R Markdown\nHow to run and render R Markdown Documents"
+  },
+  {
+    "objectID": "lectures/01-slides.html#reminders",
+    "href": "lectures/01-slides.html#reminders",
+    "title": "Introduction to R: Lecture 1",
+    "section": "Reminders",
+    "text": "Reminders\n\nRegister for a GitHub account and share your GitHub username with us (see Lecture 1 on our website for details)\nReview today’s materials to prep for the short quiz at the beginning of next class\nCheck Lecture 2 homepage"
+  },
+  {
+    "objectID": "lectures/01-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/01-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 1",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "index.html#course-information-csp-summer-2025",
+    "href": "index.html#course-information-csp-summer-2025",
+    "title": "Welcome to Intro to R Programming!",
+    "section": "Course Information CSP Summer 2025",
+    "text": "Course Information CSP Summer 2025\nMeeting Time: Tuesdays & Thursdays, 1:00–2:30 PM\nMeeting Location: Cobb Hall 319\nTeaching Team:\n\nInstructor: Sabrina Nardin (she/her) – nardin@uchicago.edu\n\nTeaching Assistant: Zach Meyer (he/him) – zmeyer@uchicago.edu\n\nOffice Hours:\n\nSabrina: Drop-in after class (2:30–3:30 PM, Cobb Hall 319). No appointment needed — bring questions about lecture, homework, or anything course-related.\n\nZach: Weekly drop-in (schedule TBA).\n\nQuick Links:\n\nR Workbench\n\nCanvas\n\nEd Discussion\nCourse Schedule"
+  },
+  {
+    "objectID": "hw/index.html",
+    "href": "hw/index.html",
+    "title": "Homework",
+    "section": "",
+    "text": "There will be a total of three take-home homework assignments, in addition to the in-class quizzes.\nEach homework assignment will have its own page (listed below) containing specific guidelines. Pages will be accessible once the homework is released — check our Course Schedule for release and due dates.\n\nHomework 1\nHomework 2\nHomework 3\n\nRefer to the Syllabus for assessment policies, including guidelines on late or missing submissions, the grading rubric, and more."
+  },
+  {
+    "objectID": "lectures/01-home.html",
+    "href": "lectures/01-home.html",
+    "title": "Lecture 1: Course Logistics, R, Markdown",
+    "section": "",
+    "text": "Date: June 24, 2025\nTopics: Course Logistics, R, Markdown\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/r-markdown\")"
+  },
+  {
+    "objectID": "lectures/01-home.html#info-and-materials",
+    "href": "lectures/01-home.html#info-and-materials",
+    "title": "Lecture 1: Course Logistics, R, Markdown",
+    "section": "",
+    "text": "Date: June 24, 2025\nTopics: Course Logistics, R, Markdown\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/r-markdown\")"
+  },
+  {
+    "objectID": "lectures/01-home.html#learning-objectives",
+    "href": "lectures/01-home.html#learning-objectives",
+    "title": "Lecture 1: Course Logistics, R, Markdown",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nRecognize the basic features of the R programming language and RStudio\nWrite and run simple R code\nDescribe what R Markdown is and why it’s useful\nCreate and edit a R Markdown document"
+  },
+  {
+    "objectID": "lectures/01-home.html#before-class",
+    "href": "lectures/01-home.html#before-class",
+    "title": "Lecture 1: Course Logistics, R, Markdown",
+    "section": "Before Class",
+    "text": "Before Class\n\nGo to https://github.com and follow the instructions to create a free GitHub account. Choose a professional username (see these tips for guidance)\nOnce you have created a GitHub account submit your GitHub username here (we need it to run the course)\nComplete this short survey\nBring your laptop to every class (let us know if that might be a problem!)"
+  },
+  {
+    "objectID": "lectures/01-home.html#readings",
+    "href": "lectures/01-home.html#readings",
+    "title": "Lecture 1: Course Logistics, R, Markdown",
+    "section": "Readings",
+    "text": "Readings\nSkim the readings before or after class to get the big picture and prep for quizzes and assignments:\n\nR Markdown, R4DS\nR Markdown Cheatsheet"
+  },
+  {
+    "objectID": "lectures/02-home.html",
+    "href": "lectures/02-home.html",
+    "title": "Lecture 2: Git and GitHub",
+    "section": "",
+    "text": "Date: June 26, 2025\nTopics: Intro to Git and GitHub from RStudio\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/git\")"
+  },
+  {
+    "objectID": "lectures/02-home.html#info-and-materials",
+    "href": "lectures/02-home.html#info-and-materials",
+    "title": "Lecture 2: Git and GitHub",
+    "section": "",
+    "text": "Date: June 26, 2025\nTopics: Intro to Git and GitHub from RStudio\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/git\")"
+  },
+  {
+    "objectID": "lectures/02-home.html#learning-objectives",
+    "href": "lectures/02-home.html#learning-objectives",
+    "title": "Lecture 2: Git and GitHub",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives\n\nUnderstand what Git is and why it’s useful\nCreate a Git repository in RStudio\nConnect your Git repository to GitHub\nPractice staging, committing, and pushing changes"
+  },
+  {
+    "objectID": "lectures/02-home.html#before-class",
+    "href": "lectures/02-home.html#before-class",
+    "title": "Lecture 2: Git and GitHub",
+    "section": "Before Class",
+    "text": "Before Class\n\nComplete the Lecture 1 “Before Class” activities, if you haven’t already\nReview the Lecture 1 materials to get ready for today’s in-class quiz\nBring your laptop to every class (let us know if that might be a problem!)\nOptional: Read the Software Setup page. We’ll go through this together in class today, but feel free to read the materials ahead of time if you want"
+  },
+  {
+    "objectID": "lectures/02-home.html#readings",
+    "href": "lectures/02-home.html#readings",
+    "title": "Lecture 2: Git and GitHub",
+    "section": "Readings",
+    "text": "Readings\nSkim the readings before or after class to get the big picture and prep for quizzes and assignments:\n\nHappy Git and GitHub for the useR"
+  },
+  {
+    "objectID": "lectures/03-home.html",
+    "href": "lectures/03-home.html",
+    "title": "Lecture 3: Intro to ggplot2, Coding Style",
+    "section": "",
+    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/ggplot2-style\")"
+  },
+  {
+    "objectID": "lectures/03-home.html#info-and-materials",
+    "href": "lectures/03-home.html#info-and-materials",
+    "title": "Lecture 3: Intro to ggplot2, Coding Style",
+    "section": "",
+    "text": "Date: July 1, 2025\nTopics: Visualizing Data with ggplot2, Coding Style in R\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/ggplot2-style\")"
+  },
+  {
+    "objectID": "lectures/03-home.html#learning-objectives",
+    "href": "lectures/03-home.html#learning-objectives",
+    "title": "Lecture 3: Intro to ggplot2, Coding Style",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/03-home.html#before-class",
+    "href": "lectures/03-home.html#before-class",
+    "title": "Lecture 3: Intro to ggplot2, Coding Style",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/03-home.html#readings",
+    "href": "lectures/03-home.html#readings",
+    "title": "Lecture 3: Intro to ggplot2, Coding Style",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/04-home.html",
+    "href": "lectures/04-home.html",
+    "title": "Lecture 4: Intro to dplyr, Pipes",
+    "section": "",
+    "text": "Date: July 8, 2025\nTopics: Wrangling Data with dplyr, Using R Pipes\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/dplyr-pipes\")"
+  },
+  {
+    "objectID": "lectures/04-home.html#info-and-materials",
+    "href": "lectures/04-home.html#info-and-materials",
+    "title": "Lecture 4: Intro to dplyr, Pipes",
+    "section": "",
+    "text": "Date: July 8, 2025\nTopics: Wrangling Data with dplyr, Using R Pipes\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/dplyr-pipes\")"
+  },
+  {
+    "objectID": "lectures/04-home.html#learning-objectives",
+    "href": "lectures/04-home.html#learning-objectives",
+    "title": "Lecture 4: Intro to dplyr, Pipes",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/04-home.html#before-class",
+    "href": "lectures/04-home.html#before-class",
+    "title": "Lecture 4: Intro to dplyr, Pipes",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/04-home.html#readings",
+    "href": "lectures/04-home.html#readings",
+    "title": "Lecture 4: Intro to dplyr, Pipes",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/05-home.html",
+    "href": "lectures/05-home.html",
+    "title": "Lecture 5: EDA and Graphs",
+    "section": "",
+    "text": "Date: July 10, 2025\nTopics: Data Analysis and Graphs\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/eda\")"
+  },
+  {
+    "objectID": "lectures/05-home.html#info-and-materials",
+    "href": "lectures/05-home.html#info-and-materials",
+    "title": "Lecture 5: EDA and Graphs",
+    "section": "",
+    "text": "Date: July 10, 2025\nTopics: Data Analysis and Graphs\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/eda\")"
+  },
+  {
+    "objectID": "lectures/05-home.html#learning-objectives",
+    "href": "lectures/05-home.html#learning-objectives",
+    "title": "Lecture 5: EDA and Graphs",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/05-home.html#before-class",
+    "href": "lectures/05-home.html#before-class",
+    "title": "Lecture 5: EDA and Graphs",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/05-home.html#readings",
+    "href": "lectures/05-home.html#readings",
+    "title": "Lecture 5: EDA and Graphs",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/06-home.html",
+    "href": "lectures/06-home.html",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
+    "section": "",
+    "text": "Date: July 15, 2025\nTopics: Using Factors in R, Deep Dive into dplyr\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/factors-more-dplyr\")"
+  },
+  {
+    "objectID": "lectures/06-home.html#info-and-materials",
+    "href": "lectures/06-home.html#info-and-materials",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
+    "section": "",
+    "text": "Date: July 15, 2025\nTopics: Using Factors in R, Deep Dive into dplyr\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/factors-more-dplyr\")"
+  },
+  {
+    "objectID": "lectures/06-home.html#learning-objectives",
+    "href": "lectures/06-home.html#learning-objectives",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/06-home.html#before-class",
+    "href": "lectures/06-home.html#before-class",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/06-home.html#readings",
+    "href": "lectures/06-home.html#readings",
+    "title": "Lecture 6: Factors, Intermediate dplyr",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/07-home.html",
+    "href": "lectures/07-home.html",
+    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "section": "",
+    "text": "Date: July 17, 2025\nTopics: Data Cleaning and Wrangling, Importing/Exporting Data\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/cleaning\")"
+  },
+  {
+    "objectID": "lectures/07-home.html#info-and-materials",
+    "href": "lectures/07-home.html#info-and-materials",
+    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "section": "",
+    "text": "Date: July 17, 2025\nTopics: Data Cleaning and Wrangling, Importing/Exporting Data\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/cleaning\")"
+  },
+  {
+    "objectID": "lectures/07-home.html#learning-objectives",
+    "href": "lectures/07-home.html#learning-objectives",
+    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/07-home.html#before-class",
+    "href": "lectures/07-home.html#before-class",
+    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/07-home.html#readings",
+    "href": "lectures/07-home.html#readings",
+    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/08-home.html",
+    "href": "lectures/08-home.html",
+    "title": "Lecture 8: Data Structures, Base R",
+    "section": "",
+    "text": "Date: July 22, 2025\nTopics: Intro to Data Structures and Base R\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/base-r\")"
+  },
+  {
+    "objectID": "lectures/08-home.html#info-and-materials",
+    "href": "lectures/08-home.html#info-and-materials",
+    "title": "Lecture 8: Data Structures, Base R",
+    "section": "",
+    "text": "Date: July 22, 2025\nTopics: Intro to Data Structures and Base R\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/base-r\")"
+  },
+  {
+    "objectID": "lectures/08-home.html#learning-objectives",
+    "href": "lectures/08-home.html#learning-objectives",
+    "title": "Lecture 8: Data Structures, Base R",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/08-home.html#before-class",
+    "href": "lectures/08-home.html#before-class",
+    "title": "Lecture 8: Data Structures, Base R",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/08-home.html#readings",
+    "href": "lectures/08-home.html#readings",
+    "title": "Lecture 8: Data Structures, Base R",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/09-home.html",
+    "href": "lectures/09-home.html",
+    "title": "Lecture 9: Control Flow 1",
+    "section": "",
+    "text": "Date: July 24, 2025\nTopics: Writing conditionals with if, else, and else if\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/if-else\")"
+  },
+  {
+    "objectID": "lectures/09-home.html#info-and-materials",
+    "href": "lectures/09-home.html#info-and-materials",
+    "title": "Lecture 9: Control Flow 1",
+    "section": "",
+    "text": "Date: July 24, 2025\nTopics: Writing conditionals with if, else, and else if\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/if-else\")"
+  },
+  {
+    "objectID": "lectures/09-home.html#learning-objectives",
+    "href": "lectures/09-home.html#learning-objectives",
+    "title": "Lecture 9: Control Flow 1",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/09-home.html#before-class",
+    "href": "lectures/09-home.html#before-class",
+    "title": "Lecture 9: Control Flow 1",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/09-home.html#readings",
+    "href": "lectures/09-home.html#readings",
+    "title": "Lecture 9: Control Flow 1",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/10-home.html",
+    "href": "lectures/10-home.html",
+    "title": "Lecture 10: Control Flow 2",
+    "section": "",
+    "text": "Date: July 29, 2025\nTopics: Writing loops for iteration and repetition\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/loops\")"
+  },
+  {
+    "objectID": "lectures/10-home.html#info-and-materials",
+    "href": "lectures/10-home.html#info-and-materials",
+    "title": "Lecture 10: Control Flow 2",
+    "section": "",
+    "text": "Date: July 29, 2025\nTopics: Writing loops for iteration and repetition\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/loops\")"
+  },
+  {
+    "objectID": "lectures/10-home.html#learning-objectives",
+    "href": "lectures/10-home.html#learning-objectives",
+    "title": "Lecture 10: Control Flow 2",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/10-home.html#before-class",
+    "href": "lectures/10-home.html#before-class",
+    "title": "Lecture 10: Control Flow 2",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/10-home.html#readings",
+    "href": "lectures/10-home.html#readings",
+    "title": "Lecture 10: Control Flow 2",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/11-home.html",
+    "href": "lectures/11-home.html",
+    "title": "Lecture 11: Functions",
+    "section": "",
+    "text": "Date: July 31, 2025\nTopics: Organize and reuse code with functions\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/functions\")"
+  },
+  {
+    "objectID": "lectures/11-home.html#info-and-materials",
+    "href": "lectures/11-home.html#info-and-materials",
+    "title": "Lecture 11: Functions",
+    "section": "",
+    "text": "Date: July 31, 2025\nTopics: Organize and reuse code with functions\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/functions\")"
+  },
+  {
+    "objectID": "lectures/11-home.html#learning-objectives",
+    "href": "lectures/11-home.html#learning-objectives",
+    "title": "Lecture 11: Functions",
+    "section": "Learning Objectives",
+    "text": "Learning Objectives"
+  },
+  {
+    "objectID": "lectures/11-home.html#before-class",
+    "href": "lectures/11-home.html#before-class",
+    "title": "Lecture 11: Functions",
+    "section": "Before Class",
+    "text": "Before Class"
+  },
+  {
+    "objectID": "lectures/11-home.html#readings",
+    "href": "lectures/11-home.html#readings",
+    "title": "Lecture 11: Functions",
+    "section": "Readings",
+    "text": "Readings"
+  },
+  {
+    "objectID": "lectures/index.html",
+    "href": "lectures/index.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Each lecture page contains materials, slides, and relevant assignments or readings. For an overview, see the Course Schedule.\n\nLecture 1\nCourse Logistics, R, Markdown June 24, 2025\n\n\n\nLecture 2\nGit & GitHub June 26, 2025\n\n\n\nLecture 3\nIntro to ggplot2, Coding Style July 1, 2025\n\n\n\nNo Lecture\nJuly 3, 2025\n\n\n\nLecture 4\nIntro to dplyr, Pipes July 8, 2025\n\n\n\nLecture 5\nEDA and Graphs July 10, 2025\n\n\n\nLecture 6\nFactors, Intermediate dplyr July 15, 2025\n\n\n\nLecture 7\nData Cleaning, Importing/Exporting Data July 17, 2025\n\n\n\nLecture 8\nData Structures, Base R July 22, 2025\n\n\n\nLecture 9\nControl Flow 1 July 24, 2025\n\n\n\nLecture 10\nControl Flow 2 July 29, 2025\n\n\n\nLecture 11\nFunctions July 31, 2025"
+  },
+  {
+    "objectID": "setup/setup-test.html",
+    "href": "setup/setup-test.html",
+    "title": "Git within RStudio Tutorial",
+    "section": "",
+    "text": "This tutorial verifies that everything is working as expected. To be completed after the RStudio Workbench Setup tutorial."
+  },
+  {
+    "objectID": "setup/setup-test.html#step-1-make-sure-rstudio-can-find-git",
+    "href": "setup/setup-test.html#step-1-make-sure-rstudio-can-find-git",
+    "title": "Git within RStudio Tutorial",
+    "section": "Step 1: Make sure RStudio can find Git",
+    "text": "Step 1: Make sure RStudio can find Git\nLog in to RStudio Workbench using your UChicago credentials. Then try the following:\n\nGo to File &gt; New Project. Do you see a Version Control option?\n\nIf yes, that’s good — but don’t select it. Instead, choose New Directory &gt; New Project.\n\nDo you see a checkbox that says Create a git repository?\n\nIf yes, that’s good — go ahead and check it.\n\nUnder Directory name, give this test project a name (e.g., test). Toward the bottom, check the box for Open in new session, and then click Create Project.\nA new project should open. In the upper-right panel, do you see a Git tab next to Environment, History, etc.?\n\nIf yes, Git is properly connected\n\n\n\n\n\n\n\n\nIf this worked\n\n\n\n\nGreat! That means everything is set up correctly.\nYou can now delete the test project:\n\nGo to the Files tab in the lower-right panel.\nNavigate to the project folder (you may need to go to Home), select it, and click Delete.\nThen close the project by clicking File &gt; Close Project (you’ll return to the default RStudio session).\n\nContinue to Step 2.\n\n\n\n\n\n\n\n\n\nIf this didn’t work\n\n\n\nIt may be that Git is not installed, or RStudio cannot find it.\n\nOpen the Shell from Tools &gt; Shell and type: git.\n\nIf you get an error thatgit is not found, it means Git is not installed or is not on your system’s PATH\nTry typing one of the following in Shell which git (Mac, Linux) or where git (Windows). If Git is installed and appears in your output, try restarting RStudio and repeat the steps above.\nIf it still doesn’t work: from RStudio, go to Tools &gt; Global Options &gt; Git/SVN and make sure that the box Git executable points to the Git executable. It should read something like: /usr/bin/git (Mac, Linux) or C:/Program Files (x86)/Git/bin/git.exe (Windows). If you make any changes, restart RStudio and try the steps at the top of the page again\nOnce this works, delete the test project (as described in the green box) and move to Step 2. Still stuck? Try searching online or reach out to the us for help."
+  },
+  {
+    "objectID": "setup/setup-test.html#step-2-create-a-new-repository-on-github",
+    "href": "setup/setup-test.html#step-2-create-a-new-repository-on-github",
+    "title": "Git within RStudio Tutorial",
+    "section": "Step 2: Create a New Repository on GitHub",
+    "text": "Step 2: Create a New Repository on GitHub\n\nGo to GitHub and log in. If you haven’t already, sign up for an account, create your profile, and share your GitHub username with us (use the file linked in Lecture 1).\nGo to Repositories and click the green New or New Repository button and fill in the following:\n\nRepository name: myrepo\nSet the repository to Public\nCheck the box to add a README file\nLeave the default (None) the .gitignore and license\nClick the green Create repository button\n\nOnce the repository is created, click the green Code button. You should see options to clone via HTTPS or SSH. If you followed the RStudio Workbench Setup page you should have configured Git with the SSH authentication method, so copy the SSH url (which should look like git@github.com:&lt;OWNER&gt;/&lt;REPO&gt;.git) to your clipboard."
+  },
+  {
+    "objectID": "setup/setup-test.html#step-3-clone-the-new-github-repo-via-rstudio",
+    "href": "setup/setup-test.html#step-3-clone-the-new-github-repo-via-rstudio",
+    "title": "Git within RStudio Tutorial",
+    "section": "Step 3: Clone the New GitHub Repo via RStudio",
+    "text": "Step 3: Clone the New GitHub Repo via RStudio\nNow you need to clone the newly created GitHub repository to your local computer using RStudio. Cloning means downloading a local copy of the repository.\nIn RStudio Workbench, start a new Git Project with Version Control: File &gt; New Project &gt; Version Control &gt; Git\nIf the Version Control option is missing, return to Step 1 to ensure RStudio can find Git. Otherwise, fill out the following fields:\n\nRepository URL: paste the URL of your new GitHub repository (see Step 2)\nProject directory name: it should automatically populate, do not change it. If it does not automatically populate, type the same name you gave to your GitHub repository (e.g. myrepo)\nCreate project as subdirectory of: click on “Browse…” and decide where to store the local directory for the project. It is OK to leave this test directory under the Home\nBefore proceeding, check the Open in new session box situated toward the bottom, as that’s what you’ll usually do in real life\nFinally, click Create Project. The first time you do it, you might get the following message:\n“The authenticity of host ‘github.com (IP)’ can’t be established etc.” If so:\n\nEnsure that the hash shown in the message matches one of those shown here\nIf the hash matches (it should), type “yes” and you are done. If you do not see the hash, open the shell and type: ssh -T git@github.com\nIf you answered “yes” but get a message like\n\"Permission denied. fatal: Could not read from remote repository\"\nit likely means Git is not configured correctly — go back and configure it.\n\n\nYour Project has been created!\nNotice that your project in RStudio (e.g., Workbench) matches the one on GitHub (go to your GitHub page which should be open in your brownser and compare). The visual presentation may look different, but the files and their content should always be the same. A Project will now be:\n\na directory on your computer\na Git repository, linked to a remote GitHub repository\nan RStudio Project\n\n\n\n\n\n\n\nNote\n\n\n\nWhenever possible, use this workflow — starting with GitHub and then connecting through RStudio — as your preferred method for setting up R projects.\nThe advantage of this “GitHub first, then Git in RStudio” workflow is that your remote GitHub repository is automatically set as the upstream for your local repository. This means you can push and pull commits right away, without any extra configuration.\nYou can also do the reverse setup (starting locally and connecting to GitHub later), see the Alternative to Step 3 below."
+  },
+  {
+    "objectID": "setup/setup-test.html#step-4-make-local-changes-save-commit",
+    "href": "setup/setup-test.html#step-4-make-local-changes-save-commit",
+    "title": "Git within RStudio Tutorial",
+    "section": "Step 4: Make Local Changes, Save, Commit",
+    "text": "Step 4: Make Local Changes, Save, Commit\n\n\n\n\n\n\nTip\n\n\n\nDo this every time you finish a valuable chunk of work, probably many times a day.\n\n\nFrom RStudio or R Workbench, check file browser panel to find the README.md file of your project. Open it and modify it by adding the following line (or any other line):\nThis is a line written from R.\nSave your changes. Next, commit these changes to your local repo using RStudio:\n\nOpen the Git tab in the upper right panel\nIn the Staged box, select all files you want to commit. To do this, check the boxes next to each file listed. The first time you commit, this will usually include several new files — go ahead and check all of them\nClick Commit\nA new window should open: in the Commit message box, enter a descriptive message. This should explain what you changed. For example in this case you could write something like: “Added a test line to README”\nClick Commit, wait for it to finish, then click Close"
+  },
+  {
+    "objectID": "setup/setup-test.html#step-5-push-your-local-changes-to-github",
+    "href": "setup/setup-test.html#step-5-push-your-local-changes-to-github",
+    "title": "Git within RStudio Tutorial",
+    "section": "Step 5: Push Your Local Changes to GitHub",
+    "text": "Step 5: Push Your Local Changes to GitHub\n\n\n\n\n\n\nTip\n\n\n\nDo this a few times a day, but less often than you commit.\n\n\nNow you have new work in your local Git repository, but the changes are not yet on GitHub:\n\nGo to the Git tab — you should see a message that says “Your branch is ahead of origin/main by 1 commit”\nThis means you need to push your changes to GitHub: click the green Push arrow under the Git tab\n\nIf this is your first time pushing to GitHub, you may see a prompt to: add your SSH key, and/or enter your GitHub username and password. If prompted, go ahead and complete the steps. When done, open your GitHub repo in a browser to confirm your changes were pushed.\nIf this step failed (e.g., you’re unable to push), Git may not be properly configured, or you may have used the wrong authentication method (SSH or HTTPS). Check the RStudio Workbench Setup page to troubleshoot."
+  },
+  {
+    "objectID": "setup/setup-test.html#step-6-more-practice",
+    "href": "setup/setup-test.html#step-6-more-practice",
+    "title": "Git within RStudio Tutorial",
+    "section": "Step 6: More Practice",
+    "text": "Step 6: More Practice\nNow, repeat the process to reinforce the Git workflow. For example, you could:\n\nMake another small change to the README.md file:\n\nSave the file\nStage the change in the Git tab\nWrite a short commit message describing the update\nCommit the change\nPull from GitHub (nothing should happen, see the tip below for why we want to pull first)\nPush it to GitHub\n\nAdd a new R script or R Markdown (.Rmd) file to the project:\n\nAdd some basic content (e.g., a comment and a variable)\nSave the file\nStage, commit, pull, and push the new file following the same steps\n\n\nDoing this a few times will help solidify the habit of tracking, committing, and syncing your work regularly.\n\n\n\n\n\n\nAlways Pull Before You Push\n\n\n\nBefore pushing changes from your local Git repository to GitHub, you should always pull from GitHub first. This might seem unnecessary if you’re working alone and only from your local machine — but it’s an important habit to build:\n\nPulling first ensures your local copy is up-to-date and avoids potential merge conflicts\nYou or a collaborator may have made changes on GitHub (e.g., editing files directly in the GitHub browser — not recommended!)\nPulling first helps prevent overwriting or missing someone else’s work\nEstablishing this habit early will save you a lot of headaches later\n\nTo pull:\n\nClick the blue Pull arrow in the Git tab in RStudio\nYou’ll usually see a message like \"Already up-to-date\" — that means nothing happens, no conflicts and you’re good to go\nNow you’re safe to push your changes"
+  },
+  {
+    "objectID": "setup/setup-test.html#step-7-the-end-delete-this-test-repo",
+    "href": "setup/setup-test.html#step-7-the-end-delete-this-test-repo",
+    "title": "Git within RStudio Tutorial",
+    "section": "Step 7 (The End): Delete this Test Repo",
+    "text": "Step 7 (The End): Delete this Test Repo\nOnce you’re done experimenting, delete the myrepo repository — this was just a test, and there’s no need to keep it. We need to remove it from both your computer (or Workbench) and GitHub:\n\nDelete the local repository: find where you stored it on your computer (or Workbench) and delete the folder (click the red X labeled “Delete”)\nDelete the repository from GitHub:\n\nOpen the repository in your browser\nClick on Settings\nScroll to the bottom of the page and click Delete this repository\nFollow the confirmation instructions"
+  },
+  {
+    "objectID": "setup/setup-test.html#alternative-to-step-3",
+    "href": "setup/setup-test.html#alternative-to-step-3",
+    "title": "Git within RStudio Tutorial",
+    "section": "Alternative to Step 3",
+    "text": "Alternative to Step 3\nRemember, Step 3 is the recommended approach (i.e., start with GitHub, then clone in RStudio). You don’t need to follow this alternative for this course, but we include it here in case it’s helpful for future projects.\nHowever, sometimes you cannot setup the GitHub repo first, or you already have an RStudio project you need to connect to a GitHub repo. This workflow is the reverse of the above and allows to connect a local RStudio project to a remote GitHub repository.\nUnlike the GitHub-first method, this requires using the Shell or Terminal — it can’t be completed entirely within RStudio.\n\nCreate a Local RStudio Project\nIn R Studio, start a new RStudio project: File &gt; New Project &gt; New Directory &gt; Empty Project and fill out these fields:\n\nDirectory name: myrepo (or whatever your GitHub repo is named)\nLocation: Choose where to store the local folder\nCheck: “Create a git repository”\n\nIf you do not see this option, return to Step 1 to confirm Git is configured correctly\n\nCheck: “Open in new session” (not required but good practice)\nClick Create Project to create a new sub-directory, which will be all of these three things: a directory on your computer; a Git repository (not yet linked to GitHub, we do this next); an RStudio Project\n\n\n\nLink the project to GitHub\nNow you need to initiate the “upstream” or “tracking” relationship between Git and GitHub by adding the remote GitHub.\nIn RStudio, open the Shell: Tools &gt; Shell\nRun one of the following commands to set the remote origin (use the SSH for this course if you configured R with it, see previous tutorial):\n\nFor HTTPS:\ngit remote add origin https://github.com/your-username/myrepo.git\nFor SSH (use this on Workbench):\ngit remote add origin git@github.com:your-username/myrepo.git\n\n\n\nSync with the GitHub repository\n\nPull (e.g. download) the current contents (right now it will be just the README.md file) from GitHub:\ngit pull origin main\nSet the upstream and push your local files to GitHub:\ngit push -u origin main\n\nYour local Git project is now fully linked to the remote GitHub repository!"
+  },
+  {
+    "objectID": "setup/what.html",
+    "href": "setup/what.html",
+    "title": "Tools for R Programming and Collaboration",
+    "section": "",
+    "text": "This page explains the key tools you’ll use throughout the course — R, RStudio, Git, GitHub, and the shell — and provides an overview of how they work together to support programming, collaboration, and reproducibility."
+  },
+  {
+    "objectID": "setup/what.html#r-and-rstudio",
+    "href": "setup/what.html#r-and-rstudio",
+    "title": "Tools for R Programming and Collaboration",
+    "section": "R and RStudio",
+    "text": "R and RStudio\nR is an open-source programming. When people mention R, they might refer to the base R distribution or to its most popular IDE (Integrated Development Environment): RStudio. Most people do not use R in its bare distribution but through a IDE, which makes it easier to interact with R and write code. There are different IDEs that can be used with R, but the most popular is RStudio and in this course we will use it. RStudio is open-source, expandable, and provides many useful tools and enhancements over the base R environment."
+  },
+  {
+    "objectID": "setup/what.html#rstudio-workbench",
+    "href": "setup/what.html#rstudio-workbench",
+    "title": "Tools for R Programming and Collaboration",
+    "section": "RStudio Workbench",
+    "text": "RStudio Workbench\nWe will use “RStudio Workbench” throughout the course, which is the exact same thing as the regular R/RStudio but instead of being on your machine, it is online! In practice, rather than installing your own copy of R and RStudio, you can access R and RStudio remotely hosted on a server: the Social Sciences Computing Services hosts RStudio Workbench for us. To use it, you will open RStudio in your web browser. All the processing and computation is done on a remote server. This means that all of the software is pre-configured for you and the setup is minimal.\nThe downside is that you only have access to this server for the duration of the class. If you intend to use R and RStudio in future classes/research projects, you will need to install and configure everything on your own computer after the course is completed."
+  },
+  {
+    "objectID": "setup/what.html#git-and-github",
+    "href": "setup/what.html#git-and-github",
+    "title": "Tools for R Programming and Collaboration",
+    "section": "Git and GitHub",
+    "text": "Git and GitHub\nGit and GitHub are powerful tools for managing and sharing your work and code. They are often used together, but they are not the same thing: Git is a version control system, GitHub is a cloud-based hosting service that lets you manage your Git repositories.\nKeep reading to learn more about them, and see the book Happy Git and GitHub for the useR for further info.\n\nGit is a version control system\nGit is a version control system that tracks changes in a project over time so that there is always a comprehensive, structured record of that project. Each project is stored in a repository which contains all files that are part of the project (e.g., code scripts but also data files, reports, and source code).\nWhy using Git?\nIn this course (and in your own work), you will be writing lots of programs. Generally the first draft is not the final draft, be it a research paper or a computer script. We want a way to track our changes over time. Perhaps this is to make sure we have a record of what we’ve already done that doesn’t work, so we can avoid doing it again. Or maybe we want to share our code with collaborators who are working on a project with us. How can we do this?\nOne potential solution is to email copies of files back and forth as we make changes. But if we do this, we risk having lots of versions of files floating around. How do we know which is the most recent? What happens if someone edits a file and forgets to email it to us? How will we make sure all the changes are merged into the final version?\nOr perhaps instead we can do all of our work on a cloud-based storage solution such as Dropbox or Google Drive. This ensures changes are synchronized between computers. But they are not specifically designed to share code, and we won’t always know who made what changes to a file. And what happens if two people want to work on the same file at the same time? One person will have to wait for the other to finish before they can edit that file. Plus how will we track previous versions of the file? Dropbox and other cloud storage services have some version control solutions, but these are not comprehensive or only store versions for a limited time. Plus every time we save a new version of the program, the entire file has to be retained. On large projects, this will eat up storage space quickly.\nWe want a solution (Git!) that:\n\nKeeps old versions of files indefinitely. Since all these versions are stored, we can always go back and see who modified the file and what changes they made. Or if we make a mistake in the future that breaks the program, we can revert back to an older version to fix it.\nSince we know who modified each file, if we have questions in the future we can go to that person with our questions.\nWhen collaborating with multiple people on the same project, and when code is involved, we want any changes made by project members to be integrated to the most recent version. If I try to modify a file and don’t incorporate another member’s revisions, I need to be told there is a conflict so I can merge all the changes.\n\n\n\nGitHub is a hosting service\nGitHub is a cloud-based hosting service that hosts and lets you manage your Git repositories. See GitHub on Wikipedia for more.\nAlthough Git and GitHub are often used together, you do not need GitHub to use Git: * Git can be used locally by you on a single computer to track changes in a project. You do not need to be connected to the internet to use Git, and you do not need GitHub to use Git. But GitHub allows you to save your repositories online and share your work with a larger audience (you can host public or private repositories there) * You could put your Git repositories somewhere else online: GitHub is not the only option to host and mange Git repositories, but its the most popular one. Alternatives include Bitbucket, TaraVault, GitLab, etc.\nProfessionally, you should know how to use Git and GitHub to manage projects and share code. This is why we will use Git and GitHub to host our course site, share code, and distribute/collect assignments."
+  },
+  {
+    "objectID": "setup/what.html#shell",
+    "href": "setup/what.html#shell",
+    "title": "Tools for R Programming and Collaboration",
+    "section": "Shell",
+    "text": "Shell\nThe shell (or bash or terminal) is a program on your computer whose job is to run other programs, rather than do calculations itself. The shell is a very old program and in a time before the mouse it was the only way to interact with a computer. It is still extremely popular among programmers because it is fast and powerful at automating repetitive tasks.\nHere we use the shell for a more modest goal: to navigate the file system, confirm the present working directory, and cement the git to GitHub connection.\n\nStarting the shell\nIn RStudio, go to Tools &gt; Shell. This should take you to the shell (on Mac: Terminal, on Windows: GitBash or equivalent). It should be a simple blinking cursor, waiting for input (white text on black background, or black text on white background)\n\n\nUsing the shell\nThe most basic commands are listed below:\n\npwd (print working directory). Shows the folder (or directory) you are currently operating in. This is not necessarily the same as the R working directory you get from getwd().\nls (list all files). Shows all files in the current working directory. This is equivalent to looking at the files in your Finder/Explorer/File Manager. Use ls -a to also list hidden files, such as .Rhistory and .git.\ncd (change directory). Allows you to navigate through your folders by changing the shell’s working directory. You can navigate like so:\n\ngo to subfolder foo of current working directory: cd foo\ngo to parent folder of current working directory: cd ..\ngo to home folder: cd ~ or simply cd\ngo to folder using absolute path, works regardless of your current working directory: cd /home/my_username/Desktop. Windows uses a slightly different syntax with the slashes between the folder names reversed, \\, e.g. cd C:\\Users\\MY_USERNAME\\Desktop.\n\nTip 1: Dragging and dropping a file or folder into the terminal window will paste the absolute path into the window.\nTip 2: Use the tab key to autocomplete unambiguous folder and file names. Hit tab twice to see all ambiguous options.\n\n\nUse arrow-up and arrow-down to repeat previous commands. Or search for previous commands with CTRL+r.\ngit status is the most used git command and informs you of your current branch, any changes or untracked files, and whether you are in sync with your remotes.\ngit remote -v lists all remotes. Very useful for making sure git knows about your remote and that the remote address is correct.\ngit remote add origin GITHUB_URL adds the remote GITHUB_URL with nickname origin.\ngit remote set-url origin GITHUB_URL changes the remote url of origin to GITHUB_URL. This way you can fix typos in the remote url.\n\n\n\nA note for Windows users\nOn Windows, the program that runs the shell is called Command Prompt or cmd.exe.\nUnfortunately, the default Windows shell does not support all the commands that other operating systems do. This is where GitBash comes in handy: it installs a light version of a shell that does support all the above commands. When you access the shell through RStudio, RStudio actually tries to open GitBash if it can find it, but it will open the default Windows Command Prompt if GitBash is not found.\nIf you get an error message such as `pwd is not recognized as an internal or external command, operable program or batch file.` from any of the previous commands, that means that RStudio could not find GitBash. The most likely cause of this is that you did not install git using the recommended method so try re-installing git.\nIf you followed the installation instructions and still cannot run GitBash, you should find it under “Menu &gt; Git &gt; Git Bash”. If you’re still confused, go back and watch the first three minutes of this video tutorial on installing Git for Windows."
+  }
+]

@@ -1,0 +1,113 @@
+---
+title: "Syllabus"
+format: html
+engine: knitr
+execute:
+  echo: false
+---
+
+*Last updated:* `r format(Sys.Date(), "%B %d, %Y")`
+
+## Course Description
+
+For Course Information (Emails, Office Hours, etc.) see [Home](index.qmd).
+
+This course introduces core programming skills using social science data, with an emphasis on R and version control. Topics include coding fundamentals (e.g, data structures, control flow, etc.), data transformation, visualization, and exploratory analysis.
+
+In class, students learn through slides, live coding, and hands-on exercises. Students will acquire foundational programming skills and the ability to adapt and expand them when faced with new questions, methods, and data. Open to all backgrounds, the course is ideal for those seeking an interactive, practice-based introduction to programming.
+
+## Learning Objectives
+
+By the end of the course, students will be able to:
+
+- Construct and execute basic programs in R using programming techniques and tidyverse packages
+- Search for and use external libraries to enhance R's base functions
+- Apply Git and GitHub workflows for version control within RStudio
+- Create and edit R Markdown documents to produce reproducible reports and presentations
+- Import data from various sources
+- Clean raw and transform raw data
+- Visualize and interpret data using descriptive methods
+
+## Materials and Schedule
+
+### Materials
+
+The main textbook for this course is the 2nd edition of [R for Data Science](https://r4ds.hadley.nz/) by Garrett Grolemund and Hadley Wickham. The book is freely accessible online.
+
+All course materials and assignments will be available on the course website. No prior programming experience is required to take this course.
+
+### Schedule and Content
+
+* [Course Schedule](https://docs.google.com/spreadsheets/d/1CmuUXTp0uvhAVk3mmOQMEfb8BjdR-I36/edit?usp=sharing&ouid=112534119211880791899&rtpof=true&sd=true)
+* [Course Content](lectures/index.qmd)
+
+Schedule and Content might be subject to change, but if changes occur students will be promptly informed.
+
+## Assessment
+
+Student learning in this course will be assessed primarily through take-home assignments and short in-class quizzes (one per lecture). Assignment 1 is evaluated on a Pass/Fail basis. The other assignments are evaluated using a point system. There will be a total of 10 in-class quizzes, but only the 8 highest scores will count toward your final grade (i.e., the lowest 2 scores will be dropped).
+
+### Breakdown
+
+| What                               | Points | Grading Method |
+|------------------------------------|--------|----------------|
+| Assignment 1                       | 15     | Pass/Fail      |
+| Assignment 2                       | 20     | Points-Based   |
+| Assignment 3                       | 20     | Points-Based   |
+| In-Class Quizzes (8 x 5 points)    | 40     | Points-Based   |
+| Attendance and Participation       | 5      | Points-Based   |
+| **Total**                          | **100**|                |
+
+### Grading Scheme
+
+Your final grade is the cumulative score of all submitted work throughout the course. We use the following grading scheme to determine your final grade: A (95-100), A- (90-94), B+ (87-89), B (83-86), B- (80-82), C+ (77-79), C (73-76), C- (70-72). Grades below 70 are dealt on a case-by-case basis.
+
+### Deadlines and Late Submission
+
+All assignments are due by 11:59 PM Chicago time. Submit on Canvas the link to your GitHub repository. Each assignment includes a 24-hour grace period during which late submissions will not incur a penalty. After this period, a penalty of one point will be deducted for every additional 24-hour period the assignment is late. Example: If an assignment receives a grade of 20 points and you submit it one day after the grace period ends, your final score will be 19 points.
+
+### Missed or Incomplete Assignments
+
+We expect students to submit all assignments in full and on time.
+
+* **Missed Assignments:** Assignments that are not submitted will receive a grade of 0% and will impact your final grade. If you miss an assignment due to exceptional circumstances (e.g., illness or emergency), please contact me as soon as possible, ideally before the deadline. Extensions may be granted on a case-by-case basis. Note that starting an assignment late or having a busy week does not qualify as an exceptional circumstance.
+
+* **Incomplete Assignments:** If more than 25% of an assignment is missing, it will not be graded and will be treated as a missed assignment. If less than 25% is missing, the assignment will be graded, with a penalty for each incomplete element.
+
+### Rubric
+
+Your assignments will be evaluated using the rubric below. In addition, each assignment will have specific guidelines that further explain our expectations. These will be posted in the assignment itself.
+
+Your assignment will score *Excellent*, *Very Good*, *Good*, *Needs Improvement*, or *Not Sufficient* on the following five categories:
+
+- **Coding Style**: pertains to stylistic issues, not to whether your code works. It evaluates how well the code follows the [R code conventions](http://adv-r.had.co.nz/Style.html) and how consistent it is. Examples include clarity of the code to read for a person who has not written it, use of comments (code should never be over-commented, nor under-commented), proper variables names, understandable/logical code organization, etc. See [here](https://www.smashingmagazine.com/2012/10/why-coding-style-matters/) for more and why this matters.
+- **Coding Strategy**: the logic of your code (how it solves the problem); its correctness; sophistication (depth of the solution); use of class tools/techniques (e.g., conditionals, functions, tidyverse); and its efficiency in minimizing repetitions.
+- **Presentation**: for assignments involving data visualization or presentation (tables, graphs, descriptive stats, data analyses), this evaluates the effectiveness of both the graphic execution and the conceptual choices in presenting data. In all assignments, presentation also assesses your proficiency with Markdown syntax.
+- **Achievement**: evaluates your understanding of the concepts/tools required to complete the assignment (how well you master them) and your ability to go beyond the basics; it praises extraordinary work produced in the assignment.
+- **Reproducibility**: how well the assignment is in compliance with the course convention for reproducibility in this course (e.g., whether we can access your repo, whether all required elements are submitted, your use of Markdown and RMarkdown, of commit messages, README, etc.)
+
+To achieve *Excellent* in a given category, all requirements described above must be satisfied. For the other categories, it might be that only one, or more than one, requirement is missing. For example, you could achieve *Very Good* on “Coding Style” if you are following all coding conventions, but the code could benefit from more refinement or is inconsistent.
+
+Roughly “Excellent” translates into A or A+, “Very Good” into A-, “Good” is B or B+, “Needs Improvement” is C, and “Not Sufficient” is below C.
+
+
+## Course Policies
+
+### Attendance Policy
+
+Regular attendance is expected. Please inform the instructor in advance if you must miss a class. According to the Collegiate Scholars Program Policies, a maximum of two class sections can be missed without penalty. Class starts at 1 PM promptly. If you are late more than 3 times you will not receive credits for attendance.
+
+### Plagiarism and Academic Integrity
+
+Each student in this course is expected to abide by the [University of Chicago Code of Academic Integrity](https://college.uchicago.edu/student-services/academic-integrity-student-conduct). Under the provisions of the Code, anyone who gives or receives unauthorized assistance in the preparation of work at home or during tests in class will be subject to disciplinary action. A student’s name on any piece of work is our assurance that they have neither given nor received any unauthorized help in its preparation.
+
+In this course, collaboration is encouraged, but plagiarism is prohibited. Students may assist each other on take-home assignments by answering questions and explaining various concepts. However, one student should not allow another student to copy their work directly. it is imperative that students learn how to write code, debug, etc. for themselves. That is, students need to understand, write, and submit their own work. We will run random checks, and if we detect plagiarized code, the whole assignment will be graded as 0.
+
+### Accessibility and Support
+
+The University of Chicago is committed to diversity and rigorous inquiry from multiple perspectives. Services and reasonable accommodations are available to persons with temporary and permanent disabilities, to students with DACA or undocumented status, to students facing mental health or other personal challenges, and to students with other kinds of learning challenges. Please, contact me if there are circumstances affecting your ability to participate in class.
+
+If you have, or think you may have a disability, please contact Student Disability Services for a confidential discussion and for requesting accommodation: SDS. Once SDS approves your accommodation, it will be emailed to both you and me. Please, follow up with me to discuss the necessary logistics of your accommodations. If you need immediate accommodation, please speak with me after class or send an email message to me and SDS.
+
+Some resources that might be of use include: [Office of Student Disability Services](https://disabilities.uchicago.edu/), [UChicago Student Wellness](https://wellness.uchicago.edu/), [Center for Identity and Inclusion](https://inclusion.uchicago.edu/).
+

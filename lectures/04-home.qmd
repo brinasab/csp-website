@@ -1,0 +1,29 @@
+---
+title: "Lecture 4: Intro to dplyr, Pipes"
+date: 2025-07-08
+summary: "Wrangling Data with dplyr, Using R Pipes"
+url_slides: 04-slides.qmd
+url_code: csp-materials/dplyr-pipes
+page-layout: full
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Info and Materials
+
+* **Date**: {{< meta date >}}
+* **Topics**: {{< meta summary >}}
+* **Slides**: [View Slides]({{< meta url_slides >}})
+* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+
+
+## Learning Objectives
+
+
+## Before Class
+
+
+## Readings

@@ -225,16 +225,15 @@ Sabrina Nardin, Summer 2025
 SUMMER 25 LECTURE 2 OUTLINE 
 
 Quiz and Attendance
-1:00 - 1:10
+1:00 - 1:15
 
 1. Motivation 
-1:15 - 1:20 Slides intro
+1:15 - 1:20 Slides intro + Zach examples
 
 2. Introduction to Git & GitHub 
 1:20 - 1:30 Slides
 1:30 - 2:00 Tutorial using Git & GitHub in RStudio
-2:00 - 2:05 More questions or extra time for tutorial
-2:05 - 2:10 Wrap up and more questions 
+2:00 - 2:10 Wrap up and more questions 
 
 3. Deeper Dive into Git & GitHub
 2:10 - 2:15 Short selected slides form this sections
@@ -267,7 +266,7 @@ Unpack this question and define terms, then reason it out loud with
 </section>
 <section id="two-different-approaches" class="slide level2 center">
 <h2>Two Different Approaches</h2>
-<p><strong>TASK:</strong> Write a report on the relationship between ice cream consumption and crime in Chicago.</p>
+<p><strong>TASK:</strong> Write a report on the relationship between income and crime rates in Chicago.</p>
 <p><strong>APPROACH:</strong> Jane and Sally approach this task differently…</p>
 <div class="fragment">
 <div class="columns">
@@ -298,18 +297,18 @@ Unpack this question and define terms, then reason it out loud with
 </div></div>
 </div>
 </section>
-<section id="advantages-of-a-programmatic-workflow" class="slide level2 center">
-<h2>Advantages of a Programmatic Workflow</h2>
-<h3 id="automation">Automation</h3>
+<section id="two-main-advantages-of-a-programmatic-workflow" class="slide level2 center">
+<h2>Two Main Advantages of a Programmatic Workflow</h2>
+<h3 id="automation">1. Automation</h3>
 <ul>
-<li>Uses scripts or programs to perform tasks systematically<br>
+<li>Uses programs (e.g., R) to perform tasks systematically<br>
 </li>
 <li>Reduces manual effort and human error<br>
 </li>
 <li>Enables fast and consistent repetition of analyses</li>
 </ul>
 <div class="fragment">
-<h3 id="reproducibility">Reproducibility</h3>
+<h3 id="reproducibility">2. Reproducibility</h3>
 <ul>
 <li>Scientific research should share both data and code used for analysis<br>
 </li>
@@ -324,8 +323,8 @@ Unpack this question and define terms, then reason it out loud with
 <h1>2. Introduction to Git &amp; GitHub</h1>
 
 </section>
-<section id="often-used-together-but-different-tools" class="slide level2 center">
-<h2>Often used together, but different tools</h2>
+<section id="often-used-together-but-they-are-different-tools" class="slide level2 center">
+<h2>Often used together, but they are different tools</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><a href="https://git-scm.com"><img data-src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" width="80"></a></p>
@@ -334,8 +333,8 @@ Unpack this question and define terms, then reason it out loud with
 <li>Version control software<br>
 </li>
 <li>Runs <strong>locally</strong> on your computer</li>
-<li>Tracks changes in a folder called <strong>repository</strong> /n or <strong>repo</strong></li>
-<li>You work in this folder (your <strong>local repo</strong>)</li>
+<li>Tracks changes in a folder called <strong>repository</strong> or <strong>repo</strong></li>
+<li>You work in that folder (your <strong>local repo</strong>)</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><a href="https://github.com"><img data-src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="80"></a></p>
@@ -355,10 +354,11 @@ Unpack this question and define terms, then reason it out loud with
 <section id="what-is-version-control" class="slide level2 center">
 <h2>What is Version Control?</h2>
 <h4 id="version-control">Version Control</h4>
-<p>Is a system that <em>automatically</em> records every change you make to your files in a folder (what changed, who made it, and when) and lets you undo mistakes or restore previous versions of your files.</p>
+<p>Is a system that records every change you make to your files in a folder (what changed, who made it, and when) and lets you undo mistakes or restore previous versions of your files.</p>
+<p><strong>Git</strong> is a software that does version control.</p>
 <p><br></p>
 <h4 id="without-version-control">Without Version Control</h4>
-<p>Tracking changes <em>manually</em> can be messy and hard to manage, like:</p>
+<p>You have to track changes <em>manually</em> which be messy and hard to manage, like:</p>
 <ul>
 <li><code>analysis-1.R</code></li>
 <li><code>analysis-2.R</code></li>
@@ -368,23 +368,25 @@ Unpack this question and define terms, then reason it out loud with
 <p><br></p>
 </section>
 <section id="how-version-control-works" class="slide level2 center">
-<h2>How Version Control works</h2>
+<h2>How Version Control Works</h2>
 <ul>
-<li>You choose a folder on your computer to track: this becomes your <strong>local repository or repo</strong></li>
-<li>A Version Control tool (like <strong>Git</strong>) records and saves changes to the files in that folder</li>
+<li>You choose a folder on your computer: this becomes your <strong>local repository</strong> or local repo</li>
+<li>A Version Control tool, like <strong>Git</strong>, records and saves changes you make to the files in that folder</li>
 <li>Every change is saved with a time stamp, author info, and a message (that you type in)</li>
 </ul>
-<p>This system lets you revisit your project’s history and restore earlier versions of a file if needed!</p>
+<p>You can revisit your project’s history and restore earlier versions of a file if needed!</p>
 <p><br></p>
 <div class="fragment">
-<h3 id="git-github">Git + GitHub</h3>
-<p>Git does this version control work locally, while GitHub provides an online storage/backup and facilitates collaboration with others</p>
-<p>More <a href="https://computing-soc-sci.netlify.app/faq/what-are-git-github/">here</a></p>
+<p><strong>We use:</strong></p>
+<ul>
+<li>Git (your version control software, operates locally on your machine) <em>and</em></li>
+<li>GitHub (your online storage/backup)</li>
+</ul>
 </div>
 <p><br></p>
 </section>
-<section id="git-github-comparison-with-rstudio-focus" class="slide level2 center">
-<h2>Git &amp; GitHub Comparison with RStudio Focus</h2>
+<section id="git-github-comparison" class="slide level2 center">
+<h2>Git &amp; GitHub Comparison</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 19%">
@@ -411,31 +413,52 @@ Unpack this question and define terms, then reason it out loud with
 </tr>
 <tr class="odd">
 <td>What it does</td>
-<td>Tracks and saves changes in your <strong>local repo</strong></td>
-<td>Hosts a remote copy of your repo for backup and sharing</td>
+<td>Tracks and saves changes in your local repo</td>
+<td>Hosts a remote copy of your local repo for backup and sharing with others</td>
 </tr>
 <tr class="even">
 <td>Collaboration</td>
 <td>Not built-in</td>
-<td>Supports pull requests, issues, and code review</td>
+<td>Yes, supports pull requests, issues, and code review</td>
 </tr>
 <tr class="odd">
 <td>How to use with RStudio</td>
-<td>Git pane for staging, committing, and pushing</td>
+<td>Git panel for staging, committing, and pushing</td>
 <td>Connect to GitHub via RStudio’s project setup or terminal</td>
 </tr>
 <tr class="even">
 <td>Repo terminology</td>
 <td>Your working folder is a <strong>local repo</strong></td>
-<td>The online copy is a <strong>remote repo</strong>, usually called <strong><code>origin</code></strong></td>
+<td>The online copy is a <strong>remote repo</strong></td>
 </tr>
 </tbody>
 </table>
-<p>Note we use <strong>Git and GitHub through RStudio</strong> only. They are also used with other tools like VS Code, GitHub Desktop, or the terminal.</p>
+<p>Note: we use <strong>Git and GitHub via RStudio</strong> only. They are also used with other tools like GitHub Desktop, terminal, etc.</p>
 </section>
-<section id="beginner-friendly-git-github-workflow" class="slide level2 center">
-<h2>Beginner-Friendly Git + GitHub Workflow</h2>
-<h3 id="in-your-r-studio-follow-these-steps-in-order">In your R Studio, follow these steps in order:</h3>
+<section id="okay-that-was-a-lot-of-info.-lets-try-it-out-with-some-practice" class="slide level2 center">
+<h2>Okay, that was a lot of info. Let’s try it out with some practice!</h2>
+<h4 id="we-practice-in-two-steps">We practice in two steps:</h4>
+<h4 id="configure-setup">1. Configure Setup</h4>
+<h4 id="use-git-and-github-in-rstudio-tutorial">2. Use Git and GitHub in RStudio Tutorial</h4>
+</section>
+<section id="step-1-configure-your-setup" class="slide level2 center">
+<h2>💻 Step 1: Configure your Setup</h2>
+<h3 id="complete-the-rstudio-workbench-setup">Complete the RStudio Workbench Setup:</h3>
+<h3 id="httpsbrinasab.github.iocsp-websitesetupsetup-workbench.html"><a href="https://brinasab.github.io/csp-website/setup/setup-workbench.html" class="uri">https://brinasab.github.io/csp-website/setup/setup-workbench.html</a></h3>
+</section>
+<section id="step-2-use-git-and-github-in-rstudio-tutorial" class="slide level2 center">
+<h2>💻 Step 2: Use Git and GitHub in RStudio Tutorial</h2>
+<h3 id="once-step-1-is-done-complete-this-tutorial">Once step 1 is done, complete this tutorial:</h3>
+<h3 id="httpsbrinasab.github.iocsp-websitesetupsetup-test.html"><a href="https://brinasab.github.io/csp-website/setup/setup-test.html" class="uri">https://brinasab.github.io/csp-website/setup/setup-test.html</a></h3>
+<h4 id="instructions">Instructions:</h4>
+<ul>
+<li><p>Work in pairs: one person (the most experienced with programming) read the instructions and guide the other, who executes the commands.</p></li>
+<li><p>Keep track of questions as you go and post them in <a href="https://docs.google.com/document/d/1iQacRXqGLpke1D6qm_-kBkHBtrZy7SJYtRzFR88-Y_I/edit?usp=sharing">this Google doc</a></p></li>
+<li><p>Raise your hand if you need help!</p></li>
+</ul>
+</section>
+<section id="recap-beginner-friendly-git-github-workflow" class="slide level2 center">
+<h2>Recap: Beginner-Friendly Git &amp; GitHub Workflow</h2>
 <ol type="1">
 <li><p><strong>Make &amp; Save Changes Locally</strong><br>
 <span class="fragment">Edit your files locally (e.g., in RStudio or Workbench) and save them.</span></p></li>
@@ -457,26 +480,15 @@ Unpack this question and define terms, then reason it out loud with
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>You will complete this workflow for homework assigments!</p>
+<p>You will complete this workflow for all homework assignments!</p>
 </div>
 </div>
 </div>
-<p><br></p>
 <!-- IN CLASS
 Most of the time you'll use this or similar sequences:  
 **`add` → `commit` → `push` → `pull`**
 But there is more to Git and GitHub. You'll leave this course ready to use the basics of Git confidently, and learn more when needed!
 -->
-</section>
-<section id="practice-using-git-and-github-in-rstudio" class="slide level2 center">
-<h2>💻 Practice using Git and GitHub in RStudio</h2>
-<p><strong>Complete the <a href="">Using Git with RStudio</a> tutorial from our website</strong></p>
-<p>After you complete the tutorial (and everything works as expected), accept Homework 1 from the course site and follow the instructions for the GitHub workflow. Don’t forget to send us your GitHub username and accept the invite to our GitHub organization!</p>
-</section></section>
-<section>
-<section id="deeper-dive-into-git-github" class="title-slide slide level1 center middle">
-<h1>3. Deeper Dive into Git &amp; GitHub</h1>
-<p>Come back here once you are familiar with the basic workflow!</p>
 </section>
 <section id="git-reminders" class="slide level2 center">
 <h2>Git Reminders</h2>
@@ -485,11 +497,21 @@ But there is more to Git and GitHub. You'll leave this course ready to use the b
 Think of commits as snapshots of your work. Save, stage, and commit regularly during your workflow.</p></li>
 <li><p><strong>Write clear, useful commit messages</strong><br>
 Keep messages concise but descriptive. They should explain what changed and why. Many tips online for “commit message best practices.”</p></li>
-<li><p><strong>Push regularly, but not necessarily every time you commit</strong><br>
-Some people push every time they commit, while others push multiple commits at once. Experiment and find what works best for you.</p></li>
-<li><p><strong>Use the Git interface that works for you</strong><br>
-In this course, we’ll use RStudio’s Git. Alternatives include GitHub Desktop and the command line.</p></li>
+<li><p><strong>Push regularly, but not necessarily every time you commit</strong> Some people push every time they commit, while others push multiple commits at once. Experiment and find what works best for you.</p></li>
+<li><p><strong>Work locally, and push on GitHub</strong><br>
+Do not do the other way around (e.g., do not modify your GitHub repository directly; work on your local copy, and push changes to GitHub).</p></li>
 </ul>
+</section>
+<section id="accept-homework-1" class="slide level2 center">
+<h2>💻 Accept Homework 1</h2>
+<p>Accept Homework 1 from the course site and follow the instructions for the GitHub workflow.</p>
+<p>Note: this will only work if we have your GitHub username and you accepted the invite to our GitHub organization (was sent to the email linked to your github account)!</p>
+</section></section>
+<section>
+<section id="deeper-dive-into-git-github" class="title-slide slide level1 center middle">
+<h1>3. Deeper Dive into Git &amp; GitHub</h1>
+<p>Come back here once you are familiar with the basic workflow!</p>
+<p>These slides won’t be included in the in-class quiz, but they might be handy if you run into problems in homework assigments.</p>
 </section>
 <section id="what-to-commit-not-to-commit" class="slide level2 center">
 <h2>What to Commit / Not to Commit</h2>
@@ -629,7 +651,7 @@ Want to practice? Complete the ["Using Git with RStudio"](https://computing-soc-
 <li>If you haven’t completed these yet, please do so ASAP, as you won’t be able to access and complete Homework 1 otherwise:
 <ul>
 <li>Register a GitHub account and submit your username (see Lecture 1 on our website)</li>
-<li>Setup your computer (see Lecture 2 on our website)</li>
+<li>Setup your computer (see Lecture 2 on our website and these slides)</li>
 </ul></li>
 </ul>
 </section>

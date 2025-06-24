@@ -158,7 +158,7 @@
     "href": "lectures/02-slides.html#two-different-approaches",
     "title": "Introduction to R: Lecture 2",
     "section": "Two Different Approaches",
-    "text": "Two Different Approaches\nTASK: Write a report on the relationship between ice cream consumption and crime in Chicago.\nAPPROACH: Jane and Sally approach this task differently…\n\n\n\nJane: GUI Workflow\n\nSearches for data files online\n\nCleans the data using Excel\n\nAnalyzes the data in Excel (or similar)\n\nWrites her report in Google Docs\nSaves different versions of her work manually\n\n\nSally: Programmatic Workflow\n\nSearches for data files online\n\nCleans the data using R\n\nAnalyzes the data in R\n\nWrites her report in R Markdown\nTracks changes automatically using Git"
+    "text": "Two Different Approaches\nTASK: Write a report on the relationship between income and crime rates in Chicago.\nAPPROACH: Jane and Sally approach this task differently…\n\n\n\nJane: GUI Workflow\n\nSearches for data files online\n\nCleans the data using Excel\n\nAnalyzes the data in Excel (or similar)\n\nWrites her report in Google Docs\nSaves different versions of her work manually\n\n\nSally: Programmatic Workflow\n\nSearches for data files online\n\nCleans the data using R\n\nAnalyzes the data in R\n\nWrites her report in R Markdown\nTracks changes automatically using Git"
   },
   {
     "objectID": "lectures/02-slides.html#advantages-of-a-programmatic-workflow",
@@ -179,14 +179,14 @@
     "href": "lectures/02-slides.html#what-is-version-control",
     "title": "Introduction to R: Lecture 2",
     "section": "What is Version Control?",
-    "text": "What is Version Control?\nVersion Control\nIs a system that automatically records every change you make to your files in a folder (what changed, who made it, and when) and lets you undo mistakes or restore previous versions of your files.\n\nWithout Version Control\nTracking changes manually can be messy and hard to manage, like:\n\nanalysis-1.R\nanalysis-2.R\nanalysis-final.R\nanalysis-final-FINAL.R"
+    "text": "What is Version Control?\nVersion Control\nIs a system that records every change you make to your files in a folder (what changed, who made it, and when) and lets you undo mistakes or restore previous versions of your files.\nGit is a software that does version control.\n\nWithout Version Control\nYou have to track changes manually which be messy and hard to manage, like:\n\nanalysis-1.R\nanalysis-2.R\nanalysis-final.R\nanalysis-final-FINAL.R"
   },
   {
     "objectID": "lectures/02-slides.html#how-version-control-works",
     "href": "lectures/02-slides.html#how-version-control-works",
     "title": "Introduction to R: Lecture 2",
-    "section": "How Version Control works",
-    "text": "How Version Control works\n\nYou choose a folder on your computer to track: this becomes your local repository or repo\nA Version Control tool (like Git) records and saves changes to the files in that folder\nEvery change is saved with a time stamp, author info, and a message (that you type in)\n\nThis system lets you revisit your project’s history and restore earlier versions of a file if needed!\n\n\nGit + GitHub\nGit does this version control work locally, while GitHub provides an online storage/backup and facilitates collaboration with others\nMore here"
+    "section": "How Version Control Works",
+    "text": "How Version Control Works\n\nYou choose a folder on your computer: this becomes your local repository or local repo\nA Version Control tool, like Git, records and saves changes you make to the files in that folder\nEvery change is saved with a time stamp, author info, and a message (that you type in)\n\nYou can revisit your project’s history and restore earlier versions of a file if needed!\n\n\nWe use:\n\nGit (your version control software, operates locally on your machine) and\nGitHub (your online storage/backup)"
   },
   {
     "objectID": "lectures/02-slides.html#git-github-comparison-with-rstudio-focus",
@@ -200,7 +200,7 @@
     "href": "lectures/02-slides.html#beginner-friendly-git-github-workflow",
     "title": "Introduction to R: Lecture 2",
     "section": "Beginner-Friendly Git + GitHub Workflow",
-    "text": "Beginner-Friendly Git + GitHub Workflow\nIn your R Studio, follow these steps in order:\n\nMake & Save Changes Locally\nEdit your files locally (e.g., in RStudio or Workbench) and save them.\nPull from GitHub\nRefresh your local copy to get the latest changes—helps avoid conflicts when collaborating.\nStage Changes\nSelect which files you want Git to track in the next snapshot.\nCommit with a Message\nSave a snapshot of your staged changes in your local Git repo. Add a short, meaningful message.\nPush to GitHub\nUpload your committed changes to the online repository.\n\n\n\n\n\n\n\nImportant\n\n\nYou will complete this workflow for homework assigments!"
+    "text": "Beginner-Friendly Git + GitHub Workflow\nTo recap…\n\nMake & Save Changes Locally\nEdit your files locally (e.g., in RStudio or Workbench) and save them.\nPull from GitHub\nRefresh your local copy to get the latest changes—helps avoid conflicts when collaborating.\nStage Changes\nSelect which files you want Git to track in the next snapshot.\nCommit with a Message\nSave a snapshot of your staged changes in your local Git repo. Add a short, meaningful message.\nPush to GitHub\nUpload your committed changes to the online repository.\n\n\n\n\n\n\n\nImportant\n\n\nYou will complete this workflow for all homework assignments!"
   },
   {
     "objectID": "lectures/02-slides.html#practice-using-git-and-github-in-rstudio",
@@ -214,7 +214,7 @@
     "href": "lectures/02-slides.html#git-reminders",
     "title": "Introduction to R: Lecture 2",
     "section": "Git Reminders",
-    "text": "Git Reminders\n\nStage and commit often\nThink of commits as snapshots of your work. Save, stage, and commit regularly during your workflow.\nWrite clear, useful commit messages\nKeep messages concise but descriptive. They should explain what changed and why. Many tips online for “commit message best practices.”\nPush regularly, but not necessarily every time you commit\nSome people push every time they commit, while others push multiple commits at once. Experiment and find what works best for you.\nUse the Git interface that works for you\nIn this course, we’ll use RStudio’s Git. Alternatives include GitHub Desktop and the command line."
+    "text": "Git Reminders\n\nStage and commit often\nThink of commits as snapshots of your work. Save, stage, and commit regularly during your workflow.\nWrite clear, useful commit messages\nKeep messages concise but descriptive. They should explain what changed and why. Many tips online for “commit message best practices.”\nPush regularly, but not necessarily every time you commit Some people push every time they commit, while others push multiple commits at once. Experiment and find what works best for you.\nWork locally, and push on GitHub\nDo not do the other way around (e.g., do not modify your GitHub repository directly; work on your local copy, and push changes to GitHub)."
   },
   {
     "objectID": "lectures/02-slides.html#what-to-commit-not-to-commit",
@@ -277,7 +277,7 @@
     "href": "lectures/02-slides.html#reminders",
     "title": "Introduction to R: Lecture 2",
     "section": "Reminders",
-    "text": "Reminders\n\nHomework 1 is now open and due next week. Check the Course Schedule on our website for the exact due date.\nIf you haven’t completed these yet, please do so ASAP, as you won’t be able to access and complete Homework 1 otherwise:\n\nRegister a GitHub account and submit your username (see Lecture 1 on our website)\nSetup your computer (see Lecture 2 on our website)"
+    "text": "Reminders\n\nHomework 1 is now open and due next week. Check the Course Schedule on our website for the exact due date.\nIf you haven’t completed these yet, please do so ASAP, as you won’t be able to access and complete Homework 1 otherwise:\n\nRegister a GitHub account and submit your username (see Lecture 1 on our website)\nSetup your computer (see Lecture 2 on our website and these slides)"
   },
   {
     "objectID": "lectures/02-slides.html#to-print-these-slides-as-pdf",
@@ -1027,5 +1027,75 @@
     "title": "Tools for R Programming and Collaboration",
     "section": "Shell",
     "text": "Shell\nThe shell (or bash or terminal) is a program on your computer whose job is to run other programs, rather than do calculations itself. The shell is a very old program and in a time before the mouse it was the only way to interact with a computer. It is still extremely popular among programmers because it is fast and powerful at automating repetitive tasks.\nHere we use the shell for a more modest goal: to navigate the file system, confirm the present working directory, and cement the git to GitHub connection.\n\nStarting the shell\nIn RStudio, go to Tools &gt; Shell. This should take you to the shell (on Mac: Terminal, on Windows: GitBash or equivalent). It should be a simple blinking cursor, waiting for input (white text on black background, or black text on white background)\n\n\nUsing the shell\nThe most basic commands are listed below:\n\npwd (print working directory). Shows the folder (or directory) you are currently operating in. This is not necessarily the same as the R working directory you get from getwd().\nls (list all files). Shows all files in the current working directory. This is equivalent to looking at the files in your Finder/Explorer/File Manager. Use ls -a to also list hidden files, such as .Rhistory and .git.\ncd (change directory). Allows you to navigate through your folders by changing the shell’s working directory. You can navigate like so:\n\ngo to subfolder foo of current working directory: cd foo\ngo to parent folder of current working directory: cd ..\ngo to home folder: cd ~ or simply cd\ngo to folder using absolute path, works regardless of your current working directory: cd /home/my_username/Desktop. Windows uses a slightly different syntax with the slashes between the folder names reversed, \\, e.g. cd C:\\Users\\MY_USERNAME\\Desktop.\n\nTip 1: Dragging and dropping a file or folder into the terminal window will paste the absolute path into the window.\nTip 2: Use the tab key to autocomplete unambiguous folder and file names. Hit tab twice to see all ambiguous options.\n\n\nUse arrow-up and arrow-down to repeat previous commands. Or search for previous commands with CTRL+r.\ngit status is the most used git command and informs you of your current branch, any changes or untracked files, and whether you are in sync with your remotes.\ngit remote -v lists all remotes. Very useful for making sure git knows about your remote and that the remote address is correct.\ngit remote add origin GITHUB_URL adds the remote GITHUB_URL with nickname origin.\ngit remote set-url origin GITHUB_URL changes the remote url of origin to GITHUB_URL. This way you can fix typos in the remote url.\n\n\n\nA note for Windows users\nOn Windows, the program that runs the shell is called Command Prompt or cmd.exe.\nUnfortunately, the default Windows shell does not support all the commands that other operating systems do. This is where GitBash comes in handy: it installs a light version of a shell that does support all the above commands. When you access the shell through RStudio, RStudio actually tries to open GitBash if it can find it, but it will open the default Windows Command Prompt if GitBash is not found.\nIf you get an error message such as `pwd is not recognized as an internal or external command, operable program or batch file.` from any of the previous commands, that means that RStudio could not find GitBash. The most likely cause of this is that you did not install git using the recommended method so try re-installing git.\nIf you followed the installation instructions and still cannot run GitBash, you should find it under “Menu &gt; Git &gt; Git Bash”. If you’re still confused, go back and watch the first three minutes of this video tutorial on installing Git for Windows."
+  },
+  {
+    "objectID": "lectures/02-slides.html#step-1-configure-your-setup",
+    "href": "lectures/02-slides.html#step-1-configure-your-setup",
+    "title": "Introduction to R: Lecture 2",
+    "section": "💻 Step 1: Configure your Setup",
+    "text": "💻 Step 1: Configure your Setup\nComplete the RStudio Workbench Setup:\nhttps://brinasab.github.io/csp-website/setup/setup-workbench.html"
+  },
+  {
+    "objectID": "lectures/02-slides.html#step-2-practice-using-git-and-github-in-rstudio",
+    "href": "lectures/02-slides.html#step-2-practice-using-git-and-github-in-rstudio",
+    "title": "Introduction to R: Lecture 2",
+    "section": "💻 Step 2: Practice using Git and GitHub in RStudio",
+    "text": "💻 Step 2: Practice using Git and GitHub in RStudio\nComplete the Git with RStudio tutorial: https://brinasab.github.io/csp-website/setup/setup-test.html\nInstructions:\n\nWork in pairs: one person should read the instructions and guide the other, who executes the commands.\nKeep track of questions as you go and post them in this Google doc."
+  },
+  {
+    "objectID": "lectures/02-slides.html#accept-homework-1",
+    "href": "lectures/02-slides.html#accept-homework-1",
+    "title": "Introduction to R: Lecture 2",
+    "section": "💻 Accept Homework 1",
+    "text": "💻 Accept Homework 1\nAccept Homework 1 from the course site and follow the instructions for the GitHub workflow.\nNote: this will only work if we have your GitHub username and you accepted the invite to our GitHub organization (was sent to the email linked to your github account)!"
+  },
+  {
+    "objectID": "lectures/02-slides.html#okay-that-was-a-lot-of-abstract-info.-lets-try-it-out-with-some-practice",
+    "href": "lectures/02-slides.html#okay-that-was-a-lot-of-abstract-info.-lets-try-it-out-with-some-practice",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Okay, that was a lot of abstract info. Let’s try it out with some practice!",
+    "text": "Okay, that was a lot of abstract info. Let’s try it out with some practice!\nWe practice in two steps:\n\nConfigure Setup\nUse Git and GitHub in RStudio Tutorial"
+  },
+  {
+    "objectID": "lectures/02-slides.html#step-2-use-git-and-github-in-rstudio-tutorial",
+    "href": "lectures/02-slides.html#step-2-use-git-and-github-in-rstudio-tutorial",
+    "title": "Introduction to R: Lecture 2",
+    "section": "💻 Step 2: Use Git and GitHub in RStudio Tutorial",
+    "text": "💻 Step 2: Use Git and GitHub in RStudio Tutorial\nOnce step 1 is done, complete this tutorial:\nhttps://brinasab.github.io/csp-website/setup/setup-test.html\nInstructions:\n\nWork in pairs: one person (the most experienced with programming) read the instructions and guide the other, who executes the commands.\nKeep track of questions as you go and post them in this Google doc\nRaise your hand if you need help!"
+  },
+  {
+    "objectID": "lectures/02-slides.html#two-main-advantages-of-a-programmatic-workflow",
+    "href": "lectures/02-slides.html#two-main-advantages-of-a-programmatic-workflow",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Two Main Advantages of a Programmatic Workflow",
+    "text": "Two Main Advantages of a Programmatic Workflow\n1. Automation\n\nUses programs (e.g., R) to perform tasks systematically\n\nReduces manual effort and human error\n\nEnables fast and consistent repetition of analyses\n\n\n2. Reproducibility\n\nScientific research should share both data and code used for analysis\n\nAllows verification and reuse by others\n\nEnables exact replication of results, even years later"
+  },
+  {
+    "objectID": "lectures/02-slides.html#often-used-together-but-they-are-different-tools",
+    "href": "lectures/02-slides.html#often-used-together-but-they-are-different-tools",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Often used together, but they are different tools",
+    "text": "Often used together, but they are different tools\n\n\n\nGit\n\nVersion control software\n\nRuns locally on your computer\nTracks changes in a folder called repository or repo\nYou work in that folder (your local repo)\n\n\n\nGitHub\n\nCloud-based platform\n\nRuns online\nStores copies of your local Git repo online, and enables backup, sharing, and collaboration\nYou push to and pull from GitHub\n\n\n\nLet’s unpack all of this…"
+  },
+  {
+    "objectID": "lectures/02-slides.html#git-github-comparison",
+    "href": "lectures/02-slides.html#git-github-comparison",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Git & GitHub Comparison",
+    "text": "Git & GitHub Comparison\n\n\n\n\n\n\n\n\nFeature\nGit\nGitHub\n\n\n\n\nWhat it is\nVersion control software\nCloud platform for storing Git repositories\n\n\nWhere it runs\nOn your computer (local)\nIn the cloud (web-based)\n\n\nWhat it does\nTracks and saves changes in your local repo\nHosts a remote copy of your local repo for backup and sharing with others\n\n\nCollaboration\nNot built-in\nYes, supports pull requests, issues, and code review\n\n\nHow to use with RStudio\nGit panel for staging, committing, and pushing\nConnect to GitHub via RStudio’s project setup or terminal\n\n\nRepo terminology\nYour working folder is a local repo\nThe online copy is a remote repo\n\n\n\nNote: we use Git and GitHub via RStudio only. They are also used with other tools like GitHub Desktop, terminal, etc."
+  },
+  {
+    "objectID": "lectures/02-slides.html#okay-that-was-a-lot-of-info.-lets-try-it-out-with-some-practice",
+    "href": "lectures/02-slides.html#okay-that-was-a-lot-of-info.-lets-try-it-out-with-some-practice",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Okay, that was a lot of info. Let’s try it out with some practice!",
+    "text": "Okay, that was a lot of info. Let’s try it out with some practice!\nWe practice in two steps:\n1. Configure Setup\n2. Use Git and GitHub in RStudio Tutorial"
+  },
+  {
+    "objectID": "lectures/02-slides.html#recap-beginner-friendly-git-github-workflow",
+    "href": "lectures/02-slides.html#recap-beginner-friendly-git-github-workflow",
+    "title": "Introduction to R: Lecture 2",
+    "section": "Recap: Beginner-Friendly Git & GitHub Workflow",
+    "text": "Recap: Beginner-Friendly Git & GitHub Workflow\n\nMake & Save Changes Locally\nEdit your files locally (e.g., in RStudio or Workbench) and save them.\nPull from GitHub\nRefresh your local copy to get the latest changes—helps avoid conflicts when collaborating.\nStage Changes\nSelect which files you want Git to track in the next snapshot.\nCommit with a Message\nSave a snapshot of your staged changes in your local Git repo. Add a short, meaningful message.\nPush to GitHub\nUpload your committed changes to the online repository.\n\n\n\n\n\n\n\nImportant\n\n\nYou will complete this workflow for all homework assignments!"
   }
 ]

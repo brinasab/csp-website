@@ -40,16 +40,15 @@ library(ggplot2)
 SUMMER 25 LECTURE 2 OUTLINE 
 
 Quiz and Attendance
-1:00 - 1:10
+1:00 - 1:15
 
 1. Motivation 
-1:15 - 1:20 Slides intro
+1:15 - 1:20 Slides intro + Zach examples
 
 2. Introduction to Git & GitHub 
 1:20 - 1:30 Slides
 1:30 - 2:00 Tutorial using Git & GitHub in RStudio
-2:00 - 2:05 More questions or extra time for tutorial
-2:05 - 2:10 Wrap up and more questions 
+2:00 - 2:10 Wrap up and more questions 
 
 3. Deeper Dive into Git & GitHub
 2:10 - 2:15 Short selected slides form this sections
@@ -90,7 +89,7 @@ Unpack this question and define terms, then reason it out loud with
 
 ## Two Different Approaches
 
-**TASK:** Write a report on the relationship between ice cream consumption and crime in Chicago.
+**TASK:** Write a report on the relationship between income and crime rates in Chicago.
 
 **APPROACH:** Jane and Sally approach this task differently...
 
@@ -129,17 +128,17 @@ Unpack this question and define terms, then reason it out loud with
 
 ---
 
-## Advantages of a Programmatic Workflow
+## Two Main Advantages of a Programmatic Workflow
 
-### Automation
+### 1. Automation
 
-- Uses scripts or programs to perform tasks systematically  
+- Uses programs (e.g., R) to perform tasks systematically  
 - Reduces manual effort and human error  
 - Enables fast and consistent repetition of analyses
 
 ::: {.fragment}
 
-### Reproducibility
+### 2. Reproducibility
 
 - Scientific research should share both data and code used for analysis  
 - Allows verification and reuse by others  
@@ -152,7 +151,7 @@ Unpack this question and define terms, then reason it out loud with
 
 ---
 
-## Often used together, but different tools
+## Often used together, but they are different tools
 
 ::: {.columns}
 
@@ -163,8 +162,8 @@ Unpack this question and define terms, then reason it out loud with
 ### Git
 - Version control software  
 - Runs **locally** on your computer
-- Tracks changes in a folder called **repository** /n or **repo**
-- You work in this folder (your **local repo**)
+- Tracks changes in a folder called **repository** or **repo**
+- You work in that folder (your **local repo**)
 
 ::::
 
@@ -193,13 +192,15 @@ Let's unpack all of this...
 
 #### Version Control
 
-Is a system that *automatically* records every change you make to your files in a folder (what changed, who made it, and when) and lets you undo mistakes or restore previous versions of your files.
+Is a system that records every change you make to your files in a folder (what changed, who made it, and when) and lets you undo mistakes or restore previous versions of your files.
+
+**Git** is a software that does version control.
 
 <br>
 
 #### Without Version Control 
 
-Tracking changes *manually* can be messy and hard to manage, like:
+You have to track changes *manually* which be messy and hard to manage, like:
 
 - `analysis-1.R`
 - `analysis-2.R`
@@ -210,23 +211,23 @@ Tracking changes *manually* can be messy and hard to manage, like:
 
 ---
 
-## How Version Control works
+## How Version Control Works
 
-- You choose a folder on your computer to track: this becomes your **local repository or repo**
-- A Version Control tool (like **Git**) records and saves changes to the files in that folder
+- You choose a folder on your computer: this becomes your **local repository** or local repo
+- A Version Control tool, like **Git**, records and saves changes you make to the files in that folder
 - Every change is saved with a time stamp, author info, and a message (that you type in)
 
-This system lets you revisit your project's history and restore earlier versions of a file if needed!
+You can revisit your project's history and restore earlier versions of a file if needed!
 
 <br>
 
 <div class="fragment">
 
-### Git + GitHub
+**We use:**
 
-Git does this version control work locally, while GitHub provides an online storage/backup and facilitates collaboration with others
+- Git (your version control software, operates locally on your machine) *and*
+- GitHub (your online storage/backup)
 
-More [here](https://computing-soc-sci.netlify.app/faq/what-are-git-github/)
 
 ```{r echo = FALSE, out.width = "35%"}
 #include_graphics(path = "https://res.cloudinary.com/practicaldev/image/fetch/s--7MQClrRp--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7ce4oq75sia6ni6q46s3.png")
@@ -237,24 +238,54 @@ More [here](https://computing-soc-sci.netlify.app/faq/what-are-git-github/)
 
 ---
 
-## Git & GitHub Comparison with RStudio Focus
+## Git & GitHub Comparison
 
 | Feature                 | **Git**                                        | **GitHub**                                               |
 |--------------------------|------------------------------------------------|----------------------------------------------------------|
 | What it is              | Version control software                       | Cloud platform for storing Git repositories              |
 | Where it runs           | On your computer (local)                       | In the cloud (web-based)                                 |
-| What it does            | Tracks and saves changes in your **local repo**| Hosts a remote copy of your repo for backup and sharing  |
-| Collaboration           | Not built-in                                   | Supports pull requests, issues, and code review          |
-| How to use with RStudio | Git pane for staging, committing, and pushing  | Connect to GitHub via RStudio’s project setup or terminal|
-| Repo terminology        | Your working folder is a **local repo**        | The online copy is a **remote repo**, usually called **`origin`** |
+| What it does            | Tracks and saves changes in your local repo | Hosts a remote copy of your local repo for backup and sharing with others  |
+| Collaboration           | Not built-in                                   | Yes, supports pull requests, issues, and code review          |
+| How to use with RStudio | Git panel for staging, committing, and pushing  | Connect to GitHub via RStudio’s project setup or terminal|
+| Repo terminology        | Your working folder is a **local repo**        | The online copy is a **remote repo** |
 
-Note we use **Git and GitHub through RStudio** only. They are also used with other tools like VS Code, GitHub Desktop, or the terminal.
+Note: we use **Git and GitHub via RStudio** only. They are also used with other tools like GitHub Desktop, terminal, etc.
 
 ---
 
-## Beginner-Friendly Git + GitHub Workflow
+## Okay, that was a lot of info. Let’s try it out with some practice!
 
-### In your R Studio, follow these steps in order:
+#### We practice in two steps: 
+
+#### 1. Configure Setup
+#### 2. Use Git and GitHub in RStudio Tutorial
+
+---
+
+## 💻 Step 1: Configure your Setup
+
+### Complete the RStudio Workbench Setup:
+
+### <https://brinasab.github.io/csp-website/setup/setup-workbench.html>
+
+---
+
+## 💻 Step 2: Use Git and GitHub in RStudio Tutorial
+
+### Once step 1 is done, complete this tutorial:
+
+### <https://brinasab.github.io/csp-website/setup/setup-test.html>
+
+#### Instructions:
+
+- Work in pairs: one person (the most experienced with programming) read the instructions and guide the other, who executes the commands. 
+
+- Keep track of questions as you go and post them in [this Google doc](https://docs.google.com/document/d/1iQacRXqGLpke1D6qm_-kBkHBtrZy7SJYtRzFR88-Y_I/edit?usp=sharing)
+- Raise your hand if you need help! 
+
+---
+
+## Recap: Beginner-Friendly Git & GitHub Workflow
 
 1. **Make & Save Changes Locally**  
    <span class="fragment">Edit your files locally (e.g., in RStudio or Workbench) and save them.</span>
@@ -272,29 +303,14 @@ Note we use **Git and GitHub through RStudio** only. They are also used with oth
    <span class="fragment">Upload your committed changes to the online repository.</span>
 
 ::: {.callout-important}
-You will complete this workflow for homework assigments!
+You will complete this workflow for all homework assignments!
 :::
-
-</br>
 
 <!-- IN CLASS
 Most of the time you'll use this or similar sequences:  
 **`add` → `commit` → `push` → `pull`**
 But there is more to Git and GitHub. You'll leave this course ready to use the basics of Git confidently, and learn more when needed!
 -->
-
----
-
-## 💻 Practice using Git and GitHub in RStudio
-
-**Complete the [Using Git with RStudio]() tutorial from our website**
-
-After you complete the tutorial (and everything works as expected), accept Homework 1 from the course site and follow the instructions for the GitHub workflow. Don’t forget to send us your GitHub username and accept the invite to our GitHub organization!
-
-
-# 3. Deeper Dive into Git & GitHub  {.slide .center .middle}
-
-Come back here once you are familiar with the basic workflow!
 
 ---
 
@@ -306,11 +322,26 @@ Come back here once you are familiar with the basic workflow!
 - **Write clear, useful commit messages**  
   Keep messages concise but descriptive. They should explain what changed and why.  Many tips online for "commit message best practices."
 
-- **Push regularly, but not necessarily every time you commit**  
+- **Push regularly, but not necessarily every time you commit** 
   Some people push every time they commit, while others push multiple commits at once. Experiment and find what works best for you.
 
-- **Use the Git interface that works for you**  
-  In this course, we’ll use RStudio’s Git. Alternatives include GitHub Desktop and the command line.
+- **Work locally, and push on GitHub**  
+  Do not do the other way around (e.g., do not modify your GitHub repository directly; work on your local copy, and push changes to GitHub).
+
+---
+
+## 💻 Accept Homework 1 
+
+Accept Homework 1 from the course site and follow the instructions for the GitHub workflow.
+
+Note: this will only work if we have your GitHub username and you accepted the invite to our GitHub organization (was sent to the email linked to your github account)!
+
+
+# 3. Deeper Dive into Git & GitHub  {.slide .center .middle}
+
+Come back here once you are familiar with the basic workflow!
+
+These slides won't be included in the in-class quiz, but they might be handy if you run into problems in homework assigments.
 
 ---
 
@@ -490,7 +521,7 @@ Want to practice? Complete the ["Using Git with RStudio"](https://computing-soc-
 - Homework 1 is now open and due next week. Check the Course Schedule on our website for the exact due date.
 - If you haven't completed these yet, please do so ASAP, as you won't be able to access and complete Homework 1 otherwise:
   - Register a GitHub account and submit your username (see Lecture 1 on our website)
-  - Setup your computer (see Lecture 2 on our website)
+  - Setup your computer (see Lecture 2 on our website and these slides)
 
 ---
 

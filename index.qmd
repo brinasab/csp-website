@@ -7,7 +7,6 @@ title: "Welcome to Intro to R Programming!"
 ## Course Information CSP Summer 2025
 
 **Meeting Time**: Tuesdays & Thursdays, 1:00–2:30 PM  
-
 **Meeting Location**: Cobb Hall 319  
 
 **Teaching Team**:  

@@ -67,10 +67,12 @@ Let me start by introducing myself and the TA... then will go around and introdu
 
 ## Teaching Team
 
-| Role | Name | Email | Office Hours | Contact Method |
-|---------------|---------------|---------------|---------------|---------------|
-| Instructor | [Sabrina Nardin](https://macss.uchicago.edu/directory/Sabrina-Nardin) | nardin\@uchicago.edu | Tue & Thu, 2:30–3:30 PM (after class) | Email or OHs |
-| Teaching Assistant | Zach Meyer | zmeyer\@uchicago.edu | TBD | Email or OHs |
+## Teaching Team
+
+| Role              | Name                                                                 | Email                  | Office Hours                         |
+|-------------------|----------------------------------------------------------------------|------------------------|---------------------------------------|
+| Instructor        | [Sabrina Nardin](https://macss.uchicago.edu/directory/Sabrina-Nardin) | nardin@uchicago.edu    | Tue & Thu, 2:30–3:30 PM (after class) |
+| Teaching Assistant| Zach Meyer                                                           | zmeyer@uchicago.edu    | Tue 2:30–3:30 PM (after class)        |
 
 <br>
 
@@ -78,9 +80,9 @@ Let me start by introducing myself and the TA... then will go around and introdu
 **How to Reach Out**
 
 -   Ask questions during or after class
--   Attend OHs (Office Hours, no appointment needed)!
--   Email us for course-related concerns
--   Use the course platform for slides, class materials, etc.
+-   Attend OHs (Office Hours, no appointment needed)
+-   Email us or post on Ed Discussion for course-related concerns
+-   Use the course website for slides, class materials, etc.
 :::
 
 </br>
@@ -156,8 +158,8 @@ Google, ChatGPT are OK (within limits, more on this later)...but the documentati
 
 See "Assessment" from our Syllabus and the [Course Schedule](https://docs.google.com/spreadsheets/d/1CmuUXTp0uvhAVk3mmOQMEfb8BjdR-I36/edit?usp=sharing&ouid=112534119211880791899&rtpof=true&sd=true):
 
--   **Assessment and Evaluation:**  There will be short quizzes in class and take-home assignments. Check the syllabus for the grading rubric and more details
--   **Arrive on Time:** Each class starts right at 1:00 PM with a quick quiz. These are short and meant to help you stay on track, so be here and ready to go by 1:00 PM.
+-   **Assessment and Evaluation:**  There will be in-class quizzes and take-home assignments. Check the syllabus for the grading rubric for details
+-   **Arrive on Time:** Each class starts right at 1:00 PM with a quick quiz. These are short and meant to help you stay on track. Be here and ready to go by 1:00 PM!
 -   **Submission Policies:**  Info on how we handle late or missed assignments is in the syllabus.
 
 
@@ -185,9 +187,9 @@ See "Assessment" from our Syllabus and the [Course Schedule](https://docs.google
 
 ## Software Setup
 
-Next lecture we will learn the basics of Git and GitHub and complete the Software Setup for the course. 
+In this course we use RStudio Workbench, which is cloud-based version of RStudio that runs in your browser. 
 
-We’ll be working in **RStudio Workbench**, which is cloud-based version of RStudio that runs in your browser. 
+Next lecture we will learn the basics of Git and GitHub and complete the Software Setup for the course. 
 
 Check our website under "Software Setup" for details.
 
@@ -212,7 +214,7 @@ If you're having trouble with the setup, stay after class or come to Office Hour
 
 ## Activity: Meet & Share Goals
 
-**In groups of 4-5 people, please share:**
+**In groups of 3-5 people, please share:**
 
 -   Your name, plus something about yourself that you’re comfortable sharing (e.g., a hobby, your favorite food, your high school, your experience with programming, etc.)
 -   What you hope to learn or achieve in this course
@@ -243,7 +245,7 @@ See [Should I take this course?](https://computing-soc-sci.netlify.app/faq/whom-
 
     -   15-minute rule
     -   Resources: AI (but see next slide) Google, StackOverflow, your peers (study group!)
-    -   Office Hours and ED Discussion
+    -   Office Hours and Ed Discussion
 
 ---
 
@@ -379,13 +381,11 @@ Create a Rmd as empty doc, stop here, move back to slides say: let's talk about 
 
 Today we learn how to:
 
--   Use R as a calculator\
 -   Create and use variables\
 -   Understand variable types (e.g., number, text, logical, etc.)\
 -   Write comments and organize your code\
 -   Use scripts (vs. console) for reproducibility\
 -   Clear your environment\
--   Fix common errors\
 -   Group values using vectors
 
 ---
@@ -411,7 +411,7 @@ You’ll run into errors and typos, that’s part of the process -->
 
 R Markdown is a file format (with extension `.Rmd`) that combines R code, using code chunks, and text in a single document. It's very popular because it makes it easy to create reproducible reports, analyses, and presentations.
 
-You might hear about Quarto (with extension `.qmd`), which is a newer alternative to R Markdown. We won’t cover it, but if you know R Markdown, you can quickly adjust to Quarto.
+You might hear about Quarto (with extension `.qmd`), which is a newer alternative to R Markdown. We won’t cover Quarto in this course, but if you learn R Markdown, you can quickly adjust to Quarto.
 
 ---
 

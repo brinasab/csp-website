@@ -67,8 +67,6 @@ Let me start by introducing myself and the TA... then will go around and introdu
 
 ## Teaching Team
 
-## Teaching Team
-
 | Role              | Name                                                                 | Email                  | Office Hours                         |
 |-------------------|----------------------------------------------------------------------|------------------------|---------------------------------------|
 | Instructor        | [Sabrina Nardin](https://macss.uchicago.edu/directory/Sabrina-Nardin) | nardin@uchicago.edu    | Tue & Thu, 2:30–3:30 PM (after class) |
@@ -158,7 +156,7 @@ Google, ChatGPT are OK (within limits, more on this later)...but the documentati
 
 See "Assessment" from our Syllabus and the [Course Schedule](https://docs.google.com/spreadsheets/d/1CmuUXTp0uvhAVk3mmOQMEfb8BjdR-I36/edit?usp=sharing&ouid=112534119211880791899&rtpof=true&sd=true):
 
--   **Assessment and Evaluation:**  There will be in-class quizzes and take-home assignments. Check the syllabus for the grading rubric for details
+-   **Assessment and Evaluation:**  There will be in-class quizzes and take-home assignments. Check the syllabus for the grading rubric for details.
 -   **Arrive on Time:** Each class starts right at 1:00 PM with a quick quiz. These are short and meant to help you stay on track. Be here and ready to go by 1:00 PM!
 -   **Submission Policies:**  Info on how we handle late or missed assignments is in the syllabus.
 
@@ -218,7 +216,7 @@ If you're having trouble with the setup, stay after class or come to Office Hour
 
 -   Your name, plus something about yourself that you’re comfortable sharing (e.g., a hobby, your favorite food, your high school, your experience with programming, etc.)
 -   What you hope to learn or achieve in this course
--   Any questions or concerns you have, and strategies you plan to use to stay on track (we’ll go around the room and answer questions)
+-   Any questions you have, and strategies you plan to use to stay on track (we’ll go around the room and answer questions)
 
 ::: {.callout-note title="Done early?"}
 If your group finishes early, please complete [this short survey](https://forms.gle/pY7sCoCVEDEe7bYD7) if you haven’t already. It only takes a minute and helps us better understand your background and what you’re hoping to learn in this course.
@@ -244,7 +242,7 @@ See [Should I take this course?](https://computing-soc-sci.netlify.app/faq/whom-
 -   Ask questions and collaborate
 
     -   15-minute rule
-    -   Resources: AI (but see next slide) Google, StackOverflow, your peers (study group!)
+    -   Resources: AI (but see next slide), Google, [StackOverflow](https://stackoverflow.com/questions), your peers (study group!)
     -   Office Hours and Ed Discussion
 
 ---

@@ -291,7 +291,7 @@
     "href": "lectures/01-slides.html#teaching-team",
     "title": "Introduction to R: Lecture 1",
     "section": "Teaching Team",
-    "text": "Teaching Team"
+    "text": "Teaching Team\n\n\n\nRole\nName\nEmail\nOffice Hours\n\n\n\n\nInstructor\nSabrina Nardin\nnardin@uchicago.edu\nTue & Thu, 2:30–3:30 PM (after class)\n\n\nTeaching Assistant\nZach Meyer\nzmeyer@uchicago.edu\nTue 2:30–3:30 PM (after class)\n\n\n\n\n\nHow to Reach Out\n\nAsk questions during or after class\nAttend OHs (Office Hours, no appointment needed)\nEmail us or post on Ed Discussion for course-related concerns\nUse the course website for slides, class materials, etc."
   },
   {
     "objectID": "lectures/01-slides.html#teaching-team-1",
@@ -326,7 +326,7 @@
     "href": "lectures/01-slides.html#homework-and-evaluation",
     "title": "Introduction to R: Lecture 1",
     "section": "Homework and Evaluation",
-    "text": "Homework and Evaluation\nSee “Assessment” from our Syllabus and the Course Schedule:\n\nAssessment and Evaluation: There will be in-class quizzes and take-home assignments. Check the syllabus for the grading rubric for details\nArrive on Time: Each class starts right at 1:00 PM with a quick quiz. These are short and meant to help you stay on track. Be here and ready to go by 1:00 PM!\nSubmission Policies: Info on how we handle late or missed assignments is in the syllabus."
+    "text": "Homework and Evaluation\nSee “Assessment” from our Syllabus and the Course Schedule:\n\nAssessment and Evaluation: There will be in-class quizzes and take-home assignments. Check the syllabus for the grading rubric for details.\nArrive on Time: Each class starts right at 1:00 PM with a quick quiz. These are short and meant to help you stay on track. Be here and ready to go by 1:00 PM!\nSubmission Policies: Info on how we handle late or missed assignments is in the syllabus."
   },
   {
     "objectID": "lectures/01-slides.html#software-setup",
@@ -340,14 +340,14 @@
     "href": "lectures/01-slides.html#activity-meet-share-goals",
     "title": "Introduction to R: Lecture 1",
     "section": "Activity: Meet & Share Goals",
-    "text": "Activity: Meet & Share Goals\nIn groups of 3-5 people, please share:\n\nYour name, plus something about yourself that you’re comfortable sharing (e.g., a hobby, your favorite food, your high school, your experience with programming, etc.)\nWhat you hope to learn or achieve in this course\nAny questions or concerns you have, and strategies you plan to use to stay on track (we’ll go around the room and answer questions)\n\n\n\n\n\n\n\n\nDone early?\n\n\nIf your group finishes early, please complete this short survey if you haven’t already. It only takes a minute and helps us better understand your background and what you’re hoping to learn in this course."
+    "text": "Activity: Meet & Share Goals\nIn groups of 3-5 people, please share:\n\nYour name, plus something about yourself that you’re comfortable sharing (e.g., a hobby, your favorite food, your high school, your experience with programming, etc.)\nWhat you hope to learn or achieve in this course\nAny questions you have, and strategies you plan to use to stay on track (we’ll go around the room and answer questions)\n\n\n\n\n\n\n\n\nDone early?\n\n\nIf your group finishes early, please complete this short survey if you haven’t already. It only takes a minute and helps us better understand your background and what you’re hoping to learn in this course."
   },
   {
     "objectID": "lectures/01-slides.html#course-expectations",
     "href": "lectures/01-slides.html#course-expectations",
     "title": "Introduction to R: Lecture 1",
     "section": "Course Expectations",
-    "text": "Course Expectations\n\nAttend classes and bring a laptop (no cell phones)\nReview in-class materials and complete assigned work\nAsk questions and collaborate\n\n15-minute rule\nResources: AI (but see next slide) Google, StackOverflow, your peers (study group!)\nOffice Hours and Ed Discussion"
+    "text": "Course Expectations\n\nAttend classes and bring a laptop (no cell phones)\nReview in-class materials and complete assigned work\nAsk questions and collaborate\n\n15-minute rule\nResources: AI (but see next slide), Google, StackOverflow, your peers (study group!)\nOffice Hours and Ed Discussion"
   },
   {
     "objectID": "lectures/01-slides.html#yes-to-collaboration-no-to-copying",

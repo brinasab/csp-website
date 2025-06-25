@@ -14,9 +14,9 @@ format: html
 
 ## Step 2: Log into RStudio Workbench  
 
-1. Go to <https://macss-r.uchicago.edu/> 
-2. Login with your UChicago [CNetID](https://uchicago.service-now.com/it?id=kb_article&kb=KB06000393) and password to login; this is the same username/password you use for other UChicago online services
-3. You're done. You should see a clean RStudio window in your browser.
+Go to <https://macss-r.uchicago.edu/> 
+
+Login with your UChicago [CNetID](https://uchicago.service-now.com/it?id=kb_article&kb=KB06000393) and password to login; this is the same username/password you use for other UChicago online services. You're done. You should see a clean RStudio window in your browser.
 
 ::: {.callout-note}
 Only students approved by SSCS can access this server. If you can’t log in, chances are that you have not yet been added to the server. Email me at [nardin@uchicago.edu](mailto:nardin@uchicago.edu). For network or cVPN issues, contact [ITS](https://its.uchicago.edu).

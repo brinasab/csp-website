@@ -60,7 +60,7 @@
     "href": "setup/setup-workbench.html#step-2-log-into-rstudio-workbench",
     "title": "RStudio Workbench Setup",
     "section": "Step 2: Log into RStudio Workbench",
-    "text": "Step 2: Log into RStudio Workbench\n\nGo to https://macss-r.uchicago.edu/\nLogin with your UChicago CNetID and password to login; this is the same username/password you use for other UChicago online services\nYou’re done. You should see a clean RStudio window in your browser.\n\n\n\n\n\n\n\nNote\n\n\n\nOnly students approved by SSCS can access this server. If you can’t log in, chances are that you have not yet been added to the server. Email me at nardin@uchicago.edu. For network or cVPN issues, contact ITS."
+    "text": "Step 2: Log into RStudio Workbench\nGo to https://macss-r.uchicago.edu/\nLogin with your UChicago CNetID and password to login; this is the same username/password you use for other UChicago online services. You’re done. You should see a clean RStudio window in your browser.\n\n\n\n\n\n\nNote\n\n\n\nOnly students approved by SSCS can access this server. If you can’t log in, chances are that you have not yet been added to the server. Email me at nardin@uchicago.edu. For network or cVPN issues, contact ITS."
   },
   {
     "objectID": "setup/setup-workbench.html#step-3-configure-git-in-rstudio-workbench",

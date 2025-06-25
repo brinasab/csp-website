@@ -6,7 +6,9 @@ execute:
   echo: false
 ---
 
-*Last updated:* `r format(Sys.Date(), "%B %d, %Y")`
+*Last updated: June 23, 2025*
+
+<!-- *Last updated:* `r format(Sys.Date(), "%B %d, %Y")` -->
 
 ## Course Description
 

@@ -3,7 +3,7 @@ title: "Lecture 2: Git and GitHub"
 date: 2025-06-26
 summary: "Intro to Git and GitHub from RStudio"
 url_slides: 02-slides.qmd
-url_code: csp-materials/git
+#url_code: csp-materials/git
 format: html
 page-layout: full
 draft: false
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = FALSE)
 * **Date**: {{< meta date >}}
 * **Topics**: {{< meta summary >}}
 * **Slides**: [View Slides]({{< meta url_slides >}})
-* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+* **Code**: No in-class code to download
 
 
 ## Learning Objectives

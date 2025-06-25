@@ -11,23 +11,18 @@ knitr::opts_chunk$set(echo = FALSE)
 
 **Due: Wednesday, July 2nd by 11:59 PM (Chicago Time)**
 
-This first homework assignment has two main goals:
-
-1. To verify your computer setup and ensure you can submit assignments correctly.  
-2. To practice basic R syntax, Markdown, and R Markdown.
+This first homework assignment has two main goals: to verify your computer setup and to practice basic R syntax, Markdown, and R Markdown.
 
 
 # Accessing and Cloning Your `hw01` Repository
 
 ::: {.callout-important}
-This will work only if you have submitted your GitHub username (see Lecture 1) and accepted the invitation to join our GitHub organization (check the email linked to your GitHub account).
-
-Make sure you’ve completed the setup under [Software Setup](../setup/index.qmd) and confirmed everything is working properly.
+This will work only if you have submitted your GitHub username (see Lecture 1) and accepted the email invitation to join our GitHub organization (check the email linked to your GitHub account). Make sure you’ve completed the setup under [Software Setup](../setup/index.qmd) and confirmed everything is working properly.
 :::
 
 **Accessing the repo:** 
 
-1. Go at [this link](https://classroom.github.com/a/KCzauQcd) to accept the invitation and create your private `hw01` repository on GitHub. Your repository will be named `hw01-<USERNAME>` and will be ready within a few seconds.
+1. Go at [this link](https://classroom.github.com/a/KCzauQcd) to accept the invitation and create your private `hw01` repository on GitHub. Your repository will be named `hw01-<USERNAME>` and will be ready within a few seconds. If this does not work, see the note in red above.
 
 2. Once the repository has been created, click the link provided to access it.
 

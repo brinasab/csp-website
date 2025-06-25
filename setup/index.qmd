@@ -3,7 +3,7 @@ title: "Software Setup"
 format: html
 ---
 
-This section of the website guides you through everything you need to get set up for the course:
+This section of the website guides you through everything you need to set up for the course:
 
 **1. First, Configure your Setup: [RStudio Workbench Setup](setup-workbench.qmd)**
 

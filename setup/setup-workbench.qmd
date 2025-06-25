@@ -5,11 +5,11 @@ format: html
 
 ## Step 1: Create a GitHub Account  
 
-If you have not yet, go to <https://github.com> and follow the instructions there to create a free GitHub account. Choose a professional username (see [these tips](https://happygitwithr.com/github-acct)).
+1. If you have not yet, go to <https://github.com> and follow the instructions there to create a free GitHub account. Choose a professional username (see [these tips](https://happygitwithr.com/github-acct)).
 
-Add your GitHub username to the Excel file linked on [Lecture 1](../lectures/01-home.qmd). 
+2. Add your GitHub username to the Excel file linked on [Lecture 1](../lectures/01-home.qmd). 
 
-We’ll use it to invite you to our GitHub Course Organization, which is required to access and submit homework assignments. Once added, you’ll receive an invitation email from GitHub — make sure to open it and accept the invitation to join the organization.
+3. We’ll use it to invite you to our GitHub Course Organization, which is required to access and submit homework assignments. Once we have your username, you’ll receive an invitation email from GitHub — make sure to open it and accept the invitation to join the organization.
  
 
 ## Step 2: Log into RStudio Workbench  

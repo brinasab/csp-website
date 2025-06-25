@@ -333,8 +333,7 @@ Unpack this question and define terms, then reason it out loud with
 <li>Version control software<br>
 </li>
 <li>Runs <strong>locally</strong> on your computer</li>
-<li>Tracks changes in a folder called <strong>repository</strong> or <strong>repo</strong></li>
-<li>You work in that folder (your <strong>local repo</strong>)</li>
+<li>Tracks changes you make to files in a specific folder (that you decide), called local repository or repo</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><a href="https://github.com"><img data-src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="80"></a></p>
@@ -343,8 +342,7 @@ Unpack this question and define terms, then reason it out loud with
 <li>Cloud-based platform<br>
 </li>
 <li>Runs <strong>online</strong></li>
-<li>Stores copies of your local Git repo online, and enables <strong>backup</strong>, <strong>sharing</strong>, and <strong>collaboration</strong></li>
-<li>You <strong>push</strong> to and <strong>pull</strong> from GitHub</li>
+<li>Stores copies of your local Git repository online, and enables backup and collaboration, you push to and pull from GitHub</li>
 </ul>
 </div></div>
 <div class="fragment">
@@ -367,8 +365,8 @@ Unpack this question and define terms, then reason it out loud with
 </ul>
 <p><br></p>
 </section>
-<section id="how-version-control-works" class="slide level2 center">
-<h2>How Version Control Works</h2>
+<section id="how-version-control-git-works" class="slide level2 center">
+<h2>How Version Control (Git) Works</h2>
 <ul>
 <li>You choose a folder on your computer: this becomes your <strong>local repository</strong> or local repo</li>
 <li>A Version Control tool, like <strong>Git</strong>, records and saves changes you make to the files in that folder</li>
@@ -377,10 +375,11 @@ Unpack this question and define terms, then reason it out loud with
 <p>You can revisit your project’s history and restore earlier versions of a file if needed!</p>
 <p><br></p>
 <div class="fragment">
-<p><strong>We use:</strong></p>
+<h3 id="how-version-control-git-github-works">How Version Control (Git) + GitHub Works</h3>
 <ul>
-<li>Git (your version control software, operates locally on your machine) <em>and</em></li>
-<li>GitHub (your online storage/backup)</li>
+<li>You can link your local Git repository to an online GitHub repository</li>
+<li>So you can push your local changes to GitHub</li>
+<li>And share your work with others</li>
 </ul>
 </div>
 <p><br></p>
@@ -389,8 +388,8 @@ Unpack this question and define terms, then reason it out loud with
 <h2>Git &amp; GitHub Comparison</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 36%">
+<col style="width: 17%">
+<col style="width: 38%">
 <col style="width: 43%">
 </colgroup>
 <thead>
@@ -404,58 +403,64 @@ Unpack this question and define terms, then reason it out loud with
 <tr class="odd">
 <td>What it is</td>
 <td>Version control software</td>
-<td>Cloud platform for storing Git repositories</td>
+<td>Cloud platform for Git repos</td>
 </tr>
 <tr class="even">
 <td>Where it runs</td>
-<td>On your computer (local)</td>
-<td>In the cloud (web-based)</td>
+<td>Locally (your computer)</td>
+<td>Online (web-based)</td>
 </tr>
 <tr class="odd">
 <td>What it does</td>
-<td>Tracks and saves changes in your local repo</td>
-<td>Hosts a remote copy of your local repo for backup and sharing with others</td>
+<td>Tracks changes in your local repo</td>
+<td>Stores &amp; shares remote copies</td>
 </tr>
 <tr class="even">
 <td>Collaboration</td>
 <td>Not built-in</td>
-<td>Yes, supports pull requests, issues, and code review</td>
+<td>Pull, issues, code reviews</td>
 </tr>
 <tr class="odd">
-<td>How to use with RStudio</td>
-<td>Git panel for staging, committing, and pushing</td>
-<td>Connect to GitHub via RStudio’s project setup or terminal</td>
+<td>Use in RStudio</td>
+<td>Git Tab</td>
+<td>Connect via setup or terminal</td>
 </tr>
 <tr class="even">
-<td>Repo terminology</td>
-<td>Your working folder is a <strong>local repo</strong></td>
-<td>The online copy is a <strong>remote repo</strong></td>
+<td>Repo</td>
+<td><strong>Local repo</strong> = your folder</td>
+<td><strong>Remote repo</strong> = copy on GitHub</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
 <p>Note: we use <strong>Git and GitHub via RStudio</strong> only. They are also used with other tools like GitHub Desktop, terminal, etc.</p>
 </section>
-<section id="okay-that-was-a-lot-of-info.-lets-try-it-out-with-some-practice" class="slide level2 center">
-<h2>Okay, that was a lot of info. Let’s try it out with some practice!</h2>
-<h4 id="we-practice-in-two-steps">We practice in two steps:</h4>
-<h4 id="configure-setup">1. Configure Setup</h4>
-<h4 id="use-git-and-github-in-rstudio-tutorial">2. Use Git and GitHub in RStudio Tutorial</h4>
+<section id="section" class="slide level2 center">
+<h2><br></h2>
+</section>
+<section id="okay-that-was-a-lot-of-info.-lets-put-it-into-practice" class="slide level2 center">
+<h2>Okay, that was a lot of info. Let’s put it into practice!</h2>
+<p>We’ll go through it in two steps:</p>
+<p><strong>1. Configure your Setup:</strong> Set up Git, GitHub, and RStudio so everything works together</p>
+<p><strong>2. Try It Out in RStudio:</strong> Git &amp; GitHub tutorial to practice using version control in RStudio</p>
 </section>
 <section id="step-1-configure-your-setup" class="slide level2 center">
 <h2>💻 Step 1: Configure your Setup</h2>
-<h3 id="complete-the-rstudio-workbench-setup">Complete the RStudio Workbench Setup:</h3>
+<h3 id="complete">Complete</h3>
 <h3 id="httpsbrinasab.github.iocsp-websitesetupsetup-workbench.html"><a href="https://brinasab.github.io/csp-website/setup/setup-workbench.html" class="uri">https://brinasab.github.io/csp-website/setup/setup-workbench.html</a></h3>
 </section>
 <section id="step-2-use-git-and-github-in-rstudio-tutorial" class="slide level2 center">
 <h2>💻 Step 2: Use Git and GitHub in RStudio Tutorial</h2>
-<h3 id="once-step-1-is-done-complete-this-tutorial">Once step 1 is done, complete this tutorial:</h3>
+<h3 id="once-step-1-is-done-complete">Once Step 1 is done, complete:</h3>
 <h3 id="httpsbrinasab.github.iocsp-websitesetupsetup-test.html"><a href="https://brinasab.github.io/csp-website/setup/setup-test.html" class="uri">https://brinasab.github.io/csp-website/setup/setup-test.html</a></h3>
+<p><br></p>
 <h4 id="instructions">Instructions:</h4>
 <ul>
 <li><p>Work in pairs: one person (the most experienced with programming) read the instructions and guide the other, who executes the commands.</p></li>
-<li><p>Keep track of questions as you go and post them in <a href="https://docs.google.com/document/d/1iQacRXqGLpke1D6qm_-kBkHBtrZy7SJYtRzFR88-Y_I/edit?usp=sharing">this Google doc</a></p></li>
+<li><p>Keep track of your questions as you go and post them in <a href="https://docs.google.com/document/d/1iQacRXqGLpke1D6qm_-kBkHBtrZy7SJYtRzFR88-Y_I/edit?usp=sharing">this Google doc</a></p></li>
 <li><p>Raise your hand if you need help!</p></li>
 </ul>
+<p><br></p>
 </section>
 <section id="recap-beginner-friendly-git-github-workflow" class="slide level2 center">
 <h2>Recap: Beginner-Friendly Git &amp; GitHub Workflow</h2>
@@ -510,8 +515,9 @@ Do not do the other way around (e.g., do not modify your GitHub repository direc
 <section>
 <section id="deeper-dive-into-git-github" class="title-slide slide level1 center middle">
 <h1>3. Deeper Dive into Git &amp; GitHub</h1>
-<p>Come back here once you are familiar with the basic workflow!</p>
-<p>These slides won’t be included in the in-class quiz, but they might be handy if you run into problems in homework assigments.</p>
+<p><br></p>
+<p>Come back here once you are familiar with the basic workflow! These slides won’t be included in the in-class quiz, but they might be handy if you run into problems in homework assigments.</p>
+<p><br></p>
 </section>
 <section id="what-to-commit-not-to-commit" class="slide level2 center">
 <h2>What to Commit / Not to Commit</h2>
@@ -650,8 +656,8 @@ Want to practice? Complete the ["Using Git with RStudio"](https://computing-soc-
 <li>Homework 1 is now open and due next week. Check the Course Schedule on our website for the exact due date.</li>
 <li>If you haven’t completed these yet, please do so ASAP, as you won’t be able to access and complete Homework 1 otherwise:
 <ul>
-<li>Register a GitHub account and submit your username (see Lecture 1 on our website)</li>
-<li>Setup your computer (see Lecture 2 on our website and these slides)</li>
+<li>Register a GitHub account and submit your username (see Lecture 1)</li>
+<li>Setup your computer (see today’s lecture)</li>
 </ul></li>
 </ul>
 </section>

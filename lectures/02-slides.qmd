@@ -162,8 +162,7 @@ Unpack this question and define terms, then reason it out loud with
 ### Git
 - Version control software  
 - Runs **locally** on your computer
-- Tracks changes in a folder called **repository** or **repo**
-- You work in that folder (your **local repo**)
+- Tracks changes you make to files in a specific folder (that you decide), called local repository or repo
 
 ::::
 
@@ -174,8 +173,7 @@ Unpack this question and define terms, then reason it out loud with
 ### GitHub
 - Cloud-based platform  
 - Runs **online**
-- Stores copies of your local Git repo online, and enables **backup**, **sharing**, and **collaboration**
-- You **push** to and **pull** from GitHub
+- Stores copies of your local Git repository online, and enables backup and collaboration, you push to and pull from GitHub
 
 ::::
 
@@ -211,7 +209,7 @@ You have to track changes *manually* which be messy and hard to manage, like:
 
 ---
 
-## How Version Control Works
+## How Version Control (Git) Works
 
 - You choose a folder on your computer: this becomes your **local repository** or local repo
 - A Version Control tool, like **Git**, records and saves changes you make to the files in that folder
@@ -223,10 +221,11 @@ You can revisit your project's history and restore earlier versions of a file if
 
 <div class="fragment">
 
-**We use:**
+### How Version Control (Git) + GitHub Works
 
-- Git (your version control software, operates locally on your machine) *and*
-- GitHub (your online storage/backup)
+- You can link your local Git repository to an online GitHub repository
+- So you can push your local changes to GitHub 
+- And share your work with others
 
 
 ```{r echo = FALSE, out.width = "35%"}
@@ -240,31 +239,35 @@ You can revisit your project's history and restore earlier versions of a file if
 
 ## Git & GitHub Comparison
 
-| Feature                 | **Git**                                        | **GitHub**                                               |
-|--------------------------|------------------------------------------------|----------------------------------------------------------|
-| What it is              | Version control software                       | Cloud platform for storing Git repositories              |
-| Where it runs           | On your computer (local)                       | In the cloud (web-based)                                 |
-| What it does            | Tracks and saves changes in your local repo | Hosts a remote copy of your local repo for backup and sharing with others  |
-| Collaboration           | Not built-in                                   | Yes, supports pull requests, issues, and code review          |
-| How to use with RStudio | Git panel for staging, committing, and pushing  | Connect to GitHub via RStudio’s project setup or terminal|
-| Repo terminology        | Your working folder is a **local repo**        | The online copy is a **remote repo** |
+| Feature         | **Git**                          | **GitHub**                             |
+|----------------|-----------------------------------|----------------------------------------|
+| What it is     | Version control software          | Cloud platform for Git repos           |
+| Where it runs  | Locally (your computer)           | Online (web-based)                     |
+| What it does   | Tracks changes in your local repo | Stores & shares remote copies          |
+| Collaboration  | Not built-in                      | Pull, issues, code reviews              |
+| Use in RStudio | Git Tab     | Connect via setup or terminal          |
+| Repo      | **Local repo** = your folder      | **Remote repo** = copy on GitHub       |
+
+<br>
 
 Note: we use **Git and GitHub via RStudio** only. They are also used with other tools like GitHub Desktop, terminal, etc.
 
+</br>
 ---
 
-## Okay, that was a lot of info. Let’s try it out with some practice!
+## Okay, that was a lot of info. Let’s put it into practice!
 
-#### We practice in two steps: 
+We’ll go through it in two steps:
 
-#### 1. Configure Setup
-#### 2. Use Git and GitHub in RStudio Tutorial
+**1. Configure your Setup:** Set up Git, GitHub, and RStudio so everything works together
+
+**2. Try It Out in RStudio:** Git & GitHub tutorial to practice using version control in RStudio
 
 ---
 
 ## 💻 Step 1: Configure your Setup
 
-### Complete the RStudio Workbench Setup:
+### Complete
 
 ### <https://brinasab.github.io/csp-website/setup/setup-workbench.html>
 
@@ -272,16 +275,20 @@ Note: we use **Git and GitHub via RStudio** only. They are also used with other 
 
 ## 💻 Step 2: Use Git and GitHub in RStudio Tutorial
 
-### Once step 1 is done, complete this tutorial:
+### Once Step 1 is done, complete:
 
 ### <https://brinasab.github.io/csp-website/setup/setup-test.html>
+
+<br>
 
 #### Instructions:
 
 - Work in pairs: one person (the most experienced with programming) read the instructions and guide the other, who executes the commands. 
 
-- Keep track of questions as you go and post them in [this Google doc](https://docs.google.com/document/d/1iQacRXqGLpke1D6qm_-kBkHBtrZy7SJYtRzFR88-Y_I/edit?usp=sharing)
+- Keep track of your questions as you go and post them in [this Google doc](https://docs.google.com/document/d/1iQacRXqGLpke1D6qm_-kBkHBtrZy7SJYtRzFR88-Y_I/edit?usp=sharing)
 - Raise your hand if you need help! 
+
+</br>
 
 ---
 
@@ -339,9 +346,11 @@ Note: this will only work if we have your GitHub username and you accepted the i
 
 # 3. Deeper Dive into Git & GitHub  {.slide .center .middle}
 
-Come back here once you are familiar with the basic workflow!
+<br>
 
-These slides won't be included in the in-class quiz, but they might be handy if you run into problems in homework assigments.
+Come back here once you are familiar with the basic workflow! These slides won't be included in the in-class quiz, but they might be handy if you run into problems in homework assigments.
+
+</br>
 
 ---
 
@@ -520,8 +529,8 @@ Want to practice? Complete the ["Using Git with RStudio"](https://computing-soc-
 
 - Homework 1 is now open and due next week. Check the Course Schedule on our website for the exact due date.
 - If you haven't completed these yet, please do so ASAP, as you won't be able to access and complete Homework 1 otherwise:
-  - Register a GitHub account and submit your username (see Lecture 1 on our website)
-  - Setup your computer (see Lecture 2 on our website and these slides)
+  - Register a GitHub account and submit your username (see Lecture 1)
+  - Setup your computer (see today's lecture)
 
 ---
 

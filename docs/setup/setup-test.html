@@ -280,7 +280,7 @@ If this didn’t work
 <ul>
 <li><em>Repository URL:</em> paste the URL of your new GitHub repository (see Step 2)</li>
 <li><em>Project directory name:</em> it should automatically populate, do not change it. If it does not automatically populate, type the same name you gave to your GitHub repository (e.g.&nbsp;<code>myrepo</code>)</li>
-<li><em>Create project as subdirectory of:</em> click on “Browse…” and decide where to store the local directory for the project. It is OK to leave this test directory under the Home</li>
+<li><em>Create project as subdirectory of:</em> click on “Browse…” and decide where to store the local directory for the project. It is OK to leave this test directory under Home</li>
 <li>Before proceeding, check the <em>Open in new session</em> box situated toward the bottom, as that’s what you’ll usually do in real life</li>
 <li>Finally, click <em>Create Project.</em> The first time you do it, you might get the following message: <em>“The authenticity of host ‘github.com (IP)’ can’t be established etc.”</em> If so:
 <ul>
@@ -334,7 +334,7 @@ Tip
 <p>Save your changes. Next, commit these changes to your local repo using RStudio:</p>
 <ul>
 <li>Open the <em>Git</em> tab in the upper right panel</li>
-<li>In the <em>Staged</em> box, select all files you want to commit. To do this, check the boxes next to each file listed. The first time you commit, this will usually include several new files — go ahead and check all of them</li>
+<li>In the <em>Staged</em> little box, select all files you want to commit. To do this, check the boxes next to each file listed. The first time you commit, this will usually include several new files — go ahead and check all of them</li>
 <li>Click <em>Commit</em></li>
 <li>A new window should open: in the <em>Commit message</em> box, enter a descriptive message. This should explain what you changed. For example in this case you could write something like: “Added a test line to README”</li>
 <li>Click <em>Commit</em>, wait for it to finish, then click <em>Close</em></li>
@@ -357,7 +357,7 @@ Tip
 </div>
 <p>Now you have new work in your local Git repository, but the changes are not yet on GitHub:</p>
 <ul>
-<li>Go to the <em>Git</em> tab — you should see a message that says <em>“Your branch is ahead of origin/main by 1 commit”</em></li>
+<li>Go to the <em>Git</em> tab: you should see a message that says <em>“Your branch is ahead of origin/main by 1 commit”</em></li>
 <li>This means you need to push your changes to GitHub: click the green <em>Push</em> arrow under the <em>Git</em> tab
 <ul>
 <li><em>If this is your first time pushing to GitHub</em>, you may see a prompt to add your SSH key and/or enter your GitHub username and password. If prompted, go ahead and complete the steps. When done, open your GitHub repo in a browser to confirm your changes were pushed.</li>
@@ -375,17 +375,17 @@ Tip
 <li>Stage the change in the <em>Git</em> tab</li>
 <li>Write a short commit message describing the update</li>
 <li>Commit the change</li>
-<li>Pull from GitHub (nothing should happen, see the tip below for why we want to pull first)</li>
+<li>Pull from GitHub (nothing should happen, see the tip below for why we want to pull first!)</li>
 <li>Push it to GitHub</li>
 </ul></li>
-<li>Add a new R script or R Markdown (<code>.Rmd</code>) file to the project:
+<li>Add a new R script (<code>.R</code>) or an R Markdown (<code>.Rmd</code>) file to the project:
 <ul>
 <li>Add some basic content (e.g., a comment and a variable)</li>
 <li>Save the file</li>
 <li>Stage, commit, pull, and push the new file following the same steps</li>
 </ul></li>
 </ul>
-<p>Doing this a few times will help solidify the habit of tracking, committing, and syncing your work regularly.</p>
+<p>Doing this a few times will help solidify the habit of tracking, committing, and syncing your work regularly. You’ve got this!</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Always Pull Before You Push">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -416,7 +416,7 @@ Always Pull Before You Push
 <h2 class="anchored" data-anchor-id="step-7-the-end-delete-this-test-repo">Step 7 (The End): Delete this Test Repo</h2>
 <p>Once you’re done experimenting, delete the <code>myrepo</code> repository — this was just a test, and there’s no need to keep it. We need to remove it from <em>both</em> your computer (or Workbench) and GitHub:</p>
 <ul>
-<li><em>Delete the local repository</em>: find where you stored it on your computer (or Workbench) and delete the folder (click the red X labeled “Delete”)</li>
+<li><em>Delete the local repository</em>: find where you stored it on your computer (or Workbench) and delete the folder (click the red X labeled “Delete”);</li>
 <li><em>Delete the repository from GitHub</em>:
 <ul>
 <li>Open the repository in your browser</li>
@@ -425,11 +425,12 @@ Always Pull Before You Push
 <li>Follow the confirmation instructions</li>
 </ul></li>
 </ul>
+<p>Congrats you got to the end of this! Done early? Switch roles with your teammate and/or learn more about these tools at this page: <a href="../setup/what.html">What are these Tools?</a></p>
 </section>
 <section id="alternative-to-step-3" class="level2">
 <h2 class="anchored" data-anchor-id="alternative-to-step-3">Alternative to Step 3</h2>
 <p>Remember, Step 3 is the recommended approach (i.e., start with GitHub, then clone in RStudio). You don’t need to follow this alternative for this course, but we include it here in case it’s helpful for future projects.</p>
-<p>However, sometimes you cannot setup the GitHub repo first, or you already have an RStudio project you need to connect to a GitHub repo. This workflow is the reverse of the above and allows to connect a local RStudio project to a remote GitHub repository.</p>
+<p>Sometimes you cannot setup the GitHub repo first, or you already have an RStudio project you need to connect to a GitHub repo. This workflow is the reverse of the above and allows to connect a local RStudio project to a remote GitHub repository.</p>
 <p>Unlike the GitHub-first method, this requires using the Shell or Terminal — it can’t be completed entirely within RStudio.</p>
 <section id="create-a-local-rstudio-project" class="level4">
 <h4 class="anchored" data-anchor-id="create-a-local-rstudio-project">Create a Local RStudio Project</h4>

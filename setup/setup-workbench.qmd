@@ -53,7 +53,7 @@ To confirm it worked (e.g., that Git got your credentials), go to *Tools > Shell
 git config --global --list
 ```
 
-If you see your name and email.
+If you see your name and email, you're all set. If something looks off—like a typo in your name or you used the wrong email (not the one linked to your GitHub account)—just re-run the R code with the correct information. It will overwrite the previous settings.
 
 <!--
 # List all SSH key stored using Shell

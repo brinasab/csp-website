@@ -604,20 +604,22 @@ If the same part of the file was changed in both versions, Git <strong>cannot de
 
 ## What You Need to Do (When a Conflict Happens)
 
-1. Open the file and look for the conflict markers:  
+Pull the latest changes from GitHub
+   git pull origin main
+   
+Open the file or files and look for the conflict markers:  
    `<<<<<<<`, `=======`, `>>>>>>>`
 
-2. Decide which version to keep or manually combine them
+Decide which version to keep or manually combine them
 
-3. Delete the conflict markers
+Delete the conflict markers
 
-4. Save the file
+Save the file
 
-5. Run the following commands:
-
-```bash
-git add filename
-git commit
+Run the following commands in bash
+  git add <filename>
+  git commit -m "solved conflict"
+  git push origin main
 
 --->
 </section>

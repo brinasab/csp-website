@@ -1005,7 +1005,7 @@
     "href": "setup/setup-test.html#step-7-the-end-delete-this-test-repo",
     "title": "Git within RStudio Tutorial",
     "section": "Step 7 (The End): Delete this Test Repo",
-    "text": "Step 7 (The End): Delete this Test Repo\nOnce you’re done experimenting, delete the myrepo repository — this was just a test, and there’s no need to keep it. We need to remove it from both your computer (or Workbench) and GitHub:\n\nDelete the local repository: find where you stored it on your computer (or Workbench) and delete the folder (click the red X labeled “Delete”);\nDelete the repository from GitHub:\n\nOpen the repository in your browser\nClick on Settings\nScroll to the bottom of the page and click Delete this repository\nFollow the confirmation instructions\n\n\nCongrats you got to the end of this! Done early? Switch roles with your teammate and/or learn more about these tools at this page: What are these Tools?"
+    "text": "Step 7 (The End): Delete this Test Repo\nOnce you’re done experimenting, delete the myrepo repository — this was just a test, and there’s no need to keep it. We need to remove it from both your computer (or Workbench) and GitHub:\n\nDelete the local repository: find where you stored it on your computer (or Workbench) and delete the folder (click the red X labeled “Delete”);\nDelete the repository from GitHub:\n\nOpen the repository in your browser\nClick on Settings\nScroll to the bottom of the page and click Delete this repository\nFollow the confirmation instructions\n\n\nCongrats—you made it to the end! Done early? Switch roles with your teammate, or read more about these tools here: What are these Tools?"
   },
   {
     "objectID": "setup/setup-test.html#alternative-to-step-3",

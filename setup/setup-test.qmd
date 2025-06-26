@@ -173,8 +173,8 @@ Once you're done experimenting, delete the `myrepo` repository — this was just
   - Click on *Settings*
   - Scroll to the bottom of the page and click *Delete this repository*
   - Follow the confirmation instructions
-
-Congrats you got to the end of this! Done early? Switch roles with your teammate and/or learn more about these tools at this page: [What are these Tools?](what.qmd)
+  
+Congrats—you made it to the end! Done early? Switch roles with your teammate, or read more about these tools here: [What are these Tools?](what.qmd)
 
 
 ## Alternative to Step 3

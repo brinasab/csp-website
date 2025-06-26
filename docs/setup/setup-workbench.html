@@ -198,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>If you have not yet, go to <a href="https://github.com" class="uri">https://github.com</a> and follow the instructions there to create a free GitHub account. Choose a professional username (see <a href="https://happygitwithr.com/github-acct">these tips</a>).</p></li>
 <li><p>Add your GitHub username to the Excel file linked on <a href="../lectures/01-home.html">Lecture 1</a>.</p></li>
-<li><p>We’ll use it to invite you to our GitHub Course Organization, which is required to access and submit homework assignments. Once we have your username, you’ll receive an invitation email from GitHub — make sure to open it and accept the invitation to join the organization.</p></li>
+<li><p>We’ll use your username to invite you to our GitHub Course Organization, which is required to access and submit homework assignments. You’ll receive an invitation email from GitHub — make sure to open it and accept the invitation to join the organization.</p></li>
 </ol>
 </section>
 <section id="step-2-log-into-rstudio-workbench" class="level2">
@@ -245,16 +245,14 @@ ls -l ~/.ssh
 cat ~/.ssh/id_rsa.pub
 cat ~/.ssh/id_rsa
 
-# Delete them
+# Delete all SSH keys
 rm ~/.ssh/id_*
 
-# Or delete everything in ssh folder
+# Or delete everything in SSH folder
 rm -rf ~/.ssh
 
 # Verify deletion
 ls -l ~/.ssh
-
-
 
 -->
 </section>
@@ -276,16 +274,16 @@ ls -l ~/.ssh
 </section>
 <section id="what-you-need-to-do-to" class="level4">
 <h4 class="anchored" data-anchor-id="what-you-need-to-do-to">What you need to do to</h4>
-<p>You need to create and store an SSH key pair, by running following code in your R Console:</p>
+<p>You need to create and store an SSH key pair, by running the following code in your R Console:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>credentials<span class="sc">::</span><span class="fu">ssh_setup_github</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You’ll be guided through a few steps:</p>
 <ul>
 <li>It should say <strong>“No SSH key found. Generate one now?”</strong> → Type <strong>Yes</strong></li>
-<li>A long string of characters will appear in the Console — that’s your <strong>public SSH key</strong></li>
+<li>A long string of characters will appear in the Console, that’s your <strong>public SSH key</strong></li>
 <li>You will be asked to <strong>open a browser</strong> → Type <strong>Yes</strong></li>
 <li>Before or after opening a new browser, <strong>copy</strong> the entire SSH key (including the <code>ssh-rsa</code> or <code>ssh-ed25519</code> at the beginning) from your Console</li>
 </ul>
-<p>Once you are on the GitHub page that opened in your new browner:</p>
+<p>Once you are on the GitHub page:</p>
 <ul>
 <li><strong>Paste</strong> your entire SSH key into the GitHub page that opened in your new browser (you can do this only if you registered a GitHub account, see step 1 above)</li>
 <li>Under <strong>“Title”</strong>, give the key an informative name, something like <code>csp-workbench-summer25</code> or another label to record the course and computer</li>

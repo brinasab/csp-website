@@ -9,7 +9,7 @@ format: html
 
 2. Add your GitHub username to the Excel file linked on [Lecture 1](../lectures/01-home.qmd). 
 
-3. We’ll use it to invite you to our GitHub Course Organization, which is required to access and submit homework assignments. Once we have your username, you’ll receive an invitation email from GitHub — make sure to open it and accept the invitation to join the organization.
+3. We’ll use your username to invite you to our GitHub Course Organization, which is required to access and submit homework assignments. You’ll receive an invitation email from GitHub — make sure to open it and accept the invitation to join the organization.
  
 
 ## Step 2: Log into RStudio Workbench  
@@ -63,16 +63,14 @@ ls -l ~/.ssh
 cat ~/.ssh/id_rsa.pub
 cat ~/.ssh/id_rsa
 
-# Delete them
+# Delete all SSH keys
 rm ~/.ssh/id_*
 
-# Or delete everything in ssh folder
+# Or delete everything in SSH folder
 rm -rf ~/.ssh
 
 # Verify deletion
 ls -l ~/.ssh
-
-
 
 -->
 
@@ -101,7 +99,7 @@ Note that on GitHub, the URL for SSH looks like `git@github.com:<OWNER>/<REPO>.g
 
 #### What you need to do to
 
-You need to create and store an SSH key pair, by running following code in your R Console:
+You need to create and store an SSH key pair, by running the following code in your R Console:
 
 ```r
 credentials::ssh_setup_github()
@@ -110,11 +108,11 @@ credentials::ssh_setup_github()
 You’ll be guided through a few steps:
 
 - It should say **"No SSH key found. Generate one now?"** → Type **Yes**
-- A long string of characters will appear in the Console — that’s your **public SSH key**
+- A long string of characters will appear in the Console, that’s your **public SSH key**
 - You will be asked to **open a browser** → Type **Yes**
 - Before or after opening a new browser, **copy** the entire SSH key (including the `ssh-rsa` or `ssh-ed25519` at the beginning) from your Console
 
-Once you are on the GitHub page that opened in your new browner:
+Once you are on the GitHub page:
 
 - **Paste** your entire SSH key into the GitHub page that opened in your new browser (you can do this only if you registered a GitHub account, see step 1 above)
 - Under **"Title"**, give the key an informative name, something like `csp-workbench-summer25` or another label to record the course and computer

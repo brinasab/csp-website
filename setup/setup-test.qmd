@@ -43,7 +43,7 @@ It may be that Git is not installed, or RStudio cannot find it.
 
 ## Step 2: Create a New Repository on GitHub
 
-- Go to [GitHub](https://www.github.com) and log in. If you haven’t already, sign up for an account, create your profile, and share your GitHub username with us (use the file linked in Lecture 1).
+- Go to [GitHub](https://www.github.com) and log in. If you haven’t already, sign up for an account, and share your GitHub username with us using the Excel file linked in Lecture 1.
 
 - Go to *Repositories* and click the green *New* or *New Repository* button and fill in the following:
   - *Repository name:* `myrepo`
@@ -57,9 +57,9 @@ It may be that Git is not installed, or RStudio cannot find it.
 
 ## Step 3: Clone the New GitHub Repo via RStudio
 
-Now you need to clone the newly created GitHub repository to your local computer using RStudio. Cloning means downloading a local copy of the repository.
+Now you need to clone the newly created GitHub repository to your local computer (e.g., Workbench) using RStudio. Cloning means downloading a local copy of the repository.
 
-In RStudio Workbench, start a new Git Project with Version Control: *File \> New Project \> Version Control \> Git* 
+In Workbench, start a new Git Project with Version Control: *File \> New Project \> Version Control \> Git* 
 
 If the Version Control option is missing, return to Step 1 to ensure RStudio can find Git. Otherwise, fill out the following fields:
 
@@ -67,8 +67,7 @@ If the Version Control option is missing, return to Step 1 to ensure RStudio can
 -   *Project directory name:* it should automatically populate, do not change it. If it does not automatically populate, type the same name you gave to your GitHub repository (e.g. `myrepo`)
 -   *Create project as subdirectory of:* click on "Browse..." and decide where to store the local directory for the project. It is OK to leave this test directory under the Home
 -   Before proceeding, check the *Open in new session* box situated toward the bottom, as that's what you'll usually do in real life
--   Finally, click *Create Project.* The first time you do it, you might get the following message:\
-    "The authenticity of host 'github.com (IP)' can't be established etc." If so:
+-   Finally, click *Create Project.* The first time you do it, you might get the following message: *"The authenticity of host 'github.com (IP)' can't be established etc."* If so:
     -   Ensure that the hash shown in the message matches one of those shown [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints)
     -   If the hash matches (it should), type "yes" and you are done. If you do not see the hash, open the shell and type: `ssh -T git@github.com`
     -   If you answered "yes" but get a message like\
@@ -88,17 +87,17 @@ Whenever possible, use this workflow — starting with GitHub and then connectin
 
 The advantage of this “GitHub first, then Git in RStudio” workflow is that your remote GitHub repository is automatically set as the upstream for your local repository. This means you can push and pull commits right away, without any extra configuration.
 
-You can also do the reverse setup (starting locally and connecting to GitHub later), see the **Alternative to Step 3** below.
+It is also possibile to do the reverse setup (starting locally and connecting to GitHub later), see the **Alternative to Step 3** below for details.
 :::
 
 
 ## Step 4: Make Local Changes, Save, Commit
 
 ::: callout-tip
-Do this every time you finish a valuable chunk of work, probably many times a day.
+Do this every time you finish a chunk of work, probably many times during a work session.
 :::
 
-From RStudio or R Workbench, check file browser panel to find the `README.md` file of your project. Open it and modify it by adding the following line (or any other line):
+From RStudio, check file browser panel to find the `README.md` file of your project. Open and modify it by adding the following line (or any other line):
     
 ```
 This is a line written from R.
@@ -123,7 +122,7 @@ Now you have new work in your local Git repository, but the changes are not yet 
 
 - Go to the *Git* tab — you should see a message that says *"Your branch is ahead of origin/main by 1 commit"*
 - This means you need to push your changes to GitHub: click the green *Push* arrow under the *Git* tab
-  - *If this is your first time pushing to GitHub*, you may see a prompt to: add your SSH key, and/or enter your GitHub username and password. If prompted, go ahead and complete the steps. When done, open your GitHub repo in a browser to confirm your changes were pushed.
+  - *If this is your first time pushing to GitHub*, you may see a prompt to add your SSH key and/or enter your GitHub username and password. If prompted, go ahead and complete the steps. When done, open your GitHub repo in a browser to confirm your changes were pushed.
   - *If this step failed* (e.g., you're unable to push), Git may not be properly configured, or you may have used the wrong authentication method (SSH or HTTPS). Check the [RStudio Workbench Setup](setup-workbench.qmd) page to troubleshoot.
 
 

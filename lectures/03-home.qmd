@@ -22,8 +22,36 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Learning Objectives
 
+- Recognize the role of visualization in exploring and communicating data
+- Understand the basic principles of the "Layered Grammar of Graphics"
+- Create simple layered plots using `ggplot2`
+- Define what good coding style means
+- Apply good coding style practices when writing R code
+
 
 ## Before Class
 
+- Review the Lecture 2 materials to get ready for today's in-class quiz
+- Start [Homework 1](../hw/hw01.qmd). Have questions or need help? Join us for Office Hours right after class!
+- Bring your laptop to every class
+
 
 ## Readings
+
+Skim the readings before or after class to get the big picture and prep for quizzes and assignments:
+
+* [Chapter 4 "Workflow: Code Style"](https://r4ds.hadley.nz/workflow-style) from "R for Data Science" 2nd Edition 
+* ["Chapter 1 Data Visualization"](https://r4ds.hadley.nz/data-visualize) from "R for Data Science" 2nd Edition
+
+<!-- To be able to follow today's lecture, you need to read this chapter! -->
+
+Additional Resources (not needed for quizzes or homework but helpful if you want to know more about these topics):
+
+* ["The `tidyverse` style guide"](https://style.tidyverse.org/index.html)
+* [ggplot2 Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+* [ggplot2 Documentation](https://ggplot2.tidyverse.org/index.html)
+* [ggplot2: Elegant Graphics for Data Analysis, 2nd Edition](https://ggplot2-book.org/) by Hadley Wickham. Excellent resource for learning the intricacies of `ggplot2`
+* [R Graphics Cookbook, 2nd edition](https://r-graphics.org/) by Winston Chang. A practical guide with 150 examples to generate quality graphics based on the data you wish to present
+
+<!-- check css website for more -->
+

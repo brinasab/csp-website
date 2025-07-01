@@ -16,35 +16,680 @@ format:
     center: true
 ---
 
-### Slides coming soon!
-
 # Agenda {.center}
 
 ::: {.agenda-list}
-1. Topic  
-2. Topic 
-3. Topic  
+1. Intro to the Grammar of Graphics and ggplot2
+2. R Coding Style: Best Practices
+3. More on the Grammar of Graphics and ggplot2 
+4. Simplifying ggplot2 with Defaults  
+5. Practice: Gapminder Data
 :::
 
 ---
 
-# 1. Title Section {.slide .center .middle}
+## Reminders
+
+- Check your working directory inside R Workbench ("Project: ") and switch project if necessary
+
+- Check your R version
+  - R 4.5.0 
+  - R 4.5.1 use this! 
+  - R 4.2.0
+
+# 1. Intro to the Grammar of Graphics and ggplot2 {.slide .center .middle}
 
 ---
 
-## Subtitles
+## What Is a Dataset?
+
+Imagine you are a data analyst for Ford and have information on ~200 cars. For each car, you know:
+
+- How big the engine is (engine size or displacement, in liters)
+- How many miles it gets on the highway (fuel efficiency, in Miles Per Gallons)
+- The class of the car (e.g., compact, SUV, etc.)
+
+**Questions for you:**
+
+- What do you think a dataset like this might look like?
+- What is a dataset, anyway?
+- What does one row represent? What does one column represent?
+
+---
+
+## Plotting Data
+
+Imagine you pick two pieces of information (e.g., variables) from this car dataset: 
+
+- variable 1: car fuel efficiency on the highway
+- variable 2: car engine size (engine displacement)
+
+You want to understand the relationship between these two variables visually, so you start by creating a simple scatter plot...
+
+---
+
+## Our First Plot with ggplot2
+
+```{r, echo=FALSE}
+library(ggplot2)
+
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy)) +
+  labs(title = "Car Fuel Efficiency on the Highway vs. Car Engine Size",
+       x = "Car Engine Size in Liters",
+       y = "Car Highway MPG (Fuel Efficiency)")
+```
+
+**Before we explain the code to make this plot…**
+
+- What's on the x-axis? And on the y -axis?
+- What do you think each dot in this scatterplot represents?
+- If you wanted to pick a car that combines high fuel efficiency on the highway and a large engine size, where would you look on this plot? Are there cars like that here?
+- Larger engines tend to have __________ highway MPG efficiency
+
+---
+
+## Understanding a Dataset: mpg
+
+Open R Workbench and **use R version 4.5.1**
+
+Copy/paste this code into your R Console and run it for a preview of the `mpg` dataset:
+
+````r
+library(ggplot2)
+data(mpg)
+head(mpg)
+````
+<!-- describe what this code does -->
+
+---
+
+## Installing and Loading Packages in R
+
+To use external tools like `ggplot2`, you need to first **install** and then **load** the package. A package is a a collection of code, data, and documentation.
+
+**Install a package. Only once per computer:**
+```r
+install.packages("ggplot2")
+```
+
+**Load a package. Every time you use it, at the top of the script:**
+```r
+library(ggplot2)
+```
+
+In this course, we’re using RStudio Workbench, where everything is already installed. So you only need to **load** packages.
+
+<!--
+**What's the difference?**
+- A **package** is a collection of code, data, and documentation
+- The **library()** function loads an installed package into your current session
+-->
+
+---
+
+## Key Dataset Terms
+
+- **Observation** = each row = one car  
+- **Variable** = each column = a car property (e.g., `displ`, `hwy`, `class`)
+  - `displ`: engine size or displacement, in liters  
+  - `hwy`: fuel efficiency, highway miles per gallon  
+  - `class`: class or type of car (compact, SUV...)
+
+The `mpg` dataset has **234 observations** (cars, in rows) and **11 variables** (properties, in columns)
+
+---
+
+## Code to Make our First Plot with ggplot2
+
+:::{.columns}
+::: {.column width="50%"}
+
+```r
+library(ggplot2)
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+What this code does:
+
+- Sets the data: `mpg`
+- Makes a scatterplot: `geom_point()`
+- Tells what to put on the axes: `aes()`
+- Maps the variable engine size to x-axis: `x = displ`
+- Maps the variable fuel efficiency to y-axis: `y = hwy`
+ 
+:::
+
+::: {.column width="50%"}
+
+```{r}
+library(ggplot2)
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+:::
+:::
+
+---
+
+## Add Title and Axes Labels
+
+Our initial plot also had a Title and Axes Labels, that's the full code to add them (copy/paste it to your Console):
+
+```r
+library(ggplot2)
+
+ggplot(data = mpg) +
+  geom_point(aes(x = displ, y = hwy)) +
+  labs(title = "Car Fuel Efficiency on the Highway vs. Car Engine Size",
+       x = "Car Engine Size in Liters",
+       y = "Car Highway MPG (Fuel Efficiency)")
+```
+
+---
+
+## Why Visualize Data?
+
+Before you run numbers or models, it's useful to look at the data visually!
+
+- Graphs help you spot patterns, relationships, and outliers
+- Visualization makes data more understandable and shareable
+- You can explore your questions more quickly
 
 ---
 
 ## 💻 Practice
 
+Team up with someone, run this code in your Console, and answer the questions:
+
+````r
+library(ggplot2)
+data(mpg)
+
+ggplot(mpg) +
+  geom_point(aes(x = displ, y = hwy, color = class))
+````
+
+- What do you see? Describe the plot to your partner 
+- What do the first two lines of code do?
+- What does `color = class` do?
+- Replace the current x variable with the variable `cty` (city miles per gallons), run the code, and describe the new plot
+
+
+---
+
+## Grammar of Graphics and ggplot2
+
+We’ve been creating plots intuitively. Now, let’s learn them formally.
+
+- `ggplot2` is the main R package used for **data visualization**
+- It’s part of the **tidyverse**, a collection of packages for data science: https://www.tidyverse.org/
+- Created by **Hadley Wickham**, who also co-authored your course textbook
+- Built using the theory called the **Grammar of Graphics**, a system for creating layered plots
+
+<!-- ggplot2 bcs is the second version
+We start today and use `ggplot2` throughout this course to explore and communicate data visually. We also learn several packages from the tidiyverse -->
+
+---
+
+## Grammar and "Grammar of Graphics"
+
+> A **grammar** is a set of rules (syntax and morphology) that helps us structure a language. It lets us communicate clearly.
+
+Applied to R and ggplot2...
+
+> A **Grammar of Graphics** is a set of rules for building data visualizations. It lets us create many types of plots using the same structure.
+
+
+---
+
+## Main Components of the Grammar of Graphics
+
+The Grammar of Graphics defines a plot as built from five main parts. 
+
+These five parts together are called a **layer**:
+
+- **DATA**: the dataset you are using
+- **GEOM**: the type of plot (e.g., points, bars, lines)
+- **MAPPING**: maps variables to aesthetics like x, y, color, etc. with `aes()`
+- **STAT**: whether the data should be transformed (e.g., counted) or not (identity)
+- **POSITION**: how things are arranged on the plot (e.g., stacked or jittered)
+
+<!-- Other components: COORDINATE SYSTEM, FACET, SCALE -->
+
+---
+
+## Grammar of Graphics: Code Template
+
+Let’s look at how these five parts of a layer show up in `ggplot2` code:
+
+```r
+# code template
+
+ggplot(data = <DATA>) +
+  <GEOM>(
+    mapping = aes(<MAPPING>),
+    stat = <STAT>,
+    position = <POSITION>
+  )
+```
+
+You can also add more elements, like:
+```r
++ <COORDINATE SYSTEM>
++ <FACET>
+```
+
+---
+
+## Grammar of Graphics: Code Template with the mpg Dataset
+
+Now, fill in this code template using the `mpg` data and plot it:
+
+:::{.columns}
+::: {.column width="50%"}
+
+```r
+# code template
+
+ggplot(data = <DATA>) +
+  <GEOM>(
+    mapping = aes(<MAPPING>),
+    stat = <STAT>,
+    position = <POSITION>
+  ) +
+  <COORDINATE> +
+  <FACET>
+```
+
+:::
+
+::: {.column width="50%"}
+
+```r
+# filled with mpg data
+
+ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy, color = class),
+    stat = "identity",
+    position = "identity"
+  ) +
+  coord_cartesian() +
+  facet_wrap(vars(class), nrow = 1)
+```
+
+:::
+:::
+
+<!-- 
+Variables description:
+* `displ` (dbl): car’s engine size, in liters
+* `hwy` (int): car’s fuel efficiency on the highway
+* `class` (chr): categories of cars (e.g., compact, midsize, SUV, etc.)
+
+facet_wrap(~ class, nrow = 1) 
+
+Note: this template is a helpful starting point, but it's not the only way to write the code. We will explore alternatives later today. For now, let's demonstrate how to apply this template using the `mpg` cars dataset...
+-->
+
+# 2. R Coding Style: Best Practices {.slide .center .middle}
+
+---
+
+## On Coding Style in R
+
+Before continuing with the Grammar of Graphics, let’s take a moment to focus on **coding style** (parenthesis, signs, indentation, variable names, etc.)
+
+Here’s the same code as before. This time, read it focusing on its *style*. What do you notice?
+
+```r
+ggplot(data = mpg) + 
+  geom_point(
+     mapping = aes(x = displ, y = hwy, color = class),
+     stat = "identity", 
+     position = "identity") +
+  coord_cartesian() +
+  facet_wrap(facets = vars(class), nrow = 1)
+```
+
+<!--
+THINGS THAT STUDENTS MIGHT SAY
+- Parentheses: always open/close
+- Spacing and indentation
+- `<-` vs `=`
+- Use of quotes
+- Case matters in R
+-->
+
+---
+
+## Coding Style Checklist
+
+- Use `<-` to assign values to variables
+- Use `=` to assign values to function arguments
+- Use descriptive, meaningful variable names (`snake_case`, lowercase)
+- Add spaces around operators (e.g., `+`, `-`, `<-`) for readability
+- Avoid spaces inside parentheses or brackets
+- Close every opened parenthesis
+- Break long lines and use indentation
+- Use comments, but do not abuse them
+
+---
+
+## Why Care About Coding Style?
+
+Resources to guide you:
+
+- [R for Data Science, Chapter 4](https://r4ds.hadley.nz/workflow-style)
+- [The `tidyverse` style guide](https://style.tidyverse.org/)
+- [Why does coding style matter?](https://www.smashingmagazine.com/2012/10/why-coding-style-matters/)
+
+
+# 3. More on the Grammar of Graphics and ggplot2 {.slide .center .middle}
+
+---
+
+## Core Components of ggplot2
+
+You’ve seen the code template and the big picture. Now we’ll take a closer look at key components:
+
+- **Layers**
+  - data
+  - mapping
+  - geom
+  - stat
+  - position
+- **Coordinate System**
+- **Facets**
+- **Scales** (not covered today)
+
+---
+
+## Layers
+
+Layers create the visual elements on a plot. Each layer has five parts:
+
+```r
+ggplot(data = mpg) + 
+  geom_point(
+    mapping = aes(x = displ, y = hwy, color = class),
+    stat = "identity", 
+    position = "identity"
+  ) + 
+  geom_smooth(
+    mapping = aes(x = displ, y = hwy),
+    method = "lm"
+  )
+```
+
+---
+
+## Data and Aesthetic Mappings
+
+**Data:**
+
+- The dataset used for the plot
+- Example: `data = mpg`
+
+**Mapping:**
+
+- Links variables to aesthetics (x, y, color, size...)
+- Example: `aes(x = displ, y = hwy, color = class)`
+
+---
+
+## How ggplot2 Controls Positioning
+
+Adjusts how elements are positioned to avoid overlap.
+
+- Scatterplot: often `position = "identity"`
+- Jitter: `position = "jitter"` spreads overlapping points
+- Bar plot: use `"stack"`, `"dodge"`, etc.
+
+::: {.callout-tip}
+Check `geom_*()` documentation to learn supported positions.
+:::
+
+---
+
+## Statistical Transformations in Layers
+
+**Stat:** transforms your data for plotting.
+
+- Bar charts: `geom_bar()` uses `stat = "count"` by default
+- Scatterplots: often use `stat = "identity"`
+
+```r
+ggplot(data = mpg) + 
+  geom_bar(mapping = aes(x = class)) # implicitly counts
+```
+
+---
+
+## Choosing the Right Geometric Object
+
+The geometric object is the **type of plot** you’re making:
+
+- `geom_point()` →  scatterplot
+- `geom_line()` →  line chart
+- `geom_bar()` →  bar chart
+
+Each `geom` accepts certain aesthetics. Read the docs: [geom_point reference](https://ggplot2.tidyverse.org/reference/geom_point.html)
+
+---
+
+##  💻 Practice: Color Aesthetics
+
+Which of these three is correct? Run and compare them in R.
+
+<br>
+
+```r
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+
+<br>
+
+```r
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+```
+
+<br>
+
+```r
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+```
+
+---
+
+## 💻 Practice: Color Aesthetics
+
+:::: {.columns}
+::: {.column width="30%"}
+Correct
+```r
+aes(color = class)
+```
+Maps a variable.
+:::
+
+::: {.column width="30%"}
+Correct
+```r
+color = "blue"
+```
+Sets color manually (outside `aes`).
+:::
+
+::: {.column width="30%"}
+Incorrect
+```r
+aes(color = "blue")
+```
+Tries to *map* a fixed value (the string "blue"). Not useful.
+:::
+::::
+
+---
+
+## Common Beginner Mistakes
+
+- Putting fixed values like "blue" inside `aes()` (e.g., `aes(color = "blue")`
+- Forgetting to close `aes()` or `geom_()` parentheses
+- Using `<-` inside `aes()` instead of `=`
+
+---
+
+## Coordinate System and Faceting
+
+**Coordinate System:**
+
+- Translates data into the plot space
+- Default: Cartesian system (`coord_cartesian()`)
+
+**Faceting:**
+
+- Splits data into subplots by a variable
+
+```r
+ggplot(data = mpg) + 
+  geom_point(aes(x = displ, y = hwy, color = class)) +
+  coord_cartesian() +
+  facet_wrap(vars(class), nrow = 1)
+```
+
+# 4. Simplifying ggplot2 with Defaults {.slide .center .middle}
+
+<!--
+Remember I previously said that writing code using this template way is a great starting point but probably not your end point?
+
+We can rewrite the same code, simplified that way 
+(taking advantage of fact that layers share common features)
+
+We often repeat settings like `data = ...`, `aes()`, 
+`stat = ...`, but we can use defaults to simplify.
+-->
+
+---
+
+## Example 1
+
+Example from the previous slides 
+
+**Long version:**
+```r
+ggplot(data = mpg) + 
+  geom_point(
+    mapping = aes(x = displ, y = hwy, color = class),
+    stat = "identity", 
+    position = "identity") + 
+  geom_smooth(
+    mapping = aes(x = displ, y = hwy),
+    method = "lm")
+```
+
+::: {.fragment}
+
+**Short version:**
+```r
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(aes(color = class)) + 
+  geom_smooth(method = "lm")
+```
+
+:::
+
+---
+
+## Example 2
+
+Scatterplot between cars' engine size (`displ`) and highway fuel efficiency (`hwy`)
+
+**Long version:**
+```r
+ggplot() +
+  layer(
+    data = mpg, 
+    mapping = aes(x = displ, y = hwy),
+    geom = "point", 
+    stat = "identity", 
+    position = "identity"
+  ) +
+  scale_y_continuous() +
+  scale_x_continuous() +
+  coord_cartesian()
+```
+
+::: {.fragment}
+
+**Short version:**
+```r
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+```
+
+:::
+
+---
+
+## Defaults Cheat Sheet
+
+Use these defaults to simplify code:
+
+- `stat = "identity"` for `geom_point()`
+- `position = "identity"` unless changed
+- Common `aes()` calls can go in `ggplot()`
+- `scale_*_continuous()` not needed unless customizing
+
+
+---
+
+## Quick Review
+
+1. What does `geom_point()` do?
+2. What does `stat = "identity"` mean?
+3. When would you use `facet_wrap()`?
+4. What’s wrong with `aes(color = "blue")`?
+
+Try answering these without peeking at the slides!
+
+
+# 5. Pratice: Gapminder Data {.slide .center .middle}
+
+
+## 💻 Practice: Gapminder
+
+Download today's in-class materials from the website!
+
+The `gapminder` dataset:
+
+Contains data on various socio-economic indicators for countries around the world over multiple years (1957-2008). It includes information on life expectancy, GDP per capita, and population
+
+Gapminder info: https://cran.r-project.org/web/packages/gapminder/readme/README.html and https://www.gapminder.org/
+
 ---
 
 ## Recap: What We Learned Today
 
+- Core components of the Grammar of Graphics
+- Generate simple graphs with ggplot2
+- Use the Grammar of Graphics template and simplify it with defaults
+- R Coding Style Best Practices
+
 ---
 
 ## Reminders
+
+- Homework 1 is due Wednesday, July 2nd
+- There is no class Thursday, July 3rd
 
 ---
 

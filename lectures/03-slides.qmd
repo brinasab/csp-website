@@ -389,6 +389,37 @@ Resources to guide you:
 - [The `tidyverse` style guide](https://style.tidyverse.org/)
 - [Why does coding style matter?](https://www.smashingmagazine.com/2012/10/why-coding-style-matters/)
 
+---
+
+## Generating and Saving a Plot
+
+This code generates a plot, but does not save it to an object
+
+```r
+ ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy, color = class),
+    stat = "identity",
+    position = "identity"
+  ) +
+  coord_cartesian() +
+  facet_wrap(vars(class), nrow = 1)
+```
+
+This code generates a plot and saves it to an object that I named `fuel_plot`
+
+
+```r
+fuel_plot <- ggplot(data = mpg) +
+  geom_point(
+    mapping = aes(x = displ, y = hwy, color = class),
+    stat = "identity",
+    position = "identity"
+  ) +
+  coord_cartesian() +
+  facet_wrap(vars(class), nrow = 1)
+fuel_plot
+```
 
 # 3. More on the Grammar of Graphics and ggplot2 {.slide .center .middle}
 

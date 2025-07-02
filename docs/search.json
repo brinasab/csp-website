@@ -648,7 +648,7 @@
     "href": "lectures/03-home.html#learning-objectives",
     "title": "Lecture 3: Intro to ggplot2, Coding Style",
     "section": "Learning Objectives",
-    "text": "Learning Objectives\n\nRecognize the role of visualization in exploring and communicating data\nUnderstand the basic principles of the “Layered Grammar of Graphics”\nCreate simple layered plots using ggplot2\nDefine what good coding style means\nApply good coding style practices when writing R code"
+    "text": "Learning Objectives\n\nRecognize the role of visualization in exploring and communicating data\nUnderstand the basic principles of the “Layered Grammar of Graphics”\nCreate simple layered plots using ggplot2\nApply correct coding style practices when writing R code"
   },
   {
     "objectID": "lectures/03-home.html#before-class",
@@ -1398,5 +1398,12 @@
     "title": "Introduction to R: Lecture 3",
     "section": "💻 Practice: Color Aesthetics",
     "text": "💻 Practice: Color Aesthetics\n\n\n✅ Correct\naes(color = class)\nMaps a variable.\n\n✅ Correct\ncolor = \"blue\"\nSets color manually (outside aes).\n\n❌Incorrect\naes(color = \"blue\")\nTries to map a fixed value (the string “blue”). Not useful.\n\n\nSetting vs Mapping in ggplot2\n\nSetting means assigning a fixed value outside aes()\nExample: color = \"blue\" (does not come from the data)\nMapping means linking a variable inside aes()\nExample: aes(color = class) (comes from the data, from a variable)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#generating-and-saving-a-plot",
+    "href": "lectures/03-slides.html#generating-and-saving-a-plot",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Generating and Saving a Plot",
+    "text": "Generating and Saving a Plot\nThis code generates a plot, but does not save it to an object\n ggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)\nThis code generates a plot and saves it to an object that I named fuel_plot\nfuel_plot &lt;- ggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)\nfuel_plot"
   }
 ]

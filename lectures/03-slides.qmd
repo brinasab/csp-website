@@ -485,7 +485,7 @@ Each `geom` accepts certain aesthetics. Read the docs: [geom_point reference](ht
 
 ##  💻 Practice: Color Aesthetics
 
-Which of these three is correct? Run and compare them in R.
+Which of these three code blocks is correct? Run and compare them in R.
 
 <br>
 
@@ -514,29 +514,41 @@ ggplot(data = mpg) +
 
 :::: {.columns}
 ::: {.column width="30%"}
-Correct
+✅ Correct
 ```r
 aes(color = class)
 ```
-Maps a variable.
+*Maps* a variable.
 :::
 
 ::: {.column width="30%"}
-Correct
+✅ Correct
 ```r
 color = "blue"
 ```
-Sets color manually (outside `aes`).
+*Sets* color manually (outside `aes`).
 :::
 
 ::: {.column width="30%"}
-Incorrect
+❌Incorrect  
 ```r
 aes(color = "blue")
 ```
-Tries to *map* a fixed value (the string "blue"). Not useful.
+Tries to map a fixed value (the string "blue"). Not useful.
 :::
 ::::
+
+<div class="fragment">
+
+#### Setting vs Mapping in ggplot2
+
+- **Setting** means assigning a fixed value outside `aes()`  
+  Example: `color = "blue"` (does not come from the data)
+
+- **Mapping** means linking a variable inside `aes()`  
+  Example: `aes(color = class)` (comes from the data, from a variable)
+
+</div>
 
 ---
 

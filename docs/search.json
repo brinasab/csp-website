@@ -1341,7 +1341,7 @@
     "href": "lectures/03-slides.html#practice-color-aesthetics",
     "title": "Introduction to R: Lecture 3",
     "section": "💻 Practice: Color Aesthetics",
-    "text": "💻 Practice: Color Aesthetics\nWhich of these three is correct? Run and compare them in R.\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = class))\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy), color = \"blue\")\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = \"blue\"))"
+    "text": "💻 Practice: Color Aesthetics\nWhich of these three code blocks is correct? Run and compare them in R.\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = class))\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy), color = \"blue\")\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = \"blue\"))"
   },
   {
     "objectID": "lectures/03-slides.html#color-code-examples",
@@ -1397,6 +1397,6 @@
     "href": "lectures/03-slides.html#practice-color-aesthetics-1",
     "title": "Introduction to R: Lecture 3",
     "section": "💻 Practice: Color Aesthetics",
-    "text": "💻 Practice: Color Aesthetics\n\n\nCorrect\naes(color = class)\nMaps a variable.\n\nCorrect\ncolor = \"blue\"\nSets color manually (outside aes).\n\nIncorrect\naes(color = \"blue\")\nTries to map a fixed value (the string “blue”). Not useful."
+    "text": "💻 Practice: Color Aesthetics\n\n\n✅ Correct\naes(color = class)\nMaps a variable.\n\n✅ Correct\ncolor = \"blue\"\nSets color manually (outside aes).\n\n❌Incorrect\naes(color = \"blue\")\nTries to map a fixed value (the string “blue”). Not useful.\n\n\nSetting vs Mapping in ggplot2\n\nSetting means assigning a fixed value outside aes()\nExample: color = \"blue\" (does not come from the data)\nMapping means linking a variable inside aes()\nExample: aes(color = class) (comes from the data, from a variable)"
   }
 ]

@@ -25,8 +25,7 @@ knitr::opts_chunk$set(echo = FALSE)
 - Recognize the role of visualization in exploring and communicating data
 - Understand the basic principles of the "Layered Grammar of Graphics"
 - Create simple layered plots using `ggplot2`
-- Define what good coding style means
-- Apply good coding style practices when writing R code
+- Apply correct coding style practices when writing R code
 
 
 ## Before Class

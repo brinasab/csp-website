@@ -391,9 +391,9 @@ Resources to guide you:
 
 ---
 
-## Generating and Saving a Plot
+## Make and Store a Plot
 
-This code generates a plot, but does not save it to an object
+This code makes a plot, but does not store it
 
 ```r
  ggplot(data = mpg) +
@@ -406,7 +406,7 @@ This code generates a plot, but does not save it to an object
   facet_wrap(vars(class), nrow = 1)
 ```
 
-This code generates a plot and saves it to an object that I named `fuel_plot`
+This code makes a plot and stores it to an object that I named `fuel_plot`
 
 
 ```r

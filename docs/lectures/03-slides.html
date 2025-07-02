@@ -511,9 +511,9 @@ THINGS THAT STUDENTS MIGHT SAY
 <li><a href="https://www.smashingmagazine.com/2012/10/why-coding-style-matters/">Why does coding style matter?</a></li>
 </ul>
 </section>
-<section id="generating-and-saving-a-plot" class="slide level2 center">
-<h2>Generating and Saving a Plot</h2>
-<p>This code generates a plot, but does not save it to an object</p>
+<section id="make-and-store-a-plot" class="slide level2 center">
+<h2>Make and Store a Plot</h2>
+<p>This code makes a plot, but does not store it</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a> <span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb12-2"><a></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb12-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class),</span>
@@ -522,7 +522,7 @@ THINGS THAT STUDENTS MIGHT SAY
 <span id="cb12-6"><a></a>  ) <span class="sc">+</span></span>
 <span id="cb12-7"><a></a>  <span class="fu">coord_cartesian</span>() <span class="sc">+</span></span>
 <span id="cb12-8"><a></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(class), <span class="at">nrow =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This code generates a plot and saves it to an object that I named <code>fuel_plot</code></p>
+<p>This code makes a plot and stores it to an object that I named <code>fuel_plot</code></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>fuel_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> mpg) <span class="sc">+</span></span>
 <span id="cb13-2"><a></a>  <span class="fu">geom_point</span>(</span>
 <span id="cb13-3"><a></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy, <span class="at">color =</span> class),</span>

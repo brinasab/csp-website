@@ -483,9 +483,9 @@ copy this on a blank Rmd document on Workbench and render it -->
 
 ## YAML: **Y**et **A**nother **M**arkup **L**anguage
 
-The YAML header sits at the top of your `.Rmd` and tells R what the document is about and how to display it (e.g., as a html, PDF, Word, etc.).
+The YAML header sits at the top of your `.Rmd` and tells R what the document is about and how to display it (e.g., as a html, PDF, Word, etc.). Spacing, indentation, and `---` all matters!
 
-The example below shows only three fields but many more can be added:
+The example below shows three fields but many more can be added:
 
 ```{verbatim, echo = TRUE}
 ---
@@ -495,11 +495,15 @@ output: html_document
 ---
 ```
 
-```{=html}
 <!-- IN CLASS: 
 Change output to word and observe diffrence. Say that pdf might give problems occasionally due to an additonal package needed which is latex
+
+title: "Homework 1"
+author: "Sabrina Nardin"
+output: 
+  html_document:
+    toc: true
 -->
-```
 
 ---
 
@@ -648,7 +652,7 @@ I do not want a list here, I want the literal number followed by a dot: 1\.
 
 ---
 
-## \# in Code vs. Markdown Text
+## Using \# in Code vs. Markdown Text
 
 ::::: columns
 ::: {.column width="50%"}
@@ -691,6 +695,11 @@ name <- "Sabrina"
 | **Link** | `[RStudio](https://www.rstudio.com/)` | Text in `[]`, URL in `()` | [Link](https://www.markdownguide.org/basic-syntax/#links) |
 | **Image** | `![Logo](images/logo.png "Optional title")` | Start with `!`, include optional `"title"` | [Image](https://www.markdownguide.org/basic-syntax/#images) |
 | **Table** | `| Tool    | Use     |`<br>`|---------|---------|`<br>`| R       | Stats   |` | Use `|` for columns and `---` for header | [Table](https://www.markdownguide.org/extended-syntax/#tables) |
+
+Note: 
+
+- Spacing always matters 
+- For images to display, the file (e.g., .png, .jpg) must be saved in your current working dir or project folder
 
 <!--
 

@@ -696,8 +696,8 @@ copy this on a blank Rmd document on Workbench and render it -->
 </section>
 <section id="yaml-yet-another-markup-language" class="slide level2 center">
 <h2>YAML: <strong>Y</strong>et <strong>A</strong>nother <strong>M</strong>arkup <strong>L</strong>anguage</h2>
-<p>The YAML header sits at the top of your <code>.Rmd</code> and tells R what the document is about and how to display it (e.g., as a html, PDF, Word, etc.).</p>
-<p>The example below shows only three fields but many more can be added:</p>
+<p>The YAML header sits at the top of your <code>.Rmd</code> and tells R what the document is about and how to display it (e.g., as a html, PDF, Word, etc.). Spacing, indentation, and <code>---</code> all matters!</p>
+<p>The example below shows three fields but many more can be added:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a></a>---</span>
 <span id="cb4-2"><a></a>title: "Homework 1"</span>
 <span id="cb4-3"><a></a>author: "Sabrina Nardin"</span>
@@ -705,6 +705,12 @@ copy this on a blank Rmd document on Workbench and render it -->
 <span id="cb4-5"><a></a>---</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!-- IN CLASS: 
 Change output to word and observe diffrence. Say that pdf might give problems occasionally due to an additonal package needed which is latex
+
+title: "Homework 1"
+author: "Sabrina Nardin"
+output: 
+  html_document:
+    toc: true
 -->
 </section>
 <section id="r-markdown-formatting-text" class="slide level2 center">
@@ -841,8 +847,8 @@ Heading 2
 Heading 3
 </h3>
 </section>
-<section id="in-code-vs.-markdown-text" class="slide level2 center">
-<h2># in Code vs.&nbsp;Markdown Text</h2>
+<section id="using-in-code-vs.-markdown-text" class="slide level2 center">
+<h2>Using # in Code vs.&nbsp;Markdown Text</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="in-code">In Code</h3>
@@ -900,6 +906,11 @@ Heading 3
 </tr>
 </tbody>
 </table>
+<p>Note:</p>
+<ul>
+<li>Spacing always matters</li>
+<li>For images to display, the file (e.g., .png, .jpg) must be saved in your current working dir or project folder</li>
+</ul>
 <!--
 
 :::::: columns

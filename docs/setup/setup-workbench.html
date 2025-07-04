@@ -236,7 +236,7 @@ Note
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Your Name"</span>, <span class="at">user.email =</span> <span class="st">"your@email.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To confirm it worked (e.g., that Git got your credentials), go to <em>Tools &gt; Shell</em> and run the following command in the shell/terminal tab that opens up:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git config <span class="sc">--</span>global <span class="sc">--</span>list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you see your name and email.</p>
+<p>If you see your name and email, you’re all set. If something looks off—like a typo in your name or you used the wrong email (not the one linked to your GitHub account)—just re-run the R code with the correct information. It will overwrite the previous settings.</p>
 <!--
 # List all SSH key stored using Shell
 ls -l ~/.ssh

@@ -16,36 +16,1060 @@ format:
     center: true
 ---
 
-### Slides coming soon!
-
-
 # Agenda {.center}
 
 ::: {.agenda-list}
-1. Topic  
-2. Topic 
-3. Topic  
+1. Intro to `dplyr` and to Programming as Problem-Solving
+2. Operators
+3. Main `dplyr` functions
+4. Pipes (`%>%` or `|>`)
 :::
 
+## Homework 1 Feedback: Great Work!
+
+### ✅ Achieved Goals
+
+- Got familiar with **Git and GitHub** (this takes patience and repetition!)
+- Practiced **R Markdown syntax** for formatting (same)
+- Shared interesting bios, links, and images
+
+### 💡 Tips for Success
+
+- Knit your `.Rmd` file to `md_document` and push **both** the `.Rmd` and `.md` files to GitHub  
+- Commit **frequently** (from 5 to 20 commits per assignment)  
+- Embrace problem-solving and **learning-by-doing** (e.g., adding images), but post issues on **Ed Discussion** (linked from our course website)  
+- Fix the issues we flagged in this homework -- We’ll be stricter on the next ones (harder, point-based)
+- See Syllabus and Lecture 1 Slides on AI and Plagiarism
+  
+
+# 1. Intro to dplyr and to Programming as Problem-Solving {.slide .center .middle}
+
 ---
 
-# 1. Title Section {.slide .center .middle}
+## [Meet the Palmer Penguins!](https://allisonhorst.github.io/palmerpenguins/#meet-the-palmer-penguins)
+
+The palmerpenguins package (already installed on Workbench) has two datasets:
+
+* `penguins`: clean data on three species of penguins (Adelie, Chinstrap, Gentoo) from three islands in Antartica (Biscoe, Dream, and Torgersen); total 244 penguins → we use this today!
+
+* `penguins_raw`: raw, uncleaned version of the data 
 
 ---
 
-## Subtitles
+## Penguins Dataset Overview
+
+```r
+library(tidyverse)
+library(palmerpenguins)
+head(penguins)
+```
+
+<br>
+
+::: {.cell}
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+bind_rows(head(penguins, 4), tail(penguins, 4))
+```
+:::
+
+</br>
+
+---
+
+## Scatterplot: Flipper Length vs. Body Mass
+
+Start from what we know: make a **scatter plot** with **two numeric variables** from this dataset. 
+
+Use `ggplot2` with defaults to keep the code short, add a title, and color by `species`. Copy/paste this code in R:
+
+```r
+library(tidyverse)
+library(palmerpenguins)
+head(penguins)
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species)) +
+  labs(title = "Penguins: Body Mass vs. Flipper Length")
+```
+
+<br>
+
+::: {.fragment}
+**💡 How does the relationship between flipper length and body mass differ across species?**
+:::
+
+</br>
+
+<!--
+
+## Scatterplot: Flipper Length vs. Body Mass
+
+We start from what we know: create a scatter plot with two numeric variables from this dataset. We use `ggplot2` with defaults to keep the code short, include a title, and color by `species`.
+
+```r
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species)) +
+  labs(title = "Penguins: Body Mass vs. Flipper Length")
+```
+
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm, 
+                            y = body_mass_g)) +
+  geom_point(aes(color = species)) +
+  labs(title = "Penguins: Body Mass vs. Flipper Length")
+```
+
+
+::: {.fragment}
+**Question: How does the relationship between flipper length and body mass differ across species?**
+:::
+
+--> 
+
+---
+
+## Bar Plot: Number of Penguins by Species
+
+Try a different plot: **bar plot** that shows counts and only uses **one categorical variable**. 
+
+Copy/paste this code in R:
+
+```r
+ggplot(data = penguins, aes(x = species)) +
+  geom_bar() +
+  labs(title = "Count of Penguins by Species")
+```
+<br>
+
+::: {.fragment}
+**💡 What does this bar plot tell us about penguin species frequency?**
+:::
+
+</br>
+
+---
+
+## Make, Store, Save a Plot
+
+Only **make** a plot
+
+```r
+ggplot(data = penguins, aes(x = species)) +
+  geom_bar() +
+  labs(title = "Count of Penguins by Species")
+```
+
+Make a plot and **store** it to an object
+
+```r
+species_count <- ggplot(data = penguins, aes(x = species)) +
+  geom_bar() +
+  labs(title = "Count of Penguins by Species")
+species_count
+```
+
+Make a plot, store it, and **save** it in your current working directory
+
+```r
+species_count <- ggplot(data = penguins, aes(x = species)) +
+  geom_bar() +
+  labs(title = "Count of Penguins by Species")
+species_count
+ggsave("penguins-species-count.png", plot = species_count)
+```
+
+<!-- **Note:** `ggsave()` saves the *last displayed plot* by default. You can also assign it to a variable and pass it explicitly. -->
+
+
+---
+
+## Data Manipulation with dplyr
+
+Today we introduce a second package from the [tidyverse](https://www.tidyverse.org/): [**dplyr**]( https://dplyr.tidyverse.org/)
+
+- Main R package for **data manipulation** (what's data manipulation?)
+- Provides clearly **named functions that match common data manipulation tasks** like `filter()` for filtering rows, `select()` for selecting columns, `summarize()` for calculating summary stats like the average
+
+<!-- Data manipulation: process of changing or reshaping data to make it easier to understand, analyze, or visualize. Selecting columns or variables, filtering rows, summarizing data, etc. -->
+
+
+---
+
+## Programming is Problem-Solving
+
+**Penguins Dataset:**
+
+::: {.cell}
+```{r}
+head(penguins, 4)
+```
+:::
+
+<br>
+
+**💡 1. What is the average body mass of an Adelie penguin?** 
+
+**💡 2. What is the average body mass for each penguin species (three species)?**
+
+No code needed — you don’t know `dplyr` yet! Focus on the steps you’d give R to answer the question. We’ll write the code together. 
+
+</br>
+
+---
+
+## Q1: What is the average body mass of an Adelie penguin?
+
+**Penguins Dataset:**
+
+::: {.cell}
+```{r}
+head(penguins, 4)
+```
+:::
+
+<br>
+
+**Instructions to answer the first question:**
+
+1. Identify the data and variables you need
+1. Filter only the observations (rows) where `species` is Adelie
+1. Calculate the mean of the variable `body_mass_g` for this group
+
+**Open R: we now turn to these conceptual steps into code with `dplyr`**
+
+</br>
+
+<!--
+```{r}
+data(penguins)
+penguins_adelie <- filter(penguins, species == "Adelie")
+summarize(penguins_adelie, avg_mass_adelie = mean(body_mass_g, na.rm = TRUE))
+```
+-->
+
+---
+
+## Q2: What is the average body mass for each penguin species?
+
+**Penguins Dataset:**
+
+::: {.cell}
+```{r}
+head(penguins, 4)
+```
+:::
+
+<br>
+
+**Instructions to answer the second question:**
+
+1. Identify the data and variables you need
+1. Group the observations (rows) by `species`
+1. Calculate the mean of the variable `body_mass_g` for all groups
+
+**Open R: we now turn to these conceptual steps into code with `dplyr`**
+
+</br>
+
+<!--
+```{r}
+data(penguins)
+penguins_species <- group_by(penguins, species)
+summarize(penguins_species, avg_mass = mean(body_mass_g, na.rm = TRUE))
+```
+-->
+
+
+# 2. Operators {.slide .center .middle}
+
+---
+
+## Assignment Operators
+
+```
+x <- 5                # assign 5 to an object
+mean(x = c(1, 2, 3))  # use = to specify an argument inside a function
+
+```
+
+<br>
+<fragment>
+```penguins_species <- group_by(.data = penguins, species)
+summarize(penguins_species, avg_mass = mean(body_mass_g))
+```
+</fragment>
+</br>
+
+---
+
+##  Logical Operators
+
+```
+x == x    # is equal (TRUE or FALSE)
+x != y    # is not equal (TRUE or FALSE) 
+x < y     # less than
+x <= y    # less than or equal to 
+y > x     # more than
+y >=      # more than or equal to
+```
+
+<br>
+
+::: {.cell .fragment}
+`adelie <- filter(penguins, species == "Adelie")`
+:::
+
+::: {.cell .fragment}
+`no_adelie <- filter(penguins, species != "Adelie")`
+:::
+
+
+::: {.cell .fragment}
+`heavy <- filter(penguins, body_mass_g > 4500)`
+:::
+
+</br>
+
+---
+
+## More Logical Operators
+
+```
+x | y     # either x OR y
+x & y     # both x AND y
+x &! y    # x AND NOT y (x is true AND y is false)
+```
+<br>
+
+::: {.cell .fragment}
+Example use of `|` operator with extended syntax:
+```
+penguins_adelie_chin <- filter(.data = penguins, 
+                                species == "Adelie" | species == "Chinstrap")
+```
+:::
+
+<br>
+
+::: {.cell .fragment}
+Same code with shorter syntax:
+```
+penguins_adelie_chin <- filter(.data = penguins, 
+                                species %in% c("Adelie", "Chinstrap"))
+```
+:::
+
+</br>
+
+---
+
+## 💻 Practice: Logical Operators with filter()
+
+Logical operators are often used together with the `filter()` function from `dplyr`.  
+
+Practice using them with the `penguins` dataset:
+
+- **Task 1:** Get all Adelie penguins with flipper length greater than or equal to 180 mm
+
+- **Task 2:** Get all female penguins on Dream Island with body mass between 3000 and 4000 grams inclusive
+
+- **Task 3:** Get all penguins on Dream and Torgersen islands that are not female
+
+<!--
+
+Task 1
+
+```
+library(palmerpenguins)
+data(penguins)
+
+# filter only
+filter(.data = penguins, species == "Adelie" & flipper_length_mm >= 180)
+
+# filter and save in variable
+adelie_long <- filter(.data = penguins, species == "Adelie" & flipper_length_mm >= 180)
+
+# count
+nrow(adelie_long)
+count(adelie_long)
+```
+
+Task 2
+
+filter(penguins, sex == "female" & island == "Dream" & body_mass_g >= 3000 & body_mass_g <= 4000) 
+
+filter(penguins, sex == "female" & island == "Dream" & body_mass_g %in% 3000:4000) 
+
+filter(penguins, sex == "female" & island == "Dream" & between(body_mass_g, 3000, 4000))
+
+can also use , rather than & 
+
+
+Task 3
+
+filter(penguins, island %in% c("Dream", "Torgersen") & sex != "female")
+filter(penguins, island %in% c("Dream", "Torgersen") & sex == "male")
+
+filter(penguins, (island == "Dream" | island == "Torgersen") & sex != "female")
+-->
+
+
+# 3. Main dplyr functions {.slide .center .middle}
+
+## Recap of What Learned so Far
+
+Conceptually, (any) data transformation using `dplyr` requires us to:
+
+1. Get the data frame
+
+1. Use `dplyr` verbs to tell R what action to take. These functions:
+   - Act like verbs in a sentence — they express *what to do* with the data
+   - Can be combined to perform complex operations
+
+1. Save the result, usually into a new object (a new dataframe)
+
+---
+
+## Key dplyr Functions
+
+The package `dplyr` has many functions — but you don’t need to memorize them all!
+
+**Our Goals:**  
+- Memorize the most common  
+- Know how to look up the rest when needed  
+  → [dplyr.tidyverse.org](https://dplyr.tidyverse.org/)
+
+The next slide summarizes the most important `dplyr` functions to memorize
+
+---
+
+## Key dplyr Functions
+
+| `function()`   | What it does                                                       |
+|----------------|---------------------------------------------------------------------|
+| `filter()`     | Selects rows based on values in one or more columns                |
+| `arrange()`    | Reorders rows based on the values in specified columns             |
+| `select()`     | Chooses specific columns by name                                   |
+| `rename()`     | Renames one or more columns                                        |
+| `mutate()`     | Adds new columns or modifies existing ones                         |
+| `group_by()`   | Groups the data by one or more variables for grouped operations    |
+| `summarize()`  | Reduces each group to a single row using summary statistics (e.g., mean, sum, n) |
+
+<br>
+
+::: {.callout-note title="Reminder"}
+Each **row** is an **observation** (e.g., one penguin) and each **column** is a **variable** (e.g., species, body mass).
+
+Some functions works on like `filter()`, `arrange()` others on columns like `select()`, `mutate()`.
+:::
+
+</br>
+
+<!--
+`function()`  | Action performed
+--------------|--------------------------------------------------------
+`filter()`    | Picks observations from the data frame based on their values (operates on rows)
+`arrange()`   | Changes the order of observations, based on their values (operates on rows)
+`select()`    | Picks variables from the data frame based on their names (operates on columns)
+`rename()`    | Changes the name of columns in the data frame
+`mutate()`    | Creates new columns from existing ones
+`group_by()`  | Changes the unit of analysis from the complete data frame to individual groups
+`summarize()` | Collapses the data frame to a smaller number of rows to summarize the larger data (commonly used with mean, sum, n-distinct, etc.)
+
+---
+
+## American vs. British English
+
+* US `summarize()` = UK `summarise()`
+
+* US `color()` = UK `colour()`
+
+-->
 
 ---
 
 ## 💻 Practice
 
+### What is the average bill length and body mass for Adelie penguins by sex?
+
+1. **THINK:** How would you approach this question conceptually?
+Break it down into clear, logical steps before touching any code.
+
+2. **CODE:** Translate those steps into R using the appropriate `dplyr` functions from the previous slide.
+
+<!--
+
+Solution 1: filter, then group by
+
+```{r adelie-filter-group, echo = TRUE}
+penguins_adelie <- filter(.data = penguins, species == "Adelie")
+penguins_adelie_sex <- group_by(.data = penguins_adelie, sex)
+summarize(
+  .data = penguins_adelie_sex,
+  avg_bill = mean(bill_length_mm, na.rm = TRUE),
+  avg_mass = mean(body_mass_g, na.rm = TRUE)
+)
+```
+
+Solution 2: group by, then filter
+
+```{r adelie-group-filter, echo = TRUE}
+penguins_sex <- group_by(.data = penguins, sex)
+penguins_sex_adelie <- filter(.data = penguins_sex, species == "Adelie")
+results <- summarize(
+  .data = penguins_sex_adelie,
+  avg_bill = mean(bill_length_mm, na.rm = TRUE),
+  avg_mass = mean(body_mass_g, na.rm = TRUE)
+)
+print(results)
+```
+
+-->
+
+
+# 4. Pipes %>% or |> {.slide .center .middle}
+
+## Pipes to Chain Commands
+
+Pipes allow you to write a sequence of operations by **passing the result of one function into the next** making your code more readable and logical. Compare these two versions of the same code.
+
+<fragment>
+
+**Without pipes:**
+
+```r
+penguins_adelie <- filter(penguins, species == "Adelie")
+penguins_adelie_island <- group_by(penguins_adelie, island)
+summarize(penguins_adelie_island, body_mass = mean(body_mass_g, na.rm = TRUE))
+```
+
+**With pipes:**
+
+```r
+penguins %>%
+  filter(species == "Adelie") %>%
+  group_by(island) %>%
+  summarize(body_mass = mean(body_mass_g, na.rm = TRUE))
+```
+
+</fragment>
+
+---
+
+## Multiple Ways to Write R Code — Pipes Are Often the Best Choice
+
+Pipes are great and our ultimate goal. But there’s more than one way to write R code. 
+
+In fact, R didn’t have pipes for a long time!
+
+**Let’s compare ways to write the same code...**
+
+---
+
+## Four Different Options to Code This Task
+
+### TASK: Calculate the average body mass for Adelie penguins on each island.
+
+<br>
+
+::: {.callout-tip title="Strategy: Break Down the Task Before You Code it!"}
+1. Filter the data to include only rows where `species` is Adelie
+2. Group the filtered data by `island`  
+3. Calculate the average body mass for each group
+:::
+
+</br>
+
+---
+
+## Option 1: Save each step in a new data frame
+
+```{r no-pipes-new}
+#| echo: true
+penguins_adelie <- filter(penguins, species == "Adelie")
+penguins_adelie_island <- group_by(penguins_adelie, island)
+penguins_final <- summarize(penguins_adelie_island, 
+                            body_mass = mean(body_mass_g, na.rm = TRUE))
+print(penguins_final)
+```
+
+<br>
+
+::: {.fragment}
+✅ This is valid code.
+
+⚠️ **Drawback: You must save each intermediate object.** This can clutter your environment, increase R memory usage with large datasets, and make your code more prone to typos. Shorter names for each step might reduce typos but sacrifice clarity, which is not good for self-documentation.
+
+</br>
+:::
+
+---
+
+## Option 2: Replace the original data frame
+
+```{r no-pipes-replace}
+#| echo: true
+penguins <- filter(penguins, species == "Adelie")
+penguins <- group_by(penguins, island)
+penguins <- summarize(penguins, body_mass = mean(body_mass_g, na.rm = TRUE))
+print(penguins)
+```
+
+<br>
+
+::: {.fragment}
+✅ This also works, but it’s not good practice.
+
+**⚠️ Drawback: It overwrites the original dataset.** If something goes wrong midway, you’ll need to re-run everything from scratch.
+
+::: {.callout-warning}
+This approach is risky — especially when working with built-in or important datasets. Always keep a copy of your original data before modifying it.
+:::
+:::
+
+</br>
+
+---
+
+## Option 3: Function composition
+
+```{r no-pipes-fcomp}
+#| echo: true
+data(penguins)
+summarize(group_by(filter(penguins, species == "Adelie"), island), 
+          body_mass = mean(body_mass_g, na.rm = TRUE))
+```
+
+<br>
+
+::: {.fragment}
+✅ This also works, and some people like this style.
+
+**⚠️ Drawback: It’s harder to read and debug.** You must follow it from the inside out, which makes it harder to read for humans. If something breaks, it’s difficult to isolate where the error is happening as you can’t easily inspect intermediate results.
+:::
+
+</br>
+
+---
+
+## Option 4: Pipes (The Winner!)
+
+```{r with-pipes}
+#| echo: true
+penguins %>%
+  filter(species == "Adelie") %>%
+  group_by(island) %>%
+  summarize(body_mass = mean(body_mass_g, na.rm = TRUE))
+```
+
+<br>
+
+::: {.fragment}
+✅ This is valid and readable code — without the drawbacks of the previous options.
+
+**💡 Why pipes?** The pipe operator `%>%` passes the result of one function to the next, making your code easy to read from top to bottom. Pipes emphasize **actions**, not object names and you can read the code like a recipe:
+
+- Start with the dataset
+- Filter for Adelie penguins
+- Group by island
+- Summarize body mass
+:::
+
+</br>
+
+
+---
+
+## Common Errors with Pipes: Examples using flights data
+
+**We use a built-in dataset of all flights (n = 336,776) that departed from NYC in 2013.**
+
+```
+library(nycflights13)
+data(flights)
+head(flights)
+```
+
+```{r}
+library(nycflights13)
+data(flights)
+head(flights)
+```
+
+---
+
+## Common Errors with Pipes: Examples using flights data
+
+**We use a built-in dataset of all flights (n = 336,776) that departed from NYC in 2013.**
+
+Note the use of `glimpse()` vs `head()` to explore the dataset. In this case, `glimpse()` is more useful, why?
+
+```
+library(nycflights13)
+data(flights)
+glimpse(flights)
+```
+
+```{r}
+library(nycflights13)
+data(flights)
+glimpse(flights)
+```
+---
+
+
+## Common Pipe Errors: Example 1
+
+**TASK:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
+
+**What's wrong with this code?**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>% 
+  by_dest <- group_by(dest) %>% 
+  delay <- summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>% 
+  d <- filter(count > 20)
+```
+
+:::
+::::
+
+
+---
+
+## Common Pipe Errors: Example 1
+
+**TASK:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
+
+**What's wrong with this code?**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>% 
+  by_dest <- group_by(dest) %>% 
+  delay <- summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>% 
+  d <- filter(count > 20)
+```
+
+:::
+
+::: {.column width="50%"}
+
+### Correct code
+
+```{r echo = TRUE}
+delays <- flights %>%
+  group_by(dest) %>%
+  summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>%
+  filter(count > 20)
+```
+
+:::
+::::
+
+<br>
+
+::: {.callout-important}
+Don’t assign anything inside a pipe. Use `<-` only at the start, if you want to save the final result. Do not use it between steps.
+:::
+
+</br>
+
+---
+
+## Common Pipe Errors: Example 2
+
+
+**TASK:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
+
+**What's wrong with this code?**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>%
+  group_by(dest)
+  summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE))
+  filter(count > 20)
+```
+
+:::
+::::  
+
+---
+
+## Common Pipe Errors: Example 2
+
+**TASK:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
+
+**What's wrong with this code?**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>%
+  group_by(dest)
+  summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE))
+  filter(count > 20)
+```
+
+:::
+
+::: {.column width="50%"}
+
+### Correct code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>%
+  group_by(dest) %>%
+  summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>%
+  filter(count > 20)
+```
+
+:::
+::::
+
+<br>
+
+::: {.callout-important}
+Each function in a pipe chain must be connected with `%>%` to keep the chain going.
+:::
+
+</br>
+
+---
+
+## Common Pipe Errors: Example 3
+
+**TASK:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
+
+**What's wrong with this code?**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>% 
+  group_by(.data = flights, dest) %>% 
+  summarize(.data = flights,
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>% 
+  filter(.data = flights, count > 20)
+```
+
+:::
+::::  
+
+---
+
+## Common Pipe Errors: Example 3
+
+**TASK:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
+
+**What's wrong with this code?**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>% 
+  group_by(.data = flights, dest) %>% 
+  summarize(.data = flights,
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>% 
+  filter(.data = flights, count > 20)
+```
+
+:::
+
+::: {.column width="50%"}
+
+### Correct code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>%
+  group_by(dest) %>%
+  summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>%
+  filter(count > 20)
+```
+
+:::
+::::
+
+<br>
+
+::: {.callout-important}
+When using pipes, only reference the data frame at the start of the chain. Do not repeat `.data = flights` in every function as `%>%` automatically passes the data along.
+:::
+
+</br>
+
+---
+
+## Common Pipe Errors: Example 4
+
+**TASK:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
+
+**What's wrong with this code?**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights +
+  group_by(dest) +
+  summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) +
+  filter(count > 20)
+```
+
+:::
+::::  
+
+---
+
+## Common Pipe Errors: Example 4
+
+**TASK:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights.
+
+**What's wrong with this code?**
+
+:::: {.columns}
+::: {.column width="50%"}
+
+### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights +
+  group_by(dest) +
+  summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) +
+  filter(count > 20)
+```
+
+:::
+
+::: {.column width="50%"}
+
+### Correct code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>%
+  group_by(dest) %>%
+  summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>%
+  filter(count > 20)
+```
+
+:::
+::::
+
+<br>
+
+::: {.callout-important}
+The `+` sign is only for adding layers in `ggplot2`! Don’t use it to chain `dplyr` functions: use `%>%` to pipe data through a sequence of transformations.
+:::
+
+</br>
+
+---
+
+## 💻 Practice
+
+Download today's in-class exercises from the website for more practice on operator, dplyr, and pipes.
+
 ---
 
 ## Recap: What We Learned Today
 
----
-
-## Reminders
+- Practiced programming as problem-solving: think through tasks before coding
+- Learned R operators
+- Key `dplyr` functions like `filter()`, `group_by()`, `summarize()`, and more
+- Chained commands with pipes `%>%`
+- Reviewed common mistakes when using pipes and how to avoid them
 
 ---
 

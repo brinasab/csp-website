@@ -67,7 +67,7 @@
     "href": "setup/setup-workbench.html#step-3-configure-git-in-rstudio-workbench",
     "title": "RStudio Workbench Setup",
     "section": "Step 3: Configure Git in RStudio Workbench",
-    "text": "Step 3: Configure Git in RStudio Workbench\nTo make Git work smoothly in this course, you’ll configure these settings: (3.1) Identify yourself to Git with your name and email, so Git can track your work and (3.2) Set up SSH Authentication, so GitHub knows it’s you\nYou only need to do this once per machine!\nYou can also watch a video walkthrough of the setup process.\n\n3.1 Identify yourself to Git\nTo track your work and link changes to you, Git needs to know your name and email address.\nGo to the Console tab in RStudio and run the code below, replacing name and email with your own:\n\nyour name can be your GitHub username or your actual first and last name\nyour email must be the same email you used to sign up for GitHub when you created an account\n\nlibrary(usethis)\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your@email.com\")\nTo confirm it worked (e.g., that Git got your credentials), go to Tools &gt; Shell and run the following command in the shell/terminal tab that opens up:\ngit config --global --list\nIf you see your name and email.\n\n\n\n3.2 Set Up SSH Authentication\n\nWhat is this?\nNow Git knows your name and email. But to send your work from Git (on your computer – in our case, Workbench) to GitHub (online), you need to prove to GitHub that’s really you — this is called authentication.\nWhen you log into GitHub in your browser, you use your username and password. But Git uses a different method for authentication: either SSH keys or HTTPS with a personal access token. Both options allow Git to connect to GitHub securely, so you can push and pull changes without entering your password each time.\nSince we are using the RStudio Workbench for the class, you will need to use SSH keys to authenticate. The server that host our Workbench does not have the ability to cache your personal access token for HTTPS.\nThe Secure Shell Protocol (SSH) is a secure way to prove your identity when connecting to GitHub. Unlike passwords, which can be vulnerable to brute-force attacks, SSH keys are much harder to crack.\nWhen you generate an SSH key pair, you get two long strings of characters:\n\na public key, which you upload to GitHub\na private key, which stays safely on your computer (or in RStudio Workbench)\n\nWhen you try to connect to GitHub, Git uses your private key to unlock the connection. If it matches the public key on GitHub, you’re authenticated!\nNote that on GitHub, the URL for SSH looks like git@github.com:&lt;OWNER&gt;/&lt;REPO&gt;.git (make sure you use this SSH URL to create a project or clone a repository. If you accidentally use the HTTPS version, the operation will not work).\n\n\nWhat you need to do to\nYou need to create and store an SSH key pair, by running the following code in your R Console:\ncredentials::ssh_setup_github()\nYou’ll be guided through a few steps:\n\nIt should say “No SSH key found. Generate one now?” → Type Yes\nA long string of characters will appear in the Console, that’s your public SSH key\nYou will be asked to open a browser → Type Yes\nBefore or after opening a new browser, copy the entire SSH key (including the ssh-rsa or ssh-ed25519 at the beginning) from your Console\n\nOnce you are on the GitHub page:\n\nPaste your entire SSH key into the GitHub page that opened in your new browser (you can do this only if you registered a GitHub account, see step 1 above)\nUnder “Title”, give the key an informative name, something like csp-workbench-summer25 or another label to record the course and computer\nLeave “Key type” set to Authentication Key\nClick the green “Add SSH key” button\nIf prompted, complete GitHub’s security steps (e.g., enter a verification code or password or anything else asked)\n\nYou should now see your key listed in your GitHub account!\nTo confirm it worked, go back R, then to Tools &gt; Shell and run the following command in the shell/terminal tab that opens up:\nls -l ~/.ssh\nYou should see two lines showing the keys you just created: id_rsa is your private SSH key (keep it secure and do not share it), your id_rsa.pub is your public SSH key (the one you put on GitHub).\nIf you see more than these two files, it likely means you’ve set up extra SSH keys, which we want to avoid as it might create problems. Please contact us — we’ll help you reset and start fresh!"
+    "text": "Step 3: Configure Git in RStudio Workbench\nTo make Git work smoothly in this course, you’ll configure these settings: (3.1) Identify yourself to Git with your name and email, so Git can track your work and (3.2) Set up SSH Authentication, so GitHub knows it’s you\nYou only need to do this once per machine!\nYou can also watch a video walkthrough of the setup process.\n\n3.1 Identify yourself to Git\nTo track your work and link changes to you, Git needs to know your name and email address.\nGo to the Console tab in RStudio and run the code below, replacing name and email with your own:\n\nyour name can be your GitHub username or your actual first and last name\nyour email must be the same email you used to sign up for GitHub when you created an account\n\nlibrary(usethis)\nusethis::use_git_config(user.name = \"Your Name\", user.email = \"your@email.com\")\nTo confirm it worked (e.g., that Git got your credentials), go to Tools &gt; Shell and run the following command in the shell/terminal tab that opens up:\ngit config --global --list\nIf you see your name and email, you’re all set. If something looks off—like a typo in your name or you used the wrong email (not the one linked to your GitHub account)—just re-run the R code with the correct information. It will overwrite the previous settings.\n\n\n\n3.2 Set Up SSH Authentication\n\nWhat is this?\nNow Git knows your name and email. But to send your work from Git (on your computer – in our case, Workbench) to GitHub (online), you need to prove to GitHub that’s really you — this is called authentication.\nWhen you log into GitHub in your browser, you use your username and password. But Git uses a different method for authentication: either SSH keys or HTTPS with a personal access token. Both options allow Git to connect to GitHub securely, so you can push and pull changes without entering your password each time.\nSince we are using the RStudio Workbench for the class, you will need to use SSH keys to authenticate. The server that host our Workbench does not have the ability to cache your personal access token for HTTPS.\nThe Secure Shell Protocol (SSH) is a secure way to prove your identity when connecting to GitHub. Unlike passwords, which can be vulnerable to brute-force attacks, SSH keys are much harder to crack.\nWhen you generate an SSH key pair, you get two long strings of characters:\n\na public key, which you upload to GitHub\na private key, which stays safely on your computer (or in RStudio Workbench)\n\nWhen you try to connect to GitHub, Git uses your private key to unlock the connection. If it matches the public key on GitHub, you’re authenticated!\nNote that on GitHub, the URL for SSH looks like git@github.com:&lt;OWNER&gt;/&lt;REPO&gt;.git (make sure you use this SSH URL to create a project or clone a repository. If you accidentally use the HTTPS version, the operation will not work).\n\n\nWhat you need to do to\nYou need to create and store an SSH key pair, by running the following code in your R Console:\ncredentials::ssh_setup_github()\nYou’ll be guided through a few steps:\n\nIt should say “No SSH key found. Generate one now?” → Type Yes\nA long string of characters will appear in the Console, that’s your public SSH key\nYou will be asked to open a browser → Type Yes\nBefore or after opening a new browser, copy the entire SSH key (including the ssh-rsa or ssh-ed25519 at the beginning) from your Console\n\nOnce you are on the GitHub page:\n\nPaste your entire SSH key into the GitHub page that opened in your new browser (you can do this only if you registered a GitHub account, see step 1 above)\nUnder “Title”, give the key an informative name, something like csp-workbench-summer25 or another label to record the course and computer\nLeave “Key type” set to Authentication Key\nClick the green “Add SSH key” button\nIf prompted, complete GitHub’s security steps (e.g., enter a verification code or password or anything else asked)\n\nYou should now see your key listed in your GitHub account!\nTo confirm it worked, go back R, then to Tools &gt; Shell and run the following command in the shell/terminal tab that opens up:\nls -l ~/.ssh\nYou should see two lines showing the keys you just created: id_rsa is your private SSH key (keep it secure and do not share it), your id_rsa.pub is your public SSH key (the one you put on GitHub).\nIf you see more than these two files, it likely means you’ve set up extra SSH keys, which we want to avoid as it might create problems. Please contact us — we’ll help you reset and start fresh!"
   },
   {
     "objectID": "setup/setup-workbench.html#whats-next",
@@ -84,25 +84,298 @@
     "text": "This section of the website guides you through everything you need to set up for the course:\n1. First, Configure your Setup: RStudio Workbench Setup\n2. Second, Test your Setup: Git within RStudio Tutorial\n3. Third, Learn More: What are these Tools?\n\n\n\n\n\n\nNote\n\n\n\nThese instructions are for RStudio Workbench, which is the platform we use in this course. If you have prior programming experience and prefer to install R and RStudio on your own computer, reach out to discuss."
   },
   {
-    "objectID": "lectures/04-slides.html#subtitles",
-    "href": "lectures/04-slides.html#subtitles",
-    "title": "Introduction to R: Lecture 4",
+    "objectID": "lectures/05-slides.html#subtitles",
+    "href": "lectures/05-slides.html#subtitles",
+    "title": "Introduction to R: Lecture 5",
     "section": "Subtitles",
     "text": "Subtitles"
+  },
+  {
+    "objectID": "lectures/05-slides.html#practice",
+    "href": "lectures/05-slides.html#practice",
+    "title": "Introduction to R: Lecture 5",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/05-slides.html#recap-what-we-learned-today",
+    "href": "lectures/05-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 5",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today"
+  },
+  {
+    "objectID": "lectures/05-slides.html#reminders",
+    "href": "lectures/05-slides.html#reminders",
+    "title": "Introduction to R: Lecture 5",
+    "section": "Reminders",
+    "text": "Reminders"
+  },
+  {
+    "objectID": "lectures/05-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/05-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 5",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/04-slides.html#homework-1-feedback-great-work",
+    "href": "lectures/04-slides.html#homework-1-feedback-great-work",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Homework 1 Feedback: Great Work!",
+    "text": "Homework 1 Feedback: Great Work!\n✅ Achieved Goals\n\nGot familiar with Git and GitHub and R Markdown syntax (they take patience and repetition)\nShared interesting bios, links, and images… thanks!\n\n💡 Tips for Success\n\nKnit your .Rmd file to md_document and push both files to GitHub\n\nCommit frequently: from 5 to 20 commits per assignment\n\nEmbrace learning-by-doing (e.g., adding images), but post on Ed Discussion if you run into issues\nCheck our feedback on this homework: we’ll be stricter on the next ones (harder, point-based)\nSee Syllabus and Lecture 1 Slides on AI and Plagiarism"
+  },
+  {
+    "objectID": "lectures/04-slides.html#meet-the-palmer-penguins",
+    "href": "lectures/04-slides.html#meet-the-palmer-penguins",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Meet the Palmer Penguins!",
+    "text": "Meet the Palmer Penguins!\nThe palmerpenguins package includes two datasets (already installed on our Workbench):\n\npenguins with clean data of 244 penguins — we use this today\n\npenguins_raw with uncleaned version the same data\n\n\nPenguins by Allison Horst"
+  },
+  {
+    "objectID": "lectures/04-slides.html#penguins-dataset-overview",
+    "href": "lectures/04-slides.html#penguins-dataset-overview",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Penguins Dataset Overview",
+    "text": "Penguins Dataset Overview\n# load packages\nlibrary(tidyverse)\nlibrary(palmerpenguins)\n\n# explore data\nhead(penguins)\n\n\n\n\n# A tibble: 8 × 8\n  species   island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie    Torgersen           39.1          18.7               181        3750\n2 Adelie    Torgersen           39.5          17.4               186        3800\n3 Adelie    Torgersen           40.3          18                 195        3250\n4 Adelie    Torgersen           NA            NA                  NA          NA\n5 Chinstrap Dream               43.5          18.1               202        3400\n6 Chinstrap Dream               49.6          18.2               193        3775\n7 Chinstrap Dream               50.8          19                 210        4100\n8 Chinstrap Dream               50.2          18.7               198        3775\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;"
+  },
+  {
+    "objectID": "lectures/04-slides.html#scatterplot-flipper-length-vs.-body-mass",
+    "href": "lectures/04-slides.html#scatterplot-flipper-length-vs.-body-mass",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Scatterplot: Flipper Length vs. Body Mass",
+    "text": "Scatterplot: Flipper Length vs. Body Mass\nStart from what we know: scatter plot with two numeric variables\nCopy/paste this code in R (note we use ggplot2 with defaults to keep the code short, color by species, add a title):\nlibrary(tidyverse)\nlibrary(palmerpenguins)\nhead(penguins)\n\nggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +\n  geom_point(aes(color = species)) +\n  labs(title = \"Penguins: Body Mass vs. Flipper Length\")\n\n\n💡 How does the relationship between flipper length and body mass differ across species?"
+  },
+  {
+    "objectID": "lectures/04-slides.html#bar-plot-number-of-penguins-by-species",
+    "href": "lectures/04-slides.html#bar-plot-number-of-penguins-by-species",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Bar Plot: Number of Penguins by Species",
+    "text": "Bar Plot: Number of Penguins by Species\nTry a different plot: bar plot with counts for one categorical variable\nCopy/paste this code in R:\nggplot(data = penguins, aes(x = species)) +\n  geom_bar() +\n  labs(title = \"Count of Penguins by Species\")\n\n\n💡 What does this bar plot tell us about penguin species frequency?"
+  },
+  {
+    "objectID": "lectures/04-slides.html#make-store-save-a-plot",
+    "href": "lectures/04-slides.html#make-store-save-a-plot",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Make, Store, Save a Plot",
+    "text": "Make, Store, Save a Plot\nOnly make a plot\nggplot(data = penguins, aes(x = species)) +\n  geom_bar() +\n  labs(title = \"Count of Penguins by Species\")\nMake a plot and store it to an object\nspecies_count &lt;- ggplot(data = penguins, aes(x = species)) +\n  geom_bar() +\n  labs(title = \"Count of Penguins by Species\")\nspecies_count\nMake a plot, store it, and save it in your current working directory\nspecies_count &lt;- ggplot(data = penguins, aes(x = species)) +\n  geom_bar() +\n  labs(title = \"Count of Penguins by Species\")\nspecies_count\nggsave(\"penguins-species-count.png\", plot = species_count)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#data-manipulation-with-dplyr",
+    "href": "lectures/04-slides.html#data-manipulation-with-dplyr",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Data Manipulation with dplyr",
+    "text": "Data Manipulation with dplyr\nToday we introduce a second package from the tidyverse: dplyr for data manipulation.\n\n\n\nDesigned for manipulating data frames and tibbles\n\nIncludes intuitive, clearly named functions for common tasks:\n\nfilter() — filter rows\nselect() — pick columns\nsummarize() — calculate summaries (e.g., averages)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#programming-as-a-problem-solving",
+    "href": "lectures/04-slides.html#programming-as-a-problem-solving",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Programming as a Problem-Solving",
+    "text": "Programming as a Problem-Solving\nPenguins Dataset:\n\n\n\n# A tibble: 4 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\n💡 1. What is the average body mass of an Adelie penguin?\n💡 2. What is the average body mass for each penguin species (three species)?\nDon’t write any code yet. List the instructions or steps you would need to give R to answer each question. We’ll work together to translate your ideas into dplyr code."
+  },
+  {
+    "objectID": "lectures/04-slides.html#q1-what-is-the-average-body-mass-of-an-adelie-penguin",
+    "href": "lectures/04-slides.html#q1-what-is-the-average-body-mass-of-an-adelie-penguin",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Q1: What is the average body mass of an Adelie penguin?",
+    "text": "Q1: What is the average body mass of an Adelie penguin?\nPenguins Dataset:\n\n\n\n# A tibble: 4 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\nInstructions to answer the first question:\n\nIdentify the data and variables you need\nFilter only the observations (rows) where species is Adelie\nCalculate the mean of the variable body_mass_g for this group\n\nOpen R: let’s turn to these steps into code using dplyr"
+  },
+  {
+    "objectID": "lectures/04-slides.html#q2-what-is-the-average-body-mass-for-each-penguin-species",
+    "href": "lectures/04-slides.html#q2-what-is-the-average-body-mass-for-each-penguin-species",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Q2: What is the average body mass for each penguin species?",
+    "text": "Q2: What is the average body mass for each penguin species?\nPenguins Dataset:\n\n\n\n# A tibble: 4 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\nInstructions to answer the second question:\n\nIdentify the data and variables you need\nGroup the observations (rows) by species\nCalculate the mean of the variable body_mass_g for all groups\n\nOpen R: let’s turn to these steps into code using dplyr"
+  },
+  {
+    "objectID": "lectures/04-slides.html#assignment-operators",
+    "href": "lectures/04-slides.html#assignment-operators",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Assignment Operators",
+    "text": "Assignment Operators\nx &lt;- 5                # assign 5 to an object\nmean(x = c(1, 2, 3))  # use = to specify an argument inside a function\n \npenguins_species &lt;- group_by(.data = penguins, species)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#logical-operators",
+    "href": "lectures/04-slides.html#logical-operators",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Logical Operators",
+    "text": "Logical Operators\nx == x    # is equal (TRUE or FALSE)\nx != y    # is not equal (TRUE or FALSE) \nx &lt; y     # less than\nx &lt;= y    # less than or equal to \ny &gt; x     # more than\ny &gt;=      # more than or equal to\n\n\nadelie &lt;- filter(penguins, species == \"Adelie\")\n\n\n\nno_adelie &lt;- filter(penguins, species != \"Adelie\")\n\n\n\nheavy &lt;- filter(penguins, body_mass_g &gt; 4500)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#more-logical-operators",
+    "href": "lectures/04-slides.html#more-logical-operators",
+    "title": "Introduction to R: Lecture 4",
+    "section": "More Logical Operators",
+    "text": "More Logical Operators\nx | y     # either x OR y\nx & y     # both x AND y\nx &! y    # x AND NOT y (x is true AND y is false)\n\n\nExample use of | operator with extended syntax:\npenguins_adelie_chin &lt;- filter(.data = penguins, \n                                species == \"Adelie\" | species == \"Chinstrap\")\n\n\n\nSame code with shorter syntax:\npenguins_adelie_chin &lt;- filter(.data = penguins, \n                                species %in% c(\"Adelie\", \"Chinstrap\"))"
+  },
+  {
+    "objectID": "lectures/04-slides.html#practice-logical-operators-with-filter",
+    "href": "lectures/04-slides.html#practice-logical-operators-with-filter",
+    "title": "Introduction to R: Lecture 4",
+    "section": "💻 Practice: Logical Operators with filter()",
+    "text": "💻 Practice: Logical Operators with filter()\nLogical operators are often used together with the filter() function from dplyr\nPractice using them with the penguins dataset:\n\nTask 1: Get all Adelie penguins with flipper length greater than or equal to 180 mm\nTask 2: Get all penguins on Dream and Torgersen islands that are not female"
+  },
+  {
+    "objectID": "lectures/04-slides.html#recap-of-what-learned-so-far",
+    "href": "lectures/04-slides.html#recap-of-what-learned-so-far",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Recap of What Learned so Far",
+    "text": "Recap of What Learned so Far\nConceptually, any data transformation using dplyr requires us to:\n\nIdentify the data frame and the variables we need\nUse dplyr functions to tell R what action to take on which variable(s). These functions:\n\nAct like verbs in a sentence: they express what to do with the data\nCan be combined to perform complex operations\n\nSave the result, usually into a new object (a new dataframe)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#key-dplyr-functions",
+    "href": "lectures/04-slides.html#key-dplyr-functions",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Key dplyr Functions",
+    "text": "Key dplyr Functions\nThe package dplyr has many functions, but you don’t need to memorize them all!\nOUR GOALS: Memorize the key functions + Know where to look up the rest dplyr.tidyverse.org\nThe next slide summarizes the most common dplyr functions to memorize."
+  },
+  {
+    "objectID": "lectures/04-slides.html#key-dplyr-functions-1",
+    "href": "lectures/04-slides.html#key-dplyr-functions-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Key dplyr Functions",
+    "text": "Key dplyr Functions\n\n\n\n\n\n\n\nfunction()\nWhat it does\n\n\n\n\nfilter()\nSelects rows based on values in one or more columns\n\n\narrange()\nReorders rows based on the values in specified columns\n\n\nselect()\nChooses specific columns by name\n\n\nrename()\nRenames one or more columns\n\n\nmutate()\nAdds new columns or modifies existing ones\n\n\ngroup_by()\nGroups the data by one or more variables for grouped operations\n\n\nsummarize()\nReduces each group to a single row using summary statistics (e.g., mean, sum, n)\n\n\n\n\n\n\n\n\n\n\n\nTip for Remembering These Functions\n\n\nEach row is an observation (e.g., one penguin) and each column is a variable (e.g., species, body mass). Some functions works on rows like filter(), arrange() others on columns like select(), mutate(). Think before coding!"
+  },
+  {
+    "objectID": "lectures/04-slides.html#american-vs.-british-english",
+    "href": "lectures/04-slides.html#american-vs.-british-english",
+    "title": "Introduction to R: Lecture 4",
+    "section": "American vs. British English",
+    "text": "American vs. British English\n\nUS summarize() = UK summarise()\nUS color() = UK colour()"
   },
   {
     "objectID": "lectures/04-slides.html#practice",
     "href": "lectures/04-slides.html#practice",
     "title": "Introduction to R: Lecture 4",
     "section": "💻 Practice",
-    "text": "💻 Practice"
+    "text": "💻 Practice\nWhat is the average body mass for Adelie penguins by sex?\n\nFirst, THINK: How would you approach this question conceptually? Break it down into clear and simple steps before coding.\nThen, CODE: Translate those steps into R using the appropriate dplyr functions.\nHint: You’ll need to use three dplyr functions and in the best order"
+  },
+  {
+    "objectID": "lectures/04-slides.html#pipes-to-chain-commands",
+    "href": "lectures/04-slides.html#pipes-to-chain-commands",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Pipes to Chain Commands",
+    "text": "Pipes to Chain Commands\nPipes allow you to write a sequence of operations by passing the result of one function into the next making your code more readable and logical. Compare these two versions of the same code.\nWithout pipes:\nadelie &lt;- filter(penguins, species == \"Adelie\")\nadelie_island &lt;- group_by(adelie, island)\nadelie_avg_mass_island &lt;- summarize(adelie_island, body_mass = mean(body_mass_g, na.rm = TRUE))\nWith pipes (%&gt;% or |&gt;):\nadelie_avg_mass_island &lt;- penguins %&gt;%\n  filter(species == \"Adelie\") %&gt;%\n  group_by(island) %&gt;%\n  summarize(body_mass = mean(body_mass_g, na.rm = TRUE))"
+  },
+  {
+    "objectID": "lectures/04-slides.html#multiple-ways-to-write-r-code-pipes-are-often-the-best-choice",
+    "href": "lectures/04-slides.html#multiple-ways-to-write-r-code-pipes-are-often-the-best-choice",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Multiple Ways to Write R Code — Pipes Are Often the Best Choice",
+    "text": "Multiple Ways to Write R Code — Pipes Are Often the Best Choice\nPipes are great and our ultimate goal. But there are several ways to write the same R code.\nIn fact, R didn’t have pipes for a long time!\nLet’s compare different ways to write the same code…"
+  },
+  {
+    "objectID": "lectures/04-slides.html#four-different-options-to-code-this-task",
+    "href": "lectures/04-slides.html#four-different-options-to-code-this-task",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Four Different Options to Code This Task",
+    "text": "Four Different Options to Code This Task\nTask: Calculate the average body mass for Adelie penguins by island.\n\n\n\n\n\n\n\n\nStrategy: Break Down the Task Before You Code it!\n\n\n\nIdentify data and variable needed\n\nFilter the data for rows where species is Adelie\n\nGroup the filtered data by island\n\nCalculate the average body mass for each group"
+  },
+  {
+    "objectID": "lectures/04-slides.html#option-1-save-each-step-in-a-new-data-frame",
+    "href": "lectures/04-slides.html#option-1-save-each-step-in-a-new-data-frame",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Option 1: Save each step in a new data frame",
+    "text": "Option 1: Save each step in a new data frame\n\npenguins_adelie &lt;- filter(penguins, species == \"Adelie\")\npenguins_adelie_island &lt;- group_by(penguins_adelie, island)\npenguins_final &lt;- summarize(penguins_adelie_island, \n                            body_mass = mean(body_mass_g, na.rm = TRUE))\nprint(penguins_final)\n\n# A tibble: 3 × 2\n  island    body_mass\n  &lt;fct&gt;         &lt;dbl&gt;\n1 Biscoe        3710.\n2 Dream         3688.\n3 Torgersen     3706.\n\n\n\n\n✅ This is valid code.\n⚠️ Drawback: You must save each intermediate object. This can clutter your environment, increase R memory usage with large datasets, and make your code more prone to typos. Shorter names for each step might reduce typos but sacrifice clarity, which is not good for self-documentation."
+  },
+  {
+    "objectID": "lectures/04-slides.html#option-2-replace-the-original-data-frame",
+    "href": "lectures/04-slides.html#option-2-replace-the-original-data-frame",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Option 2: Replace the original data frame",
+    "text": "Option 2: Replace the original data frame\n\npenguins &lt;- filter(penguins, species == \"Adelie\")\npenguins &lt;- group_by(penguins, island)\npenguins &lt;- summarize(penguins, body_mass = mean(body_mass_g, na.rm = TRUE))\nprint(penguins)\n\n# A tibble: 3 × 2\n  island    body_mass\n  &lt;fct&gt;         &lt;dbl&gt;\n1 Biscoe        3710.\n2 Dream         3688.\n3 Torgersen     3706.\n\n\n\n\n✅ This also works, but it’s not good practice.\n⚠️ Drawback: It overwrites the original dataset. If something goes wrong midway, you’ll need to re-run everything from scratch.\n\n\n\n\n\n\nWarning\n\n\nThis approach is risky — especially when working with important datasets. Always keep a copy of your original data before modifying it."
+  },
+  {
+    "objectID": "lectures/04-slides.html#option-3-function-composition",
+    "href": "lectures/04-slides.html#option-3-function-composition",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Option 3: Function composition",
+    "text": "Option 3: Function composition\n\ndata(penguins)\nsummarize(group_by(filter(penguins, species == \"Adelie\"), island), \n          body_mass = mean(body_mass_g, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  island    body_mass\n  &lt;fct&gt;         &lt;dbl&gt;\n1 Biscoe        3710.\n2 Dream         3688.\n3 Torgersen     3706.\n\n\n\n\n✅ This also works, and some people like this style.\n⚠️ Drawback: It’s harder to read and debug. You must follow it from the inside out, which makes it harder to read for humans. If something breaks, it’s difficult to isolate where the error is happening as you can’t easily inspect intermediate results."
+  },
+  {
+    "objectID": "lectures/04-slides.html#option-4-pipes-the-winner",
+    "href": "lectures/04-slides.html#option-4-pipes-the-winner",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Option 4: Pipes (The Winner!)",
+    "text": "Option 4: Pipes (The Winner!)\n\npenguins %&gt;%\n  filter(species == \"Adelie\") %&gt;%\n  group_by(island) %&gt;%\n  summarize(body_mass = mean(body_mass_g, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  island    body_mass\n  &lt;fct&gt;         &lt;dbl&gt;\n1 Biscoe        3710.\n2 Dream         3688.\n3 Torgersen     3706.\n\n\n\n\n✅ This is valid and readable code — without the drawbacks of the previous options.\n💡 Why pipes? The pipe operator %&gt;% passes the result of one function to the next, making your code easy to read from top to bottom. Pipes emphasize actions, not object names and you can read the code like a recipe:\n\nStart with the dataset\nFilter for Adelie penguins\nGroup by island\nSummarize body mass"
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-errors-with-pipes-examples-using-flights-data",
+    "href": "lectures/04-slides.html#common-errors-with-pipes-examples-using-flights-data",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Errors with Pipes: Examples using flights data",
+    "text": "Common Errors with Pipes: Examples using flights data\nWe use a built-in dataset of all flights (n = 336,776) that departed from NYC in 2013.\nlibrary(nycflights13)\ndata(flights)\nhead(flights)\n\n\n# A tibble: 6 × 19\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     1     1      517            515         2      830            819\n2  2013     1     1      533            529         4      850            830\n3  2013     1     1      542            540         2      923            850\n4  2013     1     1      544            545        -1     1004           1022\n5  2013     1     1      554            600        -6      812            837\n6  2013     1     1      554            558        -4      740            728\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-1",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 1",
+    "text": "Common Pipe Errors: Example 1\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  by_dest &lt;- group_by(dest) %&gt;% \n  delay &lt;- summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;% \n  d &lt;- filter(count &gt; 20)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-1-1",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-1-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 1",
+    "text": "Common Pipe Errors: Example 1\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  by_dest &lt;- group_by(dest) %&gt;% \n  delay &lt;- summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;% \n  d &lt;- filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDon’t assign anything inside a pipe. Use &lt;- only at the start, if you want to save the final result. Do not use it between steps."
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-2",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-2",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 2",
+    "text": "Common Pipe Errors: Example 2\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest)\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE))\n  filter(count &gt; 20)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-2-1",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-2-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 2",
+    "text": "Common Pipe Errors: Example 2\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest)\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE))\n  filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nEach function in a pipe chain must be connected with %&gt;% to keep the chain going."
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-3",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-3",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 3",
+    "text": "Common Pipe Errors: Example 3\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  group_by(.data = flights, dest) %&gt;% \n  summarize(.data = flights,\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;% \n  filter(.data = flights, count &gt; 20)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-3-1",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-3-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 3",
+    "text": "Common Pipe Errors: Example 3\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  group_by(.data = flights, dest) %&gt;% \n  summarize(.data = flights,\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;% \n  filter(.data = flights, count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nWhen using pipes, only reference the data frame at the start of the chain. Do not repeat .data = flights in every function as %&gt;% automatically passes the data along."
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-4",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-4",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 4",
+    "text": "Common Pipe Errors: Example 4\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights +\n  group_by(dest) +\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) +\n  filter(count &gt; 20)"
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-4-1",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-4-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 4",
+    "text": "Common Pipe Errors: Example 4\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights +\n  group_by(dest) +\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) +\n  filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe + sign is only for adding layers in ggplot2! Don’t use it to chain dplyr functions: use %&gt;% to pipe data through a sequence of transformations."
+  },
+  {
+    "objectID": "lectures/04-slides.html#practice-gapminder",
+    "href": "lectures/04-slides.html#practice-gapminder",
+    "title": "Introduction to R: Lecture 4",
+    "section": "💻 Practice: Gapminder",
+    "text": "💻 Practice: Gapminder\nDownload today’s in-class exercises from the website."
   },
   {
     "objectID": "lectures/04-slides.html#recap-what-we-learned-today",
     "href": "lectures/04-slides.html#recap-what-we-learned-today",
     "title": "Introduction to R: Lecture 4",
     "section": "Recap: What We Learned Today",
-    "text": "Recap: What We Learned Today"
+    "text": "Recap: What We Learned Today\n\nPracticed programming as problem-solving: think through tasks before coding\nLearned R operators\nKey dplyr functions like filter(), group_by(), summarize(), and more\nChained commands with pipes\nReviewed common mistakes when using pipes and how to avoid them"
   },
   {
     "objectID": "lectures/04-slides.html#reminders",
@@ -119,11 +392,74 @@
     "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
   },
   {
-    "objectID": "lectures/03-slides.html#subtitles",
-    "href": "lectures/03-slides.html#subtitles",
+    "objectID": "lectures/03-slides.html#reminders",
+    "href": "lectures/03-slides.html#reminders",
     "title": "Introduction to R: Lecture 3",
-    "section": "Subtitles",
-    "text": "Subtitles"
+    "section": "Reminders",
+    "text": "Reminders\n\nCheck your working directory inside R Workbench (“Project:”) and switch project if necessary\nCheck your R version\n\nR 4.5.0\nR 4.5.1 use this!\nR 4.2.0"
+  },
+  {
+    "objectID": "lectures/03-slides.html#what-is-a-dataset",
+    "href": "lectures/03-slides.html#what-is-a-dataset",
+    "title": "Introduction to R: Lecture 3",
+    "section": "What Is a Dataset?",
+    "text": "What Is a Dataset?\nImagine you are a data analyst for Ford and have information on ~200 cars. For each car, you know:\n\nHow big the engine is (engine size or displacement, in liters)\nHow many miles it gets on the highway (fuel efficiency, in Miles Per Gallons)\nThe class of the car (e.g., compact, SUV, etc.)\n\nQuestions for you:\n\nWhat do you think a dataset like this might look like?\nWhat is a dataset, anyway?\nWhat does one row represent? What does one column represent?"
+  },
+  {
+    "objectID": "lectures/03-slides.html#plotting-data",
+    "href": "lectures/03-slides.html#plotting-data",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Plotting Data",
+    "text": "Plotting Data\nImagine you pick two pieces of information (e.g., variables) from this car dataset:\n\nvariable 1: car fuel efficiency on the highway\nvariable 2: car engine size (engine displacement)\n\nYou want to understand the relationship between these two variables visually, so you start by creating a simple scatter plot…"
+  },
+  {
+    "objectID": "lectures/03-slides.html#our-first-plot-with-ggplot2",
+    "href": "lectures/03-slides.html#our-first-plot-with-ggplot2",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Our First Plot with ggplot2",
+    "text": "Our First Plot with ggplot2\n\nBefore we explain the code to make this plot…\n\nWhat’s on the x-axis? And on the y -axis?\nWhat do you think each dot in this scatterplot represents?\nIf you wanted to pick a car that combines high fuel efficiency on the highway and a large engine size, where would you look on this plot? Are there cars like that here?\nLarger engines tend to have __________ highway MPG efficiency"
+  },
+  {
+    "objectID": "lectures/03-slides.html#understanding-a-dataset-mpg",
+    "href": "lectures/03-slides.html#understanding-a-dataset-mpg",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Understanding a Dataset: mpg",
+    "text": "Understanding a Dataset: mpg\nOpen R Workbench and use R version 4.5.1\nCopy/paste this code into your R Console and run it for a preview of the mpg dataset:\nlibrary(ggplot2)\ndata(mpg)\nhead(mpg)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#installing-and-loading-packages-in-r",
+    "href": "lectures/03-slides.html#installing-and-loading-packages-in-r",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Installing and Loading Packages in R",
+    "text": "Installing and Loading Packages in R\nTo use external tools like ggplot2, you need to first install and then load the package. A package is a a collection of code, data, and documentation.\nInstall a package. Only once per computer:\ninstall.packages(\"ggplot2\")\nLoad a package. Every time you use it, at the top of the script:\nlibrary(ggplot2)\nIn this course, we’re using RStudio Workbench, where everything is already installed. So you only need to load packages."
+  },
+  {
+    "objectID": "lectures/03-slides.html#key-dataset-terms",
+    "href": "lectures/03-slides.html#key-dataset-terms",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Key Dataset Terms",
+    "text": "Key Dataset Terms\n\nObservation = each row = one car\n\nVariable = each column = a car property (e.g., displ, hwy, class)\n\ndispl: engine size or displacement, in liters\n\nhwy: fuel efficiency, highway miles per gallon\n\nclass: class or type of car (compact, SUV…)\n\n\nThe mpg dataset has 234 observations (cars, in rows) and 11 variables (properties, in columns)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#code-to-make-our-first-plot-with-ggplot2",
+    "href": "lectures/03-slides.html#code-to-make-our-first-plot-with-ggplot2",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Code to Make our First Plot with ggplot2",
+    "text": "Code to Make our First Plot with ggplot2\n\n\nlibrary(ggplot2)\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy))\nWhat this code does:\n\nSets the data: mpg\nMakes a scatterplot: geom_point()\nTells what to put on the axes: aes()\nMaps the variable engine size to x-axis: x = displ\nMaps the variable fuel efficiency to y-axis: y = hwy"
+  },
+  {
+    "objectID": "lectures/03-slides.html#add-title-and-axes-labels",
+    "href": "lectures/03-slides.html#add-title-and-axes-labels",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Add Title and Axes Labels",
+    "text": "Add Title and Axes Labels\nOur initial plot also had a Title and Axes Labels, that’s the full code to add them (copy/paste it to your Console):\nlibrary(ggplot2)\n\nggplot(data = mpg) +\n  geom_point(aes(x = displ, y = hwy)) +\n  labs(title = \"Car Fuel Efficiency on the Highway vs. Car Engine Size\",\n       x = \"Car Engine Size in Liters\",\n       y = \"Car Highway MPG (Fuel Efficiency)\")"
+  },
+  {
+    "objectID": "lectures/03-slides.html#why-visualize-data",
+    "href": "lectures/03-slides.html#why-visualize-data",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Why Visualize Data?",
+    "text": "Why Visualize Data?\nBefore you run numbers or models, it’s useful to look at the data visually!\n\nGraphs help you spot patterns, relationships, and outliers\nVisualization makes data more understandable and shareable\nYou can explore your questions more quickly"
   },
   {
     "objectID": "lectures/03-slides.html#practice",
@@ -133,6 +469,174 @@
     "text": "💻 Practice\nTeam up with someone, run this code in your Console, and answer the questions:\nlibrary(ggplot2)\ndata(mpg)\n\nggplot(mpg) +\n  geom_point(aes(x = displ, y = hwy, color = class))\n\nWhat do you see? Describe the plot to your partner\nWhat do the first two lines of code do?\nWhat does color = class do?\nReplace the current x variable with the variable cty (city miles per gallons), run the code, and describe the new plot"
   },
   {
+    "objectID": "lectures/03-slides.html#grammar-of-graphics-and-ggplot2",
+    "href": "lectures/03-slides.html#grammar-of-graphics-and-ggplot2",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Grammar of Graphics and ggplot2",
+    "text": "Grammar of Graphics and ggplot2\nWe’ve been creating plots intuitively. Now, let’s learn them formally.\n\nggplot2 is the main R package used for data visualization\nIt’s part of the tidyverse, a collection of packages for data science: https://www.tidyverse.org/\nCreated by Hadley Wickham, who also co-authored your course textbook\nBuilt using the theory called the Grammar of Graphics, a system for creating layered plots"
+  },
+  {
+    "objectID": "lectures/03-slides.html#grammar-and-grammar-of-graphics",
+    "href": "lectures/03-slides.html#grammar-and-grammar-of-graphics",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Grammar and “Grammar of Graphics”",
+    "text": "Grammar and “Grammar of Graphics”\n\nA grammar is a set of rules (syntax and morphology) that helps us structure a language. It lets us communicate clearly.\n\nApplied to R and ggplot2…\n\nA Grammar of Graphics is a set of rules for building data visualizations. It lets us create many types of plots using the same structure."
+  },
+  {
+    "objectID": "lectures/03-slides.html#main-components-of-the-grammar-of-graphics",
+    "href": "lectures/03-slides.html#main-components-of-the-grammar-of-graphics",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Main Components of the Grammar of Graphics",
+    "text": "Main Components of the Grammar of Graphics\nThe Grammar of Graphics defines a plot as built from five main parts.\nThese five parts together are called a layer:\n\nDATA: the dataset you are using\nGEOM: the type of plot (e.g., points, bars, lines)\nMAPPING: maps variables to aesthetics like x, y, color, etc. with aes()\nSTAT: whether the data should be transformed (e.g., counted) or not (identity)\nPOSITION: how things are arranged on the plot (e.g., stacked or jittered)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#grammar-of-graphics-code-template",
+    "href": "lectures/03-slides.html#grammar-of-graphics-code-template",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Grammar of Graphics: Code Template",
+    "text": "Grammar of Graphics: Code Template\nLet’s look at how these five parts of a layer show up in ggplot2 code:\n# code template\n\nggplot(data = &lt;DATA&gt;) +\n  &lt;GEOM&gt;(\n    mapping = aes(&lt;MAPPING&gt;),\n    stat = &lt;STAT&gt;,\n    position = &lt;POSITION&gt;\n  )\nYou can also add more elements, like:\n+ &lt;COORDINATE SYSTEM&gt;\n+ &lt;FACET&gt;"
+  },
+  {
+    "objectID": "lectures/03-slides.html#grammar-of-graphics-code-template-with-the-mpg-dataset",
+    "href": "lectures/03-slides.html#grammar-of-graphics-code-template-with-the-mpg-dataset",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Grammar of Graphics: Code Template with the mpg Dataset",
+    "text": "Grammar of Graphics: Code Template with the mpg Dataset\nNow, fill in this code template using the mpg data and plot it:\n\n\n# code template\n\nggplot(data = &lt;DATA&gt;) +\n  &lt;GEOM&gt;(\n    mapping = aes(&lt;MAPPING&gt;),\n    stat = &lt;STAT&gt;,\n    position = &lt;POSITION&gt;\n  ) +\n  &lt;COORDINATE&gt; +\n  &lt;FACET&gt;\n\n# filled with mpg data\n\nggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#on-coding-style-in-r",
+    "href": "lectures/03-slides.html#on-coding-style-in-r",
+    "title": "Introduction to R: Lecture 3",
+    "section": "On Coding Style in R",
+    "text": "On Coding Style in R\nBefore continuing with the Grammar of Graphics, let’s take a moment to focus on coding style (parenthesis, signs, indentation, variable names, etc.)\nHere’s the same code as before. This time, read it focusing on its style. What do you notice?\nggplot(data = mpg) + \n  geom_point(\n     mapping = aes(x = displ, y = hwy, color = class),\n     stat = \"identity\", \n     position = \"identity\") +\n  coord_cartesian() +\n  facet_wrap(facets = vars(class), nrow = 1)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#coding-style-checklist",
+    "href": "lectures/03-slides.html#coding-style-checklist",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Coding Style Checklist",
+    "text": "Coding Style Checklist\n\nUse &lt;- to assign values to variables\nUse = to assign values to function arguments\nUse descriptive, meaningful variable names (snake_case, lowercase)\nAdd spaces around operators (e.g., +, -, &lt;-) for readability\nAvoid spaces inside parentheses or brackets\nClose every opened parenthesis\nBreak long lines and use indentation\nUse comments, but do not abuse them"
+  },
+  {
+    "objectID": "lectures/03-slides.html#why-care-about-coding-style",
+    "href": "lectures/03-slides.html#why-care-about-coding-style",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Why Care About Coding Style?",
+    "text": "Why Care About Coding Style?\nResources to guide you:\n\nR for Data Science, Chapter 4\nThe tidyverse style guide\nWhy does coding style matter?"
+  },
+  {
+    "objectID": "lectures/03-slides.html#make-and-store-a-plot",
+    "href": "lectures/03-slides.html#make-and-store-a-plot",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Make and Store a Plot",
+    "text": "Make and Store a Plot\nThis code makes a plot, but does not store it\n ggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)\nThis code makes a plot and stores it to an object that I named fuel_plot\nfuel_plot &lt;- ggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)\nfuel_plot"
+  },
+  {
+    "objectID": "lectures/03-slides.html#core-components-of-ggplot2",
+    "href": "lectures/03-slides.html#core-components-of-ggplot2",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Core Components of ggplot2",
+    "text": "Core Components of ggplot2\nYou’ve seen the code template and the big picture. Now we’ll take a closer look at key components:\n\nLayers\n\ndata\nmapping\ngeom\nstat\nposition\n\nCoordinate System\nFacets\nScales (not covered today)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#layers",
+    "href": "lectures/03-slides.html#layers",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Layers",
+    "text": "Layers\nLayers create the visual elements on a plot. Each layer has five parts:\nggplot(data = mpg) + \n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\", \n    position = \"identity\"\n  ) + \n  geom_smooth(\n    mapping = aes(x = displ, y = hwy),\n    method = \"lm\"\n  )"
+  },
+  {
+    "objectID": "lectures/03-slides.html#data-and-aesthetic-mappings",
+    "href": "lectures/03-slides.html#data-and-aesthetic-mappings",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Data and Aesthetic Mappings",
+    "text": "Data and Aesthetic Mappings\nData:\n\nThe dataset used for the plot\nExample: data = mpg\n\nMapping:\n\nLinks variables to aesthetics (x, y, color, size…)\nExample: aes(x = displ, y = hwy, color = class)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#how-ggplot2-controls-positioning",
+    "href": "lectures/03-slides.html#how-ggplot2-controls-positioning",
+    "title": "Introduction to R: Lecture 3",
+    "section": "How ggplot2 Controls Positioning",
+    "text": "How ggplot2 Controls Positioning\nAdjusts how elements are positioned to avoid overlap.\n\nScatterplot: often position = \"identity\"\nJitter: position = \"jitter\" spreads overlapping points\nBar plot: use \"stack\", \"dodge\", etc.\n\n\n\n\n\n\n\nTip\n\n\nCheck geom_*() documentation to learn supported positions."
+  },
+  {
+    "objectID": "lectures/03-slides.html#statistical-transformations-in-layers",
+    "href": "lectures/03-slides.html#statistical-transformations-in-layers",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Statistical Transformations in Layers",
+    "text": "Statistical Transformations in Layers\nStat: transforms your data for plotting.\n\nBar charts: geom_bar() uses stat = \"count\" by default\nScatterplots: often use stat = \"identity\"\n\nggplot(data = mpg) + \n  geom_bar(mapping = aes(x = class)) # implicitly counts"
+  },
+  {
+    "objectID": "lectures/03-slides.html#choosing-the-right-geometric-object",
+    "href": "lectures/03-slides.html#choosing-the-right-geometric-object",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Choosing the Right Geometric Object",
+    "text": "Choosing the Right Geometric Object\nThe geometric object is the type of plot you’re making:\n\ngeom_point() → scatterplot\ngeom_line() → line chart\ngeom_bar() → bar chart\n\nEach geom accepts certain aesthetics. Read the docs: geom_point reference"
+  },
+  {
+    "objectID": "lectures/03-slides.html#practice-color-aesthetics",
+    "href": "lectures/03-slides.html#practice-color-aesthetics",
+    "title": "Introduction to R: Lecture 3",
+    "section": "💻 Practice: Color Aesthetics",
+    "text": "💻 Practice: Color Aesthetics\nWhich of these three code blocks is correct? Run and compare them in R.\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = class))\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy), color = \"blue\")\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = \"blue\"))"
+  },
+  {
+    "objectID": "lectures/03-slides.html#practice-color-aesthetics-1",
+    "href": "lectures/03-slides.html#practice-color-aesthetics-1",
+    "title": "Introduction to R: Lecture 3",
+    "section": "💻 Practice: Color Aesthetics",
+    "text": "💻 Practice: Color Aesthetics\n\n\n✅ Correct\naes(color = class)\nMaps a variable.\n\n✅ Correct\ncolor = \"blue\"\nSets color manually (outside aes).\n\n❌Incorrect\naes(color = \"blue\")\nTries to map a fixed value (the string “blue”). Not useful.\n\n\nSetting vs Mapping in ggplot2\n\nSetting means assigning a fixed value outside aes()\nExample: color = \"blue\" (does not come from the data)\nMapping means linking a variable inside aes()\nExample: aes(color = class) (comes from the data, from a variable)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#common-beginner-mistakes",
+    "href": "lectures/03-slides.html#common-beginner-mistakes",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Common Beginner Mistakes",
+    "text": "Common Beginner Mistakes\n\nPutting fixed values like “blue” inside aes() (e.g., aes(color = \"blue\")\nForgetting to close aes() or geom_() parentheses\nUsing &lt;- inside aes() instead of ="
+  },
+  {
+    "objectID": "lectures/03-slides.html#coordinate-system-and-faceting",
+    "href": "lectures/03-slides.html#coordinate-system-and-faceting",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Coordinate System and Faceting",
+    "text": "Coordinate System and Faceting\nCoordinate System:\n\nTranslates data into the plot space\nDefault: Cartesian system (coord_cartesian())\n\nFaceting:\n\nSplits data into subplots by a variable\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, color = class)) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)"
+  },
+  {
+    "objectID": "lectures/03-slides.html#example-1",
+    "href": "lectures/03-slides.html#example-1",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Example 1",
+    "text": "Example 1\nExample from the previous slides\nLong version:\nggplot(data = mpg) + \n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\", \n    position = \"identity\") + \n  geom_smooth(\n    mapping = aes(x = displ, y = hwy),\n    method = \"lm\")\n\nShort version:\nggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + \n  geom_point(aes(color = class)) + \n  geom_smooth(method = \"lm\")"
+  },
+  {
+    "objectID": "lectures/03-slides.html#example-2",
+    "href": "lectures/03-slides.html#example-2",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Example 2",
+    "text": "Example 2\nScatterplot between cars’ engine size (displ) and highway fuel efficiency (hwy)\nLong version:\nggplot() +\n  layer(\n    data = mpg, \n    mapping = aes(x = displ, y = hwy),\n    geom = \"point\", \n    stat = \"identity\", \n    position = \"identity\"\n  ) +\n  scale_y_continuous() +\n  scale_x_continuous() +\n  coord_cartesian()\n\nShort version:\nggplot(data = mpg, aes(x = displ, y = hwy)) +\n  geom_point()"
+  },
+  {
+    "objectID": "lectures/03-slides.html#defaults-cheat-sheet",
+    "href": "lectures/03-slides.html#defaults-cheat-sheet",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Defaults Cheat Sheet",
+    "text": "Defaults Cheat Sheet\nUse these defaults to simplify code:\n\nstat = \"identity\" for geom_point()\nposition = \"identity\" unless changed\nCommon aes() calls can go in ggplot()\nscale_*_continuous() not needed unless customizing"
+  },
+  {
+    "objectID": "lectures/03-slides.html#quick-review",
+    "href": "lectures/03-slides.html#quick-review",
+    "title": "Introduction to R: Lecture 3",
+    "section": "Quick Review",
+    "text": "Quick Review\n\nWhat does geom_point() do?\nWhat does stat = \"identity\" mean?\nWhen would you use facet_wrap()?\nWhat’s wrong with aes(color = \"blue\")?\n\nTry answering these without peeking at the slides!"
+  },
+  {
+    "objectID": "lectures/03-slides.html#practice-gapminder",
+    "href": "lectures/03-slides.html#practice-gapminder",
+    "title": "Introduction to R: Lecture 3",
+    "section": "💻 Practice: Gapminder",
+    "text": "💻 Practice: Gapminder\nDownload today’s in-class materials from the website!\nThe gapminder dataset:\nContains data on various socio-economic indicators for countries around the world over multiple years (1957-2008). It includes information on life expectancy, GDP per capita, and population\nGapminder info: https://cran.r-project.org/web/packages/gapminder/readme/README.html and https://www.gapminder.org/"
+  },
+  {
     "objectID": "lectures/03-slides.html#recap-what-we-learned-today",
     "href": "lectures/03-slides.html#recap-what-we-learned-today",
     "title": "Introduction to R: Lecture 3",
@@ -140,11 +644,11 @@
     "text": "Recap: What We Learned Today\n\nCore components of the Grammar of Graphics\nGenerate simple graphs with ggplot2\nUse the Grammar of Graphics template and simplify it with defaults\nR Coding Style Best Practices"
   },
   {
-    "objectID": "lectures/03-slides.html#reminders",
-    "href": "lectures/03-slides.html#reminders",
+    "objectID": "lectures/03-slides.html#reminders-1",
+    "href": "lectures/03-slides.html#reminders-1",
     "title": "Introduction to R: Lecture 3",
     "section": "Reminders",
-    "text": "Reminders\n\nCheck your working directory inside R Workbench (“Project:”) and switch project if necessary\nCheck your R version\n\nR 4.5.0\nR 4.5.1 use this!\nR 4.2.0"
+    "text": "Reminders\n\nHomework 1 is due Wednesday, July 2nd\nThere is no class Thursday, July 3rd"
   },
   {
     "objectID": "lectures/03-slides.html#to-print-these-slides-as-pdf",
@@ -445,7 +949,7 @@
     "href": "lectures/01-slides.html#yaml-yet-another-markup-language",
     "title": "Introduction to R: Lecture 1",
     "section": "YAML: Yet Another Markup Language",
-    "text": "YAML: Yet Another Markup Language\nThe YAML header sits at the top of your .Rmd and tells R what the document is about and how to display it (e.g., as a html, PDF, Word, etc.).\nThe example below shows only three fields but many more can be added:\n---\ntitle: \"Homework 1\"\nauthor: \"Sabrina Nardin\"\noutput: html_document\n---"
+    "text": "YAML: Yet Another Markup Language\nThe YAML header sits at the top of your .Rmd and tells R what the document is about and how to display it (e.g., as a html, PDF, Word, etc.). Spacing, indentation, and --- all matters!\nThe example below shows three fields but many more can be added:\n---\ntitle: \"Homework 1\"\nauthor: \"Sabrina Nardin\"\noutput: html_document\n---"
   },
   {
     "objectID": "lectures/01-slides.html#r-markdown-formatting-text",
@@ -476,18 +980,18 @@
     "text": "R Markdown: Formatting Headers\n# Heading 1  \n## Heading 2  \n### Heading 3  \n\nHeading 1\n\n\nHeading 2\n\n\nHeading 3"
   },
   {
-    "objectID": "lectures/01-slides.html#in-code-vs.-markdown-text",
-    "href": "lectures/01-slides.html#in-code-vs.-markdown-text",
+    "objectID": "lectures/01-slides.html#using-in-code-vs.-markdown-text",
+    "href": "lectures/01-slides.html#using-in-code-vs.-markdown-text",
     "title": "Introduction to R: Lecture 1",
-    "section": "# in Code vs. Markdown Text",
-    "text": "# in Code vs. Markdown Text\n\n\nIn Code\n# Assign number to variable\nx &lt;- 5 \n# Assign text to variable\nname &lt;- \"Sabrina\"\n\n# starts a COMMENT in R Scripts and R Markdown Code Chunks\nComments are ignored when the code runs\nUse one single # for code explanations or debugging, space doesn’t matter\n\n\nIn R Markdown Text\n# Title (h1)\n## Section (h2)\n### Subsection (h3)\n#### More Subsections (h4)\n\n# creates a HEADER in Markdown or R Markdown Text\nThe number of # signs = heading level\nUse as many # as needed for organizing document sections, space matters"
+    "section": "Using # in Code vs. Markdown Text",
+    "text": "Using # in Code vs. Markdown Text\n\n\nIn Code\n# Assign number to variable\nx &lt;- 5 \n# Assign text to variable\nname &lt;- \"Sabrina\"\n\n# starts a COMMENT in R Scripts and R Markdown Code Chunks\nComments are ignored when the code runs\nUse one single # for code explanations or debugging, space doesn’t matter\n\n\nIn R Markdown Text\n# Title (h1)\n## Section (h2)\n### Subsection (h3)\n#### More Subsections (h4)\n\n# creates a HEADER in Markdown or R Markdown Text\nThe number of # signs = heading level\nUse as many # as needed for organizing document sections, space matters"
   },
   {
     "objectID": "lectures/01-slides.html#r-markdown-insert-links-images-and-tables",
     "href": "lectures/01-slides.html#r-markdown-insert-links-images-and-tables",
     "title": "Introduction to R: Lecture 1",
     "section": "R Markdown: Insert Links, Images, and Tables",
-    "text": "R Markdown: Insert Links, Images, and Tables\n\n\n\nElement\nSyntax Example\nNotes\nPreview\n\n\n\n\nLink\n[RStudio](https://www.rstudio.com/)\nText in [], URL in ()\nLink\n\n\nImage\n![Logo](images/logo.png \"Optional title\")\nStart with !, include optional \"title\"\nImage\n\n\nTable\n| Tool    | Use     ||---------|---------|| R       | Stats   |\nUse | for columns and --- for header\nTable"
+    "text": "R Markdown: Insert Links, Images, and Tables\n\n\n\nElement\nSyntax Example\nNotes\nPreview\n\n\n\n\nLink\n[RStudio](https://www.rstudio.com/)\nText in [], URL in ()\nLink\n\n\nImage\n![Logo](images/logo.png \"Optional title\")\nStart with !, include optional \"title\"\nImage\n\n\nTable\n| Tool    | Use     ||---------|---------|| R       | Stats   |\nUse | for columns and --- for header\nTable\n\n\n\nNote:\n\nSpacing always matters\nFor images to display, the file (e.g., .png, .jpg) must be saved in your current working dir or project folder"
   },
   {
     "objectID": "lectures/01-slides.html#r-markdown-handy-code-chunk-options",
@@ -662,7 +1166,7 @@
     "href": "lectures/03-home.html#readings",
     "title": "Lecture 3: Intro to ggplot2, Coding Style",
     "section": "Readings",
-    "text": "Readings\nSkim the readings before or after class to get the big picture and prep for quizzes and assignments:\n\nChapter 4 “Workflow: Code Style” from “R for Data Science” 2nd Edition\n“Chapter 1 Data Visualization” from “R for Data Science” 2nd Edition\n\n\nAdditional Resources (not needed for quizzes or homework but helpful if you want to know more about these topics):\n\n“The tidyverse style guide”\nggplot2 Cheat Sheet\nggplot2 Documentation\nggplot2: Elegant Graphics for Data Analysis, 2nd Edition by Hadley Wickham. Excellent resource for learning the intricacies of ggplot2\nR Graphics Cookbook, 2nd edition by Winston Chang. A practical guide with 150 examples to generate quality graphics based on the data you wish to present"
+    "text": "Readings\nSkim the readings before or after class to get the big picture and prep for quizzes and assignments:\n\nChapter 4 “Workflow: Code Style” from “R for Data Science” 2nd Edition\nChapter 1 “Data Visualization” from “R for Data Science” 2nd Edition\n\n\nAdditional Resources (not needed for quizzes or homework, but helpful to dive deeper):\n\nggplot2 Cheat Sheet\nggplot2 Official Documentation\nggplot2: Elegant Graphics for Data Analysis, 2nd Edition by Hadley Wickham. Excellent resource for learning the intricacies of ggplot2\nR Graphics Cookbook, 2nd edition by Winston Chang. A practical guide with 150 examples to generate quality graphics based on the data you wish to present\n“The tidyverse style guide”"
   },
   {
     "objectID": "lectures/04-home.html",
@@ -683,21 +1187,21 @@
     "href": "lectures/04-home.html#learning-objectives",
     "title": "Lecture 4: Intro to dplyr, Pipes",
     "section": "Learning Objectives",
-    "text": "Learning Objectives"
+    "text": "Learning Objectives\n\nApproach coding tasks as problem-solving by thinking through the steps before writing code\nUnderstand R logical operators\nApply key dplyr functions such as filter(), group_by(), and summarize()\nChain commands using the pipe |&gt; and recognize mistakes to avoid"
   },
   {
     "objectID": "lectures/04-home.html#before-class",
     "href": "lectures/04-home.html#before-class",
     "title": "Lecture 4: Intro to dplyr, Pipes",
     "section": "Before Class",
-    "text": "Before Class"
+    "text": "Before Class\n\nReview the Lecture 3 materials to get ready for today’s in-class quiz\nBring your laptop to every class"
   },
   {
     "objectID": "lectures/04-home.html#readings",
     "href": "lectures/04-home.html#readings",
     "title": "Lecture 4: Intro to dplyr, Pipes",
     "section": "Readings",
-    "text": "Readings"
+    "text": "Readings\nSkim the readings before or after class to get the big picture and prep for quizzes and assignments:\n\n“Chapter 3 Data transformation” from “R for Data Science” 2nd Edition\n\n\nAdditional Resources (not needed for quizzes or homework, but helpful to dive deeper):\n\ndplyr Cheat Sheet\ndplyr Official Documentation"
   },
   {
     "objectID": "lectures/05-home.html",
@@ -1050,360 +1554,80 @@
     "text": "Shell\nThe shell (or bash or terminal) is a program on your computer whose job is to run other programs, rather than do calculations itself. The shell is a very old program and in a time before the mouse it was the only way to interact with a computer. It is still extremely popular among programmers because it is fast and powerful at automating repetitive tasks.\nHere we use the shell for a more modest goal: to navigate the file system, confirm the present working directory, and cement the git to GitHub connection.\n\nStarting the shell\nIn RStudio, go to Tools &gt; Shell. This should take you to the shell (on Mac: Terminal, on Windows: GitBash or equivalent). It should be a simple blinking cursor, waiting for input (white text on black background, or black text on white background)\n\n\nUsing the shell\nThe most basic commands are listed below:\n\npwd (print working directory). Shows the folder (or directory) you are currently operating in. This is not necessarily the same as the R working directory you get from getwd().\nls (list all files). Shows all files in the current working directory. This is equivalent to looking at the files in your Finder/Explorer/File Manager. Use ls -a to also list hidden files, such as .Rhistory and .git.\ncd (change directory). Allows you to navigate through your folders by changing the shell’s working directory. You can navigate like so:\n\ngo to subfolder foo of current working directory: cd foo\ngo to parent folder of current working directory: cd ..\ngo to home folder: cd ~ or simply cd\ngo to folder using absolute path, works regardless of your current working directory: cd /home/my_username/Desktop. Windows uses a slightly different syntax with the slashes between the folder names reversed, \\, e.g. cd C:\\Users\\MY_USERNAME\\Desktop.\n\nTip 1: Dragging and dropping a file or folder into the terminal window will paste the absolute path into the window.\nTip 2: Use the tab key to autocomplete unambiguous folder and file names. Hit tab twice to see all ambiguous options.\n\n\nUse arrow-up and arrow-down to repeat previous commands. Or search for previous commands with CTRL+r.\ngit status is the most used git command and informs you of your current branch, any changes or untracked files, and whether you are in sync with your remotes.\ngit remote -v lists all remotes. Very useful for making sure git knows about your remote and that the remote address is correct.\ngit remote add origin GITHUB_URL adds the remote GITHUB_URL with nickname origin.\ngit remote set-url origin GITHUB_URL changes the remote url of origin to GITHUB_URL. This way you can fix typos in the remote url.\n\n\n\nA note for Windows users\nOn Windows, the program that runs the shell is called Command Prompt or cmd.exe.\nUnfortunately, the default Windows shell does not support all the commands that other operating systems do. This is where GitBash comes in handy: it installs a light version of a shell that does support all the above commands. When you access the shell through RStudio, RStudio actually tries to open GitBash if it can find it, but it will open the default Windows Command Prompt if GitBash is not found.\nIf you get an error message such as `pwd is not recognized as an internal or external command, operable program or batch file.` from any of the previous commands, that means that RStudio could not find GitBash. The most likely cause of this is that you did not install git using the recommended method so try re-installing git.\nIf you followed the installation instructions and still cannot run GitBash, you should find it under “Menu &gt; Git &gt; Git Bash”. If you’re still confused, go back and watch the first three minutes of this video tutorial on installing Git for Windows."
   },
   {
-    "objectID": "lectures/05-slides.html#subtitles",
-    "href": "lectures/05-slides.html#subtitles",
-    "title": "Introduction to R: Lecture 5",
-    "section": "Subtitles",
-    "text": "Subtitles"
+    "objectID": "lectures/04-slides.html",
+    "href": "lectures/04-slides.html",
+    "title": "Introduction to R: Lecture 4",
+    "section": "",
+    "text": "Intro to dplyr and to Programming as Problem-Solving\nOperators\nMain dplyr functions\nPipes (%&gt;% or |&gt;)\nPractice\n\n\n\n\n\n\n\nGot familiar with Git and GitHub (this takes patience and repetition!)\nPracticed R Markdown syntax for formatting (same)\nShared interesting bios, links, and images\n\n\n\n\n\nKnit your .Rmd file to md_document and push both the .Rmd and .md files to GitHub\n\nCommit frequently (from 5 to 20 commits per assignment)\n\nEmbrace problem-solving and learning by doing by trying things out (e.g., adding images), but also post issues on Ed Discussion (linked from our course website)\n\nFix the issues we flagged in this homework – We’ll be stricter on the next ones (harder, start early!)\nSee Syllabus and Lecture 1 Slides on AI and Plagiarism"
   },
   {
-    "objectID": "lectures/05-slides.html#practice",
-    "href": "lectures/05-slides.html#practice",
-    "title": "Introduction to R: Lecture 5",
+    "objectID": "lectures/04-slides.html#practice-1",
+    "href": "lectures/04-slides.html#practice-1",
+    "title": "Introduction to R: Lecture 4",
     "section": "💻 Practice",
-    "text": "💻 Practice"
+    "text": "💻 Practice\nDownload today’s in-class exercises from the website for more practice on operator, dplyr, and pipes."
   },
   {
-    "objectID": "lectures/05-slides.html#recap-what-we-learned-today",
-    "href": "lectures/05-slides.html#recap-what-we-learned-today",
-    "title": "Introduction to R: Lecture 5",
-    "section": "Recap: What We Learned Today",
-    "text": "Recap: What We Learned Today"
+    "objectID": "lectures/04-slides.html#programming-is-problem-solving",
+    "href": "lectures/04-slides.html#programming-is-problem-solving",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Programming is Problem-Solving",
+    "text": "Programming is Problem-Solving\nPenguins Dataset:\n\n\n\n# A tibble: 4 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\n💡 Q1: What is the average body mass of an Adelie penguin?\n💡 Q2: What is the average body mass for each penguin species (three species)?\nDo not write code! Think about the logical/conceptual steps you’d give R. We’ll translate them into code together."
   },
   {
-    "objectID": "lectures/05-slides.html#reminders",
-    "href": "lectures/05-slides.html#reminders",
-    "title": "Introduction to R: Lecture 5",
-    "section": "Reminders",
-    "text": "Reminders"
+    "objectID": "lectures/04-slides.html#common-errors-with-pipes-examples-using-flights-data-1",
+    "href": "lectures/04-slides.html#common-errors-with-pipes-examples-using-flights-data-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Errors with Pipes: Examples using flights data",
+    "text": "Common Errors with Pipes: Examples using flights data\nNote the use of glimpse() vs head() to explore the dataset. In this case, glimpse() is more useful. Why?\nlibrary(nycflights13)\ndata(flights)\nglimpse(flights)\n\n\nRows: 336,776\nColumns: 19\n$ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2…\n$ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…\n$ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, …\n$ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, …\n$ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1…\n$ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,…\n$ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,…\n$ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1…\n$ carrier        &lt;chr&gt; \"UA\", \"UA\", \"AA\", \"B6\", \"DL\", \"UA\", \"B6\", \"EV\", \"B6\", \"…\n$ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4…\n$ tailnum        &lt;chr&gt; \"N14228\", \"N24211\", \"N619AA\", \"N804JB\", \"N668DN\", \"N394…\n$ origin         &lt;chr&gt; \"EWR\", \"LGA\", \"JFK\", \"JFK\", \"LGA\", \"EWR\", \"EWR\", \"LGA\",…\n$ dest           &lt;chr&gt; \"IAH\", \"IAH\", \"MIA\", \"BQN\", \"ATL\", \"ORD\", \"FLL\", \"IAD\",…\n$ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1…\n$ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, …\n$ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6…\n$ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0…\n$ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…"
   },
   {
-    "objectID": "lectures/05-slides.html#to-print-these-slides-as-pdf",
-    "href": "lectures/05-slides.html#to-print-these-slides-as-pdf",
-    "title": "Introduction to R: Lecture 5",
-    "section": "To print these slides as pdf",
-    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+    "objectID": "lectures/04-slides.html#meet-the-palmer-penguins-1",
+    "href": "lectures/04-slides.html#meet-the-palmer-penguins-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Meet the Palmer Penguins!",
+    "text": "Meet the Palmer Penguins!\n\n\nWhat we know about each of the 244 penguins:\n\nSpecies: Adelie, Chinstrap, Gentoo\n\nIsland: Biscoe, Dream, Torgersen\n\nBill length\n\nBill depth\n\nFlipper length\n\nBody mass\n\nSex\n\nYear\n\n\n\n\n\nBill Measurement"
   },
   {
-    "objectID": "lectures/03-slides.html#what-is-a-dataset",
-    "href": "lectures/03-slides.html#what-is-a-dataset",
-    "title": "Introduction to R: Lecture 3",
-    "section": "What Is a Dataset?",
-    "text": "What Is a Dataset?\nImagine you are a data analyst for Ford and have information on ~200 cars. For each car, you know:\n\nHow big the engine is (engine size or displacement, in liters)\nHow many miles it gets on the highway (fuel efficiency, in Miles Per Gallons)\nThe class of the car (e.g., compact, SUV, etc.)\n\nQuestions for you:\n\nWhat do you think a dataset like this might look like?\nWhat is a dataset, anyway?\nWhat does one row represent? What does one column represent?"
+    "objectID": "lectures/04-slides.html#meet-the-palmer-penguins-2",
+    "href": "lectures/04-slides.html#meet-the-palmer-penguins-2",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Meet the Palmer Penguins!",
+    "text": "Meet the Palmer Penguins!\nThe palmerpenguins package includes two datasets: penguins, a clean dataset of 244 penguins (we use this today!), and penguins_raw, the raw version of the same data.\n\n\nInfo we have for these 244 penguins:\n– 3 species: Adelie, Chinstrap, Gentoo\n– 3 islands: Biscoe, Dream, Torgersen\n- info on their bill length, bill depth, flipper length, body mass, etc.\n\n\n\nBill Measurement Diagram\n\n\n\n\n\n\nPalmer Penguins"
   },
   {
-    "objectID": "lectures/03-slides.html#what-does-the-data-behind-this-plot-look-like",
-    "href": "lectures/03-slides.html#what-does-the-data-behind-this-plot-look-like",
-    "title": "Introduction to R: Lecture 3",
-    "section": "What Does the Data Behind This Plot Look Like?",
-    "text": "What Does the Data Behind This Plot Look Like?\n\nBefore we explain the code…\n\nWhat might the data behind this plot look like?\nWhat do you think each dot represents?\nWhat are the variables shown here?\n\nTake 1 minute to jot down your guesses: - What kind of numbers might be in this dataset? - What units do you think are used? - How many rows do you think the dataset has?"
+    "objectID": "lectures/04-slides.html#filter-or-group-first",
+    "href": "lectures/04-slides.html#filter-or-group-first",
+    "title": "Introduction to R: Lecture 4",
+    "section": "🧠 Filter or Group First?",
+    "text": "🧠 Filter or Group First?\nTask: Calculate the average body mass for Adelie penguins by sex.\n\n\n✅ Filter for Adelie, then group by sex\n\nGroup by sex, then filter for Adelie\n\nGroup by species, filter for Adelie, then group by sex\n\nFilter by both species and sex, then group\n\nGroup by both species and sex, then summarize\n\n✅ Best practice. The other approaches work but are less readable or do more work than needed. The next slide compares the first two."
   },
   {
-    "objectID": "lectures/03-slides.html#understanding-a-dataset-mpg",
-    "href": "lectures/03-slides.html#understanding-a-dataset-mpg",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Understanding a Dataset: mpg",
-    "text": "Understanding a Dataset: mpg\nOpen R Workbench and use R version 4.5.1\nCopy/paste this code into your R Console and run it for a preview of the mpg dataset:\nlibrary(ggplot2)\ndata(mpg)\nhead(mpg)"
+    "objectID": "lectures/04-slides.html#filter-or-group-first-1",
+    "href": "lectures/04-slides.html#filter-or-group-first-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "🧠 Filter or Group First?",
+    "text": "🧠 Filter or Group First?\nTask: Calculate the average body mass for Adelie penguins by sex.\n\n\n\nFilter → Group (Best Practice)\n\nFilter first to keep only Adelie penguins\n→ reduces rows right away\nGroup the filtered data by sex\n→ only relevant data is grouped\n\nSummarize to get average\n\n\n\nGroup → Filter (Not Ideal)\n\nGroup all penguins by sex\n→ includes extra, unneeded data\n\nFilter to keep only Adelie penguins\n→ discards part of what was grouped\n\nSummarize to get average"
   },
   {
-    "objectID": "lectures/03-slides.html#your-first-plot-with-ggplot2",
-    "href": "lectures/03-slides.html#your-first-plot-with-ggplot2",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Your First Plot with ggplot2",
-    "text": "Your First Plot with ggplot2\n\n\nlibrary(ggplot2)\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy))\nWhat this does: - Sets the data: mpg - Makes a scatterplot: geom_point() - Maps engine size to x-axis (displ) - Maps fuel efficiency to y-axis (hwy)"
+    "objectID": "lectures/04-slides.html#unpacking-group_by",
+    "href": "lectures/04-slides.html#unpacking-group_by",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Unpacking group_by()",
+    "text": "Unpacking group_by()\nThis function tells R to temporarily group the data by one or more variables, so the next function runs within each group. For example, this code groups the data by species, so whatever runs next (here summarize) happens for each species separately:\ngrouped &lt;- group_by(penguins, species)\nsummarize(grouped, avg_mass = mean(body_mass_g, na.rm = TRUE))\n\n\n\n\n\n\n\n\nWhat group_by() Does\n\n\ngroup_by() doesn’t change your data: it changes how the next function treats the data. It’s usually used right before summarize(), fiter(), mutate(), or arrange() to make those functions run once per group, not across the whole dataset."
   },
   {
-    "objectID": "lectures/03-slides.html#what-do-you-see",
-    "href": "lectures/03-slides.html#what-do-you-see",
-    "title": "Introduction to R: Lecture 3",
-    "section": "What Do You See?",
-    "text": "What Do You See?\n\n\nEach dot represents a car.\n\nLarger engines (displ) tend to have lower highway MPG (hwy)\nThere’s a negative relationship\n\nVisualization lets us explore data before modeling."
+    "objectID": "lectures/04-slides.html#unpacking-group_by-1",
+    "href": "lectures/04-slides.html#unpacking-group_by-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Unpacking group_by()",
+    "text": "Unpacking group_by()\nThe function group_by() can be a bit tricky to understand:\nIt tells R to temporarily treat the data as grouped by one or more variables, so that the next operation (like summarize() or mutate()) will be done within each group.\nFor example, this code group_by(penguins, species) tells R to group penguins by species, so that whatever you do next happens for each species separately.\nThe data look the same, but R is now working with three separate groups (the three species). So if you now run\n\n\n# A tibble: 3 × 2\n  species   avg_mass\n  &lt;fct&gt;        &lt;dbl&gt;\n1 Adelie       3701.\n2 Chinstrap    3733.\n3 Gentoo       5076.\n\n\nYou’ll get one row per species with the average body mass because summarize() uses the group info.\n\n\n\n\n\n\n\nRemember: What group_by() Really Does\n\n\ngroup_by() doesn’t change your data — it changes how the next function treats the data.\nIt’s usually used right before summarize(), mutate(), filter(), or arrange().\nIt makes those functions run once per group, not across the whole dataset."
   },
   {
-    "objectID": "lectures/03-slides.html#why-visualize-data",
-    "href": "lectures/03-slides.html#why-visualize-data",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Why Visualize Data?",
-    "text": "Why Visualize Data?\nBefore you run numbers or models, it’s useful to look at the data visually!\n\nGraphs help you spot patterns, relationships, and outliers\nVisualization makes data more understandable and shareable\nYou can explore your questions more quickly"
-  },
-  {
-    "objectID": "lectures/03-slides.html#your-turn",
-    "href": "lectures/03-slides.html#your-turn",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Your Turn",
-    "text": "Your Turn\n\nTry running the code on your own\n\nChange the x and y variables—what happens?\nAdd color to see categories:\n\nggplot(mpg) +\n  geom_point(aes(x = displ, y = hwy, color = class))\nNow you’re doing layered graphics with real data."
-  },
-  {
-    "objectID": "lectures/03-slides.html#challenge-build-your-own-plot",
-    "href": "lectures/03-slides.html#challenge-build-your-own-plot",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Challenge: Build Your Own Plot",
-    "text": "Challenge: Build Your Own Plot\nTry using these other variables in the mpg dataset:\n\ncty (city mpg)\nmanufacturer\nyear\n\nExamples:\nggplot(mpg) +\n  geom_point(aes(x = cty, y = hwy))\n\n\nggplot(mpg) +\n  geom_point(aes(x = displ, y = cty, color = manufacturer))\nWhat do you learn when you try different combinations?"
-  },
-  {
-    "objectID": "lectures/03-slides.html#plotting-data",
-    "href": "lectures/03-slides.html#plotting-data",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Plotting Data",
-    "text": "Plotting Data\nImagine you pick two pieces of information (e.g., variables) from this car dataset:\n\nvariable 1: car fuel efficiency on the highway\nvariable 2: car engine size (engine displacement)\n\nYou want to understand the relationship between these two variables visually, so you start by creating a simple scatter plot…"
-  },
-  {
-    "objectID": "lectures/03-slides.html#our-first-plot-with-ggplot2",
-    "href": "lectures/03-slides.html#our-first-plot-with-ggplot2",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Our First Plot with ggplot2",
-    "text": "Our First Plot with ggplot2\n\nBefore we explain the code to make this plot…\n\nWhat’s on the x-axis? And on the y -axis?\nWhat do you think each dot in this scatterplot represents?\nIf you wanted to pick a car that combines high fuel efficiency on the highway and a large engine size, where would you look on this plot? Are there cars like that here?\nLarger engines tend to have __________ highway MPG efficiency"
-  },
-  {
-    "objectID": "lectures/03-slides.html#key-dataset-terms",
-    "href": "lectures/03-slides.html#key-dataset-terms",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Key Dataset Terms",
-    "text": "Key Dataset Terms\n\nObservation = each row = one car\n\nVariable = each column = a car property (e.g., displ, hwy, class)\n\ndispl: engine size or displacement, in liters\n\nhwy: fuel efficiency, highway miles per gallon\n\nclass: class or type of car (compact, SUV…)\n\n\nThe mpg dataset has 234 observations (cars, in rows) and 11 variables (properties, in columns)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#code-to-make-our-first-plot-with-ggplot2",
-    "href": "lectures/03-slides.html#code-to-make-our-first-plot-with-ggplot2",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Code to Make our First Plot with ggplot2",
-    "text": "Code to Make our First Plot with ggplot2\n\n\nlibrary(ggplot2)\n\nggplot(data = mpg) +\n  geom_point(mapping = aes(x = displ, y = hwy))\nWhat this code does:\n\nSets the data: mpg\nMakes a scatterplot: geom_point()\nTells what to put on the axes: aes()\nMaps the variable engine size to x-axis: x = displ\nMaps the variable fuel efficiency to y-axis: y = hwy"
-  },
-  {
-    "objectID": "lectures/03-slides.html#add-title-and-axes-labels",
-    "href": "lectures/03-slides.html#add-title-and-axes-labels",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Add Title and Axes Labels",
-    "text": "Add Title and Axes Labels\nOur initial plot also had a Title and Axes Labels, that’s the full code to add them (copy/paste it to your Console):\nlibrary(ggplot2)\n\nggplot(data = mpg) +\n  geom_point(aes(x = displ, y = hwy)) +\n  labs(title = \"Car Fuel Efficiency on the Highway vs. Car Engine Size\",\n       x = \"Car Engine Size in Liters\",\n       y = \"Car Highway MPG (Fuel Efficiency)\")"
-  },
-  {
-    "objectID": "lectures/03-slides.html#now-interpret-this-plot-what-do-you-see",
-    "href": "lectures/03-slides.html#now-interpret-this-plot-what-do-you-see",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Now Interpret this Plot: What Do You See?",
-    "text": "Now Interpret this Plot: What Do You See?\n\n\n\n\n\n\n\n\n\n\n\n\nEach dot represents a ________\nLarger engines (displ) tend to have __________ highway MPG (hwy)\nIf you want to buy a car and care about fuel efficiency, which car would you pick from this plot?"
-  },
-  {
-    "objectID": "lectures/03-slides.html#section",
-    "href": "lectures/03-slides.html#section",
-    "title": "Introduction to R: Lecture 3",
-    "section": "##",
-    "text": "##"
-  },
-  {
-    "objectID": "lectures/03-slides.html#reminders-1",
-    "href": "lectures/03-slides.html#reminders-1",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Reminders",
-    "text": "Reminders\n\nHomework 1 is due Wednesday, July 2nd\nThere is no class Thursday, July 3rd"
-  },
-  {
-    "objectID": "lectures/03-slides.html#installing-and-loading-packages-in-r",
-    "href": "lectures/03-slides.html#installing-and-loading-packages-in-r",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Installing and Loading Packages in R",
-    "text": "Installing and Loading Packages in R\nTo use external tools like ggplot2, you need to first install and then load the package. A package is a a collection of code, data, and documentation.\nInstall a package. Only once per computer:\ninstall.packages(\"ggplot2\")\nLoad a package. Every time you use it, at the top of the script:\nlibrary(ggplot2)\nIn this course, we’re using RStudio Workbench, where everything is already installed. So you only need to load packages."
-  },
-  {
-    "objectID": "lectures/03-slides.html#the-grammar-of-graphics-and-ggplot2",
-    "href": "lectures/03-slides.html#the-grammar-of-graphics-and-ggplot2",
-    "title": "Introduction to R: Lecture 3",
-    "section": "The Grammar of Graphics and ggplot2",
-    "text": "The Grammar of Graphics and ggplot2\nWe’ve been creating plots intuitively. Now, let’s learn them formally.\n\nggplot2 is the main R package used for data visualization\nIt’s part of the tidyverse, a collection of packages for data science: https://www.tidyverse.org/\nCreated by Hadley Wickham, who also co-authored your course textbook\nBuilt using the theory called the Grammar of Graphics, a system for creating clear, layered plots"
-  },
-  {
-    "objectID": "lectures/03-slides.html#grammar-and-grammar-of-graphics",
-    "href": "lectures/03-slides.html#grammar-and-grammar-of-graphics",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Grammar and “Grammar of Graphics”",
-    "text": "Grammar and “Grammar of Graphics”\n\nA grammar is a set of rules (syntax and morphology) that helps us structure a language. It lets us communicate clearly.\n\nApplied to R and ggplot2…\n\nA Grammar of Graphics is a set of rules for building data visualizations. It lets us create many types of plots using the same structure."
-  },
-  {
-    "objectID": "lectures/03-slides.html#main-components-of-the-grammar-of-graphics",
-    "href": "lectures/03-slides.html#main-components-of-the-grammar-of-graphics",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Main Components of the Grammar of Graphics",
-    "text": "Main Components of the Grammar of Graphics\nThe Grammar of Graphics defines a plot as built from five main parts.\nThese five parts together are called a layer:\n\nDATA: the dataset you are using\nGEOM: the type of plot (e.g., points, bars, lines)\nMAPPING: maps variables to aesthetics like x, y, color, etc. with aes()\nSTAT: whether the data should be transformed (e.g., counted) or not (identity)\nPOSITION: how things are arranged on the plot (e.g., stacked or jittered)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#grammar-of-graphics-code-template",
-    "href": "lectures/03-slides.html#grammar-of-graphics-code-template",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Grammar of Graphics: Code Template",
-    "text": "Grammar of Graphics: Code Template\nLet’s look at how these five parts of a layer show up in ggplot2 code:\n# code template\n\nggplot(data = &lt;DATA&gt;) +\n  &lt;GEOM&gt;(\n    mapping = aes(&lt;MAPPING&gt;),\n    stat = &lt;STAT&gt;,\n    position = &lt;POSITION&gt;\n  )\nYou can also add more elements, like:\n+ &lt;COORDINATE SYSTEM&gt;\n+ &lt;FACET&gt;"
-  },
-  {
-    "objectID": "lectures/03-slides.html#template-example-using-mpg",
-    "href": "lectures/03-slides.html#template-example-using-mpg",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Template Example Using mpg",
-    "text": "Template Example Using mpg\nLet’s fill in the template using the mpg dataset.\n\n\n# code template\n\nggplot(data = &lt;DATA&gt;) +\n  &lt;GEOM&gt;(\n    mapping = aes(&lt;MAPPING&gt;),\n    stat = &lt;STAT&gt;,\n    position = &lt;POSITION&gt;\n  ) +\n  &lt;COORDINATE&gt; +\n  &lt;FACET&gt;\n\n# filled with mpg data\n\nggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy,\n                  color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#the-grammar-of-graphics-and-ggplot2-1",
-    "href": "lectures/03-slides.html#the-grammar-of-graphics-and-ggplot2-1",
-    "title": "Introduction to R: Lecture 3",
-    "section": "The Grammar of Graphics and ggplot2",
-    "text": "The Grammar of Graphics and ggplot2\nWe’ve been creating plots intuitively. Now, let’s learn them formally.\n\nggplot2 is the main R package used for data visualization\nIt’s part of the tidyverse, a collection of packages for data science: https://www.tidyverse.org/\nCreated by Hadley Wickham, who also co-authored your course textbook\nBuilt using the theory called the Grammar of Graphics, a system for creating clear, layered plots"
-  },
-  {
-    "objectID": "lectures/03-slides.html#example-using-the-mpg-dataset",
-    "href": "lectures/03-slides.html#example-using-the-mpg-dataset",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Example Using the mpg Dataset",
-    "text": "Example Using the mpg Dataset\nLet’s fill in the code template using the mpg dataset.\n\n\n# code template\n\nggplot(data = &lt;DATA&gt;) +\n  &lt;GEOM&gt;(\n    mapping = aes(&lt;MAPPING&gt;),\n    stat = &lt;STAT&gt;,\n    position = &lt;POSITION&gt;\n  ) +\n  &lt;COORDINATE&gt; +\n  &lt;FACET&gt;\n\n# filled with mpg data\n\nggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#practice-gapminder",
-    "href": "lectures/03-slides.html#practice-gapminder",
-    "title": "Introduction to R: Lecture 3",
-    "section": "💻 Practice: Gapminder",
-    "text": "💻 Practice: Gapminder\nDownload today’s in-class materials from the website!\nThe gapminder dataset:\nContains data on various socio-economic indicators for countries around the world over multiple years (1957-2008). It includes information on life expectancy, GDP per capita, and population\nGapminder info: https://cran.r-project.org/web/packages/gapminder/readme/README.html and https://www.gapminder.org/"
-  },
-  {
-    "objectID": "lectures/03-slides.html#grammar-of-graphics-and-ggplot2",
-    "href": "lectures/03-slides.html#grammar-of-graphics-and-ggplot2",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Grammar of Graphics and ggplot2",
-    "text": "Grammar of Graphics and ggplot2\nWe’ve been creating plots intuitively. Now, let’s learn them formally.\n\nggplot2 is the main R package used for data visualization\nIt’s part of the tidyverse, a collection of packages for data science: https://www.tidyverse.org/\nCreated by Hadley Wickham, who also co-authored your course textbook\nBuilt using the theory called the Grammar of Graphics, a system for creating layered plots"
-  },
-  {
-    "objectID": "lectures/03-slides.html#on-coding-style-in-r",
-    "href": "lectures/03-slides.html#on-coding-style-in-r",
-    "title": "Introduction to R: Lecture 3",
-    "section": "On Coding Style in R",
-    "text": "On Coding Style in R\nBefore continuing with the Grammar of Graphics, let’s take a moment to focus on coding style (parenthesis, signs, indentation, variable names, etc.)\nHere’s the same code as before. This time, read it focusing on its style. What do you notice?\nggplot(data = mpg) + \n  geom_point(\n     mapping = aes(x = displ, y = hwy, color = class),\n     stat = \"identity\", \n     position = \"identity\") +\n  coord_cartesian() +\n  facet_wrap(facets = vars(class), nrow = 1)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#why-care-about-coding-style",
-    "href": "lectures/03-slides.html#why-care-about-coding-style",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Why Care About Coding Style?",
-    "text": "Why Care About Coding Style?\nResources to guide you:\n\nR for Data Science, Chapter 4\nThe tidyverse style guide\nWhy does coding style matter?"
-  },
-  {
-    "objectID": "lectures/03-slides.html#coding-style-checklist",
-    "href": "lectures/03-slides.html#coding-style-checklist",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Coding Style Checklist",
-    "text": "Coding Style Checklist\n\nUse &lt;- to assign values to variables\nUse = to assign values to function arguments\nUse descriptive, meaningful variable names (snake_case, lowercase)\nAdd spaces around operators (e.g., +, -, &lt;-) for readability\nAvoid spaces inside parentheses or brackets\nClose every opened parenthesis\nBreak long lines and use indentation\nUse comments, but do not abuse them"
-  },
-  {
-    "objectID": "lectures/03-slides.html#common-beginner-mistakes",
-    "href": "lectures/03-slides.html#common-beginner-mistakes",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Common Beginner Mistakes",
-    "text": "Common Beginner Mistakes\n\nPutting fixed values like “blue” inside aes() (e.g., aes(color = \"blue\")\nForgetting to close aes() or geom_() parentheses\nUsing &lt;- inside aes() instead of ="
-  },
-  {
-    "objectID": "lectures/03-slides.html#core-components-of-ggplot2",
-    "href": "lectures/03-slides.html#core-components-of-ggplot2",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Core Components of ggplot2",
-    "text": "Core Components of ggplot2\nYou’ve seen the code template and the big picture. Now we’ll take a closer look at key components:\n\nLayers\n\ndata\nmapping\ngeom\nstat\nposition\n\nCoordinate System\nFacets\nScales (not covered today)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#layers",
-    "href": "lectures/03-slides.html#layers",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Layers",
-    "text": "Layers\nLayers create the visual elements on a plot. Each layer has five parts:\nggplot(data = mpg) + \n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\", \n    position = \"identity\"\n  ) + \n  geom_smooth(\n    mapping = aes(x = displ, y = hwy),\n    method = \"lm\"\n  )"
-  },
-  {
-    "objectID": "lectures/03-slides.html#data-and-aesthetic-mappings",
-    "href": "lectures/03-slides.html#data-and-aesthetic-mappings",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Data and Aesthetic Mappings",
-    "text": "Data and Aesthetic Mappings\nData:\n\nThe dataset used for the plot\nExample: data = mpg\n\nMapping:\n\nLinks variables to aesthetics (x, y, color, size…)\nExample: aes(x = displ, y = hwy, color = class)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#how-ggplot2-controls-positioning",
-    "href": "lectures/03-slides.html#how-ggplot2-controls-positioning",
-    "title": "Introduction to R: Lecture 3",
-    "section": "How ggplot2 Controls Positioning",
-    "text": "How ggplot2 Controls Positioning\nAdjusts how elements are positioned to avoid overlap.\n\nScatterplot: often position = \"identity\"\nJitter: position = \"jitter\" spreads overlapping points\nBar plot: use \"stack\", \"dodge\", etc.\n\n\n\n\n\n\n\nTip\n\n\nCheck geom_*() documentation to learn supported positions."
-  },
-  {
-    "objectID": "lectures/03-slides.html#statistical-transformations-in-layers",
-    "href": "lectures/03-slides.html#statistical-transformations-in-layers",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Statistical Transformations in Layers",
-    "text": "Statistical Transformations in Layers\nStat: transforms your data for plotting.\n\nBar charts: geom_bar() uses stat = \"count\" by default\nScatterplots: often use stat = \"identity\"\n\nggplot(data = mpg) + \n  geom_bar(mapping = aes(x = class)) # implicitly counts"
-  },
-  {
-    "objectID": "lectures/03-slides.html#choosing-the-right-geometric-object",
-    "href": "lectures/03-slides.html#choosing-the-right-geometric-object",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Choosing the Right Geometric Object",
-    "text": "Choosing the Right Geometric Object\nThe geometric object is the type of plot you’re making:\n\ngeom_point() → scatterplot\ngeom_line() → line chart\ngeom_bar() → bar chart\n\nEach geom accepts certain aesthetics. Read the docs: geom_point reference"
-  },
-  {
-    "objectID": "lectures/03-slides.html#practice-color-aesthetics",
-    "href": "lectures/03-slides.html#practice-color-aesthetics",
-    "title": "Introduction to R: Lecture 3",
-    "section": "💻 Practice: Color Aesthetics",
-    "text": "💻 Practice: Color Aesthetics\nWhich of these three code blocks is correct? Run and compare them in R.\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = class))\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy), color = \"blue\")\n\nggplot(data = mpg) + \n  geom_point(mapping = aes(x = displ, y = hwy, color = \"blue\"))"
-  },
-  {
-    "objectID": "lectures/03-slides.html#color-code-examples",
-    "href": "lectures/03-slides.html#color-code-examples",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Color Code Examples",
-    "text": "Color Code Examples\n\n\nCorrect\naes(color = class)\nMaps a variable.\n\nCorrect\ncolor = \"blue\"\nSets color manually (outside aes).\n\nIncorrect\naes(color = \"blue\")\nTries to map a fixed value (the string “blue”). Not useful."
-  },
-  {
-    "objectID": "lectures/03-slides.html#coordinate-system-and-faceting",
-    "href": "lectures/03-slides.html#coordinate-system-and-faceting",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Coordinate System and Faceting",
-    "text": "Coordinate System and Faceting\nCoordinate System:\n\nTranslates data into the plot space\nDefault: Cartesian system (coord_cartesian())\n\nFaceting:\n\nSplits data into subplots by a variable\n\nggplot(data = mpg) + \n  geom_point(aes(x = displ, y = hwy, color = class)) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#defaults-cheat-sheet",
-    "href": "lectures/03-slides.html#defaults-cheat-sheet",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Defaults Cheat Sheet",
-    "text": "Defaults Cheat Sheet\nUse these defaults to simplify code:\n\nstat = \"identity\" for geom_point()\nposition = \"identity\" unless changed\nCommon aes() calls can go in ggplot()\nscale_*_continuous() not needed unless customizing"
-  },
-  {
-    "objectID": "lectures/03-slides.html#example-1",
-    "href": "lectures/03-slides.html#example-1",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Example 1",
-    "text": "Example 1\nExample from the previous slides\nLong version:\nggplot(data = mpg) + \n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\", \n    position = \"identity\") + \n  geom_smooth(\n    mapping = aes(x = displ, y = hwy),\n    method = \"lm\")\n\nShort version:\nggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + \n  geom_point(aes(color = class)) + \n  geom_smooth(method = \"lm\")"
-  },
-  {
-    "objectID": "lectures/03-slides.html#example-2",
-    "href": "lectures/03-slides.html#example-2",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Example 2",
-    "text": "Example 2\nScatterplot between cars’ engine size (displ) and highway fuel efficiency (hwy)\nLong version:\nggplot() +\n  layer(\n    data = mpg, \n    mapping = aes(x = displ, y = hwy),\n    geom = \"point\", \n    stat = \"identity\", \n    position = \"identity\"\n  ) +\n  scale_y_continuous() +\n  scale_x_continuous() +\n  coord_cartesian()\n\nShort version:\nggplot(data = mpg, aes(x = displ, y = hwy)) +\n  geom_point()"
-  },
-  {
-    "objectID": "lectures/03-slides.html#quick-review",
-    "href": "lectures/03-slides.html#quick-review",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Quick Review",
-    "text": "Quick Review\n\nWhat does geom_point() do?\nWhat does stat = \"identity\" mean?\nWhen would you use facet_wrap()?\nWhat’s wrong with aes(color = \"blue\")?\n\nTry answering these without peeking at the slides!"
-  },
-  {
-    "objectID": "lectures/03-slides.html#grammar-of-graphics-code-template-with-the-mpg-dataset",
-    "href": "lectures/03-slides.html#grammar-of-graphics-code-template-with-the-mpg-dataset",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Grammar of Graphics: Code Template with the mpg Dataset",
-    "text": "Grammar of Graphics: Code Template with the mpg Dataset\nNow, fill in this code template using the mpg data and plot it:\n\n\n# code template\n\nggplot(data = &lt;DATA&gt;) +\n  &lt;GEOM&gt;(\n    mapping = aes(&lt;MAPPING&gt;),\n    stat = &lt;STAT&gt;,\n    position = &lt;POSITION&gt;\n  ) +\n  &lt;COORDINATE&gt; +\n  &lt;FACET&gt;\n\n# filled with mpg data\n\nggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#practice-color-aesthetics-1",
-    "href": "lectures/03-slides.html#practice-color-aesthetics-1",
-    "title": "Introduction to R: Lecture 3",
-    "section": "💻 Practice: Color Aesthetics",
-    "text": "💻 Practice: Color Aesthetics\n\n\n✅ Correct\naes(color = class)\nMaps a variable.\n\n✅ Correct\ncolor = \"blue\"\nSets color manually (outside aes).\n\n❌Incorrect\naes(color = \"blue\")\nTries to map a fixed value (the string “blue”). Not useful.\n\n\nSetting vs Mapping in ggplot2\n\nSetting means assigning a fixed value outside aes()\nExample: color = \"blue\" (does not come from the data)\nMapping means linking a variable inside aes()\nExample: aes(color = class) (comes from the data, from a variable)"
-  },
-  {
-    "objectID": "lectures/03-slides.html#generating-and-saving-a-plot",
-    "href": "lectures/03-slides.html#generating-and-saving-a-plot",
-    "title": "Introduction to R: Lecture 3",
-    "section": "Generating and Saving a Plot",
-    "text": "Generating and Saving a Plot\nThis code generates a plot, but does not save it to an object\n ggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)\nThis code generates a plot and saves it to an object that I named fuel_plot\nfuel_plot &lt;- ggplot(data = mpg) +\n  geom_point(\n    mapping = aes(x = displ, y = hwy, color = class),\n    stat = \"identity\",\n    position = \"identity\"\n  ) +\n  coord_cartesian() +\n  facet_wrap(vars(class), nrow = 1)\nfuel_plot"
+    "objectID": "lectures/04-slides.html#data-manipulation-with-dplyr-1",
+    "href": "lectures/04-slides.html#data-manipulation-with-dplyr-1",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Data Manipulation with dplyr",
+    "text": "Data Manipulation with dplyr\nToday we introduce a second package from the tidyverse: dplyr\n\nMain R package for data manipulation (what’s data manipulation?)\nProvides clearly named functions for common data manipulation tasks like filter() for filtering rows, select() for selecting columns, summarize() for calculating summary stats like the average"
   }
 ]

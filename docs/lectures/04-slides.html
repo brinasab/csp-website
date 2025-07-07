@@ -208,7 +208,6 @@ Sabrina Nardin, Summer 2025
 </div>
 
 </section>
-<section>
 <section id="agenda" class="title-slide slide level1 center">
 <h1>Agenda</h1>
 <div class="agenda-list">
@@ -219,27 +218,24 @@ Sabrina Nardin, Summer 2025
 <li>Pipes (<code>%&gt;%</code> or <code>|&gt;</code>)</li>
 </ol>
 </div>
+<!--
+## Homework 1 Feedback: Great Work!
+
+### ✅ Achieved Goals
+
+- Got familiar with **Git and GitHub** and **R Markdown syntax** (they take patience and repetition)
+- Shared interesting bios, links, and images... thanks!
+
+### 💡 Tips for Success
+
+- Knit your `.Rmd` file to `md_document` and push **both** files to GitHub  
+- Commit **frequently**: from 5 to 20 commits per assignment  
+- Embrace **learning-by-doing** (e.g., adding images), but post on **Ed Discussion** if you run into issues
+- Check our feedback on this homework: we’ll be stricter on the next ones (harder, point-based)
+- See Syllabus and Lecture 1 Slides on AI and Plagiarism
+-->
 </section>
-<section id="homework-1-feedback-great-work" class="slide level2 center">
-<h2>Homework 1 Feedback: Great Work!</h2>
-<h3 id="achieved-goals">✅ Achieved Goals</h3>
-<ul>
-<li>Got familiar with <strong>Git and GitHub</strong> (this takes patience and repetition!)</li>
-<li>Practiced <strong>R Markdown syntax</strong> for formatting (same)</li>
-<li>Shared interesting bios, links, and images</li>
-</ul>
-<h3 id="tips-for-success">💡 Tips for Success</h3>
-<ul>
-<li>Knit your <code>.Rmd</code> file to <code>md_document</code> and push <strong>both</strong> the <code>.Rmd</code> and <code>.md</code> files to GitHub<br>
-</li>
-<li>Commit <strong>frequently</strong> (from 5 to 20 commits per assignment)<br>
-</li>
-<li>Embrace problem-solving and <strong>learning-by-doing</strong> (e.g., adding images), but post issues on <strong>Ed Discussion</strong> (linked from our course website)<br>
-</li>
-<li>Fix the issues we flagged in this homework – We’ll be stricter on the next ones (harder, point-based)</li>
-<li>See Syllabus and Lecture 1 Slides on AI and Plagiarism</li>
-</ul>
-</section></section>
+
 <section>
 <section id="intro-to-dplyr-and-to-programming-as-problem-solving" class="title-slide slide level1 center middle">
 <h1>1. Intro to dplyr and to Programming as Problem-Solving</h1>
@@ -247,17 +243,53 @@ Sabrina Nardin, Summer 2025
 </section>
 <section id="meet-the-palmer-penguins" class="slide level2 center">
 <h2><a href="https://allisonhorst.github.io/palmerpenguins/#meet-the-palmer-penguins">Meet the Palmer Penguins!</a></h2>
-<p>The palmerpenguins package (already installed on Workbench) has two datasets:</p>
+<p>The palmerpenguins package includes two datasets (already installed on our Workbench):</p>
 <ul>
-<li><p><code>penguins</code>: clean data on three species of penguins (Adelie, Chinstrap, Gentoo) from three islands in Antartica (Biscoe, Dream, and Torgersen); total 244 penguins → we use this today!</p></li>
-<li><p><code>penguins_raw</code>: raw, uncleaned version of the data</p></li>
+<li><strong>penguins</strong> with clean data of 244 penguins — we use this today<br>
+</li>
+<li><strong>penguins_raw</strong> with uncleaned version the same data</li>
 </ul>
+
+<img data-src="https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">Penguins by Allison Horst</p></section>
+<section id="meet-the-palmer-penguins-1" class="slide level2 center">
+<h2><a href="https://allisonhorst.github.io/palmerpenguins/#meet-the-palmer-penguins">Meet the Palmer Penguins!</a></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>What we know about each of the 244 penguins:</strong></p>
+<ul>
+<li>Species: <em>Adelie</em>, <em>Chinstrap</em>, <em>Gentoo</em><br>
+</li>
+<li>Island: <em>Biscoe</em>, <em>Dream</em>, <em>Torgersen</em><br>
+</li>
+<li>Bill length<br>
+</li>
+<li>Bill depth<br>
+</li>
+<li>Flipper length<br>
+</li>
+<li>Body mass<br>
+</li>
+<li>Sex<br>
+</li>
+<li>Year</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://tse1.mm.bing.net/th/id/OIP.vCDWhB3o8dbNn63UPqJQaAHaEx?pid=Api" style="width:100.0%"></p>
+<figcaption>Bill Measurement</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="penguins-dataset-overview" class="slide level2 center">
 <h2>Penguins Dataset Overview</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-3"><a></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># load packages</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a><span class="co"># explore data</span></span>
+<span id="cb1-6"><a></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <div class="cell">
 <div class="cell">
@@ -281,8 +313,8 @@ Sabrina Nardin, Summer 2025
 </section>
 <section id="scatterplot-flipper-length-vs.-body-mass" class="slide level2 center">
 <h2>Scatterplot: Flipper Length vs.&nbsp;Body Mass</h2>
-<p>Start from what we know: make a <strong>scatter plot</strong> with <strong>two numeric variables</strong> from this dataset.</p>
-<p>Use <code>ggplot2</code> with defaults to keep the code short, add a title, and color by <code>species</code>. Copy/paste this code in R:</p>
+<p>Start from what we know: <strong>scatter plot with two numeric variables</strong></p>
+<p>Copy/paste this code in R (note we use <code>ggplot2</code> with defaults to keep the code short, color by <code>species</code>, add a title):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb3-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb3-3"><a></a><span class="fu">head</span>(penguins)</span>
@@ -324,7 +356,7 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 </section>
 <section id="bar-plot-number-of-penguins-by-species" class="slide level2 center">
 <h2>Bar Plot: Number of Penguins by Species</h2>
-<p>Try a different plot: <strong>bar plot</strong> that shows counts and only uses <strong>one categorical variable</strong>.</p>
+<p>Try a different plot: <strong>bar plot with counts for one categorical variable</strong></p>
 <p>Copy/paste this code in R:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, <span class="fu">aes</span>(<span class="at">x =</span> species)) <span class="sc">+</span></span>
 <span id="cb4-2"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
@@ -356,11 +388,22 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 </section>
 <section id="data-manipulation-with-dplyr" class="slide level2 center">
 <h2>Data Manipulation with dplyr</h2>
-<p>Today we introduce a second package from the <a href="https://www.tidyverse.org/">tidyverse</a>: <a href="https://dplyr.tidyverse.org/"><strong>dplyr</strong></a></p>
+<p>Today we introduce a second package from the tidyverse: <strong><a href="https://dplyr.tidyverse.org/">dplyr</a> for data manipulation.</strong></p>
+<div class="columns">
+<div class="column" style="width:70%;">
 <ul>
-<li>Main R package for <strong>data manipulation</strong> (what’s data manipulation?)</li>
-<li>Provides clearly <strong>named functions that match common data manipulation tasks</strong> like <code>filter()</code> for filtering rows, <code>select()</code> for selecting columns, <code>summarize()</code> for calculating summary stats like the average</li>
+<li>Designed for <strong>manipulating data frames and tibbles</strong><br>
+</li>
+<li>Includes <strong>intuitive, clearly named functions</strong> for common tasks:
+<ul>
+<li><code>filter()</code> — filter rows</li>
+<li><code>select()</code> — pick columns</li>
+<li><code>summarize()</code> — calculate summaries (e.g., averages)</li>
+</ul></li>
 </ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="https://raw.githubusercontent.com/tidyverse/dplyr/main/man/figures/logo.png"></p>
+</div></div>
 <!-- Data manipulation: process of changing or reshaping data to make it easier to understand, analyze, or visualize. Selecting columns or variables, filtering rows, summarizing data, etc. -->
 </section>
 <section id="programming-is-problem-solving" class="slide level2 center">
@@ -381,9 +424,9 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 </div>
 </div>
 <p><br></p>
-<p><strong>💡 1. What is the average body mass of an Adelie penguin?</strong></p>
-<p><strong>💡 2. What is the average body mass for each penguin species (three species)?</strong></p>
-<p>No code needed — you don’t know <code>dplyr</code> yet! Focus on the steps you’d give R to answer the question. We’ll write the code together.</p>
+<p><strong>💡 Q1: What is the average body mass of an Adelie penguin?</strong></p>
+<p><strong>💡 Q2: What is the average body mass for each penguin species (three species)?</strong></p>
+<p><em>Do not write code! Think about the logical/conceptual steps you’d give R. We’ll translate them into code together.</em></p>
 <p><br></p>
 </section>
 <section id="q1-what-is-the-average-body-mass-of-an-adelie-penguin" class="slide level2 center">
@@ -410,7 +453,7 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 <li>Filter only the observations (rows) where <code>species</code> is Adelie</li>
 <li>Calculate the mean of the variable <code>body_mass_g</code> for this group</li>
 </ol>
-<p><strong>Open R: we now turn to these conceptual steps into code with <code>dplyr</code></strong></p>
+<p><strong>Open R: let’s turn to these steps into code using <code>dplyr</code></strong></p>
 <p><br></p>
 <!--
 
@@ -454,7 +497,7 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 <li>Group the observations (rows) by <code>species</code></li>
 <li>Calculate the mean of the variable <code>body_mass_g</code> for all groups</li>
 </ol>
-<p><strong>Open R: we now turn to these conceptual steps into code with <code>dplyr</code></strong></p>
+<p><strong>Open R: let’s turn to these steps into code using <code>dplyr</code></strong></p>
 <p><br></p>
 <!--
 
@@ -484,9 +527,10 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 <section id="assignment-operators" class="slide level2 center">
 <h2>Assignment Operators</h2>
 <pre><code>x &lt;- 5                # assign 5 to an object
-mean(x = c(1, 2, 3))  # use = to specify an argument inside a function
-</code></pre>
-<p><br> <fragment> <code>penguins_species &lt;- group_by(.data = penguins, species) summarize(penguins_species, avg_mass = mean(body_mass_g))</code> </fragment> <br></p>
+mean(x = c(1, 2, 3))  # use = to specify an argument inside a function</code></pre>
+<p><br> <fragment></fragment></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins_species <span class="ot">&lt;-</span> <span class="fu">group_by</span>(<span class="at">.data =</span> penguins, species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p> <br></p>
 </section>
 <section id="logical-operators" class="slide level2 center">
 <h2>Logical Operators</h2>
@@ -498,13 +542,15 @@ y &gt; x     # more than
 y &gt;=      # more than or equal to</code></pre>
 <p><br></p>
 <div class="cell fragment">
-<p><code>adelie &lt;- filter(penguins, species == "Adelie")</code></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><br></p>
 <div class="cell fragment">
-<p><code>no_adelie &lt;- filter(penguins, species != "Adelie")</code></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>no_adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">!=</span> <span class="st">"Adelie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><br></p>
 <div class="cell fragment">
-<p><code>heavy &lt;- filter(penguins, body_mass_g &gt; 4500)</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>heavy <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, body_mass_g <span class="sc">&gt;</span> <span class="dv">4500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 </section>
@@ -516,62 +562,27 @@ x &amp;! y    # x AND NOT y (x is true AND y is false)</code></pre>
 <p><br></p>
 <div class="cell fragment">
 <p>Example use of <code>|</code> operator with extended syntax:</p>
-<pre><code>penguins_adelie_chin &lt;- filter(.data = penguins, 
-                                species == "Adelie" | species == "Chinstrap")</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>penguins_adelie_chin <span class="ot">&lt;-</span> <span class="fu">filter</span>(<span class="at">.data =</span> penguins, </span>
+<span id="cb18-2"><a></a>                                species <span class="sc">==</span> <span class="st">"Adelie"</span> <span class="sc">|</span> species <span class="sc">==</span> <span class="st">"Chinstrap"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <div class="cell fragment">
 <p>Same code with shorter syntax:</p>
-<pre><code>penguins_adelie_chin &lt;- filter(.data = penguins, 
-                                species %in% c("Adelie", "Chinstrap"))</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>penguins_adelie_chin <span class="ot">&lt;-</span> <span class="fu">filter</span>(<span class="at">.data =</span> penguins, </span>
+<span id="cb19-2"><a></a>                                species <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 </section>
 <section id="practice-logical-operators-with-filter" class="slide level2 center">
 <h2>💻 Practice: Logical Operators with filter()</h2>
-<p>Logical operators are often used together with the <code>filter()</code> function from <code>dplyr</code>.</p>
-<p>Practice using them with the <code>penguins</code> dataset:</p>
+<p>Logical operators are often used together with the <code>filter()</code> function from <code>dplyr</code></p>
+<p>Practice using them with the penguins dataset:</p>
 <ul>
 <li><p><strong>Task 1:</strong> Get all Adelie penguins with flipper length greater than or equal to 180 mm</p></li>
-<li><p><strong>Task 2:</strong> Get all female penguins on Dream Island with body mass between 3000 and 4000 grams inclusive</p></li>
-<li><p><strong>Task 3:</strong> Get all penguins on Dream and Torgersen islands that are not female</p></li>
+<li><p><strong>Task 2:</strong> Get all penguins on Dream and Torgersen islands that are not female</p></li>
 </ul>
 <!--
-
-Task 1
-
-```
-library(palmerpenguins)
-data(penguins)
-
-# filter only
-filter(.data = penguins, species == "Adelie" & flipper_length_mm >= 180)
-
-# filter and save in variable
-adelie_long <- filter(.data = penguins, species == "Adelie" & flipper_length_mm >= 180)
-
-# count
-nrow(adelie_long)
-count(adelie_long)
-```
-
-Task 2
-
-filter(penguins, sex == "female" & island == "Dream" & body_mass_g >= 3000 & body_mass_g <= 4000) 
-
-filter(penguins, sex == "female" & island == "Dream" & body_mass_g %in% 3000:4000) 
-
-filter(penguins, sex == "female" & island == "Dream" & between(body_mass_g, 3000, 4000))
-
-can also use , rather than & 
-
-
-Task 3
-
-filter(penguins, island %in% c("Dream", "Torgersen") & sex != "female")
-filter(penguins, island %in% c("Dream", "Torgersen") & sex == "male")
-
-filter(penguins, (island == "Dream" | island == "Torgersen") & sex != "female")
+- **Task 3:** Get all female penguins on Dream Island with body mass between 3000 and 4000 grams inclusive
 -->
 </section></section>
 <section>
@@ -581,25 +592,22 @@ filter(penguins, (island == "Dream" | island == "Torgersen") & sex != "female")
 </section>
 <section id="recap-of-what-learned-so-far" class="slide level2 center">
 <h2>Recap of What Learned so Far</h2>
-<p>Conceptually, (any) data transformation using <code>dplyr</code> requires us to:</p>
+<p>Conceptually, any data transformation using <code>dplyr</code> requires us to:</p>
 <ol type="1">
-<li><p>Get the data frame</p></li>
-<li><p>Use <code>dplyr</code> verbs to tell R what action to take. These functions:</p>
+<li><p>Identify the data frame and the variables we need</p></li>
+<li><p>Use <code>dplyr</code> functions to tell R what action to take on which variable(s). These functions:</p>
 <ul>
-<li>Act like verbs in a sentence — they express <em>what to do</em> with the data</li>
-<li>Can be combined to perform complex operations</li>
+<li>Act <em>like verbs</em> in a sentence: they express <em>what to do</em> with the data</li>
+<li>Can be <em>combined</em> to perform complex operations</li>
 </ul></li>
 <li><p>Save the result, usually into a new object (a new dataframe)</p></li>
 </ol>
 </section>
 <section id="key-dplyr-functions" class="slide level2 center">
 <h2>Key dplyr Functions</h2>
-<p>The package <code>dplyr</code> has many functions — but you don’t need to memorize them all!</p>
-<p><strong>Our Goals:</strong><br>
-- Memorize the most common<br>
-- Know how to look up the rest when needed<br>
-→ <a href="https://dplyr.tidyverse.org/">dplyr.tidyverse.org</a></p>
-<p>The next slide summarizes the most important <code>dplyr</code> functions to memorize</p>
+<p>The package <code>dplyr</code> has many functions, but you don’t need to memorize them all!</p>
+<p><strong>OUR GOALS: Memorize the key functions + Know where to look up the rest <a href="https://dplyr.tidyverse.org/">dplyr.tidyverse.org</a></strong></p>
+<p>The next slide summarizes the most common <code>dplyr</code> functions to memorize.</p>
 </section>
 <section id="key-dplyr-functions-1" class="slide level2 center">
 <h2>Key dplyr Functions</h2>
@@ -646,18 +654,17 @@ filter(penguins, (island == "Dream" | island == "Torgersen") & sex != "female")
 </tbody>
 </table>
 <p><br></p>
-<div title="Reminder">
-<div class="callout callout-note callout-titled callout-style-default">
+<div title="Tip for Remembering These Functions">
+<div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Reminder</strong></p>
+<p><strong>Tip for Remembering These Functions</strong></p>
 </div>
 <div class="callout-content">
-<p>Each <strong>row</strong> is an <strong>observation</strong> (e.g., one penguin) and each <strong>column</strong> is a <strong>variable</strong> (e.g., species, body mass).</p>
-<p>Some functions works on like <code>filter()</code>, <code>arrange()</code> others on columns like <code>select()</code>, <code>mutate()</code>.</p>
+<p>Each <strong>row is an observation</strong> (e.g., one penguin) and each <strong>column is a variable</strong> (e.g., species, body mass). Some functions works on rows like <code>filter()</code>, <code>arrange()</code> others on columns like <code>select()</code>, <code>mutate()</code>. <em>Think before coding!</em></p>
 </div>
 </div>
 </div>
@@ -684,16 +691,41 @@ filter(penguins, (island == "Dream" | island == "Torgersen") & sex != "female")
 
 -->
 </section>
+<section id="unpacking-group_by" class="slide level2 center">
+<h2>Unpacking group_by()</h2>
+<p>This function tells R to <strong>temporarily group the data</strong> by one or more variables, so the <strong>next function runs within each group</strong>. For example, this code groups the data by species, so whatever runs next (here summarize) happens for each species separately:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>grouped <span class="ot">&lt;-</span> <span class="fu">group_by</span>(penguins, species)</span>
+<span id="cb20-2"><a></a><span class="fu">summarize</span>(grouped, <span class="at">avg_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell fragment">
+<div title="What group_by() Does">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>What group_by() Does</strong></p>
+</div>
+<div class="callout-content">
+<p><code>group_by()</code> doesn’t change your data: it changes how the next function treats the data. It’s usually used right before <code>summarize()</code>, <code>fiter()</code>, <code>mutate()</code>, or <code>arrange()</code> to make those functions run once per group, not across the whole dataset.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p></p>
+</section>
 <section id="practice" class="slide level2 center">
 <h2>💻 Practice</h2>
-<h3 id="what-is-the-average-bill-length-and-body-mass-for-adelie-penguins-by-sex">What is the average bill length and body mass for Adelie penguins by sex?</h3>
-<ol type="1">
-<li><p><strong>THINK:</strong> How would you approach this question conceptually? Break it down into clear, logical steps before touching any code.</p></li>
-<li><p><strong>CODE:</strong> Translate those steps into R using the appropriate <code>dplyr</code> functions from the previous slide.</p></li>
-</ol>
+<h3 id="what-is-the-average-body-mass-for-adelie-penguins-by-sex">What is the average body mass for Adelie penguins by sex?</h3>
+<p><br></p>
+<p><strong>First, THINK:</strong> How would you approach this question conceptually? Break it down into clear and simple steps before coding.</p>
+<p><strong>Then, CODE:</strong> Translate those steps into R using the appropriate <code>dplyr</code> functions.</p>
+<p><strong>Hint:</strong> You’ll need to use <em>three</em> <code>dplyr</code> functions and in <em>the best order</em></p>
+<p><br></p>
 <!--
 
-Solution 1: filter, then group by
+Solution 1: filter, then group by (best)
 
 
 ::: {.cell}
@@ -724,7 +756,7 @@ summarize(
 :::
 
 
-Solution 2: group by, then filter
+Solution 2: group by, then filter (ok)
 
 
 ::: {.cell}
@@ -757,6 +789,57 @@ print(results)
 
 
 -->
+</section>
+<section id="filter-or-group-first" class="slide level2 center">
+<h2>🧠 Filter or Group First?</h2>
+<h4 id="task-calculate-the-average-body-mass-for-adelie-penguins-by-sex.">Task: Calculate the average body mass for Adelie penguins by sex.</h4>
+<p><br></p>
+<ul>
+<li>✅ Filter for <code>Adelie</code>, then group by <code>sex</code><br>
+</li>
+<li>Group by <code>sex</code>, then filter for <code>Adelie</code><br>
+</li>
+<li>Group by <code>species</code>, filter for <code>Adelie</code>, then group by <code>sex</code><br>
+</li>
+<li>Filter by both <code>species</code> and <code>sex</code>, then group<br>
+</li>
+<li>Group by both <code>species</code> and <code>sex</code>, then summarize</li>
+</ul>
+<p>✅ Best practice. The other approaches work but are less readable or do more work than needed. The next slide compares the first two.</p>
+</section>
+<section id="filter-or-group-first-1" class="slide level2 center">
+<h2>🧠 Filter or Group First?</h2>
+<h4 id="task-calculate-the-average-body-mass-for-adelie-penguins-by-sex.-1">Task: Calculate the average body mass for Adelie penguins by sex.</h4>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="filter-group-best-practice">Filter → Group (Best Practice)</h4>
+<ul>
+<li>Filter first to keep only Adelie penguins<br>
+→ reduces rows right away</li>
+<li>Group the filtered data by sex<br>
+→ only relevant data is grouped<br>
+</li>
+<li>Summarize to get average<br>
+</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h4 id="group-filter-not-ideal">Group → Filter (Not Ideal)</h4>
+<ul>
+<li>Group all penguins by sex<br>
+→ includes extra, unneeded data<br>
+</li>
+<li>Filter to keep only Adelie penguins<br>
+→ discards part of what was grouped<br>
+</li>
+<li>Summarize to get average</li>
+</ul>
+</div></div>
+<!--
+::: {.callout-tip title="Filter → Group"}
+If you can: filter first to narrow the data you're analyzing; group after to split the narrowed data into chunks to summarize.
+:::
+-->
 </section></section>
 <section>
 <section id="pipes-or" class="title-slide slide level1 center middle">
@@ -766,27 +849,25 @@ print(results)
 <section id="pipes-to-chain-commands" class="slide level2 center">
 <h2>Pipes to Chain Commands</h2>
 <p>Pipes allow you to write a sequence of operations by <strong>passing the result of one function into the next</strong> making your code more readable and logical. Compare these two versions of the same code.</p>
-<p><fragment></fragment></p>
 <p><strong>Without pipes:</strong></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>penguins_adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
-<span id="cb16-2"><a></a>penguins_adelie_island <span class="ot">&lt;-</span> <span class="fu">group_by</span>(penguins_adelie, island)</span>
-<span id="cb16-3"><a></a><span class="fu">summarize</span>(penguins_adelie_island, <span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>With pipes:</strong></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a></a>  <span class="fu">summarize</span>(<span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
+<span id="cb21-2"><a></a>adelie_island <span class="ot">&lt;-</span> <span class="fu">group_by</span>(adelie, island)</span>
+<span id="cb21-3"><a></a>adelie_avg_mass_island <span class="ot">&lt;-</span> <span class="fu">summarize</span>(adelie_island, <span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>With pipes (%&gt;% or |&gt;):</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>adelie_avg_mass_island <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a></a>  <span class="fu">summarize</span>(<span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="multiple-ways-to-write-r-code-pipes-are-often-the-best-choice" class="slide level2 center">
 <h2>Multiple Ways to Write R Code — Pipes Are Often the Best Choice</h2>
-<p>Pipes are great and our ultimate goal. But there’s more than one way to write R code.</p>
+<p>Pipes are great and our ultimate goal. But there are several ways to write the same R code.</p>
 <p>In fact, R didn’t have pipes for a long time!</p>
-<p><strong>Let’s compare ways to write the same code…</strong></p>
+<p><strong>Let’s compare different ways to write the same code…</strong></p>
 </section>
 <section id="four-different-options-to-code-this-task" class="slide level2 center">
 <h2>Four Different Options to Code This Task</h2>
-<h3 id="task-calculate-the-average-body-mass-for-adelie-penguins-on-each-island.">TASK: Calculate the average body mass for Adelie penguins on each island.</h3>
+<h4 id="task-calculate-the-average-body-mass-for-adelie-penguins-by-island.">Task: Calculate the average body mass for Adelie penguins by island.</h4>
 <p><br></p>
 <div title="Strategy: Break Down the Task Before You Code it!">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -798,12 +879,15 @@ print(results)
 <p><strong>Strategy: Break Down the Task Before You Code it!</strong></p>
 </div>
 <div class="callout-content">
-<ol type="1">
-<li>Filter the data to include only rows where <code>species</code> is Adelie</li>
+<ul>
+<li>Identify data and variable needed<br>
+</li>
+<li>Filter the data for rows where <code>species</code> is Adelie<br>
+</li>
 <li>Group the filtered data by <code>island</code><br>
 </li>
 <li>Calculate the average body mass for each group</li>
-</ol>
+</ul>
 </div>
 </div>
 </div>
@@ -813,11 +897,11 @@ print(results)
 <section id="option-1-save-each-step-in-a-new-data-frame" class="slide level2 center">
 <h2>Option 1: Save each step in a new data frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>penguins_adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
-<span id="cb18-2"><a></a>penguins_adelie_island <span class="ot">&lt;-</span> <span class="fu">group_by</span>(penguins_adelie, island)</span>
-<span id="cb18-3"><a></a>penguins_final <span class="ot">&lt;-</span> <span class="fu">summarize</span>(penguins_adelie_island, </span>
-<span id="cb18-4"><a></a>                            <span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb18-5"><a></a><span class="fu">print</span>(penguins_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>penguins_adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
+<span id="cb23-2"><a></a>penguins_adelie_island <span class="ot">&lt;-</span> <span class="fu">group_by</span>(penguins_adelie, island)</span>
+<span id="cb23-3"><a></a>penguins_final <span class="ot">&lt;-</span> <span class="fu">summarize</span>(penguins_adelie_island, </span>
+<span id="cb23-4"><a></a>                            <span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb23-5"><a></a><span class="fu">print</span>(penguins_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   island    body_mass
@@ -837,10 +921,10 @@ print(results)
 <section id="option-2-replace-the-original-data-frame" class="slide level2 center">
 <h2>Option 2: Replace the original data frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
-<span id="cb20-2"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">group_by</span>(penguins, island)</span>
-<span id="cb20-3"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">summarize</span>(penguins, <span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb20-4"><a></a><span class="fu">print</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
+<span id="cb25-2"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">group_by</span>(penguins, island)</span>
+<span id="cb25-3"><a></a>penguins <span class="ot">&lt;-</span> <span class="fu">summarize</span>(penguins, <span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb25-4"><a></a><span class="fu">print</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   island    body_mass
@@ -863,7 +947,7 @@ print(results)
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>This approach is risky — especially when working with built-in or important datasets. Always keep a copy of your original data before modifying it.</p>
+<p>This approach is risky — especially when working with important datasets. Always keep a copy of your original data before modifying it.</p>
 </div>
 </div>
 </div>
@@ -873,9 +957,9 @@ print(results)
 <section id="option-3-function-composition" class="slide level2 center">
 <h2>Option 3: Function composition</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">data</span>(penguins)</span>
-<span id="cb22-2"><a></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>), island), </span>
-<span id="cb22-3"><a></a>          <span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">data</span>(penguins)</span>
+<span id="cb27-2"><a></a><span class="fu">summarize</span>(<span class="fu">group_by</span>(<span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>), island), </span>
+<span id="cb27-3"><a></a>          <span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   island    body_mass
@@ -895,10 +979,10 @@ print(results)
 <section id="option-4-pipes-the-winner" class="slide level2 center">
 <h2>Option 4: Pipes (The Winner!)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a></a>  <span class="fu">summarize</span>(<span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a></a>  <span class="fu">group_by</span>(island) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a></a>  <span class="fu">summarize</span>(<span class="at">body_mass =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   island    body_mass
@@ -924,9 +1008,9 @@ print(results)
 <section id="common-errors-with-pipes-examples-using-flights-data" class="slide level2 center">
 <h2>Common Errors with Pipes: Examples using flights data</h2>
 <p><strong>We use a built-in dataset of all flights (n = 336,776) that departed from NYC in 2013.</strong></p>
-<pre><code>library(nycflights13)
-data(flights)
-head(flights)</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb31-2"><a></a><span class="fu">data</span>(flights)</span>
+<span id="cb31-3"><a></a><span class="fu">head</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 19
@@ -946,11 +1030,10 @@ head(flights)</code></pre>
 </section>
 <section id="common-errors-with-pipes-examples-using-flights-data-1" class="slide level2 center">
 <h2>Common Errors with Pipes: Examples using flights data</h2>
-<p><strong>We use a built-in dataset of all flights (n = 336,776) that departed from NYC in 2013.</strong></p>
-<p>Note the use of <code>glimpse()</code> vs <code>head()</code> to explore the dataset. In this case, <code>glimpse()</code> is more useful, why?</p>
-<pre><code>library(nycflights13)
-data(flights)
-glimpse(flights)</code></pre>
+<p>Note the use of <code>glimpse()</code> vs <code>head()</code> to explore the dataset. In this case, <code>glimpse()</code> is more useful. Why?</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb33-2"><a></a><span class="fu">data</span>(flights)</span>
+<span id="cb33-3"><a></a><span class="fu">glimpse</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 336,776
@@ -979,48 +1062,48 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="common-pipe-errors-example-1" class="slide level2 center">
 <h2>Common Pipe Errors: Example 1</h2>
-<p><strong>TASK:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
+<p><strong>Task:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
 <p><strong>What’s wrong with this code?</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="invalid-code">Invalid code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a></a>  by_dest <span class="ot">&lt;-</span> <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-3"><a></a>  delay <span class="ot">&lt;-</span> <span class="fu">summarize</span>(</span>
-<span id="cb30-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb30-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-7"><a></a>  d <span class="ot">&lt;-</span> <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a></a>  by_dest <span class="ot">&lt;-</span> <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-3"><a></a>  delay <span class="ot">&lt;-</span> <span class="fu">summarize</span>(</span>
+<span id="cb35-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb35-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-7"><a></a>  d <span class="ot">&lt;-</span> <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section>
 <section id="common-pipe-errors-example-1-1" class="slide level2 center">
 <h2>Common Pipe Errors: Example 1</h2>
-<p><strong>TASK:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
+<p><strong>Task:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
 <p><strong>What’s wrong with this code?</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="invalid-code-1">Invalid code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb31-2"><a></a>  by_dest <span class="ot">&lt;-</span> <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-3"><a></a>  delay <span class="ot">&lt;-</span> <span class="fu">summarize</span>(</span>
-<span id="cb31-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb31-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-7"><a></a>  d <span class="ot">&lt;-</span> <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a></a>  by_dest <span class="ot">&lt;-</span> <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a></a>  delay <span class="ot">&lt;-</span> <span class="fu">summarize</span>(</span>
+<span id="cb36-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb36-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb36-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-7"><a></a>  d <span class="ot">&lt;-</span> <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 id="correct-code">Correct code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb32-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb32-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb32-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb32-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb37-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb37-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb37-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb37-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb37-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 <p><br></p>
@@ -1041,46 +1124,46 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="common-pipe-errors-example-2" class="slide level2 center">
 <h2>Common Pipe Errors: Example 2</h2>
-<p><strong>TASK:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
+<p><strong>Task:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
 <p><strong>What’s wrong with this code?</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="invalid-code-2">Invalid code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a></a>  <span class="fu">group_by</span>(dest)</span>
-<span id="cb33-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb33-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb33-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb33-6"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a></a>  <span class="fu">group_by</span>(dest)</span>
+<span id="cb38-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb38-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb38-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb38-6"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section>
 <section id="common-pipe-errors-example-2-1" class="slide level2 center">
 <h2>Common Pipe Errors: Example 2</h2>
-<p><strong>TASK:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
+<p><strong>Task:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
 <p><strong>What’s wrong with this code?</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="invalid-code-3">Invalid code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb34-2"><a></a>  <span class="fu">group_by</span>(dest)</span>
-<span id="cb34-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb34-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb34-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb34-6"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a></a>  <span class="fu">group_by</span>(dest)</span>
+<span id="cb39-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb39-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb39-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb39-6"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 id="correct-code-1">Correct code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb35-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb35-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb35-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb35-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb35-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb35-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb40-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb40-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb40-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb40-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 <p><br></p>
@@ -1101,48 +1184,48 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="common-pipe-errors-example-3" class="slide level2 center">
 <h2>Common Pipe Errors: Example 3</h2>
-<p><strong>TASK:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
+<p><strong>Task:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
 <p><strong>What’s wrong with this code?</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="invalid-code-4">Invalid code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb36-2"><a></a>  <span class="fu">group_by</span>(<span class="at">.data =</span> flights, dest) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-3"><a></a>  <span class="fu">summarize</span>(<span class="at">.data =</span> flights,</span>
-<span id="cb36-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb36-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb36-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-7"><a></a>  <span class="fu">filter</span>(<span class="at">.data =</span> flights, count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a></a>  <span class="fu">group_by</span>(<span class="at">.data =</span> flights, dest) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a></a>  <span class="fu">summarize</span>(<span class="at">.data =</span> flights,</span>
+<span id="cb41-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb41-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-7"><a></a>  <span class="fu">filter</span>(<span class="at">.data =</span> flights, count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section>
 <section id="common-pipe-errors-example-3-1" class="slide level2 center">
 <h2>Common Pipe Errors: Example 3</h2>
-<p><strong>TASK:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
+<p><strong>Task:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
 <p><strong>What’s wrong with this code?</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="invalid-code-5">Invalid code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a></a>  <span class="fu">group_by</span>(<span class="at">.data =</span> flights, dest) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-3"><a></a>  <span class="fu">summarize</span>(<span class="at">.data =</span> flights,</span>
-<span id="cb37-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb37-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb37-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-7"><a></a>  <span class="fu">filter</span>(<span class="at">.data =</span> flights, count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a></a>  <span class="fu">group_by</span>(<span class="at">.data =</span> flights, dest) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a></a>  <span class="fu">summarize</span>(<span class="at">.data =</span> flights,</span>
+<span id="cb42-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb42-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb42-6"><a></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-7"><a></a>  <span class="fu">filter</span>(<span class="at">.data =</span> flights, count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 id="correct-code-2">Correct code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb38-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb38-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb38-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb38-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb38-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb43-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb43-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb43-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb43-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb43-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 <p><br></p>
@@ -1163,48 +1246,48 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="common-pipe-errors-example-4" class="slide level2 center">
 <h2>Common Pipe Errors: Example 4</h2>
-<p><strong>TASK:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
+<p><strong>Task:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
 <p><strong>What’s wrong with this code?</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="invalid-code-6">Invalid code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">+</span></span>
-<span id="cb39-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">+</span></span>
-<span id="cb39-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb39-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb39-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb39-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb39-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">+</span></span>
+<span id="cb44-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">+</span></span>
+<span id="cb44-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb44-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb44-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb44-6"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb44-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section>
 <section id="common-pipe-errors-example-4-1" class="slide level2 center">
 <h2>Common Pipe Errors: Example 4</h2>
-<p><strong>TASK:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
+<p><strong>Task:</strong> Group flights by destination <code>dest</code>, calculate average delay <code>arr_delay</code>, remove destinations with fewer than 20 flights.</p>
 <p><strong>What’s wrong with this code?</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="invalid-code-7">Invalid code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">+</span></span>
-<span id="cb40-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">+</span></span>
-<span id="cb40-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb40-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb40-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb40-6"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb40-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">+</span></span>
+<span id="cb45-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">+</span></span>
+<span id="cb45-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb45-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb45-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb45-6"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb45-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 id="correct-code-3">Correct code</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
-<span id="cb41-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
-<span id="cb41-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb41-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb41-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb41-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb41-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>delays <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb46-4"><a></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb46-5"><a></a>    <span class="at">delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb46-6"><a></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb46-7"><a></a>  <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 <p><br></p>
@@ -1233,7 +1316,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>Practiced programming as problem-solving: think through tasks before coding</li>
 <li>Learned R operators</li>
 <li>Key <code>dplyr</code> functions like <code>filter()</code>, <code>group_by()</code>, <code>summarize()</code>, and more</li>
-<li>Chained commands with pipes <code>%&gt;%</code></li>
+<li>Chained commands with pipes</li>
 <li>Reviewed common mistakes when using pipes and how to avoid them</li>
 </ul>
 </section>

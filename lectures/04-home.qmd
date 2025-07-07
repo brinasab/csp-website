@@ -22,8 +22,28 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Learning Objectives
 
+- Approach coding tasks as problem-solving by thinking through the steps before writing code
+- Understand R logical operators
+- Apply key dplyr functions such as `filter()`, `group_by()`, and `summarize()`
+- Chain commands using the pipe `|>` and recognize mistakes to avoid
+
 
 ## Before Class
 
+- Review the Lecture 3 materials to get ready for today's in-class quiz
+- Bring your laptop to every class
+
 
 ## Readings
+
+Skim the readings before or after class to get the big picture and prep for quizzes and assignments:
+
+* ["Chapter 3 Data transformation"](https://r4ds.hadley.nz/data-transform) from "R for Data Science" 2nd Edition 
+
+<!-- To be able to follow today's lecture, you need to read these chapter, especially Chapter 1! -->
+
+Additional Resources (not needed for quizzes or homework, but helpful to dive deeper):
+
+* [dplyr Cheat Sheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html)
+* [dplyr Official Documentation](https://dplyr.tidyverse.org/)
+

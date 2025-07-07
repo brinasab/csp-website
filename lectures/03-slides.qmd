@@ -33,7 +33,6 @@ format:
 - Check your working directory inside R Workbench ("Project: ") and switch project if necessary
 
 - Check your R version
-  - R 4.5.0 
   - R 4.5.1 use this! 
   - R 4.2.0
 

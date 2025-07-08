@@ -25,7 +25,6 @@ format:
 4. Pipes (`%>%` or `|>`)
 :::
 
-<!--
 ## Homework 1 Feedback: Great Work!
 
 ### ✅ Achieved Goals
@@ -35,15 +34,15 @@ format:
 
 ### 💡 Tips for Success
 
-- Knit your `.Rmd` file to `md_document` and push **both** files to GitHub  
+- Push all required files to GitHub  
 - Commit **frequently**: from 5 to 20 commits per assignment  
 - Embrace **learning-by-doing** (e.g., adding images), but post on **Ed Discussion** if you run into issues
 - Check our feedback on this homework: we’ll be stricter on the next ones (harder, point-based)
-- See Syllabus and Lecture 1 Slides on AI and Plagiarism
--->  
+- AI and Plagiarism: see Syllabus and Lecture 1 Slides 
 
 # 1. Intro to dplyr and to Programming as Problem-Solving {.slide .center .middle}
 
+---
 
 ## [Meet the Palmer Penguins!](https://allisonhorst.github.io/palmerpenguins/#meet-the-palmer-penguins)
 
@@ -425,6 +424,8 @@ Practice using them with the penguins dataset:
 
 - **Task 2:** Get all penguins on Dream and Torgersen islands that are not female
 
+Share your code here: <https://codeshare.io/5zlNLE>
+
 <!--
 - **Task 3:** Get all female penguins on Dream Island with body mass between 3000 and 4000 grams inclusive
 -->
@@ -534,6 +535,8 @@ Break it down into clear and simple steps before coding.
 **Then, CODE:** Translate those steps into R using the appropriate `dplyr` functions.
 
 **Hint:** You'll need to use *three* `dplyr` functions and in *the best order*
+
+Share your code here: <https://codeshare.io/5zlNLE>
 
 
 </br>

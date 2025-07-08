@@ -123,7 +123,7 @@
     "href": "lectures/04-slides.html#homework-1-feedback-great-work",
     "title": "Introduction to R: Lecture 4",
     "section": "Homework 1 Feedback: Great Work!",
-    "text": "Homework 1 Feedback: Great Work!\n✅ Achieved Goals\n\nGot familiar with Git and GitHub and R Markdown syntax (they take patience and repetition)\nShared interesting bios, links, and images… thanks!\n\n💡 Tips for Success\n\nKnit your .Rmd file to md_document and push both files to GitHub\n\nCommit frequently: from 5 to 20 commits per assignment\n\nEmbrace learning-by-doing (e.g., adding images), but post on Ed Discussion if you run into issues\nCheck our feedback on this homework: we’ll be stricter on the next ones (harder, point-based)\nSee Syllabus and Lecture 1 Slides on AI and Plagiarism"
+    "text": "Homework 1 Feedback: Great Work!\n✅ Achieved Goals\n\nGot familiar with Git and GitHub and R Markdown syntax (they take patience and repetition)\nShared interesting bios, links, and images… thanks!\n\n💡 Tips for Success\n\nPush all required files to GitHub\n\nCommit frequently: from 5 to 20 commits per assignment\n\nEmbrace learning-by-doing (e.g., adding images), but post on Ed Discussion if you run into issues\nCheck our feedback on this homework: we’ll be stricter on the next ones (harder, point-based)\nAI and Plagiarism: see Syllabus and Lecture 1 Slides"
   },
   {
     "objectID": "lectures/04-slides.html#meet-the-palmer-penguins",
@@ -214,7 +214,7 @@
     "href": "lectures/04-slides.html#practice-logical-operators-with-filter",
     "title": "Introduction to R: Lecture 4",
     "section": "💻 Practice: Logical Operators with filter()",
-    "text": "💻 Practice: Logical Operators with filter()\nLogical operators are often used together with the filter() function from dplyr\nPractice using them with the penguins dataset:\n\nTask 1: Get all Adelie penguins with flipper length greater than or equal to 180 mm\nTask 2: Get all penguins on Dream and Torgersen islands that are not female"
+    "text": "💻 Practice: Logical Operators with filter()\nLogical operators are often used together with the filter() function from dplyr\nPractice using them with the penguins dataset:\n\nTask 1: Get all Adelie penguins with flipper length greater than or equal to 180 mm\nTask 2: Get all penguins on Dream and Torgersen islands that are not female\n\nShare your code here: https://codeshare.io/5zlNLE"
   },
   {
     "objectID": "lectures/04-slides.html#recap-of-what-learned-so-far",
@@ -249,7 +249,7 @@
     "href": "lectures/04-slides.html#practice",
     "title": "Introduction to R: Lecture 4",
     "section": "💻 Practice",
-    "text": "💻 Practice\nWhat is the average body mass for Adelie penguins by sex?\n\nFirst, THINK: How would you approach this question conceptually? Break it down into clear and simple steps before coding.\nThen, CODE: Translate those steps into R using the appropriate dplyr functions.\nHint: You’ll need to use three dplyr functions and in the best order"
+    "text": "💻 Practice\nWhat is the average body mass for Adelie penguins by sex?\n\nFirst, THINK: How would you approach this question conceptually? Break it down into clear and simple steps before coding.\nThen, CODE: Translate those steps into R using the appropriate dplyr functions.\nHint: You’ll need to use three dplyr functions and in the best order\nShare your code here: https://codeshare.io/5zlNLE"
   },
   {
     "objectID": "lectures/04-slides.html#pipes-to-chain-commands",
@@ -396,7 +396,7 @@
     "href": "lectures/03-slides.html#reminders",
     "title": "Introduction to R: Lecture 3",
     "section": "Reminders",
-    "text": "Reminders\n\nCheck your working directory inside R Workbench (“Project:”) and switch project if necessary\nCheck your R version\n\nR 4.5.0\nR 4.5.1 use this!\nR 4.2.0"
+    "text": "Reminders\n\nCheck your working directory inside R Workbench (“Project:”) and switch project if necessary\nCheck your R version\n\nR 4.5.1 use this!\nR 4.2.0"
   },
   {
     "objectID": "lectures/03-slides.html#what-is-a-dataset",

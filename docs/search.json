@@ -165,7 +165,7 @@
     "href": "lectures/04-slides.html#data-manipulation-with-dplyr",
     "title": "Introduction to R: Lecture 4",
     "section": "Data Manipulation with dplyr",
-    "text": "Data Manipulation with dplyr\nToday we introduce a second package from the tidyverse: dplyr for data manipulation.\n\n\n\nDesigned for manipulating data frames and tibbles\n\nIncludes intuitive, clearly named functions for common tasks like filter() to filter rows based on conditions, summarize() to calculate summaries (e.g., averages), group_by for grouped operations, and many more.\n\nLet’s work through two questions that require us to use these three dplyr functions!"
+    "text": "Data Manipulation with dplyr\nToday we introduce a second package from the tidyverse: dplyr for data manipulation.\n\n\n\nDesigned for manipulating data frames and tibbles\n\nIncludes intuitive, clearly named functions for common tasks like filter() to filter rows based on conditions, summarize() to calculate summaries (e.g., averages), group_by for grouped operations, etc.\n\nLet’s work through two questions that require us to use these three dplyr functions!"
   },
   {
     "objectID": "lectures/04-slides.html#programming-as-a-problem-solving",
@@ -298,7 +298,7 @@
     "href": "lectures/04-slides.html#option-4-pipes-the-winner",
     "title": "Introduction to R: Lecture 4",
     "section": "Option 4: Pipes (The Winner!)",
-    "text": "Option 4: Pipes (The Winner!)\n\npenguins %&gt;%\n  filter(species == \"Adelie\") %&gt;%\n  group_by(island) %&gt;%\n  summarize(body_mass = mean(body_mass_g, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  island    body_mass\n  &lt;fct&gt;         &lt;dbl&gt;\n1 Biscoe        3710.\n2 Dream         3688.\n3 Torgersen     3706.\n\n\n\n\n✅ This is valid and readable code — without the drawbacks of the previous options.\n💡 Why pipes? The pipe operator %&gt;% passes the result of one function to the next, making your code easy to read from top to bottom. Pipes emphasize actions, not object names and you can read the code like a recipe:\n\nStart with the dataset\nFilter for Adelie penguins\nGroup by island\nSummarize body mass"
+    "text": "Option 4: Pipes (The Winner!)\n\npenguins %&gt;%\n  filter(species == \"Adelie\") %&gt;%\n  group_by(island) %&gt;%\n  summarize(body_mass = mean(body_mass_g, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  island    body_mass\n  &lt;fct&gt;         &lt;dbl&gt;\n1 Biscoe        3710.\n2 Dream         3688.\n3 Torgersen     3706.\n\n\n\n\n✅ This is valid and readable code — without the drawbacks of the previous options.\n💡 Why pipes? The pipe operator (you can write it as %&gt;% or |&gt;) passes the result of one function to the next, making your code easy to read from top to bottom. Pipes emphasize actions, not object names and you can read the code like a recipe:\n\nStart with the dataset\nFilter for Adelie penguins\nGroup by island\nSummarize body mass"
   },
   {
     "objectID": "lectures/04-slides.html#common-errors-with-pipes-examples-using-flights-data",
@@ -1600,14 +1600,14 @@
     "href": "lectures/04-slides.html#filter-or-group-first",
     "title": "Introduction to R: Lecture 4",
     "section": "🧠 Filter or Group First?",
-    "text": "🧠 Filter or Group First?\nTask: Calculate the average body mass for Adelie penguins by sex.\n\n\n✅ Filter for Adelie, then group by sex\n\nGroup by sex, then filter for Adelie\n\nGroup by species, filter for Adelie, then group by sex\n\nFilter by both species and sex, then group\n\nGroup by both species and sex, then summarize\n\n✅ Best practice. The other approaches work but are less readable or do more work than needed. The next slide compares the first two."
+    "text": "🧠 Filter or Group First?\nTask: Calculate the average body mass for Adelie penguins by sex.\n\n\n✅ Filter for Adelie, then group by sex, then summarize\nGroup by sex, then filter for Adelie, then summarize\n\nGroup by species, filter for Adelie, then group by sex, then summarize\n\nFilter by both species and sex, then group, then summarize\n\nGroup by both species and sex, then summarize, then filter\n\nThe first is the best approach in this case. The other approaches are all correct (try them out!), but are less readable or do more work than needed.\nThe next slide compares the first two, which are the most common."
   },
   {
     "objectID": "lectures/04-slides.html#filter-or-group-first-1",
     "href": "lectures/04-slides.html#filter-or-group-first-1",
     "title": "Introduction to R: Lecture 4",
     "section": "🧠 Filter or Group First?",
-    "text": "🧠 Filter or Group First?\nTask: Calculate the average body mass for Adelie penguins by sex.\n\n\n\nFilter → Group (Best Practice)\n\nFilter first to keep only Adelie penguins\n→ reduces rows right away\nGroup the filtered data by sex\n→ only relevant data is grouped\n\nSummarize to get average\n\n\n\nGroup → Filter (Not Ideal)\n\nGroup all penguins by sex\n→ includes extra, unneeded data\n\nFilter to keep only Adelie penguins\n→ discards part of what was grouped\n\nSummarize to get average"
+    "text": "🧠 Filter or Group First?\nTask: Calculate the average body mass for Adelie penguins by sex.\n\n\n\nFilter → Group (Best Practice here)\n\nFilter first to keep only Adelie penguins\n→ reduces rows right away\nGroup the filtered data by sex\n→ only relevant data is grouped\n\nSummarize to get average\n\n\n\nGroup → Filter (Works but Not Ideal here)\n\nGroup all penguins by sex\n→ includes extra, unneeded data\n\nFilter to keep only Adelie penguins\n→ discards part of what was grouped\n\nSummarize to get average"
   },
   {
     "objectID": "lectures/04-slides.html#unpacking-group_by",
@@ -1636,5 +1636,12 @@
     "title": "Introduction to R: Lecture 4",
     "section": "The OR operator can be used with long or short syntax",
     "text": "The OR operator can be used with long or short syntax\nx | y     # EITHER x OR y has to be true\nx & y     # BOTH x AND y have to be true\nx &! y    # x AND NOT y (x is true AND y is false)\n\n\nExample use of | operator with extended syntax:\npenguins_adelie_chin &lt;- filter(.data = penguins, \n                                species == \"Adelie\" | species == \"Chinstrap\")\n\n\n\nSame code with shorter syntax:\npenguins_adelie_chin &lt;- filter(.data = penguins, \n                                species %in% c(\"Adelie\", \"Chinstrap\"))"
+  },
+  {
+    "objectID": "lectures/04-slides.html#filter-or-group-first-2",
+    "href": "lectures/04-slides.html#filter-or-group-first-2",
+    "title": "Introduction to R: Lecture 4",
+    "section": "🧠 Filter or Group First?",
+    "text": "🧠 Filter or Group First?\nThe best order depends on the task (think first!) but here’s a rule of thumb:\n\nFilter first when you can reduce the data before grouping. Example: Calculate the average body mass for Adelie penguins by sex.\nadelie &lt;- filter(penguins, species == \"Adelie\")\nadelie_by_sex &lt;- group_by(adelie, sex)\nresult &lt;- summarize(adelie_by_sex, \n                    avg_mass = mean(body_mass_g, na.rm = TRUE))\n\nGroup first only when your filter depends on group-level summaries. Example: Calculate the average body mass only for species whose average bill length is over 40 mm.\nby_species &lt;- group_by(penguins, species)\navg_bill_high &lt;- filter(by_species, mean(bill_length_mm, na.rm = TRUE) &gt; 40)\nresult &lt;- summarize(avg_bill_high, \n                    avg_mass = mean(body_mass_g, na.rm = TRUE))"
   }
 ]

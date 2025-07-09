@@ -222,9 +222,9 @@ Today we introduce a second package from the tidyverse: **[dplyr](https://dplyr.
 ::: {.column width="60%"}
 
 - Designed for **manipulating data frames and tibbles**  
-- Includes **intuitive, clearly named functions** for common tasks like `filter()` to filter rows based on conditions, `summarize()` to calculate summaries (e.g., averages), `group_by` for grouped operations, and many more.
+- Includes **intuitive, clearly named functions** for common tasks like `filter()` to filter rows based on conditions, `summarize()` to calculate summaries (e.g., averages), `group_by` for grouped operations, etc.
 
-Let's work through two questions that require us to use these three dplyr functions!
+*Let's work through two questions that require us to use these three dplyr functions!*
 
 :::
 
@@ -615,13 +615,17 @@ print(results)
 
 <br>
 
-- ✅ Filter for `Adelie`, then group by `sex`  
-- Group by `sex`, then filter for `Adelie`  
-- Group by `species`, filter for `Adelie`, then group by `sex`  
-- Filter by both `species` and `sex`, then group  
-- Group by both `species` and `sex`, then summarize
+- ✅ Filter for `Adelie`, then group by `sex`, then summarize
+- Group by `sex`, then filter for `Adelie`, then summarize  
+- Group by `species`, filter for `Adelie`, then group by `sex`, then summarize  
+- Filter by both `species` and `sex`, then group, then summarize  
+- Group by both `species` and `sex`, then summarize, then filter
 
-✅ Best practice. The other approaches work but are less readable or do more work than needed. The next slide compares the first two.
+The first is the best approach in this case. The other approaches are all correct (try them out!), but are less readable or do more work than needed. 
+
+The next slide compares the first two, which are the most common.
+
+</br>
 
 ---
 
@@ -634,7 +638,7 @@ print(results)
 ::: {.columns}
 
 ::: {.column width="50%"}
-#### Filter → Group (Best Practice)
+#### Filter → Group (Best Practice here)
 
 - Filter first to keep only Adelie penguins  
 → reduces rows right away 
@@ -644,7 +648,7 @@ print(results)
 :::
 
 ::: {.column width="50%"}
-#### Group → Filter (Not Ideal)
+#### Group → Filter (Works but Not Ideal here)
 
 - Group all penguins by sex   
 → includes extra, unneeded data  
@@ -655,11 +659,38 @@ print(results)
 
 :::
 
-<!--
-::: {.callout-tip title="Filter → Group"}
-If you can: filter first to narrow the data you're analyzing; group after to split the narrowed data into chunks to summarize.
-:::
--->
+</br>
+
+---
+
+## 🧠 Filter or Group First?
+
+#### The best order depends on the task *(think first!)* but here’s a rule of thumb:
+
+<br>
+
+**Filter first when you can reduce the data before grouping.** 
+*Example: Calculate the average body mass for Adelie penguins by sex.* 
+
+```r
+adelie <- filter(penguins, species == "Adelie")
+adelie_by_sex <- group_by(adelie, sex)
+result <- summarize(adelie_by_sex, 
+                    avg_mass = mean(body_mass_g, na.rm = TRUE))
+```
+
+<br>
+
+**Group first only when your filter depends on group-level summaries.**
+*Example: Calculate the average body mass only for species whose average bill length is over 40 mm.*
+  
+```r
+by_species <- group_by(penguins, species)
+avg_bill_high <- filter(by_species, mean(bill_length_mm, na.rm = TRUE) > 40)
+result <- summarize(avg_bill_high, 
+                    avg_mass = mean(body_mass_g, na.rm = TRUE))
+```
+
 
 # 4. Pipes %>% or |> {.slide .center .middle}
 
@@ -796,7 +827,7 @@ penguins %>%
 ::: {.fragment}
 ✅ This is valid and readable code — without the drawbacks of the previous options.
 
-**💡 Why pipes?** The pipe operator `%>%` passes the result of one function to the next, making your code easy to read from top to bottom. Pipes emphasize **actions**, not object names and you can read the code like a recipe:
+**💡 Why pipes?** The pipe operator (you can write it as `%>%` or `|>`) passes the result of one function to the next, making your code easy to read from top to bottom. Pipes emphasize **actions**, not object names and you can read the code like a recipe:
 
 - Start with the dataset
 - Filter for Adelie penguins

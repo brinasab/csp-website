@@ -283,11 +283,15 @@ head(penguins, 4)
 </br>
 
 <!--
-```{r}
 data(penguins)
 penguins_adelie <- filter(penguins, species == "Adelie")
 summarize(penguins_adelie, avg_mass_adelie = mean(body_mass_g, na.rm = TRUE))
-```
+
+# or if I want to show manual calculation of mean vs mean() function
+filter(penguins, species == "Adelie") 
+summarize(total_mass = sum(body_mass_g),
+          count = n(),
+          manual_mean = total_mass / count)
 -->
 
 ---
@@ -383,11 +387,43 @@ heavy <- filter(penguins, body_mass_g > 4500)
 
 ---
 
+
 ## More Logical Operators
 
 ```
-x | y     # either x OR y
-x & y     # both x AND y
+x | y     # EITHER x OR y has to be true
+x & y     # BOTH x AND y have to be true
+x &! y    # x AND NOT y (x is true AND y is false)
+```
+
+<br>
+
+::: {.cell .fragment}
+Example use of `|` operator. What does this code return?
+```r
+filter(.data = penguins, species == "Adelie" & species == "Chinstrap")
+```
+:::
+
+<br>
+
+::: {.cell .fragment}
+Example use of `&` operator. What does this code return?
+```r
+filter(.data = penguins, species == "Adelie" | species == "Chinstrap")
+```
+:::
+
+</br>
+
+
+---
+
+## The OR operator can be used with long or short syntax
+
+```
+x | y     # EITHER x OR y has to be true
+x & y     # BOTH x AND y have to be true
 x &! y    # x AND NOT y (x is true AND y is false)
 ```
 <br>

@@ -392,21 +392,19 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 <h2>Data Manipulation with dplyr</h2>
 <p>Today we introduce a second package from the tidyverse: <strong><a href="https://dplyr.tidyverse.org/">dplyr</a> for data manipulation.</strong></p>
 <div class="columns">
-<div class="column" style="width:70%;">
+<div class="column" style="width:60%;">
 <ul>
 <li>Designed for <strong>manipulating data frames and tibbles</strong><br>
 </li>
-<li>Includes <strong>intuitive, clearly named functions</strong> for common tasks:
-<ul>
-<li><code>filter()</code> — filter rows</li>
-<li><code>select()</code> — pick columns</li>
-<li><code>summarize()</code> — calculate summaries (e.g., averages)</li>
-</ul></li>
+<li>Includes <strong>intuitive, clearly named functions</strong> for common tasks like <code>filter()</code> to filter rows based on conditions, <code>summarize()</code> to calculate summaries (e.g., averages), <code>group_by</code> for grouped operations, and many more.</li>
 </ul>
+<p>Let’s work through two questions that require us to use these three dplyr functions!</p>
 </div><div class="column" style="width:30%;">
 <p><img data-src="https://raw.githubusercontent.com/tidyverse/dplyr/main/man/figures/logo.png"></p>
 </div></div>
-<!-- Data manipulation: process of changing or reshaping data to make it easier to understand, analyze, or visualize. Selecting columns or variables, filtering rows, summarizing data, etc. -->
+<!-- TEACHING NOTES:
+1. Ask what is data manipulation: process of changing or reshaping data to make it easier to understand, analyze, or visualize. Selecting columns or variables, filtering rows, summarizing data, etc. 
+2. Code the rest of the slides togheter, do not give time to students to think first, just show the logic by doing it and ask them to follow along -->
 </section>
 <section id="programming-is-problem-solving" class="slide level2 center">
 <h2>Programming is Problem-Solving</h2>

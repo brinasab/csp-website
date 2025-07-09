@@ -219,13 +219,12 @@ ggsave("penguins-species-count.png", plot = species_count)
 Today we introduce a second package from the tidyverse: **[dplyr](https://dplyr.tidyverse.org/) for data manipulation.**
 
 ::: {.columns}
-::: {.column width="70%"}
+::: {.column width="60%"}
 
 - Designed for **manipulating data frames and tibbles**  
-- Includes **intuitive, clearly named functions** for common tasks:
-  - `filter()` — filter rows
-  - `select()` — pick columns
-  - `summarize()` — calculate summaries (e.g., averages)
+- Includes **intuitive, clearly named functions** for common tasks like `filter()` to filter rows based on conditions, `summarize()` to calculate summaries (e.g., averages), `group_by` for grouped operations, and many more.
+
+Let's work through two questions that require us to use these three dplyr functions!
 
 :::
 
@@ -234,7 +233,9 @@ Today we introduce a second package from the tidyverse: **[dplyr](https://dplyr.
 :::
 :::
 
-<!-- Data manipulation: process of changing or reshaping data to make it easier to understand, analyze, or visualize. Selecting columns or variables, filtering rows, summarizing data, etc. -->
+<!-- TEACHING NOTES:
+1. Ask what is data manipulation: process of changing or reshaping data to make it easier to understand, analyze, or visualize. Selecting columns or variables, filtering rows, summarizing data, etc. 
+2. Code the rest of the slides togheter, do not give time to students to think first, just show the logic by doing it and ask them to follow along -->
 
 ---
 

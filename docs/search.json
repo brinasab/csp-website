@@ -165,7 +165,7 @@
     "href": "lectures/04-slides.html#data-manipulation-with-dplyr",
     "title": "Introduction to R: Lecture 4",
     "section": "Data Manipulation with dplyr",
-    "text": "Data Manipulation with dplyr\nToday we introduce a second package from the tidyverse: dplyr for data manipulation.\n\n\n\nDesigned for manipulating data frames and tibbles\n\nIncludes intuitive, clearly named functions for common tasks:\n\nfilter() — filter rows\nselect() — pick columns\nsummarize() — calculate summaries (e.g., averages)"
+    "text": "Data Manipulation with dplyr\nToday we introduce a second package from the tidyverse: dplyr for data manipulation.\n\n\n\nDesigned for manipulating data frames and tibbles\n\nIncludes intuitive, clearly named functions for common tasks like filter() to filter rows based on conditions, summarize() to calculate summaries (e.g., averages), group_by for grouped operations, and many more.\n\nLet’s work through two questions that require us to use these three dplyr functions!"
   },
   {
     "objectID": "lectures/04-slides.html#programming-as-a-problem-solving",
@@ -207,7 +207,7 @@
     "href": "lectures/04-slides.html#more-logical-operators",
     "title": "Introduction to R: Lecture 4",
     "section": "More Logical Operators",
-    "text": "More Logical Operators\nx | y     # either x OR y\nx & y     # both x AND y\nx &! y    # x AND NOT y (x is true AND y is false)\n\n\nExample use of | operator with extended syntax:\npenguins_adelie_chin &lt;- filter(.data = penguins, \n                                species == \"Adelie\" | species == \"Chinstrap\")\n\n\n\nSame code with shorter syntax:\npenguins_adelie_chin &lt;- filter(.data = penguins, \n                                species %in% c(\"Adelie\", \"Chinstrap\"))"
+    "text": "More Logical Operators\nx | y     # EITHER x OR y has to be true\nx & y     # BOTH x AND y have to be true\nx &! y    # x AND NOT y (x is true AND y is false)\n\n\nExample use of | operator. What does this code return?\nfilter(.data = penguins, species == \"Adelie\" & species == \"Chinstrap\")\n\n\n\nExample use of & operator. What does this code return?\nfilter(.data = penguins, species == \"Adelie\" | species == \"Chinstrap\")"
   },
   {
     "objectID": "lectures/04-slides.html#practice-logical-operators-with-filter",
@@ -1629,5 +1629,12 @@
     "title": "Introduction to R: Lecture 4",
     "section": "Data Manipulation with dplyr",
     "text": "Data Manipulation with dplyr\nToday we introduce a second package from the tidyverse: dplyr\n\nMain R package for data manipulation (what’s data manipulation?)\nProvides clearly named functions for common data manipulation tasks like filter() for filtering rows, select() for selecting columns, summarize() for calculating summary stats like the average"
+  },
+  {
+    "objectID": "lectures/04-slides.html#the-or-operator-can-be-used-with-long-or-short-syntax",
+    "href": "lectures/04-slides.html#the-or-operator-can-be-used-with-long-or-short-syntax",
+    "title": "Introduction to R: Lecture 4",
+    "section": "The OR operator can be used with long or short syntax",
+    "text": "The OR operator can be used with long or short syntax\nx | y     # EITHER x OR y has to be true\nx & y     # BOTH x AND y have to be true\nx &! y    # x AND NOT y (x is true AND y is false)\n\n\nExample use of | operator with extended syntax:\npenguins_adelie_chin &lt;- filter(.data = penguins, \n                                species == \"Adelie\" | species == \"Chinstrap\")\n\n\n\nSame code with shorter syntax:\npenguins_adelie_chin &lt;- filter(.data = penguins, \n                                species %in% c(\"Adelie\", \"Chinstrap\"))"
   }
 ]

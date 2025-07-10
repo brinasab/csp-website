@@ -36,7 +36,7 @@ Intro to `dplyr`, Pipes<br>
 ---
 
 ### [Lecture 5](05-home.qmd)
-EDA and Graphs<br>
+Data Analysis and Graphs<br>
 **July 10, 2025**
 
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Lecture 5: EDA and Graphs"
+title: "Lecture 5: Data Analysis and Graphs"
 date: 2025-07-10
 summary: "Data Analysis and Graphs"
 url_slides: 05-slides.qmd
@@ -22,10 +22,25 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Learning Objectives
 
+- Identify best graph types (e.g., bar chart vs. histogram) based on variable types (e.g., categorical vs. numeric)
+- Interpret what a graph shows about the data
+- Practice using `ggplot2` and `dplyr`
+
 
 ## Before Class
+
+- Review the Lecture 4 materials to get ready for today's in-class quiz
+- Bring your laptop to every class
 
 
 ## Readings
 
+Skim the readings before or after class to get the big picture and prep for quizzes and assignments:
+
+- ["Chapter 10 Exploratory Data Analysis"](https://r4ds.hadley.nz/eda) from "R for Data Science" 2nd Edition
+- Cheat sheets and documentation for `ggplot2` and `dplyr` (from previous lectures)
+  * [ggplot2 Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+  * [ggplot2 Official Documentation](https://ggplot2.tidyverse.org/index.html)
+  * [dplyr Cheat Sheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html)
+  * [dplyr Official Documentation](https://dplyr.tidyverse.org/)
 

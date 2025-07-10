@@ -1789,7 +1789,7 @@
     "href": "lectures/05-slides.html#practice-2",
     "title": "Introduction to R: Lecture 5",
     "section": "💻 Practice",
-    "text": "💻 Practice\n\nShare your solutions here https://codeshare.io/vAzK44\nTASK 1: Display the annual total cost of school attendance across the U.S. (variable cost)\nTASK 2: Display the total number of schools in the U.S. by school type (variable type)\nTASK 3: Display the annual total cost and net cost of attendance to schools in the U.S. (variables cost and netcost)\nTASK 4: Display the annual total cost of attendance by school type (variables cost and type)\nTASK 5: Display the annual total cost of attendance and net cost of attendance by school type (variables cost, netcost, type)"
+    "text": "💻 Practice\n\nShare your solutions here https://codeshare.io/vAzK44\nTASK 1: Create a plot that displays the annual total cost of school attendance across the U.S.. (Hint: try geom_histogram() with the variable cost)\nTASK 2: Create a plot that displays the total number of schools in the U.S. by school type (Hint: try geom_bar() with the variable variable type)\nTASK 3: Create a plot that displays the annual total cost and net cost of attendance to schools in the U.S. (variables cost and netcost)\nTASK 4: Create a plot that displays the annual total cost of attendance by school type (variables cost and type)\nTASK 5: Create a plot that displays the annual total cost of attendance and net cost of attendance by school type (variables cost, netcost, type)"
   },
   {
     "objectID": "lectures/05-slides.html#the-scorecard-dataset",

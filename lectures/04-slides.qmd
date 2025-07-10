@@ -696,7 +696,7 @@ result <- summarize(avg_bill_high,
 
 ## Pipes to Chain Commands
 
-Pipes allow you to write a sequence of operations by **passing the result of one function into the next** making your code more readable and logical. Compare these two versions of the same code.
+Pipes allow you to write a sequence of operations by **passing the result of one function into the next** making your code more readable and logical. Compare these two versions of the same code to calculate the average body mass for Adelie penguins by island.
 
 **Without pipes:**
 ```r

@@ -874,7 +874,7 @@ print(results)
 </section>
 <section id="pipes-to-chain-commands" class="slide level2 center">
 <h2>Pipes to Chain Commands</h2>
-<p>Pipes allow you to write a sequence of operations by <strong>passing the result of one function into the next</strong> making your code more readable and logical. Compare these two versions of the same code.</p>
+<p>Pipes allow you to write a sequence of operations by <strong>passing the result of one function into the next</strong> making your code more readable and logical. Compare these two versions of the same code to calculate the average body mass for Adelie penguins by island.</p>
 <p><strong>Without pipes:</strong></p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>adelie <span class="ot">&lt;-</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span>
 <span id="cb26-2"><a></a>adelie_island <span class="ot">&lt;-</span> <span class="fu">group_by</span>(adelie, island)</span>

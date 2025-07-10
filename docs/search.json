@@ -256,7 +256,7 @@
     "href": "lectures/04-slides.html#pipes-to-chain-commands",
     "title": "Introduction to R: Lecture 4",
     "section": "Pipes to Chain Commands",
-    "text": "Pipes to Chain Commands\nPipes allow you to write a sequence of operations by passing the result of one function into the next making your code more readable and logical. Compare these two versions of the same code.\nWithout pipes:\nadelie &lt;- filter(penguins, species == \"Adelie\")\nadelie_island &lt;- group_by(adelie, island)\nadelie_avg_mass_island &lt;- summarize(adelie_island, body_mass = mean(body_mass_g, na.rm = TRUE))\nWith pipes (%&gt;% or |&gt;):\nadelie_avg_mass_island &lt;- penguins %&gt;%\n  filter(species == \"Adelie\") %&gt;%\n  group_by(island) %&gt;%\n  summarize(body_mass = mean(body_mass_g, na.rm = TRUE))"
+    "text": "Pipes to Chain Commands\nPipes allow you to write a sequence of operations by passing the result of one function into the next making your code more readable and logical. Compare these two versions of the same code to calculate the average body mass for Adelie penguins by island.\nWithout pipes:\nadelie &lt;- filter(penguins, species == \"Adelie\")\nadelie_island &lt;- group_by(adelie, island)\nadelie_avg_mass_island &lt;- summarize(adelie_island, body_mass = mean(body_mass_g, na.rm = TRUE))\nWith pipes (%&gt;% or |&gt;):\nadelie_avg_mass_island &lt;- penguins %&gt;%\n  filter(species == \"Adelie\") %&gt;%\n  group_by(island) %&gt;%\n  summarize(body_mass = mean(body_mass_g, na.rm = TRUE))"
   },
   {
     "objectID": "lectures/04-slides.html#multiple-ways-to-write-r-code-pipes-are-often-the-best-choice",

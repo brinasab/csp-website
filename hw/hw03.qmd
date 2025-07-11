@@ -1,5 +1,5 @@
 ---
-title: "Homework 3"
+title: "HW03"
 draft: true
 ---
 

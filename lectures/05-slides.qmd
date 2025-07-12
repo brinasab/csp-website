@@ -229,7 +229,7 @@ To show **how values vary within a single variable**:
 
 ---
 
-## Univariate (One Variable)
+## Univariate (One Variable) 
 
 ::: {.smaller}
 

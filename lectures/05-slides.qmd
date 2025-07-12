@@ -229,6 +229,19 @@ To show **how values vary within a single variable**:
 
 ---
 
+## Univariate (One Variable)
+
+::: {.smaller}
+
+| Function           | What Gets Counted                                 | When to Use             |
+|--------------------|---------------------------------------------------|--------------------------|
+| `geom_histogram()` | How many values fall into each numeric bin        | When `x` is continuous   |
+| `geom_bar()`       | How many observations are in each category        | When `x` is categorical  |
+
+:::
+
+---
+
 ## Bivariate (Two Variables)
 
 To show **how two variables co-vary**:

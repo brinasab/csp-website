@@ -312,56 +312,56 @@
     "href": "lectures/04-slides.html#common-pipe-errors-example-1",
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 1",
-    "text": "Common Pipe Errors: Example 1\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  by_dest &lt;- group_by(dest) %&gt;% \n  delay &lt;- summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;% \n  d &lt;- filter(count &gt; 20)"
+    "text": "Common Pipe Errors: Example 1\nWhat’s wrong with this code?\nBefore we debug it, let’s first think through what the code is trying to do conceptually.\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  by_dest &lt;- group_by(dest) %&gt;% \n  delay &lt;- summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;% \n  d &lt;- filter(count &gt; 20)"
   },
   {
     "objectID": "lectures/04-slides.html#common-pipe-errors-example-1-1",
     "href": "lectures/04-slides.html#common-pipe-errors-example-1-1",
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 1",
-    "text": "Common Pipe Errors: Example 1\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  by_dest &lt;- group_by(dest) %&gt;% \n  delay &lt;- summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;% \n  d &lt;- filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDon’t assign anything inside a pipe. Use &lt;- only at the start, if you want to save the final result. Do not use it between steps."
+    "text": "Common Pipe Errors: Example 1\nWhat’s wrong with this code?\nBefore we debug it, let’s first think through what the code is trying to do conceptually.\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  by_dest &lt;- group_by(dest) %&gt;% \n  delay &lt;- summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;% \n  d &lt;- filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nTake the flights dataset\n\nGroup flights by destination, using the variable dest\n\nCount the delayed flights and store the result in a new variable called count\n\nCalculate the average arrival delay, using arr_delay, and store the result in a new variable called delay\n\nRemove destinations with fewer than 20 flights\n\nQuestion: Why filter(count &gt; 20) to remove destinations with fewer than 20 flights?"
   },
   {
     "objectID": "lectures/04-slides.html#common-pipe-errors-example-2",
     "href": "lectures/04-slides.html#common-pipe-errors-example-2",
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 2",
-    "text": "Common Pipe Errors: Example 2\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest)\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE))\n  filter(count &gt; 20)"
+    "text": "Common Pipe Errors: Example 2\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest)\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE))\n  filter(count &gt; 20)"
   },
   {
     "objectID": "lectures/04-slides.html#common-pipe-errors-example-2-1",
     "href": "lectures/04-slides.html#common-pipe-errors-example-2-1",
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 2",
-    "text": "Common Pipe Errors: Example 2\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest)\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE))\n  filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nEach function in a pipe chain must be connected with %&gt;% to keep the chain going."
+    "text": "Common Pipe Errors: Example 2\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest)\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE))\n  filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nEach function in a pipe chain must be connected with %&gt;% to keep the chain going."
   },
   {
     "objectID": "lectures/04-slides.html#common-pipe-errors-example-3",
     "href": "lectures/04-slides.html#common-pipe-errors-example-3",
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 3",
-    "text": "Common Pipe Errors: Example 3\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  group_by(.data = flights, dest) %&gt;% \n  summarize(.data = flights,\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;% \n  filter(.data = flights, count &gt; 20)"
+    "text": "Common Pipe Errors: Example 3\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  group_by(.data = flights, dest) %&gt;% \n  summarize(.data = flights,\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;% \n  filter(.data = flights, count &gt; 20)"
   },
   {
     "objectID": "lectures/04-slides.html#common-pipe-errors-example-3-1",
     "href": "lectures/04-slides.html#common-pipe-errors-example-3-1",
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 3",
-    "text": "Common Pipe Errors: Example 3\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  group_by(.data = flights, dest) %&gt;% \n  summarize(.data = flights,\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;% \n  filter(.data = flights, count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nWhen using pipes, only reference the data frame at the start of the chain. Do not repeat .data = flights in every function as %&gt;% automatically passes the data along."
+    "text": "Common Pipe Errors: Example 3\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  group_by(.data = flights, dest) %&gt;% \n  summarize(.data = flights,\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;% \n  filter(.data = flights, count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nWhen using pipes, only reference the data frame at the start of the chain. Do not repeat .data = flights in every function as %&gt;% automatically passes the data along."
   },
   {
     "objectID": "lectures/04-slides.html#common-pipe-errors-example-4",
     "href": "lectures/04-slides.html#common-pipe-errors-example-4",
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 4",
-    "text": "Common Pipe Errors: Example 4\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights +\n  group_by(dest) +\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) +\n  filter(count &gt; 20)"
+    "text": "Common Pipe Errors: Example 4\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights +\n  group_by(dest) +\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) +\n  filter(count &gt; 20)"
   },
   {
     "objectID": "lectures/04-slides.html#common-pipe-errors-example-4-1",
     "href": "lectures/04-slides.html#common-pipe-errors-example-4-1",
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 4",
-    "text": "Common Pipe Errors: Example 4\nTask: Group flights by destination dest, calculate average delay arr_delay, remove destinations with fewer than 20 flights.\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights +\n  group_by(dest) +\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) +\n  filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)\n  ) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe + sign is only for adding layers in ggplot2! Don’t use it to chain dplyr functions: use %&gt;% to pipe data through a sequence of transformations."
+    "text": "Common Pipe Errors: Example 4\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights +\n  group_by(dest) +\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) +\n  filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThe + sign is only for adding layers in ggplot2! Don’t use it to chain dplyr functions: use %&gt;% to pipe data through a sequence of transformations."
   },
   {
     "objectID": "lectures/04-slides.html#practice-gapminder",
@@ -1888,5 +1888,12 @@
     "title": "Introduction to R: Lecture 5",
     "section": "Univariate (One Variable)",
     "text": "Univariate (One Variable)\n\n\n\n\n\n\n\n\n\nFunction\nWhat Gets Counted\nWhen to Use\n\n\n\n\ngeom_histogram()\nHow many values fall into each numeric bin\nWhen x is continuous\n\n\ngeom_bar()\nHow many observations are in each category\nWhen x is categorical"
+  },
+  {
+    "objectID": "lectures/04-slides.html#common-pipe-errors-example-1-2",
+    "href": "lectures/04-slides.html#common-pipe-errors-example-1-2",
+    "title": "Introduction to R: Lecture 4",
+    "section": "Common Pipe Errors: Example 1",
+    "text": "Common Pipe Errors: Example 1\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  by_dest &lt;- group_by(dest) %&gt;% \n  delay &lt;- summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;% \n  d &lt;- filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDon’t assign anything inside a pipe. Use &lt;- only at the start, if you want to save the final result. Do not use it between steps."
   }
 ]

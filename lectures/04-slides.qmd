@@ -25,6 +25,11 @@ format:
 4. Pipes (`%>%` or `|>`)
 :::
 
+<span style="font-size: 0.8em; color: #666;">
+*These slides were last updated on **`r format(Sys.Date(), '%B %d, %Y')`***
+</span>
+
+
 ## Homework 1 Feedback: Great Work!
 
 ### ✅ Achieved Goals
@@ -875,17 +880,16 @@ glimpse(flights)
 ```
 ---
 
-
 ## Common Pipe Errors: Example 1
 
-**Task:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
+#### What's wrong with this code?
 
-**What's wrong with this code?**
+Before we debug it, let’s first think through what the code is trying to do conceptually.
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-### Invalid code
+#### Invalid code
 
 ```{r}
 #| echo: true
@@ -895,12 +899,15 @@ delays <- flights %>%
   by_dest <- group_by(dest) %>% 
   delay <- summarize(
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) %>% 
+    delay = mean(arr_delay, na.rm = TRUE)) %>% 
   d <- filter(count > 20)
 ```
 
 :::
+
+::: {.column width="50%"}
+:::
+
 ::::
 
 
@@ -908,14 +915,15 @@ delays <- flights %>%
 
 ## Common Pipe Errors: Example 1
 
-**Task:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
 
-**What's wrong with this code?**
+#### What's wrong with this code?
+
+Before we debug it, let’s first think through what the code is trying to do conceptually.
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-### Invalid code
+#### Invalid code
 
 ```{r}
 #| echo: true
@@ -925,8 +933,53 @@ delays <- flights %>%
   by_dest <- group_by(dest) %>% 
   delay <- summarize(
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) %>% 
+    delay = mean(arr_delay, na.rm = TRUE)) %>% 
+  d <- filter(count > 20)
+```
+
+:::
+
+::: {.column width="50%"}
+:::
+
+::::
+
+::: {.callout .smaller}
+- Take the `flights` dataset  
+- Group flights by destination, using the variable `dest`  
+- Count the delayed flights and store the result in a new variable called `count`  
+- Calculate the average arrival delay, using `arr_delay`, and store the result in a new variable called `delay`  
+- Remove destinations with fewer than 20 flights  
+- *Question:* Why `filter(count > 20)` to remove destinations with fewer than 20 flights?
+:::
+
+
+<!-- TIP FOR FALL 25: change order so this is not the first example as it is harder to read than others 
+
+Answer to the question: filter() keeps only the rows where the condition is true. So this code keeps rows where count is greater than 20, effectively removing those with 20 or fewer. filter() doesn’t remove rows — it keeps the ones that match your condition.
+
+-->
+
+---
+
+## Common Pipe Errors: Example 1
+
+#### What's wrong with this code?
+
+:::: {.columns}
+::: {.column width="50%"}
+
+#### Invalid code
+
+```{r}
+#| echo: true
+#| eval: false
+
+delays <- flights %>% 
+  by_dest <- group_by(dest) %>% 
+  delay <- summarize(
+    count = n(),
+    delay = mean(arr_delay, na.rm = TRUE)) %>% 
   d <- filter(count > 20)
 ```
 
@@ -934,15 +987,14 @@ delays <- flights %>%
 
 ::: {.column width="50%"}
 
-### Correct code
+#### Correct code
 
 ```{r echo = TRUE}
 delays <- flights %>%
   group_by(dest) %>%
   summarize(
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) %>%
+    delay = mean(arr_delay, na.rm = TRUE)) %>%
   filter(count > 20)
 ```
 
@@ -961,15 +1013,12 @@ Don’t assign anything inside a pipe. Use `<-` only at the start, if you want t
 
 ## Common Pipe Errors: Example 2
 
-
-**Task:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
-
-**What's wrong with this code?**
+#### What's wrong with this code?
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-### Invalid code
+#### Invalid code
 
 ```{r}
 #| echo: true
@@ -984,20 +1033,22 @@ delays <- flights %>%
 ```
 
 :::
+
+::: {.column width="50%"}
+:::
+
 ::::  
 
 ---
 
 ## Common Pipe Errors: Example 2
 
-**Task:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
-
-**What's wrong with this code?**
+#### What's wrong with this code?
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-### Invalid code
+#### Invalid code
 
 ```{r}
 #| echo: true
@@ -1015,7 +1066,7 @@ delays <- flights %>%
 
 ::: {.column width="50%"}
 
-### Correct code
+#### Correct code
 
 ```{r}
 #| echo: true
@@ -1025,8 +1076,7 @@ delays <- flights %>%
   group_by(dest) %>%
   summarize(
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) %>%
+    delay = mean(arr_delay, na.rm = TRUE)) %>%
   filter(count > 20)
 ```
 
@@ -1045,14 +1095,12 @@ Each function in a pipe chain must be connected with `%>%` to keep the chain goi
 
 ## Common Pipe Errors: Example 3
 
-**Task:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
-
-**What's wrong with this code?**
+#### What's wrong with this code?
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-### Invalid code
+#### Invalid code
 
 ```{r}
 #| echo: true
@@ -1062,26 +1110,27 @@ delays <- flights %>%
   group_by(.data = flights, dest) %>% 
   summarize(.data = flights,
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) %>% 
+    delay = mean(arr_delay, na.rm = TRUE)) %>% 
   filter(.data = flights, count > 20)
 ```
 
 :::
+
+::: {.column width="50%"}
+:::
+
 ::::  
 
 ---
 
 ## Common Pipe Errors: Example 3
 
-**Task:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
-
-**What's wrong with this code?**
+#### What's wrong with this code?
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-### Invalid code
+#### Invalid code
 
 ```{r}
 #| echo: true
@@ -1091,8 +1140,7 @@ delays <- flights %>%
   group_by(.data = flights, dest) %>% 
   summarize(.data = flights,
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) %>% 
+    delay = mean(arr_delay, na.rm = TRUE)) %>% 
   filter(.data = flights, count > 20)
 ```
 
@@ -1100,7 +1148,7 @@ delays <- flights %>%
 
 ::: {.column width="50%"}
 
-### Correct code
+#### Correct code
 
 ```{r}
 #| echo: true
@@ -1110,8 +1158,7 @@ delays <- flights %>%
   group_by(dest) %>%
   summarize(
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) %>%
+    delay = mean(arr_delay, na.rm = TRUE)) %>%
   filter(count > 20)
 ```
 
@@ -1130,14 +1177,12 @@ When using pipes, only reference the data frame at the start of the chain. Do no
 
 ## Common Pipe Errors: Example 4
 
-**Task:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights. 
-
-**What's wrong with this code?**
+#### What's wrong with this code?
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-### Invalid code
+#### Invalid code
 
 ```{r}
 #| echo: true
@@ -1147,26 +1192,27 @@ delays <- flights +
   group_by(dest) +
   summarize(
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) +
+    delay = mean(arr_delay, na.rm = TRUE)) +
   filter(count > 20)
 ```
 
 :::
+
+::: {.column width="50%"}
+:::
+
 ::::  
 
 ---
 
 ## Common Pipe Errors: Example 4
 
-**Task:** Group flights by destination `dest`, calculate average delay `arr_delay`, remove destinations with fewer than 20 flights.
-
-**What's wrong with this code?**
+#### What's wrong with this code?
 
 :::: {.columns}
 ::: {.column width="50%"}
 
-### Invalid code
+#### Invalid code
 
 ```{r}
 #| echo: true
@@ -1176,8 +1222,7 @@ delays <- flights +
   group_by(dest) +
   summarize(
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) +
+    delay = mean(arr_delay, na.rm = TRUE)) +
   filter(count > 20)
 ```
 
@@ -1185,7 +1230,7 @@ delays <- flights +
 
 ::: {.column width="50%"}
 
-### Correct code
+#### Correct code
 
 ```{r}
 #| echo: true
@@ -1195,8 +1240,7 @@ delays <- flights %>%
   group_by(dest) %>%
   summarize(
     count = n(),
-    delay = mean(arr_delay, na.rm = TRUE)
-  ) %>%
+    delay = mean(arr_delay, na.rm = TRUE)) %>%
   filter(count > 20)
 ```
 

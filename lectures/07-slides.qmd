@@ -16,7 +16,46 @@ format:
     center: true
 ---
 
+<!-- maybe add tidyr to this lecture if time allows, otherwise remove from course -->
+
 ### Slides coming soon!
 
-<!-- maybe add tidyr to this lecture if time allows 
-otherwise remove from course -->
+# Agenda {.center}
+
+::: {.agenda-list}
+1. Topic  
+2. Topic 
+3. Topic  
+:::
+
+<!--
+<span style="font-size: 0.8em; color: #666;">
+*These slides were last updated on **`r format(Sys.Date(), '%B %d, %Y')`***
+</span>
+-->
+
+---
+
+# 1. Title Section {.slide .center .middle}
+
+---
+
+## Subtitles
+
+---
+
+## 💻 Practice
+
+---
+
+## Recap: What We Learned Today
+
+---
+
+## Reminders
+
+---
+
+## To print these slides as pdf
+
+Click on the icon bottom-right corner \> Tools \> PDF Export Mode \> Print as a Pdf

@@ -1895,5 +1895,180 @@
     "title": "Introduction to R: Lecture 4",
     "section": "Common Pipe Errors: Example 1",
     "text": "Common Pipe Errors: Example 1\nWhat’s wrong with this code?\n\n\nInvalid code\n\ndelays &lt;- flights %&gt;% \n  by_dest &lt;- group_by(dest) %&gt;% \n  delay &lt;- summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;% \n  d &lt;- filter(count &gt; 20)\n\n\nCorrect code\n\ndelays &lt;- flights %&gt;%\n  group_by(dest) %&gt;%\n  summarize(\n    count = n(),\n    delay = mean(arr_delay, na.rm = TRUE)) %&gt;%\n  filter(count &gt; 20)\n\n\n\n\n\n\n\n\n\nImportant\n\n\nDon’t assign anything inside a pipe. Use &lt;- only at the start, if you want to save the final result. Do not use it between steps."
+  },
+  {
+    "objectID": "lectures/09-slides.html#subtitles",
+    "href": "lectures/09-slides.html#subtitles",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Subtitles",
+    "text": "Subtitles"
+  },
+  {
+    "objectID": "lectures/09-slides.html#practice",
+    "href": "lectures/09-slides.html#practice",
+    "title": "Introduction to R: Lecture 9",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/09-slides.html#recap-what-we-learned-today",
+    "href": "lectures/09-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today"
+  },
+  {
+    "objectID": "lectures/09-slides.html#reminders",
+    "href": "lectures/09-slides.html#reminders",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Reminders",
+    "text": "Reminders"
+  },
+  {
+    "objectID": "lectures/09-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/09-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 9",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/08-slides.html#subtitles",
+    "href": "lectures/08-slides.html#subtitles",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Subtitles",
+    "text": "Subtitles"
+  },
+  {
+    "objectID": "lectures/08-slides.html#practice",
+    "href": "lectures/08-slides.html#practice",
+    "title": "Introduction to R: Lecture 8",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/08-slides.html#recap-what-we-learned-today",
+    "href": "lectures/08-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today"
+  },
+  {
+    "objectID": "lectures/08-slides.html#reminders",
+    "href": "lectures/08-slides.html#reminders",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Reminders",
+    "text": "Reminders"
+  },
+  {
+    "objectID": "lectures/08-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/08-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 8",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/07-slides.html#subtitles",
+    "href": "lectures/07-slides.html#subtitles",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Subtitles",
+    "text": "Subtitles"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice",
+    "href": "lectures/07-slides.html#practice",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/07-slides.html#recap-what-we-learned-today",
+    "href": "lectures/07-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today"
+  },
+  {
+    "objectID": "lectures/07-slides.html#reminders",
+    "href": "lectures/07-slides.html#reminders",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Reminders",
+    "text": "Reminders"
+  },
+  {
+    "objectID": "lectures/07-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/07-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 7",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/11-slides.html#subtitles",
+    "href": "lectures/11-slides.html#subtitles",
+    "title": "Introduction to R: Lecture 11",
+    "section": "Subtitles",
+    "text": "Subtitles"
+  },
+  {
+    "objectID": "lectures/11-slides.html#practice",
+    "href": "lectures/11-slides.html#practice",
+    "title": "Introduction to R: Lecture 11",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/11-slides.html#recap-what-we-learned-today",
+    "href": "lectures/11-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 11",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today"
+  },
+  {
+    "objectID": "lectures/11-slides.html#reminders",
+    "href": "lectures/11-slides.html#reminders",
+    "title": "Introduction to R: Lecture 11",
+    "section": "Reminders",
+    "text": "Reminders"
+  },
+  {
+    "objectID": "lectures/11-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/11-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 11",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/10-slides.html#subtitles",
+    "href": "lectures/10-slides.html#subtitles",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Subtitles",
+    "text": "Subtitles"
+  },
+  {
+    "objectID": "lectures/10-slides.html#practice",
+    "href": "lectures/10-slides.html#practice",
+    "title": "Introduction to R: Lecture 10",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/10-slides.html#recap-what-we-learned-today",
+    "href": "lectures/10-slides.html#recap-what-we-learned-today",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Recap: What We Learned Today",
+    "text": "Recap: What We Learned Today"
+  },
+  {
+    "objectID": "lectures/10-slides.html#reminders",
+    "href": "lectures/10-slides.html#reminders",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Reminders",
+    "text": "Reminders"
+  },
+  {
+    "objectID": "lectures/10-slides.html#to-print-these-slides-as-pdf",
+    "href": "lectures/10-slides.html#to-print-these-slides-as-pdf",
+    "title": "Introduction to R: Lecture 10",
+    "section": "To print these slides as pdf",
+    "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
   }
 ]

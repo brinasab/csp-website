@@ -16,35 +16,536 @@ format:
     center: true
 ---
 
-### Slides coming soon!
-
 # Agenda {.center}
 
 ::: {.agenda-list}
-1. Topic  
-2. Topic 
-3. Topic  
+1. Define and use factors in R 
+2. Review and expand our knowledge of `dplyr` “verbs” for data manipulation
+:::
+
+<span style="font-size: 0.8em; color: #666;">
+These slides were last updated on **`r format(Sys.Date(), '%B %d, %Y')`**
+</span>
+
+<!-- IN CLASS
+
+- HW2 make sure to accept and start it if you have not
+  - due Thursday (plus 24h penalty free)
+  - open my repo: write name, write comment, in-depth interpretation
+  - check class 5 (last class) slides and in-class materials for tips (show it again)
+  - what's the optional part?
+  - Show Zach's HW2
+
+- Our OHs: move to before class, change website
+
+- Survey today
+
+Use CSP Sum25 version. 
+Changes needed: Add more formal factor explanation (check Fall24 slides) as I cut it for CSP Sum25. Add more dplyr examples here. Do live coding but make it interactive compared to Fall24. Take the in-class exercise from lecture 4: use task 2 to teach factors and task 4 for more dplyr (For Fall25: adjust CSP Sum25 lecture 4 slides accordingly and move that part here). 
+
+-->
+
+
+# 1. Factors in R {.slide .center .middle}
+
+---
+
+## What are Factors in R?
+
+Categorical variables are variables with a fixed set of possible values.  For example, the `species` variable in the penguins dataset can only take on one of three values: "Adelie", "Chinstrap", or "Gentoo".
+
+By default, R uses character vectors to store categorical variables. But character vectors don’t preserve order. 
+
+**To fix this, R uses factors.**
+
+---
+
+## What are Factors in R?
+
+:::{.callout-note title="Character Vector vs. Factor"}
+**In R you can represent categorical variables using either:**
+
+- **Character vector (default):** Data type for storing categorical data (or general text) as plain strings. Values have no built-in order or grouping.
+
+- **Factor (preferred when order matters):** Data type for storing categorical data with defined levels. Values are treated as discrete categories, with optional ordering.
+:::
+
+
+---
+
+## Real-world examples of categorical data
+
+You often need factors in R. For example, factors allow sorting categorical variables in your desired order, such as:
+
+- Months of the year
+- Likert scales (e.g., Strongly Agree → Strongly Disagree)
+- Political parties
+- Educational attainment levels
+- Race/ethnicity categories
+- Etc.
+
+---
+
+## Why use Factors?
+
+Define a character vector with four months and sort it. Copy and paste this code in R and run it. What do you notice? 
+
+```r
+# Define
+x1 <- c("Dec", "Apr", "Jan", "Mar")
+
+# Check
+x1
+class(x1)
+
+# Sort
+sort(x1)
+```
+
+---
+
+## Why use Factors?
+
+From the previous example we observe that **by default, R sorts character vectors alphabetically!** However, alphabetical order isn’t ideal to sort months — we usually want them in chronological order. To do that in R, we need to convert them to factors.
+
+::: {.callout}
+In the following slides, we learn two common cases that you'll likely encounter:
+
+1. Converting a Character Vector to a Factor
+2. Converting a Numeric Vector to a Factor
 :::
 
 ---
 
-# 1. Title Section {.slide .center .middle}
+## 1. Converting a Character Vector to a Factor
+
+Character vectors sort alphabetically by default. To change the order, convert them to factors using `factor()` and assign the desired **levels.**
+
+```r
+# Character vector with month names
+x1 <- c("Dec", "Apr", "Jan", "Mar")
+class(x1)
+
+# Define all possibile levels in desired order
+month_levels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+# Convert to factor using those levels
+y1 <- factor(x1, levels = month_levels)
+class(y1)
+
+# Compare sorting
+sort(x1)  # Alphabetical
+sort(y1)  # Chronological (by factor levels)
+```
+
+<!--
+
+## 1. Converting a character vector to a factor
+
+### First, define all levels 
+
+Define all possible values that the variable can take. We do so, by creating a new character vector with values in the exact order we want them to be:
+
+```r
+month_levels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+# check
+month_levels
+class(month_levels)
+```
+
+### Second, convert to factor
+
+Then, we use the `factor()` function with the character vector we just created (`month_levels`) to convert the original character vector (`x1`) into a factor:
+
+```r
+y1 <- factor(x1, levels = month_levels)
+y1
+```
+
+### Test by by Sorting
+
+Sort the factor vector `y1` and the original character vector `x1` and observe the differences:
+
+```r
+sort(y1)
+sort(x1)
+```
+-->
 
 ---
 
-## Subtitles
+## 2. Converting a Numeric Vector to a Factor
+
+Sometimes categories are stored as numbers (e.g., months as 1, 2, 12, etc.). To convert them to factors using `factor()` we need to assign **both levels and labels.**
+
+```r
+# Numeric vector where values represent months
+x2 <- c(12, 4, 1, 3)
+class(x2)
+
+# Define all possibile numeric values we expect (1 = Jan, ..., 12 = Dec)
+month_levels <- 1:12
+
+# Define all labels we want to show for each value
+month_labels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec") 
+
+# Convert to factor using levels and labels
+y2 <- factor(x2, 
+            levels = month_levels,
+            labels = month_labels)
+class(y2)
+
+# Compare sorting
+sort(x2)  # Numeric
+sort(y2)  # Chronological (by factor levels)
+```
+<!-- In such cases, you want to define levels and labels separately to achieve the desired order (here from 1 to 12) and the right labels (here the names of the months, using our previously defined variable `month_levels`) -->
+
+---
+
+## Levels and Labels in Factors
+
+#### Levels  
+- Define the set of distinct categories a factor can take  
+- Use to tell R the **order** in which categories should appear  
+- Use **only `levels`** when your data is already readable  
+  (e.g., `"Jan"`, `"Feb"`, ..., `"Dec"`)
+
+#### Labels  
+- Optional names shown when the data uses codes or numbers  
+- Use to tell R **what to display** for each value  
+- Use **`labels` with `levels`** when your data uses codes  
+  (e.g., `1` = `"Jan"`)
+
+---
+
+## Levels and Labels in Factors
+
+:::{.columns}
+
+::: {.column width="50%"}
+### Character Vector
+
+**Example values**: `"Jan"`, `"May"`, `"Oct"`
+
+- Already readable by humans
+- We just want to control the order  
+- Use only **`levels`**
+
+```r
+factor(x1, levels = month_names)
+```
+
+**Example**:  
+`"May"` stays `"May"`, but will now sort correctly
+:::
+
+::: {.column width="50%"}
+### Numeric Vector
+
+**Example values**: `1`, `7`, `12`
+
+- Not already readable by humans 
+- We want to control the order and display readable labels
+- Use **`levels`** to order and **`labels`** to define what to show 
+
+```r
+factor(x2, levels = 1:12, labels = month_names)
+```
+
+**Example**:  
+`1` becomes `"Jan"`,  `2` becomes `"Feb"`, etc.
+:::
+
+:::
+
+<!--
+## Summary of Levels and Labels in Factors
+
+
+| **Type**           | **What It Represents**              | **Levels** — Store & Sort By                 | **Labels** — Display Names                    | **Example**                                              |
+|--------------------|-------------------------------------|------------------------------------------------|------------------------------------------------|----------------------------------------------------------|
+| Character Vector   | Categorical names (`"Jan"`)   | To control order (e.g., Jan, Feb, ..., Dec)   | Not needed — values are already readable       | `factor(x1, levels = month_names)`                      |
+| Numeric Vector     | Coded categories (`1`)   | To match internal codes (e.g., 1 = Jan,..., 12 = Dec) | To assign readable labels to codes (e.g., "Jan", ...) | `factor(x2, levels = 1:12, labels = month_names)`       |
+
+-->
+
+---
+
+## Common Error: Mismatched Labels and Levels
+
+Try the code below in R. What do you notice?
+
+```r
+# Numeric vector representing months
+x2 <- c(12, 4, 1, 3)
+
+# Labels to be used for display
+month_levels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+
+# This will not work as expected
+y2 <- factor(x2, labels = month_levels)
+
+# This also won't work correctly
+y2 <- factor(x2, labels = c("January", "March", "April", "December"))
+```
+
+:::{.callout-warning}
+When converting a numeric vector to a factor, the number of labels must match the number of levels exactly, or you must explicitly specify the `levels` argument.
+:::
+
+---
+
+## How to Fix It
+
+Use both `levels` and `labels` to match the expected values and display names:
+
+```r
+# Correct version: specify both levels and labels
+y2 <- factor(x2, 
+             levels = 1:12,
+             labels = month_levels)
+
+# Or use custom labels
+y2 <- factor(x2, 
+             levels = c(1, 3, 4, 12),
+             labels = c("January", "March", "April", "December"))
+```
+
+Try printing or sorting `y2` to confirm it works.
+
+---
+
+## The "forcats" Package
+
+The function `factor()` is the base R way to create and manage factors. It’s a foundational tool, and it’s important to learn how it works!
+
+But once you're comfortable with it, the `forcats` package (part of the tidyverse) offers cleaner, more powerful tools for working with categorical data.
+
+---
+
+## The "forcats" Package
+
+The `forcats` package makes it easier to work with factors in the tidyverse. Here are three useful functions from this package (for more, see the [forcats documentation](https://forcats.tidyverse.org/)):
+
+| Function         | What It Does                                       | When to Use                                      |
+|------------------|----------------------------------------------------|--------------------------------------------------|
+| `fct_relevel()`  | Manually set the order of levels                   | Similar to `factor(..., levels = ...)` in base R |
+| `fct_reorder()`  | Reorder levels based on another variable (e.g., numeric) | Great for ordering bars in `ggplot2`              |
+| `fct_infreq()`   | Reorder levels by frequency (most to least common) | Useful when showing most common categories first  |
+
+---
+
+## 💻 Practice: Plotting Tips by Weekday
+
+In this exercise, you'll learn:
+
+- to control the order of categories in bar plots using both `factor()` and `forcats` functions
+
+- to correctly use `stat = identity` with bar plots
+
+---
+
+## Load Data
+
+Copy and run the code below to create this dataset:
+
+```r
+library(tidyverse)
+
+df <- tibble(
+  week = c("Mon", "Wed", "Fri", "Wed", "Thu", "Sat", "Sat"),
+  tip = c(10, 12, 20, 8, 25, 25, 30)
+)
+
+df
+```
+
+We want to create a bar plot with `week` on the x-axis, and the sum of `tip` amounts in the y-axis (e.g., Saturday should have a bar with $55, etc.)
+
+---
+
+## What's Wrong With This Plot?
+
+Try this code. What does the height of each bar represent?
+
+```r
+ggplot(df, aes(x = week)) +
+  geom_bar()
+```
+
+<fragment>
+
+:::{.callout-warning}
+Why aren't the bars showing the actual tip amounts? 
+
+- Because by default, `geom_bar()` uses `stat = "count"` to counts row and plot them on the y-axis
+
+- To plot the actual values (not counts), use `stat = "identity"` with both a x and y
+
+:::
+
+</fragment>
+
+---
+
+## Fix the y-axis on this bar plot
+
+To fix this plot, first we have to change the default stats (from count to identity) and manually provide a x-axis and y-axis:
+
+```r
+ggplot(df, aes(x = week, y = tip)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Tips by Weekday", x = "Weekday", y = "Tip ($)")
+```
+This is much better, but we still do not have the bars nicely ordered 
+
+---
+
+## Fix the order of the bars using factor()
+
+We use base R's `factor()`  to control the order of weekdays and show tip values.
+
+Fill in the correct weekday order in the code below:
+
+<!-- Solution: 
+
+days <- c("Mon", "Wed", "Thu", "Fri", "Sat")
+df %>%
+  mutate(week = factor(week, days)) %>%   # fill in the order
+  ggplot(aes(x = week, y = tip)) +
+  geom_bar(stat = "identity")
+-->
+
+```r
+df %>%
+  mutate(week = factor(week, _____)) %>%   # fill in the order
+  ggplot(aes(x = week, y = tip)) +
+  geom_bar(stat = "identity")
+```
+
+---
+
+## Do the same but using fct_relevel()
+
+Now we make the same plot using `fct_relevel()` which changes the order of a factor by hand: <https://forcats.tidyverse.org/reference/fct_relevel.html>
+
+Fill the correct weekday order in the code below:
+
+<!--Solution:
+days <- c("Mon", "Wed", "Thu", "Fri", "Sat")
+df %>%
+  mutate(week = fct_relevel(week, days )) %>%   # your order here
+  ggplot(aes(x = week, y = tip)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Tips by Weekday", x = "Weekday", y = "Tip ($)")
+-->
+
+```r
+df %>%
+  mutate(week = fct_relevel(week, ______ )) %>%   # your order here
+  ggplot(aes(x = week, y = tip)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Tips by Weekday", x = "Weekday", y = "Tip ($)")
+```
+
+<!--
+
+Note: Leave out for CSP, bring back for CSS class. The actual code gives what I want (Sat is 55 etc) so unsure this is actually needed
+
+## Group and Summarize
+
+Now try grouping by weekday and summing the tips before plotting. Use either `factor()` or `fct_relevel()`.
+
+```r
+df %>%
+  mutate(week = factor(week, days)) %>%   # factor() or fct_relevel()
+  group_by(week) %>%
+  summarize(total_tip = sum(tip)) %>%
+  ggplot(aes(x = week, y = total_tip)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Total Tips by Weekday", x = "Weekday", y = "Total Tip ($)")
+```
+
+Add this on slides: Keep these tricks in mind for the homework assignments, especially HW3 (e.g., how to change a variable into a factor and manually pass labels for your graphs; and how to reorder a variable chronologically (here Mon to Sat) for plotting purposes)
+
+Consider putting this challenge in the practice exercises for today as well
+
+For the dplyr part: add in the Rmd file demo an example of what happens if you calculate the mean of a boolean or logical vectors (T and F), say that T are interpreted as 1 and F are 0 for R; this is useful again for HW3!  
+-->
+
+
+---
+
+## Reflection
+
+:::{.callout-tip}
+- What happens when you don’t set the factor order?
+- Which method (`factor()` or `fct_relevel()`) do you prefer and why?
+- Why is `stat = "identity"` necessary for this kind of plot?
+- Always match `levels` and `labels`
+- Tip: HW2 includes a question with an optional part that asks you to do exactly this
+:::
+
+Want more practice? Download today's in-class materials for more practice exercises on working with factors!
+
+
+# 2. Deep dive into dplyr functions for data manipulation
+
+---
+
+## Key dplyr Functions (from Lecture 4 Slides)
+
+| `function()`   | What it does                                                       |
+|----------------|---------------------------------------------------------------------|
+| `filter()`     | Selects rows based on values in one or more columns                |
+| `arrange()`    | Reorders rows based on the values in specified columns             |
+| `select()`     | Chooses specific columns by name                                   |
+| `rename()`     | Renames one or more columns                                        |
+| `mutate()`     | Adds new columns or modifies existing ones                         |
+| `group_by()`   | Groups the data by one or more variables for grouped operations    |
+| `summarize()`  | Reduces each group to a single row using summary statistics (e.g., mean, sum, n) |
+
+<br>
+
+::: {.callout-tip title="Tip for Remembering These Functions"}
+Each **row is an observation** (e.g., one penguin) and each **column is a variable** (e.g., species, body mass). Some functions works on rows like `filter()`, `arrange()` others on columns like `select()`, `mutate()`. *Think before coding!*
+:::
+
+</br>
+
+---
+
+## More Functions
+
+| `function()`    | What it does                                                                 |
+|-----------------|------------------------------------------------------------------------------|
+| `relocate()`     | Reorders columns by name (works on columns, not rows like `arrange()`)       |
+| `count()`        | Counts observations by group                                                 |
+| `n_distinct()`   | Counts the number of unique values in a column (often used with `summarize()`) |
+| `distinct()`     | Returns unique rows based on one or more columns                             |
+| `across()`       | Applies the same operation to multiple columns at once                       |
 
 ---
 
 ## 💻 Practice
 
+### We review all these verbs using the Rmd tutorial downloadable from today's in-class materials on the course website
+
 ---
 
 ## Recap: What We Learned Today
 
----
+- What factors are and how to convert character or numeric vectors to factors  
+- How to control the order of categories using `levels` and `labels`  
+- How to fix common plotting issues (e.g., bar heights and order) with `factor()` and `forcats`  
+- Reviewed and expanded `dplyr` functions for data manipulation
 
-## Reminders
+
 
 ---
 

@@ -1257,21 +1257,21 @@
     "href": "lectures/06-home.html#learning-objectives",
     "title": "Lecture 6: Factors, Intermediate dplyr",
     "section": "Learning Objectives",
-    "text": "Learning Objectives"
+    "text": "Learning Objectives\n\nUnderstand what factors are in R and how to use them effectively\nStrengthen and expand your ability to manipulate data using dplyr functions (“verbs”)"
   },
   {
     "objectID": "lectures/06-home.html#before-class",
     "href": "lectures/06-home.html#before-class",
     "title": "Lecture 6: Factors, Intermediate dplyr",
     "section": "Before Class",
-    "text": "Before Class"
+    "text": "Before Class\n\nReview the Lecture 5 materials to get ready for today’s in-class quiz\nBring your laptop to every class"
   },
   {
     "objectID": "lectures/06-home.html#readings",
     "href": "lectures/06-home.html#readings",
     "title": "Lecture 6: Factors, Intermediate dplyr",
     "section": "Readings",
-    "text": "Readings"
+    "text": "Readings\nSkim the readings before or after class to get the big picture and prep for quizzes and assignments:\n\n“Chapter 16 Factors” from “R for Data Science” 2nd Edition\n“Chapter 3 Data Transformation” from “R for Data Science” 2nd Edition (This is the same Chapter from Lecture 4)"
   },
   {
     "objectID": "lectures/07-home.html",
@@ -1656,14 +1656,14 @@
     "href": "lectures/06-slides.html#practice",
     "title": "Introduction to R: Lecture 6",
     "section": "💻 Practice",
-    "text": "💻 Practice"
+    "text": "💻 Practice\nWe review all these verbs using the Rmd tutorial downloadable from today’s in-class materials on the course website"
   },
   {
     "objectID": "lectures/06-slides.html#recap-what-we-learned-today",
     "href": "lectures/06-slides.html#recap-what-we-learned-today",
     "title": "Introduction to R: Lecture 6",
     "section": "Recap: What We Learned Today",
-    "text": "Recap: What We Learned Today"
+    "text": "Recap: What We Learned Today\n\nWhat factors are and how to convert character or numeric vectors to factors\n\nHow to control the order of categories using levels and labels\n\nHow to fix common plotting issues (e.g., bar heights and order) with factor() and forcats\n\nReviewed and expanded dplyr functions for data manipulation"
   },
   {
     "objectID": "lectures/06-slides.html#reminders",
@@ -2070,5 +2070,383 @@
     "title": "Introduction to R: Lecture 10",
     "section": "To print these slides as pdf",
     "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
+  },
+  {
+    "objectID": "lectures/06-slides.html#learning-goals",
+    "href": "lectures/06-slides.html#learning-goals",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Learning Goals",
+    "text": "Learning Goals\n\nUnderstand what factors are in R and when to use them\nConvert character or numeric vectors to factors\nReorder factor levels manually or by another variable\nUse forcats functions for factor manipulation\nVisualize factor variables correctly in plots"
+  },
+  {
+    "objectID": "lectures/06-slides.html#what-are-factors-in-r",
+    "href": "lectures/06-slides.html#what-are-factors-in-r",
+    "title": "Introduction to R: Lecture 6",
+    "section": "What are Factors in R?",
+    "text": "What are Factors in R?\nCategorical variables are variables with a fixed set of possible values. For example, the species variable in the penguins dataset can only take on one of three values: “Adelie”, “Chinstrap”, or “Gentoo”.\nBy default, R uses character vectors to store categorical variables. But character vectors don’t preserve order.\nTo fix this, R uses factors."
+  },
+  {
+    "objectID": "lectures/06-slides.html#real-world-examples-of-categorical-data",
+    "href": "lectures/06-slides.html#real-world-examples-of-categorical-data",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Real-world examples of categorical data",
+    "text": "Real-world examples of categorical data\nYou often need factors in R. For example, factors allow sorting categorical variables in your desired order, such as:\n\nMonths of the year\nLikert scales (e.g., Strongly Agree → Strongly Disagree)\nPolitical parties\nEducational attainment levels\nRace/ethnicity categories\nEtc."
+  },
+  {
+    "objectID": "lectures/06-slides.html#why-use-factors",
+    "href": "lectures/06-slides.html#why-use-factors",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Why use Factors?",
+    "text": "Why use Factors?\nDefine a character vector with four months and sort it. Copy and paste this code in R and run it. What do you notice?\n# Define\nx1 &lt;- c(\"Dec\", \"Apr\", \"Jan\", \"Mar\")\n\n# Check\nx1\nclass(x1)\n\n# Sort\nsort(x1)"
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-1-define-levels",
+    "href": "lectures/06-slides.html#step-1-define-levels",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 1: Define Levels",
+    "text": "Step 1: Define Levels"
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-2-convert-to-factor",
+    "href": "lectures/06-slides.html#step-2-convert-to-factor",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 2: Convert to Factor",
+    "text": "Step 2: Convert to Factor\n\n\n[1] Dec Apr Jan Mar\nLevels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-3-test-by-sorting",
+    "href": "lectures/06-slides.html#step-3-test-by-sorting",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 3: Test by Sorting",
+    "text": "Step 3: Test by Sorting\n\n\n[1] Jan Mar Apr Dec\nLevels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n\n\n[1] \"Apr\" \"Dec\" \"Jan\" \"Mar\"\n\n\n\n\n\n\n\n\nNote\n\n\nNow the order matches our defined month_levels, not alphabetical."
+  },
+  {
+    "objectID": "lectures/06-slides.html#working-with-numeric-categories",
+    "href": "lectures/06-slides.html#working-with-numeric-categories",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Working with numeric categories",
+    "text": "Working with numeric categories\nThese represent months but are numeric. Let’s map them to names."
+  },
+  {
+    "objectID": "lectures/06-slides.html#common-errors",
+    "href": "lectures/06-slides.html#common-errors",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Common Errors",
+    "text": "Common Errors\nRecall x2 and y2 from previous slides, then compare these codes:\n# ❌ Error: unmatched levels and labels\ny2 &lt;- factor(x2, \n            labels = month_levels) \n# ✅ Works\ny2 &lt;- factor(x2, \n             labels = c(\"January\", \"March\", \"April\", \"December\")) \n\n\n\n\n\n\nWarning\n\n\nWhen converting a numeric vector to a factor, the number of labels must match the number of levels exactly!"
+  },
+  {
+    "objectID": "lectures/06-slides.html#vector-sorting-vs-plotting",
+    "href": "lectures/06-slides.html#vector-sorting-vs-plotting",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Vector sorting vs Plotting",
+    "text": "Vector sorting vs Plotting\nSorting a vector:\nsort(y1)\nControlling bar chart order:\nggplot(..., aes(x = factor_var)) + geom_bar()\nThese are not the same!"
+  },
+  {
+    "objectID": "lectures/06-slides.html#base-r-vs-forcats",
+    "href": "lectures/06-slides.html#base-r-vs-forcats",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Base R vs forcats",
+    "text": "Base R vs forcats\n\n\n\nMethod\nControl Order?\nEasy to Use?\n\n\n\n\nfactor()\n✅ Yes\n🔶 Medium\n\n\nfct_relevel()\n✅ Yes\n✅ Easy\n\n\nfct_reorder()\n✅ Yes (by var)\n✅ Easy\n\n\nfct_infreq()\n✅ Yes (freq)\n✅ Easy"
+  },
+  {
+    "objectID": "lectures/06-slides.html#the-forcats-package",
+    "href": "lectures/06-slides.html#the-forcats-package",
+    "title": "Introduction to R: Lecture 6",
+    "section": "The “forcats” Package",
+    "text": "The “forcats” Package\nThe function factor() is the base R way to create and manage factors. It’s a foundational tool, and it’s important to learn how it works!\nBut once you’re comfortable with it, the forcats package (part of the tidyverse) offers cleaner, more powerful tools for working with categorical data."
+  },
+  {
+    "objectID": "lectures/06-slides.html#dataset-tips-by-weekday",
+    "href": "lectures/06-slides.html#dataset-tips-by-weekday",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Dataset: Tips by Weekday",
+    "text": "Dataset: Tips by Weekday\n\n\n# A tibble: 7 × 2\n  week    tip\n  &lt;chr&gt; &lt;dbl&gt;\n1 Mon      10\n2 Wed      12\n3 Fri      20\n4 Wed       8\n5 Thu      25\n6 Sat      25\n7 Sat      30"
+  },
+  {
+    "objectID": "lectures/06-slides.html#goal-plot-tips-by-weekday-in-order",
+    "href": "lectures/06-slides.html#goal-plot-tips-by-weekday-in-order",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Goal: Plot tips by weekday in order",
+    "text": "Goal: Plot tips by weekday in order\nWe want a bar chart with: - x = weekdays (ordered) - y = tip amount"
+  },
+  {
+    "objectID": "lectures/06-slides.html#method-1-fct_relevel",
+    "href": "lectures/06-slides.html#method-1-fct_relevel",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Method 1: fct_relevel()",
+    "text": "Method 1: fct_relevel()"
+  },
+  {
+    "objectID": "lectures/06-slides.html#common-misuse",
+    "href": "lectures/06-slides.html#common-misuse",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Common Misuse",
+    "text": "Common Misuse\nggplot(df, aes(x = week)) + geom_bar()      # ❌ counts, not tips\n\nggplot(df, aes(x = tip)) + geom_bar()       # ❌ wrong x-axis\n\n\n\n\n\n\nWarning\n\n\nBar heights won’t represent tip amounts unless you use stat = \"identity\""
+  },
+  {
+    "objectID": "lectures/06-slides.html#method-2-factor",
+    "href": "lectures/06-slides.html#method-2-factor",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Method 2: factor()",
+    "text": "Method 2: factor()"
+  },
+  {
+    "objectID": "lectures/06-slides.html#takeaways",
+    "href": "lectures/06-slides.html#takeaways",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Takeaways",
+    "text": "Takeaways\n\n\n\n\n\n\nTip\n\n\n\nCode might run, but may not yield meaningful output\nUse factor() when you need full manual control\nUse forcats functions for clearer, readable code\nAlways match levels and labels"
+  },
+  {
+    "objectID": "lectures/06-slides.html#practice-challenge",
+    "href": "lectures/06-slides.html#practice-challenge",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Practice Challenge 🎯",
+    "text": "Practice Challenge 🎯\nYou have survey responses on satisfaction:\nc(\"Very Unsatisfied\", \"Satisfied\", \"Neutral\", \"Very Satisfied\")\nHow would you reorder these for plotting?\n\nUse fct_relevel() or factor()\nOrder: Very Unsatisfied, Neutral, Satisfied, Very Satisfied"
+  },
+  {
+    "objectID": "lectures/06-slides.html#knowledge-check",
+    "href": "lectures/06-slides.html#knowledge-check",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Knowledge Check 🧠",
+    "text": "Knowledge Check 🧠\nWhich of the following reorders levels by another variable?\nA. factor(x)\nB. fct_reorder(x, y) ✅\nC. fct_lump(x, 3)\nD. All of the above"
+  },
+  {
+    "objectID": "lectures/06-slides.html#why-use-factors-1",
+    "href": "lectures/06-slides.html#why-use-factors-1",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Why use Factors?",
+    "text": "Why use Factors?\nFrom the previous example we observe that by default, R sorts character vectors alphabetically! However, alphabetical order isn’t ideal to sort months — we usually want them in chronological order. To do that in R, we need to convert them to factors.\n\n\n\nIn the following slides, we learn two common cases that you’ll likely encounter:\n\nConverting a Character Vector to a Factor\nConverting a Numeric Vector to a Factor"
+  },
+  {
+    "objectID": "lectures/06-slides.html#converting-a-character-vector-to-a-factor",
+    "href": "lectures/06-slides.html#converting-a-character-vector-to-a-factor",
+    "title": "Introduction to R: Lecture 6",
+    "section": "1. Converting a Character Vector to a Factor",
+    "text": "1. Converting a Character Vector to a Factor\nCharacter vectors sort alphabetically by default. To change the order, convert them to factors using factor() and assign the desired levels.\n# Character vector with month names\nx1 &lt;- c(\"Dec\", \"Apr\", \"Jan\", \"Mar\")\nclass(x1)\n\n# Define all possibile levels in desired order\nmonth_levels &lt;- c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \n                  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\")\n\n# Convert to factor using those levels\ny1 &lt;- factor(x1, levels = month_levels)\nclass(y1)\n\n# Compare sorting\nsort(x1)  # Alphabetical\nsort(y1)  # Chronological (by factor levels)"
+  },
+  {
+    "objectID": "lectures/06-slides.html#converting-a-numeric-vector-to-a-factor",
+    "href": "lectures/06-slides.html#converting-a-numeric-vector-to-a-factor",
+    "title": "Introduction to R: Lecture 6",
+    "section": "2. Converting a Numeric Vector to a Factor",
+    "text": "2. Converting a Numeric Vector to a Factor\nSometimes categories are stored as numbers (e.g., months as 1, 2, 12, etc.). To convert them to factors using factor() we need to assign both levels and labels.\n# Numeric vector where values represent months\nx2 &lt;- c(12, 4, 1, 3)\nclass(x2)\n\n# Define all possibile numeric values we expect (1 = Jan, ..., 12 = Dec)\nmonth_levels &lt;- 1:12\n\n# Define all labels we want to show for each value\nmonth_labels &lt;- c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \n                  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\") \n\n# Convert to factor using levels and labels\ny2 &lt;- factor(x2, \n            levels = month_levels,\n            labels = month_labels)\nclass(y2)\n\n# Compare sorting\nsort(x2)  # Numeric\nsort(y2)  # Chronological (by factor levels)"
+  },
+  {
+    "objectID": "lectures/06-slides.html#practice-1",
+    "href": "lectures/06-slides.html#practice-1",
+    "title": "Introduction to R: Lecture 6",
+    "section": "💻 Practice",
+    "text": "💻 Practice\nYou have survey responses on satisfaction:\nscale &lt;- c(\"Very Unsatisfied\", \"Satisfied\", \"Neutral\", \"Very Satisfied\")\n\nUse fct_relevel() or factor() to re-order these into Very Unsatisfied, Neutral, Satisfied, Very Satisfied\nPlot the original vector and the reorderd one"
+  },
+  {
+    "objectID": "lectures/06-slides.html#summary-of-levels-and-labels-in-factors",
+    "href": "lectures/06-slides.html#summary-of-levels-and-labels-in-factors",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Summary of Levels and Labels in Factors",
+    "text": "Summary of Levels and Labels in Factors\n\n\n\n\n\n\n\n\n\n\nType\nWhat It Represents\nLevels — Store & Sort By\nLabels — Display Names\nExample\n\n\n\n\nCharacter Vector\nCategorical names (e.g., \"Jan\")\nTo control order (e.g., Jan, Feb, …, Dec)\nNot needed — values are already readable\nfactor(x1, levels = month_names)\n\n\nNumeric Vector\nCoded categories (e.g., 1, 2)\nTo match internal codes (e.g., 1 = Jan,…, 12 = Dec)\nTo assign readable labels to codes (e.g., “Jan”, …)\nfactor(x2, levels = 1:12, labels = month_names)"
+  },
+  {
+    "objectID": "lectures/06-slides.html#factor-in-r-using-levels-and-labels",
+    "href": "lectures/06-slides.html#factor-in-r-using-levels-and-labels",
+    "title": "Introduction to R: Lecture 6",
+    "section": "factor() in R: Using levels and labels",
+    "text": "factor() in R: Using levels and labels\n\n\n\n\n\n\n\n\n\n\nInput Type\nWhat the Data Represents\nUse of levels — What to Store and Sort By\nUse of labels — What to Display\nExample\n\n\n\n\ncharacter vector\nCategorical names (e.g., \"Jan\")\nTo control order (e.g., Jan, Feb, …, Dec)\nNot needed — values are already readable\nfactor(x1, levels = month_names)\n\n\nnumeric vector\nCoded categories (e.g., 1, 2)\nTo match internal codes (e.g., 1 = Jan, …, 12 = Dec)\nTo assign readable labels to codes (e.g., “Jan”, …)\nfactor(x2, levels = 1:12, labels = month_names)"
+  },
+  {
+    "objectID": "lectures/06-slides.html#summary-of-levels-and-labels-in-factors-1",
+    "href": "lectures/06-slides.html#summary-of-levels-and-labels-in-factors-1",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Summary of levels and labels in factors",
+    "text": "Summary of levels and labels in factors\n\n\n\n\n\n\n\n\n\n\nInput Type\nWhat the Data Represents\nLevels — What to Store and Sort By\nLabels — What to Display\nExample\n\n\n\n\ncharacter vector\nCategorical names (e.g., \"Jan\")\nTo control order (e.g., Jan, Feb, …, Dec)\nNot needed — values are already readable\nfactor(x1, levels = month_names)\n\n\nnumeric vector\nCoded categories (e.g., 1, 2)\nTo match internal codes (e.g., 1 = Jan,…, 12 = Dec)\nTo assign readable labels to codes (e.g., “Jan”, …)\nfactor(x2, levels = 1:12, labels = month_names)"
+  },
+  {
+    "objectID": "lectures/06-slides.html#what-are-factors-in-r-1",
+    "href": "lectures/06-slides.html#what-are-factors-in-r-1",
+    "title": "Introduction to R: Lecture 6",
+    "section": "What are Factors in R?",
+    "text": "What are Factors in R?\n\n\n\n\n\n\n\nCharacter Vector vs. Factor\n\n\nIn R you can represent categorical variables using either:\n\nCharacter vector (default): Data type for storing categorical data (or general text) as plain strings. Values have no built-in order or grouping.\nFactor (preferred when order matters): Data type for storing categorical data with defined levels. Values are treated as discrete categories, with optional ordering."
+  },
+  {
+    "objectID": "lectures/06-slides.html#levels-and-labels-in-factors",
+    "href": "lectures/06-slides.html#levels-and-labels-in-factors",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Levels and Labels in Factors",
+    "text": "Levels and Labels in Factors\nLevels\n\nDefine the set of distinct categories a factor can take\n\nUse to tell R the order in which categories should appear\n\nUse only levels when your data is already readable\n(e.g., \"Jan\", \"Feb\", …, \"Dec\")\n\nLabels\n\nOptional names shown when the data uses codes or numbers\n\nUse to tell R what to display for each value\n\nUse labels with levels when your data uses codes\n(e.g., 1 = \"Jan\")"
+  },
+  {
+    "objectID": "lectures/06-slides.html#levels-and-labels-in-factors-1",
+    "href": "lectures/06-slides.html#levels-and-labels-in-factors-1",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Levels and Labels in Factors",
+    "text": "Levels and Labels in Factors\n\n\nCharacter Vector\nExample values: \"Jan\", \"May\", \"Oct\"\n\nAlready readable by humans\nWe just want to control the order\n\nUse only levels\n\nfactor(x1, levels = month_names)\nExample:\n\"May\" stays \"May\", but will now sort correctly\n\nNumeric Vector\nExample values: 1, 7, 12\n\nNot already readable by humans\nWe want to control the order and display readable labels\nUse levels to order and labels to define what to show\n\nfactor(x2, levels = 1:12, labels = month_names)\nExample:\n1 becomes \"Jan\", 2 becomes \"Feb\", etc."
+  },
+  {
+    "objectID": "lectures/06-slides.html#common-error-mismatched-labels-and-levels",
+    "href": "lectures/06-slides.html#common-error-mismatched-labels-and-levels",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Common Error: Mismatched Labels and Levels",
+    "text": "Common Error: Mismatched Labels and Levels\nTry the code below in R. What do you notice?\n# Numeric vector representing months\nx2 &lt;- c(12, 4, 1, 3)\n\n# Labels to be used for display\nmonth_levels &lt;- c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \n\n# This will not work as expected\ny2 &lt;- factor(x2, labels = month_levels)\n\n# This also won't work correctly\ny2 &lt;- factor(x2, labels = c(\"January\", \"March\", \"April\", \"December\"))\n\n\n\n\n\n\nWarning\n\n\nWhen converting a numeric vector to a factor, the number of labels must match the number of levels exactly, or you must explicitly specify the levels argument."
+  },
+  {
+    "objectID": "lectures/06-slides.html#common-error-mismatched-labels-and-levels-1",
+    "href": "lectures/06-slides.html#common-error-mismatched-labels-and-levels-1",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Common Error: Mismatched Labels and Levels",
+    "text": "Common Error: Mismatched Labels and Levels\nTry the code below in R. What do you notice?\n# Numeric vector representing months\nx2 &lt;- c(12, 4, 1, 3)\n\n# Labels to be used for display\nmonth_levels &lt;- c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \n                  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\")\n# This will not work as expected\ny2 &lt;- factor(x2, labels = month_levels)\n# This also won't work correctly\ny2 &lt;- factor(x2, labels = c(\"January\", \"March\", \"April\", \"December\"))\n\n\n\n\n\n\nWarning\n\n\nWhen converting a numeric vector to a factor, the number of labels must match the number of levels exactly, or you must explicitly specify the levels argument."
+  },
+  {
+    "objectID": "lectures/06-slides.html#how-to-fix-it",
+    "href": "lectures/06-slides.html#how-to-fix-it",
+    "title": "Introduction to R: Lecture 6",
+    "section": "How to Fix It",
+    "text": "How to Fix It\nUse both levels and labels to match the expected values and display names:\n# Correct version: specify both levels and labels\ny2 &lt;- factor(x2, \n             levels = 1:12,\n             labels = month_levels)\n\n# Or use custom labels\ny2 &lt;- factor(x2, \n             levels = c(1, 3, 4, 12),\n             labels = c(\"January\", \"March\", \"April\", \"December\"))\nTry printing or sorting y2 to confirm it works."
+  },
+  {
+    "objectID": "lectures/06-slides.html#the-forcats-package-1",
+    "href": "lectures/06-slides.html#the-forcats-package-1",
+    "title": "Introduction to R: Lecture 6",
+    "section": "The “forcats” Package",
+    "text": "The “forcats” Package\nThe forcats package makes it easier to work with factors in the tidyverse. Here are three useful functions from this package (for more, see the forcats documentation):\n\n\n\n\n\n\n\n\nFunction\nWhat It Does\nWhen to Use\n\n\n\n\nfct_relevel()\nManually set the order of levels\nSimilar to factor(..., levels = ...) in base R\n\n\nfct_reorder()\nReorder levels based on another variable (e.g., numeric)\nGreat for ordering bars in ggplot2\n\n\nfct_infreq()\nReorder levels by frequency (most to least common)\nUseful when showing most common categories first"
+  },
+  {
+    "objectID": "lectures/06-slides.html#exercise-plotting-tips-by-weekday",
+    "href": "lectures/06-slides.html#exercise-plotting-tips-by-weekday",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Exercise: Plotting Tips by Weekday",
+    "text": "Exercise: Plotting Tips by Weekday\nIn this exercise, you’ll learn how to control the order of categories using both factor() and forcats functions."
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-1-load-data",
+    "href": "lectures/06-slides.html#step-1-load-data",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 1: Load Data",
+    "text": "Step 1: Load Data\nCopy and run the code below to create the dataset:\nlibrary(tidyverse)\n\ndf &lt;- tibble(\n  week = c(\"Mon\", \"Wed\", \"Fri\", \"Wed\", \"Thu\", \"Sat\", \"Sat\"),\n  tip = c(10, 12, 20, 8, 25, 25, 30)\n)\n\ndf"
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-2-whats-wrong-with-this-plot",
+    "href": "lectures/06-slides.html#step-2-whats-wrong-with-this-plot",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 2: What’s Wrong With This Plot?",
+    "text": "Step 2: What’s Wrong With This Plot?\nTry this code. What does the height of each bar represent?\nggplot(df, aes(x = week, y = tip)) +\n  geom_bar()\nNow try this:\nggplot(df, aes(x = week)) +\n  geom_bar()\nWhat’s happening in each? Why aren’t the bars showing tip amounts?\n\n\n\n\n\n\nWarning\n\n\nTip: By default, geom_bar() counts rows. To plot actual values, use stat = \"identity\"."
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-3-fix-it-using-fct_relevel",
+    "href": "lectures/06-slides.html#step-3-fix-it-using-fct_relevel",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 3: Fix It Using fct_relevel()",
+    "text": "Step 3: Fix It Using fct_relevel()\nNow plot the data using fct_relevel() to control the order of weekdays and show tip values.\nFill in the correct weekday order in the code below:\n\ndf %&gt;%\n  mutate(week = fct_relevel(week, ______ )) %&gt;%   # your order here\n  ggplot(aes(x = week, y = tip)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Tips by Weekday\", x = \"Weekday\", y = \"Tip ($)\")"
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-4-try-it-with-factor",
+    "href": "lectures/06-slides.html#step-4-try-it-with-factor",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 4: Try It with factor()",
+    "text": "Step 4: Try It with factor()\nRecreate the same plot using base R’s factor() function instead of fct_relevel().\ndf %&gt;%\n  mutate(week = factor(week, _____)) %&gt;%   # fill in the order\n  ggplot(aes(x = week, y = tip)) +\n  geom_bar(stat = \"identity\")"
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-5-group-and-summarize",
+    "href": "lectures/06-slides.html#step-5-group-and-summarize",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 5: Group and Summarize",
+    "text": "Step 5: Group and Summarize\nNow try grouping by weekday and summing the tips before plotting. Use either factor() or fct_relevel().\ndf %&gt;%\n  mutate(week = _____) %&gt;%   # factor() or fct_relevel()\n  group_by(week) %&gt;%\n  summarize(total_tip = sum(tip)) %&gt;%\n  ggplot(aes(x = week, y = total_tip)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Total Tips by Weekday\", x = \"Weekday\", y = \"Total Tip ($)\")"
+  },
+  {
+    "objectID": "lectures/06-slides.html#reflection",
+    "href": "lectures/06-slides.html#reflection",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Reflection",
+    "text": "Reflection\n\n\n\n\n\n\nTip\n\n\n\nWhat happens when you don’t set the factor order?\nWhich method (factor() or fct_relevel()) do you prefer and why?\nWhy is stat = \"identity\" necessary for this kind of plot?\nAlways match levels and labels\nTip: HW2 includes a question with an optional part that asks you to do exactly this\n\n\n\n\nWant more practice? Download today’s in-class materials for more practice exercises on working with factors!"
+  },
+  {
+    "objectID": "lectures/06-slides.html#practice-2",
+    "href": "lectures/06-slides.html#practice-2",
+    "title": "Introduction to R: Lecture 6",
+    "section": "💻 Practice",
+    "text": "💻 Practice"
+  },
+  {
+    "objectID": "lectures/06-slides.html#practice-plotting-tips-by-weekday",
+    "href": "lectures/06-slides.html#practice-plotting-tips-by-weekday",
+    "title": "Introduction to R: Lecture 6",
+    "section": "💻 Practice: Plotting Tips by Weekday",
+    "text": "💻 Practice: Plotting Tips by Weekday\nIn this exercise, you’ll learn:\n\nto control the order of categories in bar plots using both factor() and forcats functions\nto correctly use stat = identity with bar plots"
+  },
+  {
+    "objectID": "lectures/06-slides.html#step-4-fix-it-with-factor",
+    "href": "lectures/06-slides.html#step-4-fix-it-with-factor",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Step 4: Fix It with factor()",
+    "text": "Step 4: Fix It with factor()\nRecreate the same plot using base R’s factor() function instead of fct_relevel().\nFill the correct weekday order in the code below:\n\ndf %&gt;%\n  mutate(week = factor(week, _____)) %&gt;%   # fill in the order\n  ggplot(aes(x = week, y = tip)) +\n  geom_bar(stat = \"identity\")"
+  },
+  {
+    "objectID": "lectures/06-slides.html#load-data",
+    "href": "lectures/06-slides.html#load-data",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Load Data",
+    "text": "Load Data\nCopy and run the code below to create this dataset:\nlibrary(tidyverse)\n\ndf &lt;- tibble(\n  week = c(\"Mon\", \"Wed\", \"Fri\", \"Wed\", \"Thu\", \"Sat\", \"Sat\"),\n  tip = c(10, 12, 20, 8, 25, 25, 30)\n)\n\ndf\nWe want to create a bar plot with week on the x-axis, and the sum of tip amounts in the y-axis (e.g., Saturday should have a bar with $55, etc.)"
+  },
+  {
+    "objectID": "lectures/06-slides.html#whats-wrong-with-this-plot",
+    "href": "lectures/06-slides.html#whats-wrong-with-this-plot",
+    "title": "Introduction to R: Lecture 6",
+    "section": "What’s Wrong With This Plot?",
+    "text": "What’s Wrong With This Plot?\nTry this code. What does the height of each bar represent?\nggplot(df, aes(x = week)) +\n  geom_bar()\n\n\n\n\n\n\n\nWarning\n\n\nWhy aren’t the bars showing the actual tip amounts?\n\nBecause by default, geom_bar() uses stat = \"count\" to counts row and plot them on the y-axis\nTo plot the actual values (not counts), use stat = \"identity\" with both a x and y"
+  },
+  {
+    "objectID": "lectures/06-slides.html#fix-the-y-axis-on-this-bar-plot",
+    "href": "lectures/06-slides.html#fix-the-y-axis-on-this-bar-plot",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Fix the y-axis on this bar plot",
+    "text": "Fix the y-axis on this bar plot\nTo fix this plot, first we have to change the default stats (from count to identity) and manually provide a x-axis and y-axis:\nggplot(df, aes(x = week, y = tip)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Tips by Weekday\", x = \"Weekday\", y = \"Tip ($)\")\nThis is much better, but we still do not have the bars nicely ordered"
+  },
+  {
+    "objectID": "lectures/06-slides.html#fix-the-order-of-the-bars-using-factor",
+    "href": "lectures/06-slides.html#fix-the-order-of-the-bars-using-factor",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Fix the order of the bars using factor()",
+    "text": "Fix the order of the bars using factor()\nWe use base R’s factor() to control the order of weekdays and show tip values.\nFill in the correct weekday order in the code below:\n\ndf %&gt;%\n  mutate(week = factor(week, _____)) %&gt;%   # fill in the order\n  ggplot(aes(x = week, y = tip)) +\n  geom_bar(stat = \"identity\")"
+  },
+  {
+    "objectID": "lectures/06-slides.html#do-the-same-but-using-fct_relevel",
+    "href": "lectures/06-slides.html#do-the-same-but-using-fct_relevel",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Do the same but using fct_relevel()",
+    "text": "Do the same but using fct_relevel()\nNow we make the same plot using fct_relevel() which changes the order of a factor by hand: https://forcats.tidyverse.org/reference/fct_relevel.html\nFill the correct weekday order in the code below:\n\ndf %&gt;%\n  mutate(week = fct_relevel(week, ______ )) %&gt;%   # your order here\n  ggplot(aes(x = week, y = tip)) +\n  geom_bar(stat = \"identity\") +\n  labs(title = \"Tips by Weekday\", x = \"Weekday\", y = \"Tip ($)\")"
+  },
+  {
+    "objectID": "lectures/06-slides.html#key-dplyr-functions-from-lecture-4-slides",
+    "href": "lectures/06-slides.html#key-dplyr-functions-from-lecture-4-slides",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Key dplyr Functions (from Lecture 4 Slides)",
+    "text": "Key dplyr Functions (from Lecture 4 Slides)\n\n\n\n\n\n\n\nfunction()\nWhat it does\n\n\n\n\nfilter()\nSelects rows based on values in one or more columns\n\n\narrange()\nReorders rows based on the values in specified columns\n\n\nselect()\nChooses specific columns by name\n\n\nrename()\nRenames one or more columns\n\n\nmutate()\nAdds new columns or modifies existing ones\n\n\ngroup_by()\nGroups the data by one or more variables for grouped operations\n\n\nsummarize()\nReduces each group to a single row using summary statistics (e.g., mean, sum, n)\n\n\n\n\n\n\n\n\n\n\n\nTip for Remembering These Functions\n\n\nEach row is an observation (e.g., one penguin) and each column is a variable (e.g., species, body mass). Some functions works on rows like filter(), arrange() others on columns like select(), mutate(). Think before coding!"
+  },
+  {
+    "objectID": "lectures/06-slides.html#some-more",
+    "href": "lectures/06-slides.html#some-more",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Some more…",
+    "text": "Some more…\n\n\n\n\n\n\n\nfunction()\nWhat it does\n\n\n\n\nrelocate()\nReorders columns by name (works on columns, not rows like arrange())\n\n\ncount()\nCounts observations by group\n\n\nn_distinct()\nCounts the number of unique values in a column (often used with summarize())\n\n\ndistinct()\nReturns unique rows based on one or more columns\n\n\nacross()\nApplies the same operation to multiple columns at once"
+  },
+  {
+    "objectID": "lectures/06-slides.html#lets-dive-in",
+    "href": "lectures/06-slides.html#lets-dive-in",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Let’s dive in!",
+    "text": "Let’s dive in!\nWe review all these verbs using more-dplyr.Rmd downloadable from today’s in-class materials on the course website"
+  },
+  {
+    "objectID": "lectures/06-slides.html#some-more-functions",
+    "href": "lectures/06-slides.html#some-more-functions",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Some more Functions…",
+    "text": "Some more Functions…\n\n\n\n\n\n\n\nfunction()\nWhat it does\n\n\n\n\nrelocate()\nReorders columns by name (works on columns, not rows like arrange())\n\n\ncount()\nCounts observations by group\n\n\nn_distinct()\nCounts the number of unique values in a column (often used with summarize())\n\n\ndistinct()\nReturns unique rows based on one or more columns\n\n\nacross()\nApplies the same operation to multiple columns at once"
+  },
+  {
+    "objectID": "lectures/06-slides.html#more-functions",
+    "href": "lectures/06-slides.html#more-functions",
+    "title": "Introduction to R: Lecture 6",
+    "section": "More Functions",
+    "text": "More Functions\n\n\n\n\n\n\n\nfunction()\nWhat it does\n\n\n\n\nrelocate()\nReorders columns by name (works on columns, not rows like arrange())\n\n\ncount()\nCounts observations by group\n\n\nn_distinct()\nCounts the number of unique values in a column (often used with summarize())\n\n\ndistinct()\nReturns unique rows based on one or more columns\n\n\nacross()\nApplies the same operation to multiple columns at once"
   }
 ]

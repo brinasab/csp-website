@@ -22,8 +22,19 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Learning Objectives
 
+- Understand what factors are in R and how to use them effectively
+- Strengthen and expand your ability to manipulate data using `dplyr` functions (“verbs”)
+
 
 ## Before Class
 
+- Review the Lecture 5 materials to get ready for today's in-class quiz
+- Bring your laptop to every class
+
 
 ## Readings
+
+Skim the readings before or after class to get the big picture and prep for quizzes and assignments:
+
+- ["Chapter 16 Factors"](https://r4ds.hadley.nz/factors) from "R for Data Science" 2nd Edition
+- ["Chapter 3 Data Transformation"](https://r4ds.hadley.nz/data-transform) from "R for Data Science" 2nd Edition *(This is the same Chapter from Lecture 4)*

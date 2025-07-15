@@ -2286,7 +2286,7 @@
     "href": "lectures/06-slides.html#common-error-mismatched-labels-and-levels",
     "title": "Introduction to R: Lecture 6",
     "section": "Common Error: Mismatched Labels and Levels",
-    "text": "Common Error: Mismatched Labels and Levels\nTry the code below in R. What do you notice?\n# Numeric vector representing months\nx2 &lt;- c(12, 4, 1, 3)\n\n# Labels to be used for display\nmonth_levels &lt;- c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \n\n# This will not work as expected\ny2 &lt;- factor(x2, labels = month_levels)\n\n# This also won't work correctly\ny2 &lt;- factor(x2, labels = c(\"January\", \"March\", \"April\", \"December\"))\n\n\n\n\n\n\nWarning\n\n\nWhen converting a numeric vector to a factor, the number of labels must match the number of levels exactly, or you must explicitly specify the levels argument."
+    "text": "Common Error: Mismatched Labels and Levels\nTry the code below in R. What do you notice?\n# Numeric vector representing months\nx2 &lt;- c(12, 4, 1, 3)\n\n# Labels to be used for display\nmonth_levels &lt;- c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\")\n\n# This will not work as expected\ny2 &lt;- factor(x2, labels = month_levels)\n\n# This also won't work correctly\ny2 &lt;- factor(x2, labels = c(\"January\", \"March\", \"April\", \"December\"))\n\n\n\n\n\n\nWarning\n\n\nWhen converting a numeric vector to a factor, the number of labels must match the number of levels exactly, or you must explicitly specify the levels argument."
   },
   {
     "objectID": "lectures/06-slides.html#common-error-mismatched-labels-and-levels-1",

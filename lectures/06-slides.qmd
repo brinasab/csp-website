@@ -285,7 +285,7 @@ Try the code below in R. What do you notice?
 x2 <- c(12, 4, 1, 3)
 
 # Labels to be used for display
-month_levels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+month_levels <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun")
 
 # This will not work as expected
 y2 <- factor(x2, labels = month_levels)

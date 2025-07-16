@@ -403,7 +403,7 @@
     "href": "lectures/06-slides.html#reflections",
     "title": "Introduction to R: Lecture 6",
     "section": "Reflections",
-    "text": "Reflections\n\n\n\n\n\n\nTip\n\n\n\nWhat happens when you don’t set the factor order?\nWhich method (factor() or fct_relevel()) do you prefer and why? Check the forcats package for more\nWhy is stat = \"identity\" necessary for this kind of plot?\nAlways match the number of provided levels and labels inside `factor()``\nTip: HW2 includes a question with an optional part that asks you to do exactly this (see also Lecture 5 in-class materials for further help on this)\n\n\n\n\nWant more practice? Download today’s in-class materials for more practice exercises on working with factors!"
+    "text": "Reflections\n\n\n\n\n\n\nTip\n\n\n\nWhat happens when you don’t set the factor order?\nWhich method (factor() or fct_relevel()) do you prefer and why? Check the forcats package documentation for more functions, especially fct_reorder() which is straightforward to use\nWhy is stat = \"identity\" necessary for this kind of plot?\nAlways match the number of provided levels and labels inside `factor()``\nTip: HW2 includes a question with an optional part that asks you to do exactly this (see also Lecture 5 in-class materials for further help on this)\n\n\n\n\nWant more practice? Download today’s in-class materials for more practice exercises on working with factors!"
   },
   {
     "objectID": "lectures/06-slides.html#key-dplyr-functions-from-lecture-4-slides",

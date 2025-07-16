@@ -515,13 +515,21 @@ df %>%
 **Q: Why doesn’t `days` include all 7 days of the week?** We could include all possible levels, and it's good practice for consistency when using `factor()`. But other functions, like `fct_relevel()`, may not add missing levels if those values aren’t present in the input data.
 :::
 
+<!--
+Note the c() is the standard way of creating a vector 
+but fct_relevel() accepts multiple strings directly via ..., so you can skip c() and write directly fct_relevel(week, "Mon", "Wed", "Thu", "Fri", "Sat"_
+Both versions are valid
+
+FOR CSS CLASS: add one example with fct_reorder() as it is the most straightforward application
+-->
+
 ---
 
 ## Reflections
 
 :::{.callout-tip}
 - What happens when you don’t set the factor order?
-- Which method (`factor()` or `fct_relevel()`) do you prefer and why? Check the `forcats` package for more
+- Which method (`factor()` or `fct_relevel()`) do you prefer and why? Check the `forcats` package documentation for more functions, especially `fct_reorder()` which is straightforward to use
 - Why is `stat = "identity"` necessary for this kind of plot?
 - Always match the number of provided `levels` and `labels` inside `factor()``
 - Tip: HW2 includes a question with an optional part that asks you to do exactly this (see also Lecture 5 in-class materials for further help on this)

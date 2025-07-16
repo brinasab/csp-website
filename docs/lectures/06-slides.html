@@ -670,6 +670,13 @@ For the dplyr part: add in the Rmd file demo an example of what happens if you c
 </div>
 </div>
 </div>
+<!--
+Note the c() is the standard way of creating a vector 
+but fct_relevel() accepts multiple strings directly via ..., so you can skip c() and write directly fct_relevel(week, "Mon", "Wed", "Thu", "Fri", "Sat"_
+Both versions are valid
+
+FOR CSS CLASS: add one example with fct_reorder() as it is the most straightforward application
+-->
 </section>
 <section id="reflections" class="slide level2 center">
 <h2>Reflections</h2>
@@ -684,7 +691,7 @@ For the dplyr part: add in the Rmd file demo an example of what happens if you c
 <div class="callout-content">
 <ul>
 <li>What happens when you don’t set the factor order?</li>
-<li>Which method (<code>factor()</code> or <code>fct_relevel()</code>) do you prefer and why? Check the <code>forcats</code> package for more</li>
+<li>Which method (<code>factor()</code> or <code>fct_relevel()</code>) do you prefer and why? Check the <code>forcats</code> package documentation for more functions, especially <code>fct_reorder()</code> which is straightforward to use</li>
 <li>Why is <code>stat = "identity"</code> necessary for this kind of plot?</li>
 <li>Always match the number of provided <code>levels</code> and <code>labels</code> inside `factor()``</li>
 <li>Tip: HW2 includes a question with an optional part that asks you to do exactly this (see also Lecture 5 in-class materials for further help on this)</li>

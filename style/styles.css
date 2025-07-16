@@ -14,7 +14,7 @@
    Base Font Size + Code Font Size (Slides)
 -------------------------------------------- */
 .reveal {
-  font-size: 1.4rem; /* Previously 3.6rem, now more reasonable */
+  font-size: 1.3rem; /* Previously 3.6rem, now more reasonable */
 }
 
 .reveal code,
@@ -54,7 +54,7 @@
 
 .reveal p,
 .reveal li {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }

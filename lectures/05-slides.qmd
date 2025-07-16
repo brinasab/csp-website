@@ -16,7 +16,7 @@ format:
     center: true
 ---
 
-## Agenda {.center}
+# Agenda {.center}
 
 ::: {.agenda-list}
 1. The `scorecard` Dataset  
@@ -24,9 +24,10 @@ format:
 3. Practice  
 :::
 
-<span style="font-size: 0.8em; color: #666;">
-*These slides were last updated on **`r format(Sys.Date(), '%B %d, %Y')`***
-</span>
+```{r, echo=FALSE, results='asis'}
+cat('<span style="font-size: 0.8em; color: #666;">These slides were last updated on', format(Sys.Date(), '%B %d, %Y'), '</span>')
+```
+
 
 ---
 

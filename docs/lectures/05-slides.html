@@ -208,8 +208,9 @@ Sabrina Nardin, Summer 2025
 </div>
 
 </section>
-<section id="agenda" class="slide level2 center">
-<h2>Agenda</h2>
+<section>
+<section id="agenda" class="title-slide slide level1 center">
+<h1>Agenda</h1>
 <div class="agenda-list">
 <ol type="1">
 <li>The <code>scorecard</code> Dataset<br>
@@ -220,7 +221,7 @@ Sabrina Nardin, Summer 2025
 </li>
 </ol>
 </div>
-<p><span style="font-size: 0.8em; color: #666;"> <em>These slides were last updated on <strong>July 14, 2025</strong></em> </span></p>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 16, 2025 </span></p>
 </section>
 <section id="our-goals-today" class="slide level2 center">
 <h2>Our Goals Today</h2>
@@ -230,7 +231,7 @@ Sabrina Nardin, Summer 2025
 <li><p><strong>Match graph type to variable type:</strong> Choose appropriate graph types depending on whether variables are categorical (e.g., school <code>type</code>), continuous (e.g., <code>cost</code>), or both.</p></li>
 <li><p><strong>Interpret the graph:</strong> Practice describing what a graph reveals — such as trends, group differences, and outliers.</p></li>
 </ul>
-</section>
+</section></section>
 <section>
 <section id="the-scorecard-dataset" class="title-slide slide level1 center middle">
 <h1>1. The scorecard Dataset</h1>
@@ -293,7 +294,7 @@ $ locale    &lt;fct&gt; City, City, City, City, City, City, City, City, City, Su
 <span id="cb3-3"><a></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
 <span id="cb3-4"><a></a>  <span class="fu">facet_wrap</span>(<span class="at">facets =</span> <span class="fu">vars</span>(type))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<img data-src="05-slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"><h4 id="whats-a-histogram"><a href="https://datatab.net/tutorial/charts" target="_blank">What’s a histogram?</a></h4>
+<img data-src="05-slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"><h4 id="whats-a-histogram"><a href="https://datatab.net/tutorial/charts" target="_blank">What’s a histogram?</a></h4>
 </section>
 <section class="slide level2 center">
 
@@ -302,7 +303,7 @@ $ locale    &lt;fct&gt; City, City, City, City, City, City, City, City, City, Su
 <span id="cb4-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> scorecard, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> type, <span class="at">y =</span> satavg)) <span class="sc">+</span></span>
 <span id="cb4-3"><a></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<img data-src="05-slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"><h4 id="whats-a-boxplot"><a href="https://datatab.net/tutorial/box-plot" target="_blank">What’s a boxplot?</a></h4>
+<img data-src="05-slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"><h4 id="whats-a-boxplot"><a href="https://datatab.net/tutorial/box-plot" target="_blank">What’s a boxplot?</a></h4>
 </section>
 <section id="the-scorecard-dataset-interpreting-a-plot" class="slide level2 center">
 <h2>The scorecard dataset: interpreting a plot</h2>

@@ -242,7 +242,7 @@
     "href": "lectures/07-slides.html#recap-what-we-learned-today",
     "title": "Introduction to R: Lecture 7",
     "section": "Recap: What We Learned Today",
-    "text": "Recap: What We Learned Today"
+    "text": "Recap: What We Learned Today\n\nHow to rename variables using rename()\nHow to recode values inside a variable using recode() and case_when()\nThe difference between syntactic and non-syntactic variable names, and how to handle them\nHow to detect, ignore, or drop missing values using:\n\nis.na() to detect\nna.rm = TRUE to ignore\ndrop_na() to remove"
   },
   {
     "objectID": "lectures/07-slides.html#reminders",
@@ -1780,37 +1780,37 @@
   {
     "objectID": "lectures/07-home.html",
     "href": "lectures/07-home.html",
-    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "title": "Lecture 7: Data Cleaning",
     "section": "",
-    "text": "Date: July 17, 2025\nTopics: Data Cleaning and Wrangling, Importing/Exporting Data\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/cleaning\")"
+    "text": "Date: July 17, 2025\nTopics: Data Cleaning and Wrangling\nSlides: View Slides\nCode: No in-class code to download"
   },
   {
     "objectID": "lectures/07-home.html#info-and-materials",
     "href": "lectures/07-home.html#info-and-materials",
-    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "title": "Lecture 7: Data Cleaning",
     "section": "",
-    "text": "Date: July 17, 2025\nTopics: Data Cleaning and Wrangling, Importing/Exporting Data\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/cleaning\")"
+    "text": "Date: July 17, 2025\nTopics: Data Cleaning and Wrangling\nSlides: View Slides\nCode: No in-class code to download"
   },
   {
     "objectID": "lectures/07-home.html#learning-objectives",
     "href": "lectures/07-home.html#learning-objectives",
-    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "title": "Lecture 7: Data Cleaning",
     "section": "Learning Objectives",
-    "text": "Learning Objectives"
+    "text": "Learning Objectives\n\nRename and recode variables using rename(), recode(), and case_when()\nIdentify syntactic vs. non-syntactic variable names and handle them correctly\nDetect, handle, and clean explicit missing data using common tools"
   },
   {
     "objectID": "lectures/07-home.html#before-class",
     "href": "lectures/07-home.html#before-class",
-    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "title": "Lecture 7: Data Cleaning",
     "section": "Before Class",
-    "text": "Before Class"
+    "text": "Before Class\n\nReview Lecture 6 materials to get ready for today’s in-class quiz\nBring your laptop to every class"
   },
   {
     "objectID": "lectures/07-home.html#readings",
     "href": "lectures/07-home.html#readings",
-    "title": "Lecture 7: Data Cleaning, Importing/Exporting Data",
+    "title": "Lecture 7: Data Cleaning",
     "section": "Readings",
-    "text": "Readings"
+    "text": "Readings\nNo readings."
   },
   {
     "objectID": "lectures/08-home.html",
@@ -1957,7 +1957,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Each lecture page contains materials, slides, and relevant assignments or readings. For an overview, see the Course Schedule.\n\nLecture 1\nCourse Logistics, R, Markdown June 24, 2025\n\n\n\nLecture 2\nGit & GitHub June 26, 2025\n\n\n\nLecture 3\nIntro to ggplot2, Coding Style July 1, 2025\n\n\n\nNo Lecture\nJuly 3, 2025\n\n\n\nLecture 4\nIntro to dplyr, Pipes July 8, 2025\n\n\n\nLecture 5\nData Analysis and Graphs July 10, 2025\n\n\n\nLecture 6\nFactors, Intermediate dplyr July 15, 2025\n\n\n\nLecture 7\nData Cleaning, Importing/Exporting Data July 17, 2025\n\n\n\nLecture 8\nData Structures, Base R July 22, 2025\n\n\n\nLecture 9\nControl Flow 1 July 24, 2025\n\n\n\nLecture 10\nControl Flow 2 July 29, 2025\n\n\n\nLecture 11\nFunctions July 31, 2025"
+    "text": "Each lecture page contains materials, slides, and relevant assignments or readings. For an overview, see the Course Schedule.\n\nLecture 1\nCourse Logistics, R, Markdown June 24, 2025\n\n\n\nLecture 2\nGit & GitHub June 26, 2025\n\n\n\nLecture 3\nIntro to ggplot2, Coding Style July 1, 2025\n\n\n\nNo Lecture\nJuly 3, 2025\n\n\n\nLecture 4\nIntro to dplyr, Pipes July 8, 2025\n\n\n\nLecture 5\nData Analysis and Graphs July 10, 2025\n\n\n\nLecture 6\nFactors, Intermediate dplyr July 15, 2025\n\n\n\nLecture 7\nData Cleaning July 17, 2025\n\n\n\nLecture 8\nData Structures, Base R July 22, 2025\n\n\n\nLecture 9\nControl Flow 1 July 24, 2025\n\n\n\nLecture 10\nControl Flow 2 July 29, 2025\n\n\n\nLecture 11\nFunctions July 31, 2025"
   },
   {
     "objectID": "setup/setup-test.html",
@@ -2084,5 +2084,264 @@
     "title": "Introduction to R: Lecture 6",
     "section": "Common Error: Mismatched Labels and Levels",
     "text": "Common Error: Mismatched Labels and Levels\nTry the code below in R. What do you notice?\n# Numeric vector representing months\nx2 &lt;- c(12, 4, 1, 3)\nclass(x2)\n\n# Attempt 1\ny2 &lt;- factor(x2, labels = c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\"))\n\n# Attempt 2\ny2 &lt;- factor(x2, levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), \n                 labels = c(\"Jan\",\"Mar\", \"Apr\", \"Dec\"))\n\n# Attempt 3\ny2 &lt;- factor(x2, levels = c(1, 2, 3, 4),\n                 labels = c(\"Jan\", \"Mar\", \"Apr\", \"Dec\"))"
+  },
+  {
+    "objectID": "lectures/07-slides.html#we-work-with-the-penguins-raw-data",
+    "href": "lectures/07-slides.html#we-work-with-the-penguins-raw-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "We work with the Penguins (raw) Data!",
+    "text": "We work with the Penguins (raw) Data!\n# Load libraries and data\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# Explore data\nhead(penguins_raw)\ntail(penguins_raw)\nrbind(head(penguins_raw, 3), tail(penguins_raw, 3))"
+  },
+  {
+    "objectID": "lectures/07-slides.html#definitions",
+    "href": "lectures/07-slides.html#definitions",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Definitions",
+    "text": "Definitions\nRenaming: change variable names (column names)\nRecoding: change values/levels of categorical variables (column values; e.g., inside a column)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#renaming-variables-with-rename",
+    "href": "lectures/07-slides.html#renaming-variables-with-rename",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Renaming Variables with rename",
+    "text": "Renaming Variables with rename\nTo change variable names (column names) the most common method is rename()\nChange the name of the variable studyName to study_name:\n# check before renaming\nstr(penguins_raw)\npenguins_raw %&gt;% select(studyName)\n\n# rename\npenguins_raw %&gt;% rename(study_name = studyName)   # new = old\n\n# remember to save to keep changes\np &lt;- penguins_raw %&gt;% rename(study_name = studyName)\np %&gt;% select(study_name)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-renaming-variables",
+    "href": "lectures/07-slides.html#practice-renaming-variables",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice Renaming Variables",
+    "text": "💻 Practice Renaming Variables\n\nUse select() to check the variable Comments in penguins_raw\nUse rename() to rename Comments to notes\nSave the result to a new object\nUse select() to check your result\n\nOnce done, copy your code here to share it."
+  },
+  {
+    "objectID": "lectures/07-slides.html#recoding-variables",
+    "href": "lectures/07-slides.html#recoding-variables",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recoding Variables",
+    "text": "Recoding Variables\nMethod 1: mutate() + recode()\nFor example, rename the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0):\n# check before recoding\npenguins_raw %&gt;% count(Sex)\n\n# mutate + recode\np &lt;- penguins_raw %&gt;% \n     mutate(sex = recode(Sex, MALE = 1, FEMALE = 0))\n\n# compare\npenguins_raw %&gt;% count(Sex)\np %&gt;% count(Sex)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#recoding-variables-1",
+    "href": "lectures/07-slides.html#recoding-variables-1",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recoding Variables",
+    "text": "Recoding Variables\nMethod 2: mutate() + case_when()\nLike before, we rename the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0):\n# mutate + case_when\npenguins_raw %&gt;%\n  mutate(Sex = case_when(\n    Sex == \"MALE\" ~ 1,\n    Sex == \"FEMALE\" ~ 0,\n    TRUE ~ NA_real_       # preserves missing values as numeric!\n  ))\n  \n# also here to keep the changes save results in a new object and compare (see previous code)\nNote with case_when() we need to use logical conditions and ~ operator The condition ~ value pair is like “if → then”"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-recoding-variables",
+    "href": "lectures/07-slides.html#practice-recoding-variables",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice Recoding Variables",
+    "text": "💻 Practice Recoding Variables\n\nUse count() to check the variable Species in penguins_raw\nPick method 1 or method 2 to recode the values of that variable into Adelie, Chinstrap, Gentoo\nSave the result to a new object\nUse count() to verify both results\n\nOnce done, copy your code here to share it."
+  },
+  {
+    "objectID": "lectures/07-slides.html#recap",
+    "href": "lectures/07-slides.html#recap",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recap",
+    "text": "Recap\nrename()\n\nSpecific use: change column names\n\nIt changes the column’s name, but leaves the column’s values unchanged\n\nmutate()\n\nMany uses: create new columns or modify existing columns values\n\nIt changes the column’s values, potentially can also rename the column\n\n\n\n\n\n\n\nNote\n\n\nFor recoding, we use mutate() because our first goal is changing the column’s values. We learned two methods:\n\nMethod 1: mutate(Sex = recode(Sex, \"MALE\" = 1, \"FEMALE\" = 0))\n\nMethod 2: mutate(Sex = case_when(sex == \"MALE\" ~ 1, sex == \"FEMALE\" ~ 0))"
+  },
+  {
+    "objectID": "lectures/07-slides.html#recap-1",
+    "href": "lectures/07-slides.html#recap-1",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recap",
+    "text": "Recap\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nBasic Syntax\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old_value\" = new_value)\nUse quotes for variable values if they are character\n\n\ncase_when()\nColumn values (with logic)\ncase_when(variable == \"old_value\" ~ new_value)\nUse quotes for variable values if they are character"
+  },
+  {
+    "objectID": "lectures/07-slides.html#syntactic-variable-names",
+    "href": "lectures/07-slides.html#syntactic-variable-names",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Syntactic Variable Names",
+    "text": "Syntactic Variable Names\nSyntactic Variable Names are names that R considers valid.\nValid name follow these rules: - Letters, numbers, ., and _ (all the rest is invalid) - Cannot start with a number or symbol\nExamples of syntactic or valid variable names:\nflipper_length_mm\nflipper.length.mm\nflipper.length_mm    # poor coding style but valid name\nFlipperLengthMm      # poor coding style but valid name"
+  },
+  {
+    "objectID": "lectures/07-slides.html#non-syntactic-variable-names",
+    "href": "lectures/07-slides.html#non-syntactic-variable-names",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Non-syntactic Variable Names",
+    "text": "Non-syntactic Variable Names\nNon-syntactic Variable Names are names that R considers invalid.\nInvalid names: - Contain spaces or symbols - Start with numbers or symbols - Use reserved words such as TRUE, NULL, if, or function names (see the complete list by typing ?Reserved in your Console)\nExamples of non-syntactic or invalid variable names:\nFlipper Length (mm)\nflipper_ length_mm\nflipper-length-mm\n_flippr_length_mm"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-syntactic-and-non-syntactic-names",
+    "href": "lectures/07-slides.html#practice-syntactic-and-non-syntactic-names",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice: Syntactic and Non-Syntactic Names",
+    "text": "💻 Practice: Syntactic and Non-Syntactic Names\nWhich of the following are valid names?\n\n3_religion\n#3_religion\nq3_religion\nq3.religion\nq3-religion\nq3 religion\nTRUE\n\n\n\n\n\n\n\nTip\n\n\nFor best coding style, use snake_case for all your variables names and keep them to three words maximum. Example: q3_religion"
+  },
+  {
+    "objectID": "lectures/07-slides.html#how-to-use-non-syntactic-names-and-why-this-matters",
+    "href": "lectures/07-slides.html#how-to-use-non-syntactic-names-and-why-this-matters",
+    "title": "Introduction to R: Lecture 7",
+    "section": "How to Use Non-syntactic Names and Why this Matters",
+    "text": "How to Use Non-syntactic Names and Why this Matters\nDo not deliberately create non-syntactic names, BUT you will encounter non-syntactic names more frequently than you might think (for example when you use data not built in R). If you do not know how to handle them, you will run into errors.\nTo handle non-syntactic names:\n\nrefer to them using backticks\nrename them as soon as possible"
+  },
+  {
+    "objectID": "lectures/07-slides.html#working-with-non-syntactic-names-in-practice",
+    "href": "lectures/07-slides.html#working-with-non-syntactic-names-in-practice",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Working with Non-syntactic Names in Practice",
+    "text": "Working with Non-syntactic Names in Practice\nImagine you are working on political ideology by country, assembled by someone else. The data are in Excel and when you imported them in R they look like this:\ndf &lt;- tibble(country = c(\"Italy\", \"Germany\", \"France\", \"Italy\", \"United States\"),\n                  `4 ideology` = c(\"communism\", \"fascism\", \"anarchism\", \"fascism\", \"capitalism\"))\n\nTo use the non-syntactic variable name without changing it and without errors, you must use backticks:\nselect(df, `4 ideology`)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-non-syntactic-names",
+    "href": "lectures/07-slides.html#practice-non-syntactic-names",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice: Non-syntactic Names",
+    "text": "💻 Practice: Non-syntactic Names\nTry this in R:\n\nUse select() to select the variable without backticks: what happens?\nUse rename() to rename the variable to a syntactic name (e.g., a valid name)\n\nSee also the penguins_raw datasets for other examples with:\nglimpse(penguins_raw)\nselect(penguins_raw, `Flipper Length (mm)`)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#recoding-variables-method-1-with-mutate-recode",
+    "href": "lectures/07-slides.html#recoding-variables-method-1-with-mutate-recode",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recoding Variables Method 1: with mutate + recode",
+    "text": "Recoding Variables Method 1: with mutate + recode\nTo change variable values (usually levels of categorical variables), we learn two methods.\nChange the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0) with method 1:\n# check before recoding\npenguins_raw %&gt;% count(Sex)\n\n# mutate + recode\np &lt;- penguins_raw %&gt;%\n  mutate(sex = recode(Sex, \"MALE\" = 1, \"FEMALE\" = 0))\n\n# compare\npenguins_raw %&gt;% count(Sex)\np %&gt;% count(Sex)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#recoding-variables-method-2-with-mutate-case_when",
+    "href": "lectures/07-slides.html#recoding-variables-method-2-with-mutate-case_when",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recoding Variables Method 2: with mutate + case_when",
+    "text": "Recoding Variables Method 2: with mutate + case_when\nChange the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0) with method 2:\n# mutate + case_when\npenguins_raw %&gt;%\n  mutate(Sex = case_when(Sex == \"MALE\" ~ 1,\n                         Sex == \"FEMALE\" ~ 0,\n                         TRUE ~ NA_real_))\n  \n# like for method 1 (previous code) save results to keep changes and compare\n\n\n\n\n\n\nNote\n\n\nWith case_when() each logical condition ~ value pair acts like if → then:\n\nfor each row, R looks if the condition is TRUE: “If you find the value MALE in Sex, then convert it to 1”\nTRUE ~ NA_real_ tells R: “If no previous condition was met, then return NA as as a number”"
+  },
+  {
+    "objectID": "lectures/07-slides.html#recap-2",
+    "href": "lectures/07-slides.html#recap-2",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recap",
+    "text": "Recap\n\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nBasic Syntax\nExample\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)\nrename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)\nrecode(Sex, \"MALE\" = 1)\nUse quotes for variable values if they are character\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)\ncase_when(Sex == \"MALE\" ~ 1)\nUse quotes for variable values if they are character\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
+  },
+  {
+    "objectID": "lectures/07-slides.html#rename-vs-recode-syntax-reference",
+    "href": "lectures/07-slides.html#rename-vs-recode-syntax-reference",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Rename vs Recode: Syntax Reference",
+    "text": "Rename vs Recode: Syntax Reference\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nSyntax + Example\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)  rename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)  recode(Sex, \"MALE\" = 1)\nUse quotes around variable values if they are character\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)  case_when(Sex == \"MALE\" ~ 1)\nUse quotes around variable values if they are character\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
+  },
+  {
+    "objectID": "lectures/07-slides.html#the-role-of-mutate-in-recoding",
+    "href": "lectures/07-slides.html#the-role-of-mutate-in-recoding",
+    "title": "Introduction to R: Lecture 7",
+    "section": "The Role of mutate in Recoding",
+    "text": "The Role of mutate in Recoding\nrename()\n\nSpecific use: change column names\n\nIt changes the column’s name, but leaves the column’s values unchanged\n\nmutate()\n\nMany uses: create new columns or modify existing columns values\n\nIt changes the column’s values, potentially can also rename the column\n\n\n\n\n\n\n\nNote\n\n\nFor recoding, we use mutate() because our first goal is changing the column’s values. We learned two methods:\n\nMethod 1: mutate(Sex = recode(Sex, \"MALE\" = 1, \"FEMALE\" = 0))\n\nMethod 2: mutate(Sex = case_when(sex == \"MALE\" ~ 1, sex == \"FEMALE\" ~ 0))"
+  },
+  {
+    "objectID": "lectures/07-slides.html#rename-vs-recode-syntax-reference-1",
+    "href": "lectures/07-slides.html#rename-vs-recode-syntax-reference-1",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Rename vs Recode: Syntax Reference",
+    "text": "Rename vs Recode: Syntax Reference\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nSyntax + Example\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)  rename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)  recode(Sex, \"MALE\" = 1)\nUse quotes around variable values if they are character\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)  case_when(Sex == \"MALE\" ~ 1)\nUse quotes around variable values if they are character\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
+  },
+  {
+    "objectID": "lectures/07-slides.html#syntactic-variable-names-valid-names-in-r",
+    "href": "lectures/07-slides.html#syntactic-variable-names-valid-names-in-r",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Syntactic Variable Names: VALID Names in R",
+    "text": "Syntactic Variable Names: VALID Names in R\nValid names in R:\n\nUse letters, numbers, and the symbols . and _\nBut cannot start with a number or symbol\n\n\nExamples of syntactic or valid variable names:\nflipper_length_mm\nflipper.length.mm\nflipper.length_mm    # poor coding style but valid name\nFlipperLengthMm      # poor coding style but valid name"
+  },
+  {
+    "objectID": "lectures/07-slides.html#non-syntactic-variable-names-invalid-names-in-r",
+    "href": "lectures/07-slides.html#non-syntactic-variable-names-invalid-names-in-r",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Non-syntactic Variable Names: INVALID Names in R",
+    "text": "Non-syntactic Variable Names: INVALID Names in R\nInvalid names in R:\n\nContain spaces or symbols\nStart with numbers or symbols\nUse reserved words such as TRUE, NULL, if, or function names (see the complete list by typing ?Reserved in your Console)\n\n\nExamples of non-syntactic or invalid variable names:\nFlipper Length (mm)\nflipper_ length_mm\nflipper-length-mm\n_flippr_length_mm"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-syntactic-non-syntactic-variable-names",
+    "href": "lectures/07-slides.html#practice-syntactic-non-syntactic-variable-names",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice: Syntactic & Non-syntactic Variable Names",
+    "text": "💻 Practice: Syntactic & Non-syntactic Variable Names\nTry this in R:\n\nUse glimpse(penguins_raw) or str(penguins_raw) and identify non-syntactic variables names in this raw dataset\nPick one of them, and try accessing it with select() without backticks: what happens?\nUse rename() to give the variable a syntactic valid name\nSave the result to a new object\nVerify the name was changed and you can now access it\n\nOnce done, copy your code here to share it."
+  },
+  {
+    "objectID": "lectures/07-slides.html#syntactic-valid-variable-names-in-r",
+    "href": "lectures/07-slides.html#syntactic-valid-variable-names-in-r",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Syntactic (Valid) Variable Names in R",
+    "text": "Syntactic (Valid) Variable Names in R\n\n\nValid Names in R:\n\nUse letters, numbers, and the symbols . or _\nBut cannot start with a number or symbol\n\n\nExamples of Valid Names:\nflipper_length_mm\nflipper.length.mm\nflipper.length_mm     # valid but poor style\nFlipperLengthMm       # valid but poor style"
+  },
+  {
+    "objectID": "lectures/07-slides.html#non-syntactic-invalid-variable-names-in-r",
+    "href": "lectures/07-slides.html#non-syntactic-invalid-variable-names-in-r",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Non-syntactic (Invalid) Variable Names in R",
+    "text": "Non-syntactic (Invalid) Variable Names in R\n\n\nWhat Makes a Name Invalid:\n\nContains spaces or symbols\nStarts with a number or symbol\nUses reserved words (e.g., TRUE, NULL, if, function)\nType ?Reserved in the Console for the full list\n\n\nExamples of Invalid Names:\nFlipper Length (mm)\n@_flipper_length_mm\nflipper_ length_mm\nflipper-length-mm\n.flipper.length.mm"
+  },
+  {
+    "objectID": "lectures/07-slides.html#how-to-handle-non-syntactic-names-and-why-it-matters",
+    "href": "lectures/07-slides.html#how-to-handle-non-syntactic-names-and-why-it-matters",
+    "title": "Introduction to R: Lecture 7",
+    "section": "How to Handle Non-syntactic Names — and Why It Matters",
+    "text": "How to Handle Non-syntactic Names — and Why It Matters\nYou should avoid creating non-syntactic names, BUT you’ll often encounter them, especially in datasets not created in R (from Excel or other external sources). If you don’t handle them properly, R will throw errors when you try to use them.\nWhat to Do:\n1. Use backticks to refer to them (e.g., `Flipper Length (mm)`)\n2. Use rename() to change them to syntactic names\nNon-syntactic names will break code if you forget to wrape them in backticks, so renaming avoids issues."
+  },
+  {
+    "objectID": "lectures/07-slides.html#what-are-missing-data",
+    "href": "lectures/07-slides.html#what-are-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "What Are Missing Data?",
+    "text": "What Are Missing Data?\nR distinguishes two types of missing data:\n\nExplicit missing: visible NA or NaN values in the dataset\nImplicit missing: data that was never recorded\n\nIn this course, we focus on explicit missing data. For implicit missing data, see R for Data Science Chapter 18\n\n\n\n\n\n\nNote\n\n\nExplicit = value is there, but missing as NA (Not Available) or NaN (Not a Number)\nImplicit = value was never recorded (row or cell is absent)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#how-do-missing-values-behave",
+    "href": "lectures/07-slides.html#how-do-missing-values-behave",
+    "title": "Introduction to R: Lecture 7",
+    "section": "How Do Missing Values Behave?",
+    "text": "How Do Missing Values Behave?\nAny operation involving a missing value will also return a missing value (see Chapter 12.2.2 Missing values for more):\nNA &gt; 5\n\nsum(c(3, 1, 4, NA)\nsum(c(3, 1, 4, NA), na.rm = TRUE)\n\nmean(c(3,1,4,NA))\nmean(c(3, 1, 4, NA), na.rm = TRUE)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#common-ways-to-handle-missing-data",
+    "href": "lectures/07-slides.html#common-ways-to-handle-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Common Ways to Handle Missing Data",
+    "text": "Common Ways to Handle Missing Data\nWe’ll review three main tools:\n\nis.na() – to detect missing values\nna.rm = TRUE – to ignore missing values\ndrop_na() – to remove missing values"
+  },
+  {
+    "objectID": "lectures/07-slides.html#detect-missing-data-with-is.na",
+    "href": "lectures/07-slides.html#detect-missing-data-with-is.na",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Detect Missing Data with is.na():",
+    "text": "Detect Missing Data with is.na():\nUse is.na() to find the missing values in a specific variable. It returns TRUE for missing values, and FALSE otherwise.\nCheck for missing values in the penguins_raw dataset:\nis.na(penguins_raw$Sex)\nsum(is.na(penguins_raw$Sex))\n\n# in tidyverse syntax\npenguins_raw %&gt;% summarize(missing_sex = sum(is.na(Sex)))\nFilter rows based where Sex is missing:\nfilter(penguins_raw, is.na(Sex))     \n\n# commont mistake (won't work)\nfilter(penguins_raw, Sex == NA)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#ignore-missing-data-in-summaries-with-na.rm-true",
+    "href": "lectures/07-slides.html#ignore-missing-data-in-summaries-with-na.rm-true",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Ignore Missing Data in Summaries with na.rm = TRUE",
+    "text": "Ignore Missing Data in Summaries with na.rm = TRUE\nUse na.rm = TRUE to exclude missing values when performing calculations. Typically used with summarize() when calculating things like mean, sum, standard deviation.\npenguins_raw %&gt;%\n  summarize(avg_mass = mean(Body_mass_g, na.rm = TRUE))\nNB: na.rm = TRUE does NOT remove missing data, just skips them for that operation, but they are not dropped!"
+  },
+  {
+    "objectID": "lectures/07-slides.html#remove-missing-observations-with-drop_na",
+    "href": "lectures/07-slides.html#remove-missing-observations-with-drop_na",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Remove Missing Observations with drop_na()",
+    "text": "Remove Missing Observations with drop_na()\nUse drop_na() to remove rows with missing values. Either across all columns or in a specific column.\nDrop missing values in one specific column:\npenguins_raw %&gt;%\n  drop_na(Body_mass_g) %&gt;%\n  summarize(avg_mass = mean(Body_mass_g))\nWhat happens if you don’t drop them?\npenguins_raw %&gt;%\n  summarize(avg_mass = mean(Body_mass_g))\n  \npenguins_raw %&gt;%\n  filter(Species == \"Adelie\")\n\n\n\n\n\n\nWarning\n\n\nBe careful with drop_na() as it removes entire rows, which may unintentionally filter out relevant data. Check which variable you’re dropping on, and avoid using it blindly across all columns."
+  },
+  {
+    "objectID": "lectures/07-slides.html#ways-to-fill-or-replace-missing-data",
+    "href": "lectures/07-slides.html#ways-to-fill-or-replace-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Ways to Fill or Replace Missing Data",
+    "text": "Ways to Fill or Replace Missing Data\nMain functions to replace or fill missing values:\n\nreplace_na() – replace missing values with a specified value\n\nfill() – carry values forward or backward (from the package tidyr)\n\ncoalesce() – return the first non-missing value across multiple columns\n\nSee Chapter 18 of R for Data Science for more."
+  },
+  {
+    "objectID": "lectures/07-slides.html#uses",
+    "href": "lectures/07-slides.html#uses",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Uses",
+    "text": "Uses\nWhat are some common scenarios where you’d want to rename variable names or recode variable values?\n\nYou are cleaning up imported data\n\nThe variable name is has issues (e.g., Flipper Length (mm) → flipper_length_mm)\nYou need to standardize categories (e.g., \"Good\" and \"GOOD\" → \"good\")\nEtc.\n\nYou are preparing data for modeling or visualization\n\nYou want to recode \"FEMALE\"/\"MALE\" to 0/1 for a regression model\n\nEtc."
+  },
+  {
+    "objectID": "lectures/07-slides.html#in-class-practice-handling-missing-data",
+    "href": "lectures/07-slides.html#in-class-practice-handling-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 In-Class Practice: Handling Missing Data",
+    "text": "💻 In-Class Practice: Handling Missing Data\nUse the penguins_raw dataset to complete the tasks below:\n\nDetect missing values:\n\n\n\nuse is.na() and sum() to count how many missing values are in the variable Body Mass (g)\nuse filter() to: show all rows where Body Mass (g) is missing\n\n\nExclude missing value from calculations:\n\n\n\nuse summarize() with na.rm = TRUE to calculate: the average body mass of all penguins (do not drop the rows, just ignore the missing values)\n\n\nDrop missing values:\n\n\n\nuse drop_na(\\Body Mass (g)`)` to remove rows with missing values in body mass\ncalculate the average again\n\nOnce done, copy your code here to share it."
+  },
+  {
+    "objectID": "lectures/07-slides.html#in-class-practice-handling-missing-values",
+    "href": "lectures/07-slides.html#in-class-practice-handling-missing-values",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 In-Class Practice: Handling Missing Values",
+    "text": "💻 In-Class Practice: Handling Missing Values\nUse the penguins_raw dataset to complete the tasks below:\n\nDetect missing values\n\nUse is.na() and sum() to count how many missing values are in the variable Body Mass (g)\nUse filter() to show all rows where Body Mass (g) is missing\n\nExclude missing values from calculations\n\nUse summarize() with na.rm = TRUE to calculate the average body mass of all penguins\n(Do not drop the rows — just ignore the missing values)\n\nDrop missing values\n\nUse drop_na(\\Body Mass (g)`)` to remove rows with missing values in body mass\nCalculate the average again\n\n\nOnce done, copy your code here to share it."
   }
 ]

@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-864c5404f4710dceefb0a9fe440f50a1.css">
   <link rel="stylesheet" href="../style/styles.css">
@@ -131,7 +197,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Introduction to R: Lecture 7</h1>
-  <p class="subtitle">Topics: Data Cleaning, Importing/Exporting Data</p>
+  <p class="subtitle">Topics: Data Cleaning</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -142,48 +208,591 @@ Sabrina Nardin, Summer 2025
 </div>
 
 </section>
-<section class="slide level2 center">
-
-<!-- maybe add tidyr to this lecture if time allows, otherwise remove from course -->
-<h3 id="slides-coming-soon">Slides coming soon!</h3>
-</section>
-<section>
 <section id="agenda" class="title-slide slide level1 center">
 <h1>Agenda</h1>
 <div class="agenda-list">
 <ol type="1">
-<li>Topic<br>
-</li>
-<li>Topic</li>
-<li>Topic<br>
-</li>
+<li>Data Cleaning: Renaming and Recoding Variables</li>
+<li>Data Cleaning: Syntactic vs.&nbsp;Non-syntactic Variable Names</li>
+<li>Data Cleaning: Missing Data</li>
 </ol>
 </div>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 17, 2025 </span></p>
+</section>
+
+<section>
+<section id="renaming-and-recoding-variables" class="title-slide slide level1 center middle">
+<h1>1. Renaming and Recoding Variables</h1>
+
+</section>
+<section id="definitions" class="slide level2 center">
+<h2>Definitions</h2>
+<p><strong>Renaming</strong>: change variable names (column names)</p>
+<p><strong>Recoding</strong>: change values/levels of categorical variables (column values; e.g., inside a column)</p>
+</section>
+<section id="uses" class="slide level2 center">
+<h2>Uses</h2>
+<p><strong>What are some common scenarios where you’d want to rename variable names or recode variable values?</strong></p>
+<ul>
+<li>You are cleaning up imported data
+<ul>
+<li>The variable name is has issues (e.g., <code>Flipper Length (mm)</code> → <code>flipper_length_mm</code>)</li>
+<li>You need to standardize categories (e.g., <code>"Good"</code> and <code>"GOOD"</code> → <code>"good"</code>)</li>
+<li>Etc.</li>
+</ul></li>
+<li>You are preparing data for modeling or visualization
+<ul>
+<li>You want to recode <code>"FEMALE"</code>/<code>"MALE"</code> to <code>0</code>/<code>1</code> for a regression model<br>
+</li>
+<li>Etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="we-work-with-the-penguins-raw-data" class="slide level2 center">
+<h2>We work with the Penguins (raw) Data!</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># Load libraries and data</span></span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-4"><a></a><span class="fu">data</span>(penguins)</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a><span class="co"># Explore data</span></span>
+<span id="cb1-7"><a></a><span class="fu">head</span>(penguins_raw)</span>
+<span id="cb1-8"><a></a><span class="fu">tail</span>(penguins_raw)</span>
+<span id="cb1-9"><a></a><span class="fu">rbind</span>(<span class="fu">head</span>(penguins_raw, <span class="dv">3</span>), <span class="fu">tail</span>(penguins_raw, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="renaming-variables-with-rename" class="slide level2 center">
+<h2>Renaming Variables with rename</h2>
+<p>To change variable names (column names) the most common method is <code>rename()</code></p>
+<p>Change the name of the variable <code>studyName</code> to <code>study_name</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># check before renaming</span></span>
+<span id="cb2-2"><a></a><span class="fu">str</span>(penguins_raw)</span>
+<span id="cb2-3"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(studyName)</span>
+<span id="cb2-4"><a></a></span>
+<span id="cb2-5"><a></a><span class="co"># rename</span></span>
+<span id="cb2-6"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">study_name =</span> studyName)   <span class="co"># new = old</span></span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a><span class="co"># remember to save to keep changes</span></span>
+<span id="cb2-9"><a></a>p <span class="ot">&lt;-</span> penguins_raw <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">study_name =</span> studyName)</span>
+<span id="cb2-10"><a></a>p <span class="sc">%&gt;%</span> <span class="fu">select</span>(study_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="practice-renaming-variables" class="slide level2 center">
+<h2>💻 Practice Renaming Variables</h2>
+<ul>
+<li>Use <code>select()</code> to check the variable <code>Comments</code> in <code>penguins_raw</code></li>
+<li>Use <code>rename()</code> to rename <code>Comments</code> to <code>notes</code></li>
+<li>Save the result to a new object</li>
+<li>Use <code>select()</code> to check your result</li>
+</ul>
+<p>Once done, copy your code <a href="https://codeshare.io/29X3QM" target="_blank">here</a> to share it.</p>
 <!--
-<span style="font-size: 0.8em; color: #666;">
-*These slides were last updated on **`r format(Sys.Date(), '%B %d, %Y')`***
-</span>
+select(penguins_raw, Comments)
+penguins_raw |> rename(notes = Comments)
 -->
 </section>
-<section class="slide level2 center">
+<section id="recoding-variables-method-1-with-mutate-recode" class="slide level2 center">
+<h2>Recoding Variables Method 1: with mutate + recode</h2>
+<p>To change variable values (usually levels of categorical variables), we learn two methods.</p>
+<p>Change the levels of the categorical variable <code>Sex</code> (MALE becomes 1, FEMALE becomes 0) with method 1:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># check before recoding</span></span>
+<span id="cb3-2"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">count</span>(Sex)</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="co"># mutate + recode</span></span>
+<span id="cb3-5"><a></a>p <span class="ot">&lt;-</span> penguins_raw <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a></a>  <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="fu">recode</span>(Sex, <span class="st">"MALE"</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"FEMALE"</span> <span class="ot">=</span> <span class="dv">0</span>))</span>
+<span id="cb3-7"><a></a></span>
+<span id="cb3-8"><a></a><span class="co"># compare</span></span>
+<span id="cb3-9"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">count</span>(Sex)</span>
+<span id="cb3-10"><a></a>p <span class="sc">%&gt;%</span> <span class="fu">count</span>(Sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- Here we could have unquoted (e.g., `MALE = 1`) but only works if: 
+the variable is a factor or there are no spaces or punctuation in the variable name -->
+</section>
+<section id="recoding-variables-method-2-with-mutate-case_when" class="slide level2 center">
+<h2>Recoding Variables Method 2: with mutate + case_when</h2>
+<p>Change the levels of the categorical variable <code>Sex</code> (MALE becomes 1, FEMALE becomes 0) with method 2:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># mutate + case_when</span></span>
+<span id="cb4-2"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">mutate</span>(<span class="at">Sex =</span> <span class="fu">case_when</span>(Sex <span class="sc">==</span> <span class="st">"MALE"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb4-4"><a></a>                         Sex <span class="sc">==</span> <span class="st">"FEMALE"</span> <span class="sc">~</span> <span class="dv">0</span>,</span>
+<span id="cb4-5"><a></a>                         <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span>))</span>
+<span id="cb4-6"><a></a>  </span>
+<span id="cb4-7"><a></a><span class="co"># like for method 1 (previous code) save results to keep changes and compare</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>With <code>case_when()</code> each <code>logical condition ~ value</code> pair acts like <em>if → then</em>:</p>
+<ul>
+<li>for each row, R looks if the condition is TRUE: “<em>If</em> you find the value MALE in Sex, <em>then</em> convert it to 1”</li>
+<li><code>TRUE ~ NA_real_</code> tells R: “<em>If</em> no previous condition was met, <em>then</em> return NA as as a number”</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-recoding-variables" class="slide level2 center">
+<h2>💻 Practice Recoding Variables</h2>
+<ul>
+<li>Use <code>count()</code> to check the variable <code>Species</code> in <code>penguins_raw</code></li>
+<li>Pick method 1 or method 2 to recode the values of that variable into Adelie, Chinstrap, Gentoo</li>
+<li>Save the result to a new object</li>
+<li>Use <code>count()</code> to verify both results</li>
+</ul>
+<p>Once done, copy your code <a href="https://codeshare.io/29X3QM" target="_blank">here</a> to share it.</p>
+<!--
 
+# Method 1: RECODE
+
+penguins_raw %>% count(Species)
+
+p <- penguins_raw %>%
+  mutate(Species = recode(Species,
+    "Adelie Penguin (Pygoscelis adeliae)" = "Adelie",
+    "Chinstrap penguin (Pygoscelis antarctica)" = "Chinstrap",
+    "Gentoo penguin (Pygoscelis papua)" = "Gentoo"
+  ))
+
+p %>% count(Species)
+
+
+# Method 2: CASE_WHEN
+
+penguins_raw %>% count(Species)
+
+p2 <- penguins_raw %>%
+  mutate(Species = case_when(
+    Species == "Adelie Penguin (Pygoscelis adeliae)" ~ "Adelie",
+    Species == "Chinstrap penguin (Pygoscelis antarctica)" ~ "Chinstrap",
+    Species == "Gentoo penguin (Pygoscelis papua)" ~ "Gentoo",
+    TRUE ~ NA_character_
+  ))
+
+p2 %>% count(Species)
+
+-->
+</section>
+<section id="the-role-of-mutate-in-recoding" class="slide level2 center">
+<h2>The Role of mutate in Recoding</h2>
+<h4 id="rename"><code>rename()</code></h4>
+<ul>
+<li><strong>Specific use: change column names</strong><br>
+</li>
+<li>It changes the column’s name, but leaves the column’s values unchanged</li>
+</ul>
+<h4 id="mutate"><code>mutate()</code></h4>
+<ul>
+<li><strong>Many uses: create new columns or modify existing columns values</strong><br>
+</li>
+<li>It changes the column’s values, potentially can also rename the column</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>For recoding, we use <code>mutate()</code> because our first goal is changing the <em>column’s values</em>. We learned two methods:</p>
+<ul>
+<li>Method 1: <code>mutate(Sex = recode(Sex, "MALE" = 1, "FEMALE" = 0))</code><br>
+</li>
+<li>Method 2: <code>mutate(Sex = case_when(sex == "MALE" ~ 1, sex == "FEMALE" ~ 0))</code></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="rename-vs-recode-syntax-reference" class="slide level2 center">
+<h2>Rename vs Recode: Syntax Reference</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 39%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>What It Changes</th>
+<th>Syntax + Example</th>
+<th>Tips</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rename()</code></td>
+<td>Column names</td>
+<td><code>rename(new_name = old_name)</code> <br> <code>rename(notes = Comments)</code></td>
+<td>No quotes around variable names</td>
+</tr>
+<tr class="even">
+<td><code>recode()</code></td>
+<td>Column values</td>
+<td><code>recode(variable, "old" = new)</code> <br> <code>recode(Sex, "MALE" = 1)</code></td>
+<td>Use quotes around variable values if they are character</td>
+</tr>
+<tr class="odd">
+<td><code>case_when()</code></td>
+<td>Column values</td>
+<td><code>case_when(variable == "old" ~ new)</code> <br> <code>case_when(Sex == "MALE" ~ 1)</code></td>
+<td>Use quotes around variable values if they are character</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>All recoding is typically done inside <code>mutate()</code>.</p>
+</div>
+</div>
+</div>
 </section></section>
 <section>
-<section id="title-section" class="title-slide slide level1 center middle">
-<h1>1. Title Section</h1>
+<section id="syntactic-vs.-non-syntactic-variable-names" class="title-slide slide level1 center middle">
+<h1>2. Syntactic vs.&nbsp;Non-syntactic Variable Names</h1>
 
 </section>
-<section id="subtitles" class="slide level2 center">
-<h2>Subtitles</h2>
+<section id="syntactic-valid-variable-names-in-r" class="slide level2 center">
+<h2>Syntactic (Valid) Variable Names in R</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="valid-names-in-r">Valid Names in R:</h3>
+<ul>
+<li>Use letters, numbers, and the symbols <code>.</code> or <code>_</code></li>
+<li>But cannot start with a number or symbol</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="examples-of-valid-names">Examples of Valid Names:</h3>
+<pre><code>flipper_length_mm
+flipper.length.mm
+flipper.length_mm     # valid but poor style
+FlipperLengthMm       # valid but poor style</code></pre>
+</div></div>
 </section>
-<section id="practice" class="slide level2 center">
-<h2>💻 Practice</h2>
+<section id="non-syntactic-invalid-variable-names-in-r" class="slide level2 center">
+<h2>Non-syntactic (Invalid) Variable Names in R</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="what-makes-a-name-invalid">What Makes a Name Invalid:</h3>
+<ul>
+<li>Contains spaces or symbols</li>
+<li>Starts with a number or symbol</li>
+<li>Uses reserved words (e.g., <code>TRUE</code>, <code>NULL</code>, <code>if</code>, <code>function</code>)</li>
+<li>Type <code>?Reserved</code> in the Console for the full list</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="examples-of-invalid-names">Examples of Invalid Names:</h3>
+<pre><code>Flipper Length (mm)
+@_flipper_length_mm
+flipper_ length_mm
+flipper-length-mm
+.flipper.length.mm</code></pre>
+</div></div>
+</section>
+<section id="practice-syntactic-and-non-syntactic-names" class="slide level2 center">
+<h2>💻 Practice: Syntactic and Non-Syntactic Names</h2>
+<p>Which of the following are valid names?</p>
+<ul>
+<li><code>3_religion</code></li>
+<li><code>#3_religion</code></li>
+<li><code>q3_religion</code></li>
+<li><code>q3.religion</code></li>
+<li><code>q3-religion</code></li>
+<li><code>q3 religion</code></li>
+<li><code>TRUE</code></li>
+</ul>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>For best coding style, use snake_case for all your variables names and keep them to three words maximum. Example: <code>q3_religion</code> <!-- Check using `make.names()` in R or try using them in a `select()` call. --></p>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-handle-non-syntactic-names-and-why-it-matters" class="slide level2 center">
+<h2>How to Handle Non-syntactic Names — and Why It Matters</h2>
+<p><strong>You should avoid creating non-syntactic names</strong>, BUT you’ll often encounter them, especially in datasets not created in R (from Excel or other external sources). If you don’t handle them properly, R will throw errors when you try to use them.</p>
+<h3 id="what-to-do">What to Do:</h3>
+<p><strong>1. Use backticks to refer to them (e.g., <code>`Flipper Length (mm)`</code>)</strong><br>
+<strong>2. Use <code>rename()</code> to change them to syntactic names</strong></p>
+<p><em>Non-syntactic names will break code if you forget to wrape them in backticks, so renaming avoids issues.</em></p>
+</section>
+<section id="working-with-non-syntactic-names-in-practice" class="slide level2 center">
+<h2>Working with Non-syntactic Names in Practice</h2>
+<p>Imagine you are working on political ideology by country, assembled by someone else. The data are in Excel and when you imported them in R they look like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">country =</span> <span class="fu">c</span>(<span class="st">"Italy"</span>, <span class="st">"Germany"</span>, <span class="st">"France"</span>, <span class="st">"Italy"</span>, <span class="st">"United States"</span>),</span>
+<span id="cb7-2"><a></a>                  <span class="st">`</span><span class="at">4 ideology</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"communism"</span>, <span class="st">"fascism"</span>, <span class="st">"anarchism"</span>, <span class="st">"fascism"</span>, <span class="st">"capitalism"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p>To use the non-syntactic variable name without changing it and without errors, you must use backticks:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">select</span>(df, <span class="st">`</span><span class="at">4 ideology</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+</section>
+<section id="practice-syntactic-non-syntactic-variable-names" class="slide level2 center">
+<h2>💻 Practice: Syntactic &amp; Non-syntactic Variable Names</h2>
+<p>Try this in R:</p>
+<ul>
+<li>Use <code>glimpse(penguins_raw)</code> or <code>str(penguins_raw)</code> and identify non-syntactic variables names in this raw dataset</li>
+<li>Pick one of them, and try accessing it with <code>select()</code> without backticks: what happens?</li>
+<li>Use <code>rename()</code> to give the variable a syntactic valid name</li>
+<li>Save the result to a new object</li>
+<li>Verify the name was changed and you can now access it</li>
+</ul>
+<p>Once done, copy your code <a href="https://codeshare.io/29X3QM" target="_blank">here</a> to share it.</p>
+<!--
+
+glimpse(penguins_raw)
+select(penguins_raw, `Flipper Length (mm)`)
+x <- rename(penguins_raw, flipper_length_mm = `Flipper Length (mm)`)
+glimpse(x)
+
+
+# 1.
+select(df, 4 ideology)
+select(df, "4 ideology")
+# 2. 
+rename(df, ideology = `4 ideology`)
+-->
+</section></section>
+<section>
+<section id="missing-data" class="title-slide slide level1 center middle">
+<h1>3. Missing Data</h1>
+
+</section>
+<section id="what-are-missing-data" class="slide level2 center">
+<h2>What Are Missing Data?</h2>
+<p>R distinguishes two types of missing data:</p>
+<ul>
+<li><strong>Explicit missing</strong>: visible <code>NA</code> or <code>NaN</code> values in the dataset</li>
+<li><strong>Implicit missing</strong>: data that was never recorded</li>
+</ul>
+<p>In this course, we focus on <strong>explicit</strong> missing data. For implicit missing data, see <a href="https://r4ds.hadley.nz/missing-values">R for Data Science Chapter 18</a></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Explicit = value is there, but missing as <code>NA</code> (Not Available) or <code>NaN</code> (Not a Number)<br>
+Implicit = value was never recorded (row or cell is absent)</p>
+</div>
+</div>
+</div>
+<!--
+- `NA` = Not Available (general-purpose missing value)  
+- `NaN` = Not a Number (typically from invalid math like `0/0` or `0 * Inf`)  
+- Both behave similarly, but `NaN` specifically signals a **computational error**
+See [Ch. 12.2.2](https://r4ds.hadley.nz/logicals#sec-na-comparison) for how `NA` behaves in comparisons.
+:::
+-->
+</section>
+<section id="how-do-missing-values-behave" class="slide level2 center">
+<h2>How Do Missing Values Behave?</h2>
+<p>Any operation involving a missing value will also return a missing value (see <a href="https://r4ds.hadley.nz/logicals#sec-na-comparison">Chapter 12.2.2 Missing values</a> for more):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="cn">NA</span> <span class="sc">&gt;</span> <span class="dv">5</span></span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>)</span>
+<span id="cb9-4"><a></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-5"><a></a></span>
+<span id="cb9-6"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="cn">NA</span>))</span>
+<span id="cb9-7"><a></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="cn">NA</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="common-ways-to-handle-missing-data" class="slide level2 center">
+<h2>Common Ways to Handle Missing Data</h2>
+<p>We’ll review three main tools:</p>
+<ul>
+<li><code>is.na()</code> – to detect missing values</li>
+<li><code>na.rm = TRUE</code> – to ignore missing values</li>
+<li><code>drop_na()</code> – to remove missing values</li>
+</ul>
+<!-- All are for working with **explicit** missing values -->
+</section>
+<section id="detect-missing-data-with-is.na" class="slide level2 center">
+<h2>Detect Missing Data with is.na():</h2>
+<p><strong>Use <code>is.na()</code> to find the missing values in a specific variable.</strong> It returns <code>TRUE</code> for missing values, and <code>FALSE</code> otherwise.</p>
+<p>Check for missing values in the <code>penguins_raw</code> dataset:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">is.na</span>(penguins_raw<span class="sc">$</span>Sex)</span>
+<span id="cb10-2"><a></a><span class="fu">sum</span>(<span class="fu">is.na</span>(penguins_raw<span class="sc">$</span>Sex))</span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a><span class="co"># in tidyverse syntax</span></span>
+<span id="cb10-5"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">missing_sex =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Sex)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Filter rows based where <code>Sex</code> is missing:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">filter</span>(penguins_raw, <span class="fu">is.na</span>(Sex))     </span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a><span class="co"># commont mistake (won't work)</span></span>
+<span id="cb11-4"><a></a><span class="fu">filter</span>(penguins_raw, Sex <span class="sc">==</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ignore-missing-data-in-summaries-with-na.rm-true" class="slide level2 center">
+<h2>Ignore Missing Data in Summaries with na.rm = TRUE</h2>
+<p><strong>Use <code>na.rm = TRUE</code> to exclude missing values when performing calculations.</strong> Typically used with <code>summarize()</code> when calculating things like mean, sum, standard deviation.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(Body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>NB:</strong> <code>na.rm = TRUE</code> does NOT remove missing data, just skips them for that operation, but they are not dropped!</p>
+</section>
+<section id="remove-missing-observations-with-drop_na" class="slide level2 center">
+<h2>Remove Missing Observations with drop_na()</h2>
+<p><strong>Use <code>drop_na()</code> to remove rows with missing values.</strong> Either across all columns or in a specific column.</p>
+<p>Drop missing values in one specific column:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">drop_na</span>(Body_mass_g) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(Body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What happens if you don’t drop them?</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(Body_mass_g))</span>
+<span id="cb14-3"><a></a>  </span>
+<span id="cb14-4"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a></a>  <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Be careful with <code>drop_na()</code> as it removes entire rows, which may unintentionally filter out relevant data. Check which variable you’re dropping on, and avoid using it blindly across all columns.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="in-class-practice-handling-missing-values" class="slide level2 center">
+<h2>💻 In-Class Practice: Handling Missing Values</h2>
+<p>Use the <code>penguins_raw</code> dataset to complete the tasks below:</p>
+<ol type="1">
+<li>Detect missing values
+<ul>
+<li>Use <code>is.na()</code> and <code>sum()</code> to count how many missing values are in the variable <code>Body Mass (g)</code></li>
+<li>Use <code>filter()</code> to show all rows where <code>Body Mass (g)</code> is missing</li>
+</ul></li>
+<li>Exclude missing values from calculations
+<ul>
+<li>Use <code>summarize()</code> with <code>na.rm = TRUE</code> to calculate the average body mass of all penguins<br>
+(Do not drop the rows — just ignore the missing values)</li>
+</ul></li>
+<li>Drop missing values
+<ul>
+<li>Use <code>drop_na(\</code>Body Mass (g)`)` to remove rows with missing values in body mass</li>
+<li>Calculate the average again</li>
+</ul></li>
+</ol>
+<p>Once done, copy your code <a href="https://codeshare.io/29X3QM" target="_blank">here</a> to share it.</p>
+<!--
+# 1. Detect missing values
+sum(is.na(penguins_raw$`Body Mass (g)`))
+
+penguins_raw %>% filter(is.na(`Body Mass (g)`))
+
+# 2. Exclude missing values from calculation
+penguins_raw %>%
+  summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))
+
+# 3. Drop missing values and calculate again
+penguins_raw %>%
+  drop_na(`Body Mass (g)`) %>%
+  summarize(avg_mass = mean(`Body Mass (g)`))
+-->
+</section>
+<section id="ways-to-fill-or-replace-missing-data" class="slide level2 center">
+<h2>Ways to Fill or Replace Missing Data</h2>
+<p>Main functions to replace or fill missing values:</p>
+<ul>
+<li><code>replace_na()</code> – replace missing values with a specified value<br>
+</li>
+<li><code>fill()</code> – carry values forward or backward (from the package <code>tidyr</code>)<br>
+</li>
+<li><code>coalesce()</code> – return the first non-missing value across multiple columns</li>
+</ul>
+<p>See <a href="https://r4ds.hadley.nz/missing-values">Chapter 18</a> of <em>R for Data Science</em> for more.</p>
+<!-- NOTE: REMOVE THIS PART FOR CSP, KEEP FOR CSS 
+ALSO EXPAND THE EXAMPLE ON HOW TO REPLACE OR REFILL MISSING DATA
+
+## Factors and Empty Groups
+
+Example from [Chapter 18](https://r4ds.hadley.nz/missing-values) of *R for Data Science*.
+
+Create a dataset with with one variable defined as factor with two levels (yes and no):
+
+```r
+health <- tibble(
+  name   = c("Ikaia", "Oletta", "Leriah", "Dashay", "Tresaun"),
+  smoker = factor(c("no", "no", "no", "no", "no"), levels = c("yes", "no")),
+  age    = c(34, 88, 75, 47, 56)
+)
+health
+```
+
+---
+
+## Counting with Dropped vs. Retained Factor Levels
+
+Without `.drop = FALSE`, unobserved factor levels are excluded:
+
+```r
+health |> count(smoker)
+```
+
+With `.drop = FALSE`, all factor levels are preserved (keeps all groups, even those not observed in the data since here they are all non-smokers)
+
+```r
+health |> count(smoker, .drop = FALSE)
+```
+
+---
+
+## This Matters for Plotting
+
+Compare these two codes.
+
+The default behavior excludes empty levels from the plot:
+```r
+ggplot(health, aes(x = smoker)) +
+  geom_bar() +
+  scale_x_discrete()
+```
+
+Force display of all factor levels, including empty ones:
+```r
+ggplot(health, aes(x = smoker)) +
+  geom_bar() +
+  scale_x_discrete(drop = FALSE)
+```
+-->
 </section>
 <section id="recap-what-we-learned-today" class="slide level2 center">
 <h2>Recap: What We Learned Today</h2>
-</section>
-<section id="reminders" class="slide level2 center">
-<h2>Reminders</h2>
+<ul>
+<li>How to rename variables using <code>rename()</code></li>
+<li>How to recode values inside a variable using <code>recode()</code> and <code>case_when()</code></li>
+<li>The difference between syntactic and non-syntactic variable names, and how to handle them</li>
+<li>How to detect, ignore, or drop missing values using:
+<ul>
+<li><code>is.na()</code> to detect</li>
+<li><code>na.rm = TRUE</code> to ignore</li>
+<li><code>drop_na()</code> to remove</li>
+</ul></li>
+</ul>
 </section>
 <section id="to-print-these-slides-as-pdf" class="slide level2 center">
 <h2>To print these slides as pdf</h2>
@@ -408,6 +1017,82 @@ Sabrina Nardin, Summer 2025
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

@@ -48,7 +48,7 @@ Factors, Intermediate `dplyr`<br>
 ---
 
 ### [Lecture 7](07-home.qmd)
-Data Cleaning, Importing/Exporting Data<br>
+Data Cleaning<br>
 **July 17, 2025**
 
 ---

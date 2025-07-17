@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R: Lecture 7"
-subtitle: "Topics: Data Cleaning, Importing/Exporting Data"
+subtitle: "Topics: Data Cleaning"
 author: "Sabrina Nardin, Summer 2025"
 format:
   revealjs:
@@ -16,43 +16,588 @@ format:
     center: true
 ---
 
-<!-- maybe add tidyr to this lecture if time allows, otherwise remove from course -->
-
-### Slides coming soon!
-
 # Agenda {.center}
 
 ::: {.agenda-list}
-1. Topic  
-2. Topic 
-3. Topic  
+1. Data Cleaning: Renaming and Recoding Variables
+1. Data Cleaning: Syntactic vs. Non-syntactic Variable Names
+1. Data Cleaning: Missing Data
 :::
 
+```{r, echo=FALSE, results='asis'}
+cat('<span style="font-size: 0.8em; color: #666;">These slides were last updated on', format(Sys.Date(), '%B %d, %Y'), '</span>')
+```
+
+# 1. Renaming and Recoding Variables {.slide .center .middle}
+
+---
+
+## Definitions
+
+**Renaming**: change variable names (column names)
+
+**Recoding**: change values/levels of categorical variables (column values; e.g., inside a column)
+
+---
+
+## Uses
+
+**What are some common scenarios where you’d want to rename variable names or recode variable values?**
+
+- You are cleaning up imported data 
+  - The variable name is has issues (e.g., `Flipper Length (mm)` → `flipper_length_mm`)
+  - You need to standardize categories (e.g., `"Good"` and `"GOOD"` → `"good"`)
+  - Etc.
+- You are preparing data for modeling or visualization
+  - You want to recode `"FEMALE"`/`"MALE"` to `0`/`1` for a regression model  
+  - Etc.
+
+---
+
+## We work with the Penguins (raw) Data!
+
+```r
+# Load libraries and data
+library(tidyverse)
+library(palmerpenguins)
+data(penguins)
+
+# Explore data
+head(penguins_raw)
+tail(penguins_raw)
+rbind(head(penguins_raw, 3), tail(penguins_raw, 3))
+```
+
+---
+
+## Renaming Variables with rename
+
+To change variable names (column names) the most common method is `rename()` 
+
+Change the name of the variable `studyName` to `study_name`:
+
+```r
+# check before renaming
+str(penguins_raw)
+penguins_raw %>% select(studyName)
+
+# rename
+penguins_raw %>% rename(study_name = studyName)   # new = old
+
+# remember to save to keep changes
+p <- penguins_raw %>% rename(study_name = studyName)
+p %>% select(study_name)
+```
+---
+
+## 💻 Practice Renaming Variables
+
+- Use `select()` to check the variable `Comments` in `penguins_raw` 
+- Use `rename()` to rename `Comments` to `notes`
+- Save the result to a new object
+- Use `select()` to check your result
+
+Once done, copy your code [here](https://codeshare.io/29X3QM){target="_blank"} to share it.
+
 <!--
-<span style="font-size: 0.8em; color: #666;">
-*These slides were last updated on **`r format(Sys.Date(), '%B %d, %Y')`***
-</span>
+select(penguins_raw, Comments)
+penguins_raw |> rename(notes = Comments)
 -->
 
 ---
 
-# 1. Title Section {.slide .center .middle}
+## Recoding Variables Method 1: with mutate + recode
+
+To change variable values (usually levels of categorical variables), we learn two methods.
+
+Change the levels of the categorical variable `Sex` (MALE becomes 1, FEMALE becomes 0) with method 1:
+
+```r
+# check before recoding
+penguins_raw %>% count(Sex)
+
+# mutate + recode
+p <- penguins_raw %>%
+  mutate(sex = recode(Sex, "MALE" = 1, "FEMALE" = 0))
+
+# compare
+penguins_raw %>% count(Sex)
+p %>% count(Sex)
+
+```
+
+<!-- Here we could have unquoted (e.g., `MALE = 1`) but only works if: 
+the variable is a factor or there are no spaces or punctuation in the variable name -->
 
 ---
 
-## Subtitles
+## Recoding Variables Method 2: with mutate + case_when
+
+Change the levels of the categorical variable `Sex` (MALE becomes 1, FEMALE becomes 0) with method 2:
+
+```r
+# mutate + case_when
+penguins_raw %>%
+  mutate(Sex = case_when(Sex == "MALE" ~ 1,
+                         Sex == "FEMALE" ~ 0,
+                         TRUE ~ NA_real_))
+  
+# like for method 1 (previous code) save results to keep changes and compare
+```
+
+:::{.callout-note}
+With `case_when()` each `logical condition ~ value` pair acts like *if → then*:
+
+- for each row, R looks if the condition is TRUE: "*If* you find the value MALE in Sex, *then* convert it to 1"
+- `TRUE ~ NA_real_` tells R: “*If* no previous condition was met, *then* return NA as as a number"
+:::
 
 ---
 
-## 💻 Practice
+## 💻 Practice Recoding Variables
+
+- Use `count()` to check the variable `Species` in `penguins_raw` 
+- Pick method 1 or method 2 to recode the values of that variable into Adelie, Chinstrap, Gentoo 
+- Save the result to a new object
+- Use `count()` to verify both results
+
+Once done, copy your code [here](https://codeshare.io/29X3QM){target="_blank"} to share it.
+
+<!--
+
+# Method 1: RECODE
+
+penguins_raw %>% count(Species)
+
+p <- penguins_raw %>%
+  mutate(Species = recode(Species,
+    "Adelie Penguin (Pygoscelis adeliae)" = "Adelie",
+    "Chinstrap penguin (Pygoscelis antarctica)" = "Chinstrap",
+    "Gentoo penguin (Pygoscelis papua)" = "Gentoo"
+  ))
+
+p %>% count(Species)
+
+
+# Method 2: CASE_WHEN
+
+penguins_raw %>% count(Species)
+
+p2 <- penguins_raw %>%
+  mutate(Species = case_when(
+    Species == "Adelie Penguin (Pygoscelis adeliae)" ~ "Adelie",
+    Species == "Chinstrap penguin (Pygoscelis antarctica)" ~ "Chinstrap",
+    Species == "Gentoo penguin (Pygoscelis papua)" ~ "Gentoo",
+    TRUE ~ NA_character_
+  ))
+
+p2 %>% count(Species)
+
+-->
+
+---
+
+## The Role of mutate in Recoding
+
+#### `rename()`  
+  - **Specific use: change column names**  
+  - It changes the column's name, but leaves the column’s values unchanged
+
+#### `mutate()`  
+  - **Many uses: create new columns or modify existing columns values**  
+  - It changes the column's values, potentially can also rename the column
+
+:::{.callout-note}
+For recoding, we use `mutate()` because our first goal is changing the *column's values*. We learned two methods:
+
+- Method 1: `mutate(Sex = recode(Sex, "MALE" = 1, "FEMALE" = 0))`  
+- Method 2: `mutate(Sex = case_when(sex == "MALE" ~ 1, sex == "FEMALE" ~ 0))`
+:::
+
+---
+
+## Rename vs Recode: Syntax Reference
+
+| Function       | What It Changes    | Syntax + Example                                                | Tips                                                             |
+|----------------|--------------------|------------------------------------------------------------------|------------------------------------------------------------------|
+| `rename()`     | Column names       | `rename(new_name = old_name)`  <br> `rename(notes = Comments)` | No quotes around variable names                                  |
+| `recode()`     | Column values      | `recode(variable, "old" = new)`  <br> `recode(Sex, "MALE" = 1)` | Use quotes around variable values if they are character             |
+| `case_when()`  | Column values      | `case_when(variable == "old" ~ new)` <br> `case_when(Sex == "MALE" ~ 1)` | Use quotes around variable values if they are character |
+
+:::{.callout-note}
+All recoding is typically done inside `mutate()`.
+:::
+
+
+# 2. Syntactic vs. Non-syntactic Variable Names {.slide .center .middle}
+
+---
+
+## Syntactic (Valid) Variable Names in R
+
+::: {.columns}
+
+::: {.column width="50%"}
+### Valid Names in R:
+- Use letters, numbers, and the symbols `.` or `_`
+- But cannot start with a number or symbol
+
+:::
+
+::: {.column width="50%"}
+### Examples of Valid Names:
+```
+flipper_length_mm
+flipper.length.mm
+flipper.length_mm     # valid but poor style
+FlipperLengthMm       # valid but poor style
+```
+:::
+:::
+
+---
+
+## Non-syntactic (Invalid) Variable Names in R
+
+::: {.columns}
+
+::: {.column width="50%"}
+### What Makes a Name Invalid:
+- Contains spaces or symbols
+- Starts with a number or symbol
+- Uses reserved words (e.g., `TRUE`, `NULL`, `if`, `function`)
+- Type `?Reserved` in the Console for the full list
+:::
+
+::: {.column width="50%"}
+### Examples of Invalid Names:
+```
+Flipper Length (mm)
+@_flipper_length_mm
+flipper_ length_mm
+flipper-length-mm
+.flipper.length.mm
+```
+:::
+:::
+
+---
+
+## 💻 Practice: Syntactic and Non-Syntactic Names
+
+Which of the following are valid names?
+
+- `3_religion`
+- `#3_religion`
+- `q3_religion`
+- `q3.religion`
+- `q3-religion`
+- `q3 religion`
+- `TRUE`
+
+:::{.callout-tip}
+For best coding style, use snake_case for all your variables names and keep them to three words maximum. Example: `q3_religion`
+<!-- Check using `make.names()` in R or try using them in a `select()` call. -->
+:::
+
+---
+
+## How to Handle Non-syntactic Names — and Why It Matters
+
+**You should avoid creating non-syntactic names**, BUT you’ll often encounter them,  especially in datasets not created in R (from Excel or other external sources). If you don’t handle them properly, R will throw errors when you try to use them.
+
+### What to Do:
+
+**1. Use backticks to refer to them (e.g., `` `Flipper Length (mm)` ``)**  
+**2. Use `rename()` to change them to syntactic names**
+
+*Non-syntactic names will break code if you forget to wrape them in backticks, so renaming avoids issues.*
+
+---
+
+## Working with Non-syntactic Names in Practice
+
+Imagine you are working on political ideology by country, assembled by someone else. The data are in Excel and when you imported them in R they look like this:
+
+```r
+df <- tibble(country = c("Italy", "Germany", "France", "Italy", "United States"),
+                  `4 ideology` = c("communism", "fascism", "anarchism", "fascism", "capitalism"))
+```
+
+<br>
+
+To use the non-syntactic variable name without changing it and without errors, you must use backticks:
+
+```r
+select(df, `4 ideology`)
+```
+</br>
+
+---
+
+## 💻 Practice: Syntactic & Non-syntactic Variable Names
+
+Try this in R:
+
+- Use `glimpse(penguins_raw)` or `str(penguins_raw)` and identify non-syntactic variables names in this raw dataset
+- Pick one of them, and try accessing it with `select()` without backticks: what happens?
+- Use `rename()` to give the variable a syntactic valid name
+- Save the result to a new object
+- Verify the name was changed and you can now access it
+
+Once done, copy your code [here](https://codeshare.io/29X3QM){target="_blank"} to share it.
+
+<!--
+
+glimpse(penguins_raw)
+select(penguins_raw, `Flipper Length (mm)`)
+x <- rename(penguins_raw, flipper_length_mm = `Flipper Length (mm)`)
+glimpse(x)
+
+
+# 1.
+select(df, 4 ideology)
+select(df, "4 ideology")
+# 2. 
+rename(df, ideology = `4 ideology`)
+-->
+
+
+# 3. Missing Data {.slide .center .middle}
+
+---
+
+## What Are Missing Data?
+
+R distinguishes two types of missing data:
+
+- **Explicit missing**: visible `NA` or `NaN` values in the dataset
+- **Implicit missing**: data that was never recorded
+
+In this course, we focus on **explicit** missing data. For implicit missing data, see [R for Data Science Chapter 18](https://r4ds.hadley.nz/missing-values)
+
+:::{.callout-note}
+Explicit = value is there, but missing as `NA` (Not Available) or `NaN` (Not a Number)  
+Implicit = value was never recorded (row or cell is absent)
+:::
+
+<!--
+- `NA` = Not Available (general-purpose missing value)  
+- `NaN` = Not a Number (typically from invalid math like `0/0` or `0 * Inf`)  
+- Both behave similarly, but `NaN` specifically signals a **computational error**
+See [Ch. 12.2.2](https://r4ds.hadley.nz/logicals#sec-na-comparison) for how `NA` behaves in comparisons.
+:::
+-->
+
+---
+
+## How Do Missing Values Behave?
+
+Any operation involving a missing value will also return a missing value (see [Chapter 12.2.2 Missing values](https://r4ds.hadley.nz/logicals#sec-na-comparison) for more):
+
+```r
+NA > 5
+
+sum(c(3, 1, 4, NA)
+sum(c(3, 1, 4, NA), na.rm = TRUE)
+
+mean(c(3,1,4,NA))
+mean(c(3, 1, 4, NA), na.rm = TRUE)  
+```
+
+---
+
+## Common Ways to Handle Missing Data
+
+We’ll review three main tools:
+
+- `is.na()` – to detect missing values
+- `na.rm = TRUE` – to ignore missing values 
+- `drop_na()` – to remove missing values
+
+<!-- All are for working with **explicit** missing values -->
+
+---
+
+## Detect Missing Data with is.na(): 
+
+**Use `is.na()` to find the missing values in a specific variable.** It returns `TRUE` for missing values, and `FALSE` otherwise.
+
+Check for missing values in the `penguins_raw` dataset:
+
+```r
+is.na(penguins_raw$Sex)
+sum(is.na(penguins_raw$Sex))
+
+# in tidyverse syntax
+penguins_raw %>% summarize(missing_sex = sum(is.na(Sex)))
+```
+
+Filter rows based where `Sex` is missing:
+
+```r
+filter(penguins_raw, is.na(Sex))     
+
+# commont mistake (won't work)
+filter(penguins_raw, Sex == NA)
+```
+
+---
+
+## Ignore Missing Data in Summaries with na.rm = TRUE 
+
+**Use `na.rm = TRUE` to exclude missing values when performing calculations.** Typically used with `summarize()` when calculating things like mean, sum, standard deviation.
+
+```r
+penguins_raw %>%
+  summarize(avg_mass = mean(Body_mass_g, na.rm = TRUE))
+```
+
+**NB:** `na.rm = TRUE` does NOT remove missing data, just skips them for that operation, but they are not dropped!
+
+
+---
+
+## Remove Missing Observations with drop_na()
+
+**Use `drop_na()` to remove rows with missing values.** Either across all columns or in a specific column.
+
+Drop missing values in one specific column:
+
+```r
+penguins_raw %>%
+  drop_na(Body_mass_g) %>%
+  summarize(avg_mass = mean(Body_mass_g))
+```
+
+What happens if you don’t drop them?
+
+```r
+penguins_raw %>%
+  summarize(avg_mass = mean(Body_mass_g))
+  
+penguins_raw %>%
+  filter(Species == "Adelie")
+```
+
+:::{.callout-warning}
+Be careful with `drop_na()` as it removes entire rows, which may unintentionally filter out relevant data. Check which variable you're dropping on, and avoid using it blindly across all columns.
+:::
+
+---
+
+## 💻 In-Class Practice: Handling Missing Values
+
+Use the `penguins_raw` dataset to complete the tasks below:
+
+1. Detect missing values  
+   - Use `is.na()` and `sum()` to count how many missing values are in the variable `Body Mass (g)`
+   - Use `filter()` to show all rows where `Body Mass (g)` is missing
+
+2. Exclude missing values from calculations  
+   - Use `summarize()` with `na.rm = TRUE` to calculate the average body mass of all penguins  
+     (Do not drop the rows — just ignore the missing values)
+
+3. Drop missing values  
+   - Use `drop_na(\`Body Mass (g)\`)` to remove rows with missing values in body mass
+   - Calculate the average again
+
+Once done, copy your code [here](https://codeshare.io/29X3QM){target="_blank"} to share it.
+
+<!--
+# 1. Detect missing values
+sum(is.na(penguins_raw$`Body Mass (g)`))
+
+penguins_raw %>% filter(is.na(`Body Mass (g)`))
+
+# 2. Exclude missing values from calculation
+penguins_raw %>%
+  summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))
+
+# 3. Drop missing values and calculate again
+penguins_raw %>%
+  drop_na(`Body Mass (g)`) %>%
+  summarize(avg_mass = mean(`Body Mass (g)`))
+-->
+
+---
+
+## Ways to Fill or Replace Missing Data
+
+Main functions to replace or fill missing values:
+
+- `replace_na()` – replace missing values with a specified value  
+- `fill()` – carry values forward or backward (from the package `tidyr`)  
+- `coalesce()` – return the first non-missing value across multiple columns
+
+See [Chapter 18](https://r4ds.hadley.nz/missing-values) of *R for Data Science* for more.
+
+<!-- NOTE: REMOVE THIS PART FOR CSP, KEEP FOR CSS 
+ALSO EXPAND THE EXAMPLE ON HOW TO REPLACE OR REFILL MISSING DATA
+
+## Factors and Empty Groups
+
+Example from [Chapter 18](https://r4ds.hadley.nz/missing-values) of *R for Data Science*.
+
+Create a dataset with with one variable defined as factor with two levels (yes and no):
+
+```r
+health <- tibble(
+  name   = c("Ikaia", "Oletta", "Leriah", "Dashay", "Tresaun"),
+  smoker = factor(c("no", "no", "no", "no", "no"), levels = c("yes", "no")),
+  age    = c(34, 88, 75, 47, 56)
+)
+health
+```
+
+---
+
+## Counting with Dropped vs. Retained Factor Levels
+
+Without `.drop = FALSE`, unobserved factor levels are excluded:
+
+```r
+health |> count(smoker)
+```
+
+With `.drop = FALSE`, all factor levels are preserved (keeps all groups, even those not observed in the data since here they are all non-smokers)
+
+```r
+health |> count(smoker, .drop = FALSE)
+```
+
+---
+
+## This Matters for Plotting
+
+Compare these two codes.
+
+The default behavior excludes empty levels from the plot:
+```r
+ggplot(health, aes(x = smoker)) +
+  geom_bar() +
+  scale_x_discrete()
+```
+
+Force display of all factor levels, including empty ones:
+```r
+ggplot(health, aes(x = smoker)) +
+  geom_bar() +
+  scale_x_discrete(drop = FALSE)
+```
+-->
 
 ---
 
 ## Recap: What We Learned Today
 
----
-
-## Reminders
+- How to rename variables using `rename()`
+- How to recode values inside a variable using `recode()` and `case_when()`
+- The difference between syntactic and non-syntactic variable names, and how to handle them
+- How to detect, ignore, or drop missing values using:
+  - `is.na()` to detect
+  - `na.rm = TRUE` to ignore
+  - `drop_na()` to remove
 
 ---
 

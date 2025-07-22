@@ -217,7 +217,7 @@ Sabrina Nardin, Summer 2025
 <li>Data Cleaning: Missing Data</li>
 </ol>
 </div>
-<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 17, 2025 </span></p>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 22, 2025 </span></p>
 </section>
 
 <section>
@@ -258,7 +258,8 @@ Sabrina Nardin, Summer 2025
 <span id="cb1-6"><a></a><span class="co"># Explore data</span></span>
 <span id="cb1-7"><a></a><span class="fu">head</span>(penguins_raw)</span>
 <span id="cb1-8"><a></a><span class="fu">tail</span>(penguins_raw)</span>
-<span id="cb1-9"><a></a><span class="fu">rbind</span>(<span class="fu">head</span>(penguins_raw, <span class="dv">3</span>), <span class="fu">tail</span>(penguins_raw, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a></a><span class="fu">rbind</span>(<span class="fu">head</span>(penguins_raw, <span class="dv">3</span>), <span class="fu">tail</span>(penguins_raw, <span class="dv">3</span>))</span>
+<span id="cb1-10"><a></a><span class="fu">glimpse</span>(penguins_raw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="renaming-variables-with-rename" class="slide level2 center">
 <h2>Renaming Variables with rename</h2>
@@ -594,7 +595,7 @@ rename(df, ideology = `4 ideology`)
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>Explicit = value is there, but missing as <code>NA</code> (Not Available) or <code>NaN</code> (Not a Number)<br>
+<p>Explicit = value is missing as <code>NA</code> (Not Available) or <code>NaN</code> (Not a Number)<br>
 Implicit = value was never recorded (row or cell is absent)</p>
 </div>
 </div>
@@ -607,8 +608,8 @@ See [Ch. 12.2.2](https://r4ds.hadley.nz/logicals#sec-na-comparison) for how `NA`
 :::
 -->
 </section>
-<section id="how-do-missing-values-behave" class="slide level2 center">
-<h2>How Do Missing Values Behave?</h2>
+<section id="how-missing-data-behave" class="slide level2 center">
+<h2>How Missing Data Behave</h2>
 <p>Any operation involving a missing value will also return a missing value (see <a href="https://r4ds.hadley.nz/logicals#sec-na-comparison">Chapter 12.2.2 Missing values</a> for more):</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="cn">NA</span> <span class="sc">&gt;</span> <span class="dv">5</span></span>
 <span id="cb9-2"><a></a></span>
@@ -621,48 +622,62 @@ See [Ch. 12.2.2](https://r4ds.hadley.nz/logicals#sec-na-comparison) for how `NA`
 <section id="common-ways-to-handle-missing-data" class="slide level2 center">
 <h2>Common Ways to Handle Missing Data</h2>
 <p>We’ll review three main tools:</p>
-<ul>
+<ol type="1">
 <li><code>is.na()</code> – to detect missing values</li>
 <li><code>na.rm = TRUE</code> – to ignore missing values</li>
 <li><code>drop_na()</code> – to remove missing values</li>
-</ul>
+</ol>
 <!-- All are for working with **explicit** missing values -->
 </section>
 <section id="detect-missing-data-with-is.na" class="slide level2 center">
-<h2>Detect Missing Data with is.na():</h2>
+<h2>1. Detect Missing Data with is.na():</h2>
 <p><strong>Use <code>is.na()</code> to find the missing values in a specific variable.</strong> It returns <code>TRUE</code> for missing values, and <code>FALSE</code> otherwise.</p>
 <p>Check for missing values in the <code>penguins_raw</code> dataset:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">is.na</span>(penguins_raw<span class="sc">$</span>Sex)</span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># using base R syntax</span></span>
 <span id="cb10-2"><a></a><span class="fu">sum</span>(<span class="fu">is.na</span>(penguins_raw<span class="sc">$</span>Sex))</span>
-<span id="cb10-3"><a></a></span>
-<span id="cb10-4"><a></a><span class="co"># in tidyverse syntax</span></span>
-<span id="cb10-5"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">missing_sex =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Sex)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Filter rows based where <code>Sex</code> is missing:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">filter</span>(penguins_raw, <span class="fu">is.na</span>(Sex))     </span>
-<span id="cb11-2"><a></a></span>
-<span id="cb11-3"><a></a><span class="co"># commont mistake (won't work)</span></span>
-<span id="cb11-4"><a></a><span class="fu">filter</span>(penguins_raw, Sex <span class="sc">==</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a></a><span class="fu">table</span>(<span class="fu">is.na</span>(penguins_raw<span class="sc">$</span>Sex))</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a><span class="co"># using tidyverse syntax</span></span>
+<span id="cb10-6"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(Sex)))</span>
+<span id="cb10-7"><a></a>penguins_raw  <span class="sc">%&gt;%</span> <span class="fu">count</span>(<span class="fu">is.na</span>(Sex)) </span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a><span class="co"># filter rows where sex is missing</span></span>
+<span id="cb10-10"><a></a><span class="fu">filter</span>(penguins_raw, <span class="fu">is.na</span>(Sex))    <span class="co"># correct  </span></span>
+<span id="cb10-11"><a></a><span class="fu">filter</span>(penguins_raw, Sex <span class="sc">==</span> <span class="cn">NA</span>)     <span class="co"># incorrect</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- spend time on this code, add variable names, change df order, etc. -->
 </section>
-<section id="ignore-missing-data-in-summaries-with-na.rm-true" class="slide level2 center">
-<h2>Ignore Missing Data in Summaries with na.rm = TRUE</h2>
-<p><strong>Use <code>na.rm = TRUE</code> to exclude missing values when performing calculations.</strong> Typically used with <code>summarize()</code> when calculating things like mean, sum, standard deviation.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(Body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>NB:</strong> <code>na.rm = TRUE</code> does NOT remove missing data, just skips them for that operation, but they are not dropped!</p>
+<section id="ignore-missing-data-with-na.rm-true" class="slide level2 center">
+<h2>2. Ignore Missing Data with na.rm = TRUE</h2>
+<p><strong>Use <code>na.rm = TRUE</code> to exclude missing values when performing calculations.</strong> Often used with <code>summarize()</code> when calculating things like mean, sum, standard deviation.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb11-2"><a></a>penguins_raw <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">sum_mass =</span> <span class="fu">sum</span>(<span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- show the difference with and without the na.rm = TRUE and try change it to FALSE-->
+<p><br></p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>The command <code>na.rm = TRUE</code> does not remove missing data from the variable(s), it just skips them for that operation, but they are not dropped!</p>
+</div>
+</div>
+</div>
+<p><br></p>
 </section>
-<section id="remove-missing-observations-with-drop_na" class="slide level2 center">
-<h2>Remove Missing Observations with drop_na()</h2>
+<section id="remove-missing-data-with-drop_na" class="slide level2 center">
+<h2>3. Remove Missing Data with drop_na()</h2>
 <p><strong>Use <code>drop_na()</code> to remove rows with missing values.</strong> Either across all columns or in a specific column.</p>
-<p>Drop missing values in one specific column:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">drop_na</span>(Body_mass_g) <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(Body_mass_g))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>What happens if you don’t drop them?</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(Body_mass_g))</span>
-<span id="cb14-3"><a></a>  </span>
-<span id="cb14-4"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a></a>  <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">"Adelie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Drop missing values in one specific column (preferred):</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins_raw <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">drop_na</span>(<span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_mass =</span> <span class="fu">mean</span>(<span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- show you can drop_na() all or you can add more variables like 
+drop_na(`Body Mass (g)`, Sex) etc. -->
+<p><br></p>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -672,46 +687,36 @@ See [Ch. 12.2.2](https://r4ds.hadley.nz/logicals#sec-na-comparison) for how `NA`
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>Be careful with <code>drop_na()</code> as it removes entire rows, which may unintentionally filter out relevant data. Check which variable you’re dropping on, and avoid using it blindly across all columns.</p>
+<p>Be careful with <code>drop_na()</code> as it removes entire rows, which may unintentionally filter out relevant data. Check which variable(s) you are dropping, and avoid using it blindly across all columns.</p>
 </div>
 </div>
 </div>
+<p><br></p>
 </section>
-<section id="in-class-practice-handling-missing-values" class="slide level2 center">
-<h2>💻 In-Class Practice: Handling Missing Values</h2>
-<p>Use the <code>penguins_raw</code> dataset to complete the tasks below:</p>
-<ol type="1">
-<li>Detect missing values
-<ul>
-<li>Use <code>is.na()</code> and <code>sum()</code> to count how many missing values are in the variable <code>Body Mass (g)</code></li>
-<li>Use <code>filter()</code> to show all rows where <code>Body Mass (g)</code> is missing</li>
-</ul></li>
-<li>Exclude missing values from calculations
-<ul>
-<li>Use <code>summarize()</code> with <code>na.rm = TRUE</code> to calculate the average body mass of all penguins<br>
-(Do not drop the rows — just ignore the missing values)</li>
-</ul></li>
-<li>Drop missing values
-<ul>
-<li>Use <code>drop_na(\</code>Body Mass (g)`)` to remove rows with missing values in body mass</li>
-<li>Calculate the average again</li>
-</ul></li>
+<section id="practice-handling-missing-data" class="slide level2 center">
+<h2>💻 Practice: Handling Missing Data</h2>
+<ol start="0" type="1">
+<li><strong>Rename:</strong> use the <code>penguins_raw</code> dataset and rename <code>Flipper Length (mm)</code> to <code>flipper_length_mm</code>. Save the result as a new dataframe, e.g., <code>penguins_clean</code> or <code>p</code></li>
 </ol>
-<p>Once done, copy your code <a href="https://codeshare.io/29X3QM" target="_blank">here</a> to share it.</p>
+<p>Use the new dataframe with the renamed variable for the tasks below:</p>
+<ol type="1">
+<li><p><strong>Detect missing values:</strong> use <code>is.na()</code> and <code>sum()</code> to count how many are missing in the variable flipper length</p></li>
+<li><p><strong>Exclude missing from calculations:</strong> use <code>na.rm = TRUE</code> inside <code>mean()</code> to calculate the average flipper length</p></li>
+<li><p><strong>Drop missing values:</strong> use <code>drop_na()</code> to remove rows with missing values in flipper length</p></li>
+</ol>
+<p>Once done, <a href="https://codeshare.io/29X3QM" target="_blank">share your code here</a>.</p>
 <!--
-# 1. Detect missing values
-sum(is.na(penguins_raw$`Body Mass (g)`))
+# 0. Rename
+p <- penguins_raw %>% rename(flipper_length_mm = `Flipper Length (mm)`)
 
-penguins_raw %>% filter(is.na(`Body Mass (g)`))
+# 1. Detect missing values
+p %>% summarize(n_missing = sum(is.na(flipper_length_mm)))
 
 # 2. Exclude missing values from calculation
-penguins_raw %>%
-  summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))
+p %>% summarize(avg_flipper = mean(flipper_length_mm, na.rm = TRUE))
 
 # 3. Drop missing values and calculate again
-penguins_raw %>%
-  drop_na(`Body Mass (g)`) %>%
-  summarize(avg_mass = mean(`Body Mass (g)`))
+p %>% drop_na(flipper_length_mm)
 -->
 </section>
 <section id="ways-to-fill-or-replace-missing-data" class="slide level2 center">

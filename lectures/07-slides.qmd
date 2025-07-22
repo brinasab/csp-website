@@ -66,6 +66,7 @@ data(penguins)
 head(penguins_raw)
 tail(penguins_raw)
 rbind(head(penguins_raw, 3), tail(penguins_raw, 3))
+glimpse(penguins_raw)
 ```
 
 ---
@@ -377,7 +378,7 @@ R distinguishes two types of missing data:
 In this course, we focus on **explicit** missing data. For implicit missing data, see [R for Data Science Chapter 18](https://r4ds.hadley.nz/missing-values)
 
 :::{.callout-note}
-Explicit = value is there, but missing as `NA` (Not Available) or `NaN` (Not a Number)  
+Explicit = value is missing as `NA` (Not Available) or `NaN` (Not a Number)  
 Implicit = value was never recorded (row or cell is absent)
 :::
 
@@ -391,7 +392,7 @@ See [Ch. 12.2.2](https://r4ds.hadley.nz/logicals#sec-na-comparison) for how `NA`
 
 ---
 
-## How Do Missing Values Behave?
+## How Missing Data Behave
 
 Any operation involving a missing value will also return a missing value (see [Chapter 12.2.2 Missing values](https://r4ds.hadley.nz/logicals#sec-na-comparison) for more):
 
@@ -411,113 +412,111 @@ mean(c(3, 1, 4, NA), na.rm = TRUE)
 
 We’ll review three main tools:
 
-- `is.na()` – to detect missing values
-- `na.rm = TRUE` – to ignore missing values 
-- `drop_na()` – to remove missing values
+1. `is.na()` – to detect missing values
+2. `na.rm = TRUE` – to ignore missing values 
+3. `drop_na()` – to remove missing values
 
 <!-- All are for working with **explicit** missing values -->
 
 ---
 
-## Detect Missing Data with is.na(): 
+## 1. Detect Missing Data with is.na(): 
 
 **Use `is.na()` to find the missing values in a specific variable.** It returns `TRUE` for missing values, and `FALSE` otherwise.
 
 Check for missing values in the `penguins_raw` dataset:
 
 ```r
-is.na(penguins_raw$Sex)
+# using base R syntax
 sum(is.na(penguins_raw$Sex))
+table(is.na(penguins_raw$Sex))
 
-# in tidyverse syntax
-penguins_raw %>% summarize(missing_sex = sum(is.na(Sex)))
+# using tidyverse syntax
+penguins_raw %>% summarize(sum(is.na(Sex)))
+penguins_raw  %>% count(is.na(Sex)) 
+
+# filter rows where sex is missing
+filter(penguins_raw, is.na(Sex))    # correct  
+filter(penguins_raw, Sex == NA)     # incorrect
 ```
 
-Filter rows based where `Sex` is missing:
-
-```r
-filter(penguins_raw, is.na(Sex))     
-
-# commont mistake (won't work)
-filter(penguins_raw, Sex == NA)
-```
+<!-- spend time on this code, add variable names, change df order, etc. -->
 
 ---
 
-## Ignore Missing Data in Summaries with na.rm = TRUE 
+## 2. Ignore Missing Data with na.rm = TRUE 
 
-**Use `na.rm = TRUE` to exclude missing values when performing calculations.** Typically used with `summarize()` when calculating things like mean, sum, standard deviation.
+**Use `na.rm = TRUE` to exclude missing values when performing calculations.** Often used with `summarize()` when calculating things like mean, sum, standard deviation.
 
 ```r
-penguins_raw %>%
-  summarize(avg_mass = mean(Body_mass_g, na.rm = TRUE))
+penguins_raw %>% summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))
+penguins_raw %>% summarize(sum_mass = sum(`Body Mass (g)`, na.rm = TRUE))
 ```
 
-**NB:** `na.rm = TRUE` does NOT remove missing data, just skips them for that operation, but they are not dropped!
+<!-- show the difference with and without the na.rm = TRUE and try change it to FALSE-->
 
+<br>
+
+:::{.callout-tip}
+The command `na.rm = TRUE` does not remove missing data from the variable(s), it just skips them for that operation, but they are not dropped!
+:::
+ 
+</br>
 
 ---
 
-## Remove Missing Observations with drop_na()
+## 3. Remove Missing Data with drop_na()
 
 **Use `drop_na()` to remove rows with missing values.** Either across all columns or in a specific column.
 
-Drop missing values in one specific column:
+Drop missing values in one specific column (preferred):
 
 ```r
-penguins_raw %>%
-  drop_na(Body_mass_g) %>%
-  summarize(avg_mass = mean(Body_mass_g))
-```
-
-What happens if you don’t drop them?
-
-```r
-penguins_raw %>%
-  summarize(avg_mass = mean(Body_mass_g))
-  
-penguins_raw %>%
-  filter(Species == "Adelie")
-```
-
-:::{.callout-warning}
-Be careful with `drop_na()` as it removes entire rows, which may unintentionally filter out relevant data. Check which variable you're dropping on, and avoid using it blindly across all columns.
-:::
-
----
-
-## 💻 In-Class Practice: Handling Missing Values
-
-Use the `penguins_raw` dataset to complete the tasks below:
-
-1. Detect missing values  
-   - Use `is.na()` and `sum()` to count how many missing values are in the variable `Body Mass (g)`
-   - Use `filter()` to show all rows where `Body Mass (g)` is missing
-
-2. Exclude missing values from calculations  
-   - Use `summarize()` with `na.rm = TRUE` to calculate the average body mass of all penguins  
-     (Do not drop the rows — just ignore the missing values)
-
-3. Drop missing values  
-   - Use `drop_na(\`Body Mass (g)\`)` to remove rows with missing values in body mass
-   - Calculate the average again
-
-Once done, copy your code [here](https://codeshare.io/29X3QM){target="_blank"} to share it.
-
-<!--
-# 1. Detect missing values
-sum(is.na(penguins_raw$`Body Mass (g)`))
-
-penguins_raw %>% filter(is.na(`Body Mass (g)`))
-
-# 2. Exclude missing values from calculation
-penguins_raw %>%
-  summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))
-
-# 3. Drop missing values and calculate again
 penguins_raw %>%
   drop_na(`Body Mass (g)`) %>%
   summarize(avg_mass = mean(`Body Mass (g)`))
+```
+
+<!-- show you can drop_na() all or you can add more variables like 
+drop_na(`Body Mass (g)`, Sex) etc. -->
+
+<br>
+
+:::{.callout-warning}
+Be careful with `drop_na()` as it removes entire rows, which may unintentionally filter out relevant data. Check which variable(s) you are dropping, and avoid using it blindly across all columns.
+:::
+
+</br>
+
+---
+
+## 💻 Practice: Handling Missing Data
+
+0. **Rename:** use the `penguins_raw` dataset and rename `Flipper Length (mm)` to `flipper_length_mm`. Save the result as a new dataframe, e.g., `penguins_clean` or `p` 
+
+Use the new dataframe with the renamed variable for the tasks below:
+
+1. **Detect missing values:** use `is.na()` and `sum()` to count how many are missing in the variable flipper length
+
+2. **Exclude missing from calculations:** use `na.rm = TRUE` inside `mean()` to calculate the average flipper length
+
+3. **Drop missing values:** use `drop_na()` to remove rows with missing values in flipper length
+
+Once done, [share your code here](https://codeshare.io/29X3QM){target="_blank"}.
+
+
+<!--
+# 0. Rename
+p <- penguins_raw %>% rename(flipper_length_mm = `Flipper Length (mm)`)
+
+# 1. Detect missing values
+p %>% summarize(n_missing = sum(is.na(flipper_length_mm)))
+
+# 2. Exclude missing values from calculation
+p %>% summarize(avg_flipper = mean(flipper_length_mm, na.rm = TRUE))
+
+# 3. Drop missing values and calculate again
+p %>% drop_na(flipper_length_mm)
 -->
 
 ---

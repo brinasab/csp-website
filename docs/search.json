@@ -2090,7 +2090,7 @@
     "href": "lectures/07-slides.html#we-work-with-the-penguins-raw-data",
     "title": "Introduction to R: Lecture 7",
     "section": "We work with the Penguins (raw) Data!",
-    "text": "We work with the Penguins (raw) Data!\n# Load libraries and data\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# Explore data\nhead(penguins_raw)\ntail(penguins_raw)\nrbind(head(penguins_raw, 3), tail(penguins_raw, 3))"
+    "text": "We work with the Penguins (raw) Data!\n# Load libraries and data\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# Explore data\nhead(penguins_raw)\ntail(penguins_raw)\nrbind(head(penguins_raw, 3), tail(penguins_raw, 3))\nglimpse(penguins_raw)"
   },
   {
     "objectID": "lectures/07-slides.html#definitions",
@@ -2279,7 +2279,7 @@
     "href": "lectures/07-slides.html#what-are-missing-data",
     "title": "Introduction to R: Lecture 7",
     "section": "What Are Missing Data?",
-    "text": "What Are Missing Data?\nR distinguishes two types of missing data:\n\nExplicit missing: visible NA or NaN values in the dataset\nImplicit missing: data that was never recorded\n\nIn this course, we focus on explicit missing data. For implicit missing data, see R for Data Science Chapter 18\n\n\n\n\n\n\nNote\n\n\nExplicit = value is there, but missing as NA (Not Available) or NaN (Not a Number)\nImplicit = value was never recorded (row or cell is absent)"
+    "text": "What Are Missing Data?\nR distinguishes two types of missing data:\n\nExplicit missing: visible NA or NaN values in the dataset\nImplicit missing: data that was never recorded\n\nIn this course, we focus on explicit missing data. For implicit missing data, see R for Data Science Chapter 18\n\n\n\n\n\n\nNote\n\n\nExplicit = value is missing as NA (Not Available) or NaN (Not a Number)\nImplicit = value was never recorded (row or cell is absent)"
   },
   {
     "objectID": "lectures/07-slides.html#how-do-missing-values-behave",
@@ -2299,22 +2299,22 @@
     "objectID": "lectures/07-slides.html#detect-missing-data-with-is.na",
     "href": "lectures/07-slides.html#detect-missing-data-with-is.na",
     "title": "Introduction to R: Lecture 7",
-    "section": "Detect Missing Data with is.na():",
-    "text": "Detect Missing Data with is.na():\nUse is.na() to find the missing values in a specific variable. It returns TRUE for missing values, and FALSE otherwise.\nCheck for missing values in the penguins_raw dataset:\nis.na(penguins_raw$Sex)\nsum(is.na(penguins_raw$Sex))\n\n# in tidyverse syntax\npenguins_raw %&gt;% summarize(missing_sex = sum(is.na(Sex)))\nFilter rows based where Sex is missing:\nfilter(penguins_raw, is.na(Sex))     \n\n# commont mistake (won't work)\nfilter(penguins_raw, Sex == NA)"
+    "section": "1. Detect Missing Data with is.na():",
+    "text": "1. Detect Missing Data with is.na():\nUse is.na() to find the missing values in a specific variable. It returns TRUE for missing values, and FALSE otherwise.\nCheck for missing values in the penguins_raw dataset:\n# using base R syntax\nsum(is.na(penguins_raw$Sex))\ntable(is.na(penguins_raw$Sex))\n\n# using tidyverse syntax\npenguins_raw %&gt;% summarize(sum(is.na(Sex)))\npenguins_raw  %&gt;% count(is.na(Sex)) \n\n# filter rows where sex is missing\nfilter(penguins_raw, is.na(Sex))    # correct  \nfilter(penguins_raw, Sex == NA)     # incorrect"
   },
   {
     "objectID": "lectures/07-slides.html#ignore-missing-data-in-summaries-with-na.rm-true",
     "href": "lectures/07-slides.html#ignore-missing-data-in-summaries-with-na.rm-true",
     "title": "Introduction to R: Lecture 7",
-    "section": "Ignore Missing Data in Summaries with na.rm = TRUE",
-    "text": "Ignore Missing Data in Summaries with na.rm = TRUE\nUse na.rm = TRUE to exclude missing values when performing calculations. Typically used with summarize() when calculating things like mean, sum, standard deviation.\npenguins_raw %&gt;%\n  summarize(avg_mass = mean(Body_mass_g, na.rm = TRUE))\nNB: na.rm = TRUE does NOT remove missing data, just skips them for that operation, but they are not dropped!"
+    "section": "2. Ignore Missing Data in Summaries with na.rm = TRUE",
+    "text": "2. Ignore Missing Data in Summaries with na.rm = TRUE\nUse na.rm = TRUE to exclude missing values when performing calculations. Often used with summarize() when calculating things like mean, sum, standard deviation.\npenguins_raw %&gt;% summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))\npenguins_raw %&gt;% summarize(sum_mass = sum(`Body Mass (g)`, na.rm = TRUE))\n\n\n\n\n\n\n\n\nTip\n\n\nThe command na.rm = TRUE does not remove missing data from the variable(s), it just skips them for that operation, but they are not dropped!"
   },
   {
     "objectID": "lectures/07-slides.html#remove-missing-observations-with-drop_na",
     "href": "lectures/07-slides.html#remove-missing-observations-with-drop_na",
     "title": "Introduction to R: Lecture 7",
-    "section": "Remove Missing Observations with drop_na()",
-    "text": "Remove Missing Observations with drop_na()\nUse drop_na() to remove rows with missing values. Either across all columns or in a specific column.\nDrop missing values in one specific column:\npenguins_raw %&gt;%\n  drop_na(Body_mass_g) %&gt;%\n  summarize(avg_mass = mean(Body_mass_g))\nWhat happens if you don’t drop them?\npenguins_raw %&gt;%\n  summarize(avg_mass = mean(Body_mass_g))\n  \npenguins_raw %&gt;%\n  filter(Species == \"Adelie\")\n\n\n\n\n\n\nWarning\n\n\nBe careful with drop_na() as it removes entire rows, which may unintentionally filter out relevant data. Check which variable you’re dropping on, and avoid using it blindly across all columns."
+    "section": "3. Remove Missing Observations with drop_na()",
+    "text": "3. Remove Missing Observations with drop_na()\nUse drop_na() to remove rows with missing values. Either across all columns or in a specific column.\nDrop missing values in one specific column (preferred):\npenguins_raw %&gt;%\n  drop_na(`Body Mass (g)`) %&gt;%\n  summarize(avg_mass = mean(`Body Mass (g)`))\n\n\n\n\n\n\n\n\nWarning\n\n\nBe careful with drop_na() as it removes entire rows, which may unintentionally filter out relevant data. Check which variable(s) you are dropping, and avoid using it blindly across all columns."
   },
   {
     "objectID": "lectures/07-slides.html#ways-to-fill-or-replace-missing-data",
@@ -2342,6 +2342,139 @@
     "href": "lectures/07-slides.html#in-class-practice-handling-missing-values",
     "title": "Introduction to R: Lecture 7",
     "section": "💻 In-Class Practice: Handling Missing Values",
-    "text": "💻 In-Class Practice: Handling Missing Values\nUse the penguins_raw dataset to complete the tasks below:\n\nDetect missing values\n\nUse is.na() and sum() to count how many missing values are in the variable Body Mass (g)\nUse filter() to show all rows where Body Mass (g) is missing\n\nExclude missing values from calculations\n\nUse summarize() with na.rm = TRUE to calculate the average body mass of all penguins\n(Do not drop the rows — just ignore the missing values)\n\nDrop missing values\n\nUse drop_na(\\Body Mass (g)`)` to remove rows with missing values in body mass\nCalculate the average again\n\n\nOnce done, copy your code here to share it."
+    "text": "💻 In-Class Practice: Handling Missing Values\n\nRename: use the penguins_raw dataset and rename Flipper Length (mm) to flipper_length_mm. Save the result as a new dataframe, e.g., penguins_clean or p\n\nUse the new dataframe with the renamed variable for the tasks below:\n\nDetect missing values: use is.na() and sum() to count how many are missing in flipper_length_mm\nExclude missing from calculations: use na.rm = TRUE inside mean() to get the average flipper length\nDrop missing values: use drop_na(flipper_length_mm) to remove rows with missing values in that column\n\nOnce done, share your code here."
+  },
+  {
+    "objectID": "lectures/08-slides.html#what-is-base-r",
+    "href": "lectures/08-slides.html#what-is-base-r",
+    "title": "Introduction to R: Lecture 8",
+    "section": "What Is Base R?",
+    "text": "What Is Base R?\nWhen people say “base R”, they are referring to the core or basic features of the R language, developed before the tidyverse (hence the name as base R).\nThese include:\n\nProgramming Tools: if-else statements, loops, functions\n\nData Types: numeric, integer, character, logical, factor\n\nData Structures: vectors, matrices, lists, data frames\n\nBasic Operations: indexing/subsetting, arithmetic/logical comparisons"
+  },
+  {
+    "objectID": "lectures/08-slides.html#base-r-vs.-the-tidyverse",
+    "href": "lectures/08-slides.html#base-r-vs.-the-tidyverse",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Base R vs. the Tidyverse",
+    "text": "Base R vs. the Tidyverse\n\n\nBase R\n\nDeveloped in the early 1990s as part of R’s core language\n\nIncludes built-in functions like mean(), length(), etc. and key programming tools like loops, etc.\nOffers more direct control, but code can be longer or harder to read\n\n\n\nTidyverse\n\nIntroduced in the 2000s as a set of user-friendly packages\nIncludes packages like ggplot2, dplyr, tidyr, forcats, tidyr, stringr, etc.\nPrioritizes readability and consistency, making code cleaner and easier for beginners"
+  },
+  {
+    "objectID": "lectures/08-slides.html#our-goal",
+    "href": "lectures/08-slides.html#our-goal",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Our Goal",
+    "text": "Our Goal\nUse the tidyverse for most of your daily work,\nbut know enough base R to understand what’s happening behind the scenes."
+  },
+  {
+    "objectID": "lectures/08-slides.html#how-they-relate",
+    "href": "lectures/08-slides.html#how-they-relate",
+    "title": "Introduction to R: Lecture 8",
+    "section": "How They Relate",
+    "text": "How They Relate\nEvery element in R has a data type. That element is stored inside a data structure\nExample:\nx &lt;- c(1, 2, 3)      # vector of numeric values  \ny &lt;- list(\"a\", 5)    # list with character and numeric values\n\nTo work with data types (numeric, character, logical, etc.) in R, we need to store them inside a data structure (vector, list, etc.)!"
+  },
+  {
+    "objectID": "lectures/08-slides.html#how-base-r-and-the-tidyverse-work-together",
+    "href": "lectures/08-slides.html#how-base-r-and-the-tidyverse-work-together",
+    "title": "Introduction to R: Lecture 8",
+    "section": "How Base R and the Tidyverse Work Together",
+    "text": "How Base R and the Tidyverse Work Together\n\nThe tidyverse is built on base R — it doesn’t replace it\n\nYou can combine base R and tidyverse functions in your code\n\nYou’ll often see both styles used in real-world scripts and examples\n\n\n\n\n\n\n\n\n\nOur Goal\n\n\nUse the tidyverse for most of your daily work, but understand enough base R to follow and troubleshoot R code!"
+  },
+  {
+    "objectID": "lectures/08-slides.html#main-data-types-in-r",
+    "href": "lectures/08-slides.html#main-data-types-in-r",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Main Data Types in R",
+    "text": "Main Data Types in R\n\nNumeric\nNumbers, either with or without decimals\n\nDouble: default for decimal values\ne.g., 3.14, -2.5, 0.0\n\nInteger: whole numbers with L suffix\ne.g., 1L, 100L, -5L\n\nCharacter\nText or string values (always in quotes)\ne.g., \"hello\", \"R is fun\"\nLogical\nTRUE/FALSE values used in conditions\ne.g., TRUE, FALSE, 3 &gt; 5\nFactor\nCategorical values with defined levels\ne.g., factor(c(\"low\", \"medium\", \"high\"))"
+  },
+  {
+    "objectID": "lectures/08-slides.html#from-data-types-to-data-structures",
+    "href": "lectures/08-slides.html#from-data-types-to-data-structures",
+    "title": "Introduction to R: Lecture 8",
+    "section": "From Data Types to Data Structures",
+    "text": "From Data Types to Data Structures\nWe have just talked about data types — like numeric, characters, logical, etc.\nBut to actually work with data types in R, we need to store them inside a data structure.\nSo let’s talk about data structures!"
+  },
+  {
+    "objectID": "lectures/08-slides.html#data-types-and-data-structures",
+    "href": "lectures/08-slides.html#data-types-and-data-structures",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Data Types and Data Structures",
+    "text": "Data Types and Data Structures\nData Types and Data Structures are part of base R. They are the fundamentals — the “ABC” of how R stores and organizes data.\n\nData Type — what kind of value it is\n\nData Structure — how values are stored and organized\n\nWe look at each and at how they relate."
+  },
+  {
+    "objectID": "lectures/08-slides.html#data-types-in-r",
+    "href": "lectures/08-slides.html#data-types-in-r",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Data Types in R",
+    "text": "Data Types in R\nData Type: describes the kind of value you’re working with.\nR has the following main data types:\n\nNumeric – numbers, either with or without decimals\n\nDouble with decimals (default): 3.14, 2.0\n\ninteger whole numbers: 2L, 100L\n\nCharacter – text or strings (always in quotes): \"hello\"\nLogical – TRUE or FALSE values: TRUE, FALSE\nFactor – categorical values with levels: \"low\", \"medium\""
+  },
+  {
+    "objectID": "lectures/08-slides.html#data-structures-in-r",
+    "href": "lectures/08-slides.html#data-structures-in-r",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\nData Structure: like a container that holds one or more values.\nR has the following main data structures:\n\nVector – one-dimensional, all elements same type\n\nMatrix – two-dimensional, all elements same type\n\nList – multi-dimensional, holds elements of any type, even mixed\n\nDataframe – multi-dimensional, columns can have different types"
+  },
+  {
+    "objectID": "lectures/08-slides.html#data-structures-in-r-1",
+    "href": "lectures/08-slides.html#data-structures-in-r-1",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Data Structures in R",
+    "text": "Data Structures in R\nA data structure is like a container that holds one or more values.\n\nvector – one-dimensional, all elements must be the same type\nExample: c(1, 2, 3) → numeric vector\nmatrix – two-dimensional, all elements must be the same type\nExample: matrix(1:6, nrow = 2) → numeric matrix\nlist – one-dimensional, can hold mixed types\nExample: list(1, \"a\", TRUE) → numeric, character, logical\ndata frame – like a spreadsheet: each column can have a different type\nExample:\ndata.frame(name = c(\"a\", \"b\"), age = c(20, 30))"
+  },
+  {
+    "objectID": "lectures/08-slides.html#how-they-relate-1",
+    "href": "lectures/08-slides.html#how-they-relate-1",
+    "title": "Introduction to R: Lecture 8",
+    "section": "How They Relate",
+    "text": "How They Relate\nEvery value in R has one specific data type, even when it’s inside a larger data structure.\n\nHere are two examples:\nx is a vector and all values inside are of type numeric\nx &lt;- c(1, 2, 3)\ny is a list and a is character, 10 numeric, FALSE lofic\ny &lt;- list(\"a\", 10, FALSE)"
+  },
+  {
+    "objectID": "lectures/08-slides.html#structures-limit-the-types-they-can-hold",
+    "href": "lectures/08-slides.html#structures-limit-the-types-they-can-hold",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Structures Limit the Types They Can Hold",
+    "text": "Structures Limit the Types They Can Hold\nThe data structure you use affects what types you can store:\n\nVectors and matrices can only hold one type\n→ If you mix types, R will automatically convert (coerce) them\nExample: c(1, \"a\", TRUE) becomes \"1\", \"a\", \"TRUE\" (all character)\nLists and data frames can hold multiple types\n→ Each list element or data frame column can be different\nExample: list(1, \"a\", TRUE) keeps all types as-is\n\nCallout The structure controls what types are allowed. You can’t always store whatever you want wherever you want!"
+  },
+  {
+    "objectID": "lectures/08-slides.html#how-data-types-and-data-structures-relate",
+    "href": "lectures/08-slides.html#how-data-types-and-data-structures-relate",
+    "title": "Introduction to R: Lecture 8",
+    "section": "How Data Types and Data Structures Relate",
+    "text": "How Data Types and Data Structures Relate\nEvery single element in R has a data type. That element is stored inside a larger data structure.\nExample:\nx &lt;- c(1, 2, 3)      # a vector (structure) of three elements, all numeric values (type) \ny &lt;- list(\"a\", 5)    # a list (structure) of two elements, one character value and one numeric value (type)\n\n \n\n\n\n\n\n\n\nImportant\n\n\nNot all data structures support every combination of data types. Some allow only one type, while others can store many types together."
+  },
+  {
+    "objectID": "lectures/08-slides.html#how-data-types-and-data-structures-relate-1",
+    "href": "lectures/08-slides.html#how-data-types-and-data-structures-relate-1",
+    "title": "Introduction to R: Lecture 8",
+    "section": "How Data Types and Data Structures Relate",
+    "text": "How Data Types and Data Structures Relate\nEvery value in R has one specific data type, even when it’s inside a larger data structure.\n\nHere are two examples:\nx is a vector and all values inside are of type numeric\nx &lt;- c(1, 2, 3)\ny is a list and a is character, 10 numeric, FALSE lofic\ny &lt;- list(\"a\", 10, FALSE)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#ignore-missing-data-with-na.rm-true",
+    "href": "lectures/07-slides.html#ignore-missing-data-with-na.rm-true",
+    "title": "Introduction to R: Lecture 7",
+    "section": "2. Ignore Missing Data with na.rm = TRUE",
+    "text": "2. Ignore Missing Data with na.rm = TRUE\nUse na.rm = TRUE to exclude missing values when performing calculations. Often used with summarize() when calculating things like mean, sum, standard deviation.\npenguins_raw %&gt;% summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))\npenguins_raw %&gt;% summarize(sum_mass = sum(`Body Mass (g)`, na.rm = TRUE))\n\n\n\n\n\n\n\n\nTip\n\n\nThe command na.rm = TRUE does not remove missing data from the variable(s), it just skips them for that operation, but they are not dropped!"
+  },
+  {
+    "objectID": "lectures/07-slides.html#remove-missing-data-with-drop_na",
+    "href": "lectures/07-slides.html#remove-missing-data-with-drop_na",
+    "title": "Introduction to R: Lecture 7",
+    "section": "3. Remove Missing Data with drop_na()",
+    "text": "3. Remove Missing Data with drop_na()\nUse drop_na() to remove rows with missing values. Either across all columns or in a specific column.\nDrop missing values in one specific column (preferred):\npenguins_raw %&gt;%\n  drop_na(`Body Mass (g)`) %&gt;%\n  summarize(avg_mass = mean(`Body Mass (g)`))\n\n\n\n\n\n\n\n\nWarning\n\n\nBe careful with drop_na() as it removes entire rows, which may unintentionally filter out relevant data. Check which variable(s) you are dropping, and avoid using it blindly across all columns."
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-handling-missing-data",
+    "href": "lectures/07-slides.html#practice-handling-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice: Handling Missing Data",
+    "text": "💻 Practice: Handling Missing Data\n\nRename: use the penguins_raw dataset and rename Flipper Length (mm) to flipper_length_mm. Save the result as a new dataframe, e.g., penguins_clean or p\n\nUse the new dataframe with the renamed variable for the tasks below:\n\nDetect missing values: use is.na() and sum() to count how many are missing in the variable flipper length\nExclude missing from calculations: use na.rm = TRUE inside mean() to calculate the average flipper length\nDrop missing values: use drop_na() to remove rows with missing values in flipper length\n\nOnce done, share your code here."
+  },
+  {
+    "objectID": "lectures/07-slides.html#how-missing-data-behave",
+    "href": "lectures/07-slides.html#how-missing-data-behave",
+    "title": "Introduction to R: Lecture 7",
+    "section": "How Missing Data Behave",
+    "text": "How Missing Data Behave\nAny operation involving a missing value will also return a missing value (see Chapter 12.2.2 Missing values for more):\nNA &gt; 5\n\nsum(c(3, 1, 4, NA)\nsum(c(3, 1, 4, NA), na.rm = TRUE)\n\nmean(c(3,1,4,NA))\nmean(c(3, 1, 4, NA), na.rm = TRUE)"
   }
 ]

@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-864c5404f4710dceefb0a9fe440f50a1.css">
   <link rel="stylesheet" href="../style/styles.css">
@@ -131,7 +197,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Introduction to R: Lecture 8</h1>
-  <p class="subtitle">Topics: Data Structures, Base R</p>
+  <p class="subtitle">Topics: Base R, Data Types, and Data Structures</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -142,47 +208,446 @@ Sabrina Nardin, Summer 2025
 </div>
 
 </section>
-<section class="slide level2 center">
-
-<h3 id="slides-coming-soon">Slides coming soon!</h3>
-</section>
-<section>
 <section id="agenda" class="title-slide slide level1 center">
 <h1>Agenda</h1>
 <div class="agenda-list">
 <ol type="1">
-<li>Topic<br>
-</li>
-<li>Topic</li>
-<li>Topic<br>
-</li>
+<li>Define Base R</li>
+<li>R Data Types and Data Structures</li>
+<li>A Closer Look at Vectors</li>
+<li>Subset Data Structures with Base R (extra, no quiz)</li>
 </ol>
 </div>
-<!--
-<span style="font-size: 0.8em; color: #666;">
-*These slides were last updated on **`r format(Sys.Date(), '%B %d, %Y')`***
-</span>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 22, 2025 </span></p>
+</section>
+
+<section>
+<section id="define-base-r" class="title-slide slide level1 center middle">
+<h1>1. Define Base R</h1>
+
+</section>
+<section id="what-is-base-r" class="slide level2 center">
+<h2>What Is Base R?</h2>
+<p>When people say <strong>“base R”</strong>, they are referring to the core or basic features of the R language, developed <strong>before the tidyverse</strong> (hence the name as base R).</p>
+<p>These include:</p>
+<ul>
+<li><strong>Programming Tools</strong>: if-else statements, loops, functions<br>
+</li>
+<li><strong>Data Types</strong>: numeric, integer, character, logical, factor<br>
+</li>
+<li><strong>Data Structures</strong>: vectors, matrices, lists, data frames<br>
+</li>
+<li><strong>Basic Operations</strong>: indexing/subsetting, arithmetic/logical comparisons</li>
+</ul>
+<!-- 
+ON DATA STRUCTURES AND DATA TYPES
+In many cases, the choice of data structure in R determines the data type(s) that can be stored within it. 
+Vectors and matrices typically hold elements of a single data type (e.g., numeric, character).
+Lists can hold elements of different data types within each list element. 
+
+TODAY
+we do the first three points today
+we come back to functions next week 
 -->
 </section>
-<section class="slide level2 center">
-
+<section id="base-r-vs.-the-tidyverse" class="slide level2 center">
+<h2>Base R vs.&nbsp;the Tidyverse</h2>
+<div class="columns">
+<div class="column" style="width:47%;">
+<h3 id="base-r">Base R</h3>
+<ul>
+<li>Developed in the <em>early 1990s</em> as part of R’s core language<br>
+</li>
+<li>Includes built-in functions like <code>mean()</code>, <code>length()</code>, etc. and key programming tools like loops, etc.</li>
+<li>Offers more direct control, but code can be longer or harder to read<br>
+</li>
+</ul>
+</div><div class="column" style="width:6%;">
+<p>&nbsp; <!-- This is an empty spacer column --></p>
+</div><div class="column" style="width:47%;">
+<h3 id="tidyverse">Tidyverse</h3>
+<ul>
+<li>Formally introduced <em>after 2016</em> as a set of user-friendly packages</li>
+<li>Includes packages like <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, <code>forcats</code>, <code>tidyr</code>, <code>stringr</code>, etc.</li>
+<li>Prioritizes readability and consistency, making code cleaner and easier to read</li>
+</ul>
+</div></div>
+<!--  Both use **CRAN** to share packages -->
+</section>
+<section id="how-base-r-and-the-tidyverse-work-together" class="slide level2 center">
+<h2>How Base R and the Tidyverse Work Together</h2>
+<ul>
+<li>The <strong>tidyverse is built on base R</strong> — it doesn’t replace it<br>
+</li>
+<li>You can <strong>combine base R and tidyverse</strong> functions in your code<br>
+</li>
+<li>You’ll often see <strong>both styles</strong> used in real-world scripts and examples</li>
+</ul>
+<p><br></p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Use the tidyverse for most of your daily work, but understand enough base R to follow and troubleshoot R code!</p>
+</div>
+</div>
+</div>
+<p><br></p>
 </section></section>
 <section>
-<section id="title-section" class="title-slide slide level1 center middle">
-<h1>1. Title Section</h1>
-
+<section id="r-data-types-and-data-structures" class="title-slide slide level1 center middle">
+<h1>2. R Data Types and Data Structures</h1>
+<!-- We start with an overview of data types and data structures. After that we dive deeper into data structures, especially vectors and lists -->
 </section>
-<section id="subtitles" class="slide level2 center">
-<h2>Subtitles</h2>
+<section id="r-data-types-and-data-structures-1" class="slide level2 center">
+<h2>R Data Types and Data Structures</h2>
+<p>Data Types and Data Structures are part of base R. They are the fundamentals — the “ABC” of how R stores and organizes data.</p>
+<ul>
+<li><strong>Data Type</strong> — what kind of value it is<br>
+</li>
+<li><strong>Data Structure</strong> — how values are stored and organized</li>
+</ul>
+<p>We look at each and at how they relate.</p>
+</section>
+<section id="r-data-types" class="slide level2 center">
+<h2>R Data Types</h2>
+<h3 id="data-type-describes-the-kind-of-value-youre-working-with.">Data Type: describes the kind of value you’re working with.</h3>
+<p><br></p>
+<blockquote>
+<p>R has the following main data types:</p>
+<ul>
+<li><p><strong>Numeric</strong> – numbers, either with or without decimals</p>
+<ul>
+<li><strong>Double</strong> with decimals (default): <code>3.14</code>, <code>2.0</code><br>
+</li>
+<li><strong>Integer</strong> whole numbers: <code>2L</code>, <code>100L</code></li>
+</ul></li>
+<li><p><strong>Character</strong> – text or strings (always in quotes): <code>"hello"</code></p></li>
+<li><p><strong>Logical</strong> – TRUE or FALSE values: <code>TRUE</code>, <code>FALSE</code></p></li>
+<li><p><strong>Factor</strong> – categorical values with levels: <code>"low"</code>, <code>"medium"</code></p></li>
+</ul>
+</blockquote>
+<p><br></p>
+</section>
+<section id="r-data-structures" class="slide level2 center">
+<h2>R Data Structures</h2>
+<h3 id="data-structure-like-a-container-that-holds-one-or-more-values.">Data Structure: like a container that holds one or more values.</h3>
+<p><br></p>
+<blockquote>
+<p>R has the following main data structures:</p>
+<ul>
+<li><p><strong>Vector</strong> – one-dimensional, all elements same type<br>
+<code>v &lt;- c(1, 2, 3)</code></p></li>
+<li><p><strong>Matrix</strong> – two-dimensional, all elements same type<br>
+<code>m &lt;- matrix(1:6, nrow = 2)</code></p></li>
+<li><p><strong>Dataframe</strong> – two-dimensional, columns can have different types<br>
+<code>df &lt;- data.frame(name = c("A", "B"), age = c(25, 30))</code></p></li>
+<li><p><strong>List</strong> – multi-dimensional, holds elements of any type, even mixed<br>
+<code>l &lt;- list(num = 1:3, name = c("Sabrina", "Laura"))</code></p></li>
+</ul>
+</blockquote>
+<!-- Vectors, also called (Atomic) Vectors are the most important data structure in R -->
+</section>
+<section id="how-data-types-and-data-structures-relate" class="slide level2 center">
+<h2>How Data Types and Data Structures Relate</h2>
+<p>Every single element in R has a data type. That element is stored inside a larger data structure.</p>
+<p>Examples:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)      <span class="co"># a vector (structure) of three elements, all numeric values (type) </span></span>
+<span id="cb1-2"><a></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"a"</span>, <span class="dv">5</span>)    <span class="co"># a list (structure) of two elements, one character value and one numeric value (type)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- In R, every single value (like "apple" or 3.14 or TRUE) has exactly one data type — it might be a character, numeric, logical, etc. This stays true even when that value is part of a larger structure, like a vector, list, or data frame. <br>
+
+To work with data types (numeric, character, logical, etc.) in R, we need to store them inside a data structure (vector, list, etc.)!
+
+ -->
+<p><fragment> <br></fragment></p>
+<div title="The data structure you use affects what data types you can store:">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The data structure you use affects what data types you can store:</strong></p>
+</div>
+<div class="callout-content">
+<p>Not all data structures support every combination of data types. Some allow only one type, while others can store many types together.</p>
+</div>
+</div>
+</div>
+</div>
+<p><br> </p>
+</section>
+<section id="how-data-types-and-data-structures-relate-1" class="slide level2 center">
+<h2>How Data Types and Data Structures Relate</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Structure</th>
+<th>Dimensions</th>
+<th>Allow Mixed Types?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Vector</strong></td>
+<td>1D</td>
+<td>No</td>
+<td>All elements must be the same data type</td>
+</tr>
+<tr class="even">
+<td><strong>Matrix</strong></td>
+<td>2D</td>
+<td>No</td>
+<td>All elements must be the same data type</td>
+</tr>
+<tr class="odd">
+<td><strong>Dataframe</strong></td>
+<td>2D</td>
+<td>Yes (by column)</td>
+<td>Each column is a vector; data types can vary by column</td>
+</tr>
+<tr class="even">
+<td><strong>List</strong></td>
+<td>Flexible</td>
+<td>Yes</td>
+<td>Each element can be anything: numbers, text, vectors, even data frames</td>
+</tr>
+</tbody>
+</table>
+<!--
+- Vectors and matrices can only hold one type 
+  If you mix types, R will automatically convert (coerce) them  
+  Example: `c(1, "a", TRUE)` becomes `"1"`, `"a"`, `"TRUE"` (all character)
+
+- Lists and Df can hold multiple types  
+  Each list element or data frame column can be different  
+  Example: `list(1, "a", TRUE)` keeps all types as-is
+
+::: {.callout-tip}
+Use **vectors** and **matrices** when your data is uniform. Use **data frames** or **lists** when you need to store different types.
+:::
+-->
 </section>
 <section id="practice" class="slide level2 center">
 <h2>💻 Practice</h2>
+<p>Run the code below to create different R objects. Then use <code>class()</code> + <code>str()</code> or <code>glimpse()</code> on each object to explore their data structure.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># vector</span></span>
+<span id="cb2-2"><a></a>num_v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<span id="cb2-3"><a></a>char_v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"hello"</span>, <span class="st">"ciao"</span>, <span class="st">"hey"</span>)</span>
+<span id="cb2-4"><a></a>f_v <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span>))</span>
+<span id="cb2-5"><a></a>test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"hello"</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a><span class="co"># matrix</span></span>
+<span id="cb2-8"><a></a>num_m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">5</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-9"><a></a>char_m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-10"><a></a></span>
+<span id="cb2-11"><a></a><span class="co"># dataframe or tibble</span></span>
+<span id="cb2-12"><a></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-13"><a></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb2-14"><a></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Dave"</span>, <span class="st">"Ashley"</span>, <span class="st">"Rik"</span>),</span>
+<span id="cb2-15"><a></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">20</span>)) </span>
+<span id="cb2-16"><a></a></span>
+<span id="cb2-17"><a></a><span class="co"># list</span></span>
+<span id="cb2-18"><a></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb2-19"><a></a>  <span class="at">num_v =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),</span>
+<span id="cb2-20"><a></a>  <span class="at">m =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-21"><a></a>  <span class="at">another_num_v =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>),</span>
+<span id="cb2-22"><a></a>  <span class="at">char_v =</span> <span class="fu">c</span>(<span class="st">"Sabrina"</span>, <span class="st">"Zach"</span>),</span>
+<span id="cb2-23"><a></a>  <span class="at">d =</span> <span class="fu">tibble</span>(<span class="at">var_1 =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>),</span>
+<span id="cb2-24"><a></a>              <span class="at">var_2 =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- explore code
+call it to see how it looks like 
+run class() for each to see the datadype
+create df also with tibble
+etc.
+-->
 </section>
-<section id="recap-what-we-learned-today" class="slide level2 center">
-<h2>Recap: What We Learned Today</h2>
+<section id="why-this-matters-understanding-when-to-use-each-data-structure" class="slide level2 center">
+<h2>Why This Matters: Understanding When to Use Each Data Structure</h2>
+<h3 id="data-frames-first">Data Frames first!</h3>
+<p>So far, we’ve been working mostly with data frames — technically with tibbles, the tidyverse version of them. Data frames are the go-to structure for working with real-world, tabular data in R. <strong>Keep using them for most data analysis tasks in this course and beyond!</strong></p>
+<p>Strengths of data frames:</p>
+<ul>
+<li>Can store columns of different data types (e.g., character, numeric, logical)</li>
+<li>Work easily with <code>dplyr</code>, <code>ggplot2</code>, and other tidyverse packages</li>
+<li>Make your data easier to manipulate, filter, summarize, and visualize</li>
+</ul>
 </section>
-<section id="reminders" class="slide level2 center">
-<h2>Reminders</h2>
+<section id="why-this-matters-understanding-when-to-use-each-data-structure-1" class="slide level2 center">
+<h2>Why This Matters: Understanding When to Use Each Data Structure</h2>
+<h3 id="beyond-data-frames-know-your-tools">Beyond Data Frames: Know Your Tools</h3>
+<p>But it’s helpful to understand the full set of R data structures, because each has its own strengths:</p>
+<ul>
+<li><p><strong>Vectors</strong>: The most basic structure in R; all elements must be the same type.<br>
+<em>You are analyzing survey responses and want to store all participants’ ages in a separate vector for further manipulation.</em></p></li>
+<li><p><strong>Matrices</strong>: Two-dimensional, all elements must be the same type.<br>
+<em>You have numeric data that you want to analyze using matrix algebra or linear models.</em></p></li>
+<li><p><strong>Lists</strong>: Flexible containers that can hold anything — even other lists.<br>
+<em>You are analyzing data and want to save multiple outputs (model results, plot, etc.) all in the same data structure.</em></p></li>
+<li><p><strong>Data Frames</strong>: Two-dimensional, columns can have different types.<br>
+<em>You are analyzing survey responses with dplyr, ggplot, or other tidyverse packages.</em></p></li>
+</ul>
+</section></section>
+<section>
+<section id="a-closer-look-at-vectors" class="title-slide slide level1 center middle">
+<h1>3. A Closer Look at Vectors</h1>
+
+</section>
+<section id="example-of-filtering-rows-in-a-dataframe-using-logical-vectors" class="slide level2 center">
+<h2>Example of filtering rows in a dataframe using logical vectors</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># load libraries and data</span></span>
+<span id="cb3-2"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-3"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb3-4"><a></a><span class="fu">data</span>(penguins)</span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a><span class="co"># use dplyr filter() to get penguins where body mass is greater than 4000 grams</span></span>
+<span id="cb3-7"><a></a>filtered_penguins <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">filter</span>(body_mass_g <span class="sc">&gt;</span> <span class="dv">4000</span>)</span>
+<span id="cb3-8"><a></a><span class="fu">head</span>(filtered_penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-of-filtering-rows-in-a-dataframe-using-logical-vectors-1" class="slide level2 center">
+<h2>Example of filtering rows in a dataframe using logical vectors</h2>
+<p>Let’s break the previous code down to see what’s happening under the hood: R defines a logical vector and applies it to the <code>penguins</code> dataframe:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># use base R to get the column we need: gives a logical vector</span></span>
+<span id="cb4-2"><a></a>filter_vector <span class="ot">&lt;-</span> penguins<span class="sc">$</span>body_mass_g <span class="sc">&gt;</span> <span class="dv">4000</span></span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a><span class="co"># check its structure</span></span>
+<span id="cb4-5"><a></a><span class="fu">is.vector</span>(filter_vector)</span>
+<span id="cb4-6"><a></a><span class="fu">class</span>(filter_vector) </span>
+<span id="cb4-7"><a></a></span>
+<span id="cb4-8"><a></a><span class="co"># use this vector to manually filter the dataframe using base R </span></span>
+<span id="cb4-9"><a></a>filtered_p <span class="ot">&lt;-</span> penguins[filter_vector, ]  <span class="co"># df[rows, columns]: rows to keep, include all columns </span></span>
+<span id="cb4-10"><a></a><span class="fu">head</span>(filtered_p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="a-particular-vector-scalar" class="slide level2 center">
+<h2>A particular vector: Scalar</h2>
+<p>In math a scalar is defined as a single real number but <strong>in R, a scalar is simply a vector of length one</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># set up a vector x of length 10</span></span>
+<span id="cb5-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">10</span>)</span>
+<span id="cb5-3"><a></a>x</span>
+<span id="cb5-4"><a></a></span>
+<span id="cb5-5"><a></a><span class="co"># add 100 to x using the long way</span></span>
+<span id="cb5-6"><a></a>x <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">100</span>)</span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a><span class="co"># add 100 to x using the "R" way: vector recycling!</span></span>
+<span id="cb5-9"><a></a>x <span class="sc">+</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="vector-recycling-in-r" class="slide level2 center">
+<h2>Vector Recycling in R</h2>
+<p><strong>When two vectors are involved in an operation, R repeats the elements of the shorter vector to match the length of the longer vector</strong></p>
+<p>For example, let’s define two numeric vectors <code>x1</code> and <code>x2</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># x1 is sequence of numbers from 1 to 2</span></span>
+<span id="cb6-2"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">2</span>)</span>
+<span id="cb6-3"><a></a></span>
+<span id="cb6-4"><a></a><span class="co"># x2 is a sequence of numbers from 1 to 10</span></span>
+<span id="cb6-5"><a></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If we add <code>x1</code> and <code>x2</code>, R will do it, but the result might not be what we expect:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x1 <span class="sc">+</span> x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What happens? The shorter vector <code>x1</code> is duplicated five times in order to match the length of the longer vector <code>x2.</code> The same behavior is for other operations like subtraction, multiplication, logical comparison, etc.</p>
+</section>
+<section id="vector-recycling-in-r-1" class="slide level2 center">
+<h2>Vector Recycling in R</h2>
+<p>This behavior is called <strong>vector recycling</strong> and happens automatically in R. You need check if this is what you intended to do. If not, extend the length of the shorter vector manually first, then add them up.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">7</span>))</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>x1 <span class="sc">+</span> x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note that if the shorter vector is not a multiple of the longer one, R will print a warning message!</strong></p>
+</section></section>
+<section>
+<section id="subset-data-structures-with-base-r" class="title-slide slide level1 center middle">
+<h1>4. Subset Data Structures with Base R</h1>
+
+</section>
+<section id="subsetting-data-structures-in-r" class="slide level2 center">
+<h2>Subsetting Data Structures in R</h2>
+<p>There are different ways to access parts of data structures in R.</p>
+<p>We’ll cover:</p>
+<ul>
+<li>Vectors</li>
+<li>Matrices</li>
+<li>Data Frames</li>
+<li>Lists</li>
+</ul>
+<p>Each structure uses <strong>square brackets <code>[ ]</code></strong>, but how you use them depends on the structure.</p>
+</section>
+<section id="subsetting-vectors" class="slide level2 center">
+<h2>Subsetting Vectors</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a>v[<span class="dv">2</span>]         <span class="co"># 20 (2nd element)</span></span>
+<span id="cb9-4"><a></a>v[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]   <span class="co"># 10 and 30</span></span>
+<span id="cb9-5"><a></a>v[<span class="sc">-</span><span class="dv">1</span>]        <span class="co"># all but the first</span></span>
+<span id="cb9-6"><a></a>v[v <span class="sc">&gt;</span> <span class="dv">25</span>]    <span class="co"># elements greater than 25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Vectors are 1D — you just specify positions or logical tests in <code>[ ]</code></p>
+</section>
+<section id="subsetting-matrices" class="slide level2 center">
+<h2>Subsetting Matrices</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a>m[<span class="dv">1</span>, <span class="dv">2</span>]      <span class="co"># value at row 1, column 2</span></span>
+<span id="cb10-4"><a></a>m[ , <span class="dv">3</span>]      <span class="co"># entire 3rd column</span></span>
+<span id="cb10-5"><a></a>m[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]  <span class="co"># top-right submatrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Matrices are 2D: use <code>[row, column]</code></p>
+</section>
+<section id="subsetting-data-frames" class="slide level2 center">
+<h2>Subsetting Data Frames</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
+<span id="cb11-2"><a></a>                 <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>))</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a>df[<span class="dv">1</span>, ]            <span class="co"># first row</span></span>
+<span id="cb11-5"><a></a>df[ , <span class="st">"age"</span>]       <span class="co"># age column</span></span>
+<span id="cb11-6"><a></a>df<span class="sc">$</span>age             <span class="co"># also gets age column</span></span>
+<span id="cb11-7"><a></a>df[df<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">20</span>, ]  <span class="co"># rows where age &gt; 20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Data frames combine list and matrix behavior.</p>
+</section>
+<section id="subsetting-lists" class="slide level2 center">
+<h2>Subsetting Lists</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="st">"hello"</span>, <span class="at">c =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-2"><a></a></span>
+<span id="cb12-3"><a></a>my_list[<span class="dv">1</span>]     <span class="co"># list with one element</span></span>
+<span id="cb12-4"><a></a>my_list[[<span class="dv">1</span>]]   <span class="co"># contents of first element</span></span>
+<span id="cb12-5"><a></a>my_list<span class="sc">$</span>b      <span class="co"># same as my_list[["b"]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Use <code>[ ]</code> to extract a sublist<br>
+</li>
+<li>Use <code>[[ ]]</code> or <code>$</code> to extract actual elements</li>
+</ul>
+<!--
+### Subsetting vectors: slicing
+
+To subset a vector we use the index location of its elements:
+
+
+::: {.cell}
+
+:::
+
+
+```
+# keep the first element
+x[1]
+
+# keep the first through third elements
+x[c(1, 2, 3)]   # long code
+x[1:3]          # shorter code
+x[c(seq(1, 3))] # sequence 
+x[-c(4:5)]      # negative indexing (values that you do not want to keep)
+x[-c(4,5)]      # negative indexing
+
+x[c(-1,2,3)]   # error! do not mix negative and positive subscripts
+```
+-->
 </section>
 <section id="to-print-these-slides-as-pdf" class="slide level2 center">
 <h2>To print these slides as pdf</h2>
@@ -407,6 +872,82 @@ Sabrina Nardin, Summer 2025
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

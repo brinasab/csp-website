@@ -2482,14 +2482,14 @@
     "href": "lectures/08-slides.html#r-data-types",
     "title": "Introduction to R: Lecture 8",
     "section": "R Data Types",
-    "text": "R Data Types\nData Type: describes the kind of value you’re working with.\n\n\nR has the following main data types:\n\nNumeric – numbers, either with or without decimals\n\nDouble with decimals (default): 3.14, 2.0\n\nInteger whole numbers: 2L, 100L\n\nCharacter – text or strings (always in quotes): \"hello\"\nLogical – TRUE or FALSE values: TRUE, FALSE\nFactor – categorical values with levels: \"low\", \"medium\""
+    "text": "R Data Types\nData Type: describes the kind of value you’re working with.\n\n\nR has the following main data types (for more see here):\n\nNumeric – numbers, either with or without decimals\n\nDouble with decimals (default): 3.14, 2.0\n\nInteger whole numbers: 2L, 100L\n\nCharacter – text or strings (always in quotes): \"hello\"\nLogical – TRUE or FALSE values: TRUE, FALSE\nFactor – categorical values with levels: \"low\", \"medium\""
   },
   {
     "objectID": "lectures/08-slides.html#r-data-structures",
     "href": "lectures/08-slides.html#r-data-structures",
     "title": "Introduction to R: Lecture 8",
     "section": "R Data Structures",
-    "text": "R Data Structures\nData Structure: like a container that holds one or more values.\n\n\nR has the following main data structures:\n\nVector – one-dimensional, all elements same type\nv &lt;- c(1, 2, 3)\nMatrix – two-dimensional, all elements same type\nm &lt;- matrix(1:6, nrow = 2)\nDataframe – two-dimensional, columns can have different types\ndf &lt;- data.frame(name = c(\"A\", \"B\"), age = c(25, 30))\nList – multi-dimensional, holds elements of any type, even mixed\nl &lt;- list(num = 1:3, name = c(\"Sabrina\", \"Laura\"))"
+    "text": "R Data Structures\nData Structure: like a container that holds one or more values.\n\n\nR has the following main data structures (for more see here):\n\nVector – one-dimensional, all elements same type\nv &lt;- c(1, 2, 3)\nMatrix – two-dimensional, all elements same type\nm &lt;- matrix(1:6, nrow = 2)\nDataframe – two-dimensional, columns can have different types\ndf &lt;- data.frame(name = c(\"A\", \"B\"), age = c(25, 30))\nList – multi-dimensional, holds elements of any type, even mixed\nl &lt;- list(num = 1:3, name = c(\"Sabrina\", \"Laura\"))"
   },
   {
     "objectID": "lectures/08-slides.html#r-data-structures-1",
@@ -2622,21 +2622,21 @@
     "href": "lectures/08-slides.html#subsetting-matrices",
     "title": "Introduction to R: Lecture 8",
     "section": "Subsetting Matrices",
-    "text": "Subsetting Matrices\nm &lt;- matrix(1:9, nrow = 3)\n\nm[1, 2]      # value at row 1, column 2\nm[ , 3]      # entire 3rd column\nm[1:2, 2:3]  # top-right submatrix\nMatrices are 2D: use [row, column]"
+    "text": "Subsetting Matrices\nm &lt;- matrix(1:9, nrow = 3, byrow = TRUE)\n\nm[1, 2]           # value at row 1, column 2\nm[ , 3]           # entire 3rd column\nm[2,  ]           # entire 2nd row\nm[1:2, 2:3]       # top-right submatrix (rows 1–2, cols 2–3)\nm[ , c(1, 3)]     # columns 1 and 3\nMatrices are 2D: use [row, column]"
   },
   {
     "objectID": "lectures/08-slides.html#subsetting-data-frames",
     "href": "lectures/08-slides.html#subsetting-data-frames",
     "title": "Introduction to R: Lecture 8",
     "section": "Subsetting Data Frames",
-    "text": "Subsetting Data Frames\ndf &lt;- data.frame(name = c(\"A\", \"B\", \"C\"),\n                 age = c(20, 21, 22))\n\ndf[1, ]            # first row\ndf[ , \"age\"]       # age column\ndf$age             # also gets age column\ndf[df$age &gt; 20, ]  # rows where age &gt; 20\nData frames combine list and matrix behavior."
+    "text": "Subsetting Data Frames\ndf &lt;- data.frame(\n  name = c(\"Alex\", \"Betty\", \"Chad\", \"J\"),\n  age = c(20, 21, 22, 23))\n\ndf[1, ]            # first row (all columns)\ndf[ , 1]           # first column by index\ndf[ , \"name\"]      # first column by label\ndf$name            # same as above\ndf[[\"name\"]]       # same as above\n\ndf[1, 2]           # single value at row 1, column 2\ndf[2:3, \"name\"]    # values in rows 2 and 3 of column name\n\ndf[df$age &gt; 20, ]            # filter rows where age &gt; 20\ndf[df$name == \"J\", ]         # filter rows where name is \"J\"\ndf[df$age == max(df$age), ]  # filter rows with highest age\nData frames combine list and matrix behavior."
   },
   {
     "objectID": "lectures/08-slides.html#subsetting-lists",
     "href": "lectures/08-slides.html#subsetting-lists",
     "title": "Introduction to R: Lecture 8",
     "section": "Subsetting Lists",
-    "text": "Subsetting Lists\nmy_list &lt;- list(a = 1:3, b = \"hello\", c = TRUE)\n\nmy_list[1]     # list with one element\nmy_list[[1]]   # contents of first element\nmy_list$b      # same as my_list[[\"b\"]]\n\nUse [ ] to extract a sublist\n\nUse [[ ]] or $ to extract actual elements"
+    "text": "Subsetting Lists\nmy_list &lt;- list(\n  a = c(1, 2, 3),\n  b = c(\"hello\", \"ciao\"),\n  c = TRUE\n)\n\nmy_list[1]         # list with one element\nmy_list[[1]]       # contents of first element: 1 2 3\nmy_list[[1]][1]    # first value of that vector: 1\nmy_list[\"b\"]       # list with one element named \"b\"\nmy_list$b          # same as my_list[[\"b\"]], only works with names\nmy_list[[\"c\"]]     # returns TRUE\n\nUse [ ] to extract a sublist\n\nUse [[ ]] or $ to extract actual elements"
   },
   {
     "objectID": "lectures/08-slides.html#summary",
@@ -2657,27 +2657,27 @@
     "href": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors-1",
     "title": "Introduction to R: Lecture 8",
     "section": "Example of filtering rows in a dataframe using logical vectors",
-    "text": "Example of filtering rows in a dataframe using logical vectors\nLet’s break the previous code down to see what’s happening under the hood: R defines a logical vector and applies it to the penguins dataframe:\n# use base R to get the column we need: gives a logical vector\nfilter_vector &lt;- penguins$body_mass_g &gt; 4000\n\n# check its structure\nis.vector(filter_vector)\nclass(filter_vector) \n\n# use this vector to manually filter the dataframe using base R \nfiltered_p &lt;- penguins[filter_vector, ]  # df[rows, columns]: rows to keep, include all columns \nhead(filtered_p)"
+    "text": "Example of filtering rows in a dataframe using logical vectors\nLet’s analyze the previous code to see what’s happening under the hood: R defines a logical vector and applies it to the penguins dataframe:\n# use base R to get the column we need: gives a logical vector\nfilter_vector &lt;- penguins$body_mass_g &gt; 4000\n\n# check its structure\nis.vector(filter_vector)\nclass(filter_vector) \n\n# use this vector to manually filter the dataframe using base R \n# df[rows, columns]: rows to keep, all columns\nfiltered_p &lt;- penguins[filter_vector, ]"
   },
   {
     "objectID": "lectures/08-slides.html#a-particular-vector-scalar",
     "href": "lectures/08-slides.html#a-particular-vector-scalar",
     "title": "Introduction to R: Lecture 8",
     "section": "A particular vector: Scalar",
-    "text": "A particular vector: Scalar\nIn math a scalar is defined as a single real number but in R, a scalar is simply a vector of length one\n# set up a vector x of length 10\nx &lt;- sample(10)\nx\n\n# add 100 to x using the long way\nx + c(100, 100, 100, 100, 100, 100, 100, 100, 100, 100)\n\n# add 100 to x using the \"R\" way: vector recycling!\nx + 100"
+    "text": "A particular vector: Scalar\nIn math a scalar is defined as a single real number but in R, a scalar is simply a vector of length one\nLet’s try this code:\n# set up a vector x of length 10\nx &lt;- sample(10)\nx\n\n# add 100 to x using the long way\nx + c(100, 100, 100, 100, 100, 100, 100, 100, 100, 100)\n\n# add 100 to x using the \"R\" way: vector recycling!\nx + 100"
   },
   {
     "objectID": "lectures/08-slides.html#vector-recycling-in-r",
     "href": "lectures/08-slides.html#vector-recycling-in-r",
     "title": "Introduction to R: Lecture 8",
     "section": "Vector Recycling in R",
-    "text": "Vector Recycling in R\nWhen two vectors are involved in an operation, R repeats the elements of the shorter vector to match the length of the longer vector\nFor example, let’s define two numeric vectors x1 and x2:\n# x1 is sequence of numbers from 1 to 2\nx1 &lt;- seq(from = 1, to = 2)\n\n# x2 is a sequence of numbers from 1 to 10\nx2 &lt;- seq(from = 1, to = 10)\nIf we add x1 and x2, R will do it, but the result might not be what we expect:\nx1 + x2\nWhat happens? The shorter vector x1 is duplicated five times in order to match the length of the longer vector x2. The same behavior is for other operations like subtraction, multiplication, logical comparison, etc."
+    "text": "Vector Recycling in R\nLet’s see another example. We define two numeric vectors x1 and x2:\n# x1 is sequence of numbers from 1 to 2\nx1 &lt;- seq(from = 1, to = 2)\n\n# x2 is a sequence of numbers from 1 to 10\nx2 &lt;- seq(from = 1, to = 10)\n\n# what happens if we add them?\nx1 + x2\nWhat happens? The shorter vector x1 is duplicated five times in order to match the length of the longer vector x2. The same behavior happens for other operations like subtraction, multiplication, logical comparison, etc.\n\n\n\n\n\n\nWarning\n\n\nIf the shorter vector is not a multiple of the longer one, R will print a warning message!"
   },
   {
     "objectID": "lectures/08-slides.html#vector-recycling-in-r-1",
     "href": "lectures/08-slides.html#vector-recycling-in-r-1",
     "title": "Introduction to R: Lecture 8",
     "section": "Vector Recycling in R",
-    "text": "Vector Recycling in R\nThis behavior is called vector recycling and happens automatically in R. You need check if this is what you intended to do. If not, extend the length of the shorter vector manually first, then add them up.\nx1 &lt;- c(1, 2, rep(0, 7))\n\nx1 + x2\nNote that if the shorter vector is not a multiple of the longer one, R will print a warning message!"
+    "text": "Vector Recycling in R\n\n\n\n\n\n\nNote\n\n\nThis behavior is called Vector Recycling and happens automatically in R: When two vectors of different lengths are used in an operation, R repeats (recycles) the elements of the shorter vector to match the longer vector!\n\n\n\nWhy It Matters: Vector recycling can cause unexpected results. Check if recycling is what you want R to do — if not, adjust the vector lengths manually, like this:\nx1 &lt;- c(1, 2, rep(0, 7))\n\nx1 + x2"
   }
 ]

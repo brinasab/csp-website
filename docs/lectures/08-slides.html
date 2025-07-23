@@ -208,6 +208,15 @@ Sabrina Nardin, Summer 2025
 </div>
 
 </section>
+<section class="slide level2 center">
+
+<!-- NOTE TO IMPROVE THESE SLIDES FOR CSS:
+Add all data structures and data types
+More functions to explore them and key commands for each data str
+See https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures.html
+and https://libraryguides.mcgill.ca/c.php?g=699776&p=4968544
+-->
+</section>
 <section id="agenda" class="title-slide slide level1 center">
 <h1>Agenda</h1>
 <div class="agenda-list">
@@ -215,10 +224,10 @@ Sabrina Nardin, Summer 2025
 <li>Define Base R</li>
 <li>R Data Types and Data Structures</li>
 <li>A Closer Look at Vectors</li>
-<li>Subset Data Structures with Base R (extra, no quiz)</li>
+<li>Subset Data Structures with Base R (extra content, no quiz)</li>
 </ol>
 </div>
-<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 22, 2025 </span></p>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 23, 2025 </span></p>
 </section>
 
 <section>
@@ -319,7 +328,7 @@ we come back to functions next week
 <h3 id="data-type-describes-the-kind-of-value-youre-working-with.">Data Type: describes the kind of value you’re working with.</h3>
 <p><br></p>
 <blockquote>
-<p>R has the following main data types:</p>
+<p>R has the following <em>main</em> data types (for more see <a href="https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures.html">here</a>):</p>
 <ul>
 <li><p><strong>Numeric</strong> – numbers, either with or without decimals</p>
 <ul>
@@ -339,7 +348,7 @@ we come back to functions next week
 <h3 id="data-structure-like-a-container-that-holds-one-or-more-values.">Data Structure: like a container that holds one or more values.</h3>
 <p><br></p>
 <blockquote>
-<p>R has the following main data structures:</p>
+<p>R has the following <em>main</em> data structures (for more see <a href="https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures.html">here</a>):</p>
 <ul>
 <li><p><strong>Vector</strong> – one-dimensional, all elements same type<br>
 <code>v &lt;- c(1, 2, 3)</code></p></li>
@@ -518,7 +527,7 @@ etc.
 </section>
 <section id="example-of-filtering-rows-in-a-dataframe-using-logical-vectors-1" class="slide level2 center">
 <h2>Example of filtering rows in a dataframe using logical vectors</h2>
-<p>Let’s break the previous code down to see what’s happening under the hood: R defines a logical vector and applies it to the <code>penguins</code> dataframe:</p>
+<p>Let’s analyze the previous code to see what’s happening under the hood: R defines a logical vector and applies it to the <code>penguins</code> dataframe:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># use base R to get the column we need: gives a logical vector</span></span>
 <span id="cb4-2"><a></a>filter_vector <span class="ot">&lt;-</span> penguins<span class="sc">$</span>body_mass_g <span class="sc">&gt;</span> <span class="dv">4000</span></span>
 <span id="cb4-3"><a></a></span>
@@ -527,12 +536,23 @@ etc.
 <span id="cb4-6"><a></a><span class="fu">class</span>(filter_vector) </span>
 <span id="cb4-7"><a></a></span>
 <span id="cb4-8"><a></a><span class="co"># use this vector to manually filter the dataframe using base R </span></span>
-<span id="cb4-9"><a></a>filtered_p <span class="ot">&lt;-</span> penguins[filter_vector, ]  <span class="co"># df[rows, columns]: rows to keep, include all columns </span></span>
-<span id="cb4-10"><a></a><span class="fu">head</span>(filtered_p)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-9"><a></a><span class="co"># df[rows, columns]: rows to keep, all columns</span></span>
+<span id="cb4-10"><a></a>filtered_p <span class="ot">&lt;-</span> penguins[filter_vector, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- 
+sum(filter_vector, na.rm = T)
+sum(is.na(filter_vector)) 
+filtered_penguins
+
+filtered_p
+filtered_penguins
+
+filtered_p |> drop_na(body_mass_g)
+-->
 </section>
 <section id="a-particular-vector-scalar" class="slide level2 center">
 <h2>A particular vector: Scalar</h2>
 <p>In math a scalar is defined as a single real number but <strong>in R, a scalar is simply a vector of length one</strong></p>
+<p>Let’s try this code:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># set up a vector x of length 10</span></span>
 <span id="cb5-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">10</span>)</span>
 <span id="cb5-3"><a></a>x</span>
@@ -545,24 +565,49 @@ etc.
 </section>
 <section id="vector-recycling-in-r" class="slide level2 center">
 <h2>Vector Recycling in R</h2>
-<p><strong>When two vectors are involved in an operation, R repeats the elements of the shorter vector to match the length of the longer vector</strong></p>
-<p>For example, let’s define two numeric vectors <code>x1</code> and <code>x2</code>:</p>
+<p>Let’s see another example. We define two numeric vectors <code>x1</code> and <code>x2</code>:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># x1 is sequence of numbers from 1 to 2</span></span>
 <span id="cb6-2"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">2</span>)</span>
 <span id="cb6-3"><a></a></span>
 <span id="cb6-4"><a></a><span class="co"># x2 is a sequence of numbers from 1 to 10</span></span>
-<span id="cb6-5"><a></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If we add <code>x1</code> and <code>x2</code>, R will do it, but the result might not be what we expect:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x1 <span class="sc">+</span> x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>What happens? The shorter vector <code>x1</code> is duplicated five times in order to match the length of the longer vector <code>x2.</code> The same behavior is for other operations like subtraction, multiplication, logical comparison, etc.</p>
+<span id="cb6-5"><a></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)</span>
+<span id="cb6-6"><a></a></span>
+<span id="cb6-7"><a></a><span class="co"># what happens if we add them?</span></span>
+<span id="cb6-8"><a></a>x1 <span class="sc">+</span> x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What happens? The shorter vector <code>x1</code> is duplicated five times in order to match the length of the longer vector <code>x2.</code> The same behavior happens for other operations like subtraction, multiplication, logical comparison, etc.</p>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>If the shorter vector is not a multiple of the longer one, R will print a warning message!</p>
+</div>
+</div>
+</div>
 </section>
 <section id="vector-recycling-in-r-1" class="slide level2 center">
 <h2>Vector Recycling in R</h2>
-<p>This behavior is called <strong>vector recycling</strong> and happens automatically in R. You need check if this is what you intended to do. If not, extend the length of the shorter vector manually first, then add them up.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">7</span>))</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>x1 <span class="sc">+</span> x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Note that if the shorter vector is not a multiple of the longer one, R will print a warning message!</strong></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>This behavior is called <strong>Vector Recycling</strong> and happens automatically in R: When two vectors of different lengths are used in an operation, R repeats (recycles) the elements of the shorter vector to match the longer vector!</p>
+</div>
+</div>
+</div>
+<p><strong>Why It Matters:</strong> Vector recycling can cause unexpected results. Check if recycling is what you want R to do — if not, adjust the vector lengths manually, like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">7</span>))</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>x1 <span class="sc">+</span> x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="subset-data-structures-with-base-r" class="title-slide slide level1 center middle">
@@ -583,41 +628,59 @@ etc.
 </section>
 <section id="subsetting-vectors" class="slide level2 center">
 <h2>Subsetting Vectors</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
-<span id="cb9-2"><a></a></span>
-<span id="cb9-3"><a></a>v[<span class="dv">2</span>]         <span class="co"># 20 (2nd element)</span></span>
-<span id="cb9-4"><a></a>v[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]   <span class="co"># 10 and 30</span></span>
-<span id="cb9-5"><a></a>v[<span class="sc">-</span><span class="dv">1</span>]        <span class="co"># all but the first</span></span>
-<span id="cb9-6"><a></a>v[v <span class="sc">&gt;</span> <span class="dv">25</span>]    <span class="co"># elements greater than 25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>)</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>v[<span class="dv">2</span>]         <span class="co"># 20 (2nd element)</span></span>
+<span id="cb8-4"><a></a>v[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]   <span class="co"># 10 and 30</span></span>
+<span id="cb8-5"><a></a>v[<span class="sc">-</span><span class="dv">1</span>]        <span class="co"># all but the first</span></span>
+<span id="cb8-6"><a></a>v[v <span class="sc">&gt;</span> <span class="dv">25</span>]    <span class="co"># elements greater than 25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Vectors are 1D — you just specify positions or logical tests in <code>[ ]</code></p>
 </section>
 <section id="subsetting-matrices" class="slide level2 center">
 <h2>Subsetting Matrices</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a>m[<span class="dv">1</span>, <span class="dv">2</span>]      <span class="co"># value at row 1, column 2</span></span>
-<span id="cb10-4"><a></a>m[ , <span class="dv">3</span>]      <span class="co"># entire 3rd column</span></span>
-<span id="cb10-5"><a></a>m[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]  <span class="co"># top-right submatrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-2"><a></a></span>
+<span id="cb9-3"><a></a>m[<span class="dv">1</span>, <span class="dv">2</span>]           <span class="co"># value at row 1, column 2</span></span>
+<span id="cb9-4"><a></a>m[ , <span class="dv">3</span>]           <span class="co"># entire 3rd column</span></span>
+<span id="cb9-5"><a></a>m[<span class="dv">2</span>,  ]           <span class="co"># entire 2nd row</span></span>
+<span id="cb9-6"><a></a>m[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]       <span class="co"># top-right submatrix (rows 1–2, cols 2–3)</span></span>
+<span id="cb9-7"><a></a>m[ , <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]     <span class="co"># columns 1 and 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Matrices are 2D: use <code>[row, column]</code></p>
 </section>
 <section id="subsetting-data-frames" class="slide level2 center">
 <h2>Subsetting Data Frames</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
-<span id="cb11-2"><a></a>                 <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>))</span>
-<span id="cb11-3"><a></a></span>
-<span id="cb11-4"><a></a>df[<span class="dv">1</span>, ]            <span class="co"># first row</span></span>
-<span id="cb11-5"><a></a>df[ , <span class="st">"age"</span>]       <span class="co"># age column</span></span>
-<span id="cb11-6"><a></a>df<span class="sc">$</span>age             <span class="co"># also gets age column</span></span>
-<span id="cb11-7"><a></a>df[df<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">20</span>, ]  <span class="co"># rows where age &gt; 20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-2"><a></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Alex"</span>, <span class="st">"Betty"</span>, <span class="st">"Chad"</span>, <span class="st">"J"</span>),</span>
+<span id="cb10-3"><a></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>))</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a>df[<span class="dv">1</span>, ]            <span class="co"># first row (all columns)</span></span>
+<span id="cb10-6"><a></a>df[ , <span class="dv">1</span>]           <span class="co"># first column by index</span></span>
+<span id="cb10-7"><a></a>df[ , <span class="st">"name"</span>]      <span class="co"># first column by label</span></span>
+<span id="cb10-8"><a></a>df<span class="sc">$</span>name            <span class="co"># same as above</span></span>
+<span id="cb10-9"><a></a>df[[<span class="st">"name"</span>]]       <span class="co"># same as above</span></span>
+<span id="cb10-10"><a></a></span>
+<span id="cb10-11"><a></a>df[<span class="dv">1</span>, <span class="dv">2</span>]           <span class="co"># single value at row 1, column 2</span></span>
+<span id="cb10-12"><a></a>df[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="st">"name"</span>]    <span class="co"># values in rows 2 and 3 of column name</span></span>
+<span id="cb10-13"><a></a></span>
+<span id="cb10-14"><a></a>df[df<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">20</span>, ]            <span class="co"># filter rows where age &gt; 20</span></span>
+<span id="cb10-15"><a></a>df[df<span class="sc">$</span>name <span class="sc">==</span> <span class="st">"J"</span>, ]         <span class="co"># filter rows where name is "J"</span></span>
+<span id="cb10-16"><a></a>df[df<span class="sc">$</span>age <span class="sc">==</span> <span class="fu">max</span>(df<span class="sc">$</span>age), ]  <span class="co"># filter rows with highest age</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Data frames combine list and matrix behavior.</p>
 </section>
 <section id="subsetting-lists" class="slide level2 center">
 <h2>Subsetting Lists</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="st">"hello"</span>, <span class="at">c =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a>my_list[<span class="dv">1</span>]     <span class="co"># list with one element</span></span>
-<span id="cb12-4"><a></a>my_list[[<span class="dv">1</span>]]   <span class="co"># contents of first element</span></span>
-<span id="cb12-5"><a></a>my_list<span class="sc">$</span>b      <span class="co"># same as my_list[["b"]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb11-2"><a></a>  <span class="at">a =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb11-3"><a></a>  <span class="at">b =</span> <span class="fu">c</span>(<span class="st">"hello"</span>, <span class="st">"ciao"</span>),</span>
+<span id="cb11-4"><a></a>  <span class="at">c =</span> <span class="cn">TRUE</span></span>
+<span id="cb11-5"><a></a>)</span>
+<span id="cb11-6"><a></a></span>
+<span id="cb11-7"><a></a>my_list[<span class="dv">1</span>]         <span class="co"># list with one element</span></span>
+<span id="cb11-8"><a></a>my_list[[<span class="dv">1</span>]]       <span class="co"># contents of first element: 1 2 3</span></span>
+<span id="cb11-9"><a></a>my_list[[<span class="dv">1</span>]][<span class="dv">1</span>]    <span class="co"># first value of that vector: 1</span></span>
+<span id="cb11-10"><a></a>my_list[<span class="st">"b"</span>]       <span class="co"># list with one element named "b"</span></span>
+<span id="cb11-11"><a></a>my_list<span class="sc">$</span>b          <span class="co"># same as my_list[["b"]], only works with names</span></span>
+<span id="cb11-12"><a></a>my_list[[<span class="st">"c"</span>]]     <span class="co"># returns TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Use <code>[ ]</code> to extract a sublist<br>
 </li>
@@ -644,7 +707,6 @@ x[1:3]          # shorter code
 x[c(seq(1, 3))] # sequence 
 x[-c(4:5)]      # negative indexing (values that you do not want to keep)
 x[-c(4,5)]      # negative indexing
-
 x[c(-1,2,3)]   # error! do not mix negative and positive subscripts
 ```
 -->

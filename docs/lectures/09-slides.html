@@ -216,6 +216,7 @@ Sabrina Nardin, Summer 2025
 <li>Deeper Dive into Conditional Statements</li>
 </ol>
 </div>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 24, 2025 </span></p>
 <!--
 <span style="font-size: 0.8em; color: #666;">
 *These slides were last updated on **July 24, 2025***
@@ -232,14 +233,14 @@ Sabrina Nardin, Summer 2025
 <h2>Control Structures: What’s the Idea?</h2>
 <p>Up to this point, our R code has been running line by line following in a fixed sequence.</p>
 <p><br></p>
-<div title="**Now we ask: Can our code make decisions?**">
+<div title="**Now we ask: Can our code be dynamic vs fixed?**">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong><strong>Now we ask: Can our code make decisions?</strong></strong></p>
+<p><strong><strong>Now we ask: Can our code be dynamic vs fixed?</strong></strong></p>
 </div>
 <div class="callout-content">
 <p>For Example: Can it skip some lines and run others depending on a condition? Or can it repeat itself when needed?</p>
@@ -508,7 +509,7 @@ What will the output be for:
 </section>
 <section id="vectorized-tests-with-ifelse" class="slide level2 center">
 <h2>4. Vectorized tests with ifelse()</h2>
-<p>Use <code>ifelse()</code> to apply a condition to <strong>each element of a vector</strong> thus we call this a “vectorized” test.</p>
+<p>Use <code>ifelse()</code> to apply a condition to <strong>each element of a vector</strong>. This is called a “vectorized test”, and fits well R’s vector-based design.</p>
 <p>Syntax:</p>
 <pre><code>ifelse (condition to be evaluated,
     action performed when condition is TRUE,
@@ -548,7 +549,7 @@ ifelse(): simpler and more suited for simple assignments or to transform variabl
 </div>
 <div class="callout-content">
 <ul>
-<li><p>The input to <code>ifelse()</code> is a <strong>vector</strong>, not just a single value, so the output is also a <strong>vector</strong>. The code evaluates <strong>each element of the vector</strong>, applying the specified action for each case.</p></li>
+<li><p>The input to <code>ifelse()</code> is often a <strong>vector</strong>, not just a single value, so the output is also a <strong>vector</strong>. The code evaluates <strong>each element of the vector</strong>, applying the specified action for each case.</p></li>
 <li><p>This works because <strong><code>ifelse()</code> supports vectorized operations</strong>: operations directly applied on entire vectors, rather than looping through individual elements one-by-one.</p></li>
 </ul>
 </div>

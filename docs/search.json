@@ -2685,7 +2685,7 @@
     "href": "lectures/09-slides.html#control-structures-whats-the-idea",
     "title": "Introduction to R: Lecture 9",
     "section": "Control Structures: What’s the Idea?",
-    "text": "Control Structures: What’s the Idea?\nUp to this point, our R code has been running line by line following in a fixed sequence.\n\n\n\n\n\n\n\n\nNow we ask: Can our code make decisions?\n\n\nFor Example: Can it skip some lines and run others depending on a condition? Or can it repeat itself when needed?\nYes, with control structures!"
+    "text": "Control Structures: What’s the Idea?\nUp to this point, our R code has been running line by line following in a fixed sequence.\n\n\n\n\n\n\n\n\nNow we ask: Can our code be dynamic vs fixed?\n\n\nFor Example: Can it skip some lines and run others depending on a condition? Or can it repeat itself when needed?\nYes, with control structures!"
   },
   {
     "objectID": "lectures/09-slides.html#what-are-control-structures",
@@ -2881,14 +2881,14 @@
     "href": "lectures/09-slides.html#vectorized-tests-with-ifelse",
     "title": "Introduction to R: Lecture 9",
     "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nUse ifelse() to apply a condition to each element of a vector thus we call this a “vectorized” test.\nSyntax:\nifelse (condition to be evaluated,\n    action performed when condition is TRUE,\n    action performed when condition is FALSE)\nExample:\n\ny &lt;- 3\n\nifelse(sqrt(16) &gt; y, \n       sqrt(16),\n       0)"
+    "text": "4. Vectorized tests with ifelse()\nUse ifelse() to apply a condition to each element of a vector. This is called a “vectorized test”, and fits well R’s vector-based design.\nSyntax:\nifelse (condition to be evaluated,\n    action performed when condition is TRUE,\n    action performed when condition is FALSE)\nExample:\n\ny &lt;- 3\n\nifelse(sqrt(16) &gt; y, \n       sqrt(16),\n       0)"
   },
   {
     "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-1",
     "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-1",
     "title": "Introduction to R: Lecture 9",
     "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nAnother example: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n\n\n\n\n\n\n\n\nHow ifelse() works:\n\n\n\nThe input to ifelse() is a vector, not just a single value, so the output is also a vector. The code evaluates each element of the vector, applying the specified action for each case.\nThis works because ifelse() supports vectorized operations: operations directly applied on entire vectors, rather than looping through individual elements one-by-one."
+    "text": "4. Vectorized tests with ifelse()\nAnother example: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n\n\n\n\n\n\n\n\nHow ifelse() works:\n\n\n\nThe input to ifelse() is often a vector, not just a single value, so the output is also a vector. The code evaluates each element of the vector, applying the specified action for each case.\nThis works because ifelse() supports vectorized operations: operations directly applied on entire vectors, rather than looping through individual elements one-by-one."
   },
   {
     "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-2",

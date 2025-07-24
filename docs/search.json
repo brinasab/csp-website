@@ -165,14 +165,14 @@
     "href": "lectures/09-slides.html#practice",
     "title": "Introduction to R: Lecture 9",
     "section": "💻 Practice",
-    "text": "💻 Practice"
+    "text": "💻 Practice\n\nDownload today’s class materials from the course website.\nOpen the file called warm-up.R.\nBefore running the code: look over the syntax and try to predict what the code will output\nRun the code and compare it to your prediction.\nBe ready to share at least one question about what the code."
   },
   {
     "objectID": "lectures/09-slides.html#recap-what-we-learned-today",
     "href": "lectures/09-slides.html#recap-what-we-learned-today",
     "title": "Introduction to R: Lecture 9",
     "section": "Recap: What We Learned Today",
-    "text": "Recap: What We Learned Today"
+    "text": "Recap: What We Learned Today\n\nControl structures let us change the flow of execution in our code\n\nWe focused on conditional statements: how to make decisions using if, else, and else if\nWe practiced different types of conditionals:\n\nsingle test, multiple tests, and nested tests\n\nvectorized tests with ifelse() and if_else()"
   },
   {
     "objectID": "lectures/09-slides.html#reminders",
@@ -1866,21 +1866,21 @@
     "href": "lectures/09-home.html#learning-objectives",
     "title": "Lecture 9: Control Flow 1",
     "section": "Learning Objectives",
-    "text": "Learning Objectives"
+    "text": "Learning Objectives\n\nDefine what control structures are and why they matter\nIntroduce one type of control structure: conditional statements\nPractice using conditional statements in R"
   },
   {
     "objectID": "lectures/09-home.html#before-class",
     "href": "lectures/09-home.html#before-class",
     "title": "Lecture 9: Control Flow 1",
     "section": "Before Class",
-    "text": "Before Class"
+    "text": "Before Class\n\nReview Lecture 8 materials to get ready for today’s in-class quiz\nBring your laptop to every class"
   },
   {
     "objectID": "lectures/09-home.html#readings",
     "href": "lectures/09-home.html#readings",
     "title": "Lecture 9: Control Flow 1",
     "section": "Readings",
-    "text": "Readings"
+    "text": "Readings\nSkim the readings before or after class to get the big picture and prep for quizzes and assignments:\n\nChapter 13 “Control Structures” in “R programming for Data Science” (Notice this is not our regular book!)"
   },
   {
     "objectID": "lectures/10-home.html",
@@ -2679,5 +2679,236 @@
     "title": "Introduction to R: Lecture 8",
     "section": "Vector Recycling in R",
     "text": "Vector Recycling in R\n\n\n\n\n\n\nNote\n\n\nThis behavior is called Vector Recycling and happens automatically in R: When two vectors of different lengths are used in an operation, R repeats (recycles) the elements of the shorter vector to match the longer vector!\n\n\n\nWhy It Matters: Vector recycling can cause unexpected results. Check if recycling is what you want R to do — if not, adjust the vector lengths manually, like this:\nx1 &lt;- c(1, 2, rep(0, 7))\n\nx1 + x2"
+  },
+  {
+    "objectID": "lectures/09-slides.html#control-structures-whats-the-idea",
+    "href": "lectures/09-slides.html#control-structures-whats-the-idea",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Control Structures: What’s the Idea?",
+    "text": "Control Structures: What’s the Idea?\nUp to this point, our R code has been running line by line following in a fixed sequence.\n\n\n\n\n\n\n\n\nNow we ask: Can our code make decisions?\n\n\nFor Example: Can it skip some lines and run others depending on a condition? Or can it repeat itself when needed?\nYes, with control structures!"
+  },
+  {
+    "objectID": "lectures/09-slides.html#what-are-control-structures",
+    "href": "lectures/09-slides.html#what-are-control-structures",
+    "title": "Introduction to R: Lecture 9",
+    "section": "What Are Control Structures?",
+    "text": "What Are Control Structures?\nControl structures let us write code that can:\n\nMake decisions\n→ with conditional statements (if, if...else, etc.)\nRepeat actions\n→ with loops (for, while)\n\nConditional statements and loops — that is, control structures — let us control the flow of execution. They allow our code to respond dynamically to different situations, rather than always running in the same fixed order like we’ve done so far."
+  },
+  {
+    "objectID": "lectures/09-slides.html#what-are-control-structures-1",
+    "href": "lectures/09-slides.html#what-are-control-structures-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "What Are Control Structures?",
+    "text": "What Are Control Structures?\nControl structures let us control the flow of execution by writing code that can:\n\nMake decisions — the code uses conditions, evaluates them, and chooses what to do\n➝ This is done with conditional statements (if, if...else, etc.)\nRepeat actions — the code runs certain lines multiple times when needed\n➝ This is done with loops (for and while loops)\n\nWith control structures, our code can respond dynamically to different situations, instead of always following a fixed line-by-line path like we’ve done so far."
+  },
+  {
+    "objectID": "lectures/09-slides.html#conditional-statements-1",
+    "href": "lectures/09-slides.html#conditional-statements-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Conditional Statements",
+    "text": "Conditional Statements\nConditional Statements use logical tests to decide what code to run.\n\nSingle test with if... else\nMultiple tests with if... else if... else\nNested tests by placing one if inside another\nVectorized tests with ifelse() (or if_else() in tidyverse) to apply a condition to each element of a vector"
+  },
+  {
+    "objectID": "lectures/09-slides.html#single-test-with-if...-else",
+    "href": "lectures/09-slides.html#single-test-with-if...-else",
+    "title": "Introduction to R: Lecture 9",
+    "section": "1. Single test with if... else",
+    "text": "1. Single test with if... else\nThe code tests one condition and acts on it depending on whether the condition is evaluated as TRUE or FALSE.\nSyntax:\nif (condition to be evaluated) {\n    action performed when condition is TRUE\n} else {\n    action performed when condition is FALSE\n}\n–\nExample:\n\nage &lt;- 14\nif (age &gt; 16) {\n  print(\"You can get a driving license\")\n} else {\n  print(\"You cannot drive\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#single-test-with-if...-else-1",
+    "href": "lectures/09-slides.html#single-test-with-if...-else-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "1. Single test with if... else",
+    "text": "1. Single test with if... else\nExample: What is the output of this code?\n\nmy_numbers &lt;- c(3,4,5,\"6\",7)\n\nif (!is.numeric(my_numbers)) {\n  print(\"At least one element is not numeric. Only provide numbers.\")\n} else {\n  print(\"All numeric elements\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#multiple-tests-with-if...-else-if...-else",
+    "href": "lectures/09-slides.html#multiple-tests-with-if...-else-if...-else",
+    "title": "Introduction to R: Lecture 9",
+    "section": "2. Multiple tests with if... else if... else",
+    "text": "2. Multiple tests with if... else if... else\nWe can extend the basic if... else structure to test multiple conditions!\nBy adding one or more else if statement(s) between the initial if and the final else\nSyntax:\nif (condition1) {\n    # action performed when condition 1 is TRUE\n    action1\n} else if (condition2) {\n    # action performed when condition 2 is TRUE\n    action2\n} else {\n    # action performed when conditions 1 and 2 are FALSE\n    action3\n}\nConditional statements are evaluated sequentially (the order of your code matters!):\n\nconditions are checked one-by-one in the order they are written\nonce R finds a TRUE condition, it stops, and the remaining conditions are not evaluated"
+  },
+  {
+    "objectID": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another",
+    "href": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another",
+    "title": "Introduction to R: Lecture 9",
+    "section": "3. Nested tests by placing one if inside another",
+    "text": "3. Nested tests by placing one if inside another\n\nUse nested if...else statements when your code needs to check conditions within conditions. This allows you to make a second decision only after a first condition is met.\nExample (note the %% returns the remainder after division):\n\nx &lt;- 15\n\nif (x &gt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a positive even number\")\n  } else {\n    print(\"x is a positive odd number\")\n  }\n} else {\n  if (x %% 2 == 0) {\n    print(\"x is a negative even number\")\n  } else {\n    print(\"x is a negative odd number\")\n  }\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another-1",
+    "href": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "3. Nested tests by placing one if inside another",
+    "text": "3. Nested tests by placing one if inside another\nSame example, but this checks also the condition x &lt;- 0:\n\nx &lt;- 0\n\nif (x &gt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a positive even number\")\n  } else {\n    print(\"x is a positive odd number\")\n  }\n} else if (x &lt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a negative even number\")\n  } else {\n    print(\"x is a negative odd number\")\n  }\n} else {\n  print(\"x is zero\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
+    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nUse ifelse() to apply a condition to each element of a vector thus we call this (a “vectorized” test).\nSyntax:\nifelse (condition to be evaluated,\n    action performed when condition is TRUE,\n    action performed when condition is FALSE)\nExample:\n\n\n[1] 4"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-1",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
+    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nExample: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n–\n\n\n[1] \"even\" \"even\" \"odd\" \n\n\nNote the input here is a vector, not a single number, thus the output is also a vector: the code will evaluate each element of the vector.\nThis is because ifelse() supports vectorized operations: operations directly applied on entire vectors of data, rather than looping through individual elements one-by-one."
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-2",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-2",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
+    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nExample: What is the output of this code?\n\nlibrary(tidyverse)\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                      \"Scores\" = c(32, 37, 28, 30))\n\nifelse(qualify$\"Scores\" &gt; 30, \"Admitted\", \"Rejected\")\n\n\nExample: What is the output of this code?\n\n\n[1] \"Admitted\" \"Admitted\" \"Rejected\" \"Rejected\""
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-3",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-3",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
+    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nExample: use ifelse() to recode variables in a dataframe…\nThe variable decisionDirection takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-4",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-4",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
+    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nSimilarly to other functions we have seen, there is also a dplyr version of the base R ifelse() function and it is called if_else(). They follow the same logic, but the latter is better to use with the tidyverse\nDocumentation here:https://dplyr.tidyverse.org/reference/if_else.html\nCompare the two!"
+  },
+  {
+    "objectID": "lectures/09-slides.html#practice-1",
+    "href": "lectures/09-slides.html#practice-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "💻 Practice",
+    "text": "💻 Practice\n\nWhat happens if the conditions are out of order? Move temperature &gt;= 10 before temperature &gt;= 20 in the code and run it with temperature 25\n\n\n\nAdd another else if statement to further refine the code: If the temperature is between 0 and 10 (inclusive of 0, exclusive of 10), set the weather to “Cold”. Hint: use the & operator to combine two conditions.\n\n\nOnce done, share your code here."
+  },
+  {
+    "objectID": "lectures/09-slides.html#single-test-with-if-else",
+    "href": "lectures/09-slides.html#single-test-with-if-else",
+    "title": "Introduction to R: Lecture 9",
+    "section": "1. Single test with if… else",
+    "text": "1. Single test with if… else\nUse if...else when your code needs to test one condition and take one of two possible actions, depending on whether the condition is TRUE or FALSE.\nSyntax:\nif (condition) {\n    # action performed when condition is TRUE\n    action1\n} else {\n    # action performed when condition is FALSE\n    action2\n}\nExample:\n\nage &lt;- 14\n\nif (age &gt; 16) {\n  print(\"You can get a driving license\")\n} else {\n  print(\"You cannot drive\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#single-test-with-if-else-1",
+    "href": "lectures/09-slides.html#single-test-with-if-else-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "1. Single test with if… else",
+    "text": "1. Single test with if… else\nAnother Example: What’s the output of this code?\n\nmovie_rating &lt;- c(4.5, 4.2, 5.0, 3.8, 2.9, 1.7)\nmovie_avg_rating &lt;- mean(movie_rating)\n\nif (movie_avg_rating &gt;= 4) {\n  print(\"This movie is great!\")\n} else {\n  print(\"Not a favorite.\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#multiple-tests-with-if-else-if-else",
+    "href": "lectures/09-slides.html#multiple-tests-with-if-else-if-else",
+    "title": "Introduction to R: Lecture 9",
+    "section": "2. Multiple tests with if… else if… else",
+    "text": "2. Multiple tests with if… else if… else\nUse if...else if...else when your code needs to test multiple conditions and take different actions depending on which condition is TRUE.\nSyntax:\nif (condition1) {\n    # action performed when condition 1 is TRUE\n    action1\n} else if (condition2) {\n    # action performed when condition 2 is TRUE\n    action2\n} else {\n    # action performed when conditions 1 and 2 are FALSE\n    action3\n}\n\nExample:\n\nx &lt;- 0\n\nif (x &gt; 0) {\n  print(\"x is positive\")\n} else if (x &lt; 0) {\n  print(\"x is negative\")\n} else {\n  print(\"x is zero\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#section",
+    "href": "lectures/09-slides.html#section",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4.",
+    "text": "4.\nExample: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n–\n\n\n[1] \"even\" \"even\" \"odd\" \n\n\nNote the input here is a vector, not a single number, thus the output is also a vector: the code will evaluate each element of the vector.\nThis is because ifelse() supports vectorized operations: operations directly applied on entire vectors of data, rather than looping through individual elements one-by-one."
+  },
+  {
+    "objectID": "lectures/09-slides.html#section-1",
+    "href": "lectures/09-slides.html#section-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4.",
+    "text": "4.\nExample: What is the output of this code?\n\nlibrary(tidyverse)\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                      \"Scores\" = c(32, 37, 28, 30))\n\nifelse(qualify$\"Scores\" &gt; 30, \"Admitted\", \"Rejected\")\n\n\nExample: What is the output of this code?\n\n\n[1] \"Admitted\" \"Admitted\" \"Rejected\" \"Rejected\""
+  },
+  {
+    "objectID": "lectures/09-slides.html#section-2",
+    "href": "lectures/09-slides.html#section-2",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4.",
+    "text": "4.\nExample: use ifelse() to recode variables in a dataframe…\nThe variable decisionDirection takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)"
+  },
+  {
+    "objectID": "lectures/09-slides.html#section-3",
+    "href": "lectures/09-slides.html#section-3",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4.",
+    "text": "4.\nSimilarly to other functions we have seen, there is also a dplyr version of the base R ifelse() function and it is called if_else(). They follow the same logic, but the latter is better to use with the tidyverse\nDocumentation here:https://dplyr.tidyverse.org/reference/if_else.html\nCompare the two!"
+  },
+  {
+    "objectID": "lectures/09-slides.html#conditional-statements",
+    "href": "lectures/09-slides.html#conditional-statements",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Conditional Statements",
+    "text": "Conditional Statements\nConditional statements let our code make decisions: the code checks conditions, evaluates them, and chooses what to do.\nSaid more formally, we use logical tests to determine which code should run:\n\nSingle test with if... else\nMultiple tests with if... else if... else\nNested tests by placing one if inside another\nVectorized tests with ifelse() (or if_else() in tidyverse) to apply a condition to each element of a vector"
+  },
+  {
+    "objectID": "lectures/09-slides.html#what-are-control-structures-2",
+    "href": "lectures/09-slides.html#what-are-control-structures-2",
+    "title": "Introduction to R: Lecture 9",
+    "section": "What Are Control Structures?",
+    "text": "What Are Control Structures?\nControl Structures let us control the flow of execution by writing code that can:\n\nMake decisions — the code uses conditions, evaluates them, and then chooses what to do = Conditional Statements\nRepeat actions — the code runs certain lines multiple times when needed = Loops\n\nNow our code can respond dynamically to different situations and not just follow a fixed line-by-line path like we have done so far."
+  },
+  {
+    "objectID": "lectures/09-slides.html#conditional-statements-decisions",
+    "href": "lectures/09-slides.html#conditional-statements-decisions",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Conditional Statements = Decisions",
+    "text": "Conditional Statements = Decisions\nConditional statements let our code make decisions: the code checks conditions, evaluates them, and chooses what to do.\nFormally, we use logical tests to determine which code should run:\n\nSingle test with if... else\nMultiple tests with if... else if... else\nNested tests by placing one if inside another\nVectorized tests with ifelse() (or if_else() in tidyverse) to apply a condition to each element of a vector"
+  },
+  {
+    "objectID": "lectures/09-slides.html#note-with-conditional-statements-sequence-matters",
+    "href": "lectures/09-slides.html#note-with-conditional-statements-sequence-matters",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Note: with conditional statements sequence matters!",
+    "text": "Note: with conditional statements sequence matters!\nConditional statements are evaluated in order so the sequence of your code matters:\n\nR checks each condition one by one, from top to bottom\n\nAs soon as it finds a condition that is TRUE, it runs that block and skips the rest"
+  },
+  {
+    "objectID": "lectures/09-slides.html#multiple-tests-with-if-else-if-else-1",
+    "href": "lectures/09-slides.html#multiple-tests-with-if-else-if-else-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "2. Multiple tests with if… else if… else",
+    "text": "2. Multiple tests with if… else if… else\nAnother Example with multiple else if statements:\n# Take user input\ntemperature &lt;- as.integer(readline(prompt = \"Enter today's temperature in Celsius: \"))\n\n# Determine weather based on temperature\nif (temperature &gt;= 30) {\n  weather &lt;- \"Hot\"\n} else if (temperature &gt;= 20) {\n  weather &lt;- \"Cool\"\n} else if (temperature &gt;= 10) {\n  weather &lt;- \"Breezy\"\n} else {\n  weather &lt;- \"Freezing\"\n}\nprint(weather)"
+  },
+  {
+    "objectID": "lectures/09-slides.html#practice-2",
+    "href": "lectures/09-slides.html#practice-2",
+    "title": "Introduction to R: Lecture 9",
+    "section": "💻 Practice",
+    "text": "💻 Practice\nYou can fine more practice exercises in today’s class materials (downloaded from the website)"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nUse ifelse() to apply a condition to each element of a vector thus we call this a “vectorized” test.\nSyntax:\nifelse (condition to be evaluated,\n    action performed when condition is TRUE,\n    action performed when condition is FALSE)\nExample:\n\ny &lt;- 3\n\nifelse(sqrt(16) &gt; y, \n       sqrt(16),\n       0)"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-1",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nAnother example: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n\n\n\n\n\n\n\n\nHow ifelse() works:\n\n\n\nThe input to ifelse() is a vector, not just a single value, so the output is also a vector. The code evaluates each element of the vector, applying the specified action for each case.\nThis works because ifelse() supports vectorized operations: operations directly applied on entire vectors, rather than looping through individual elements one-by-one."
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-2",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-2",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nExample: What is the output of this code?\n\nlibrary(tidyverse)\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\nifelse(qualify$\"Scores\" &gt; 30, \n       \"Admitted\", \n       \"Rejected\")"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-3",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-3",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nPeople often use ifelse() also to recode variables in a dataframe.\nExample: the variable decisionDirection takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)\ndata %&gt;%\n  mutate(decisionDirection = ifelse(\n    decisionDirection == 3, # condition to be evaluated\n    NA,                     # if true, do NA\n    decisionDirection - 1   # if false, subtract one to value\n    ))"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-4",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-4",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nNote there is also a tidyverse version of the base R ifelse() function!\nThe tidyverse version is called if_else() https://dplyr.tidyverse.org/reference/if_else.html\nThe two are similar, hence I introduced only on here, pick the one you prefer."
   }
 ]

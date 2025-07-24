@@ -22,8 +22,19 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Learning Objectives
 
+- Define what control structures are and why they matter
+- Introduce one type of control structure: conditional statements
+- Practice using conditional statements in R
+
 
 ## Before Class
 
+- Review Lecture 8 materials to get ready for today's in-class quiz
+- Bring your laptop to every class
+
 
 ## Readings
+
+Skim the readings before or after class to get the big picture and prep for quizzes and assignments:
+
+- [Chapter 13 “Control Structures”](https://bookdown.org/rdpeng/rprogdatascience/control-structures.html) in "R programming for Data Science" (Notice this is not our regular book!)

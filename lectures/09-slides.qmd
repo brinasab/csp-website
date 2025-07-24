@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R: Lecture 9"
-subtitle: "Topics: Writing conditionals with if, else, and else if"
+subtitle: "Topics: Conditional Statements with if, else, and else if"
 author: "Sabrina Nardin, Summer 2025"
 format:
   revealjs:
@@ -16,14 +16,11 @@ format:
     center: true
 ---
 
-### Slides coming soon!
-
 # Agenda {.center}
 
 ::: {.agenda-list}
-1. Topic  
-2. Topic 
-3. Topic  
+1. Overview of Control Structures: Conditional Statements and Loops
+2. Deeper Dive into Conditional Statements
 :::
 
 <!--
@@ -32,25 +29,472 @@ format:
 </span>
 -->
 
----
-
-# 1. Title Section {.slide .center .middle}
+# 1. Overview of Control Structures {.slide .center .middle}
 
 ---
 
-## Subtitles
+## Control Structures: What's the Idea?
+
+Up to this point, our R code has been running line by line following in a fixed sequence.
+
+<br>
+
+::: {.callout-tip title="**Now we ask: Can our code make decisions?**"}
+
+For Example: Can it skip some lines and run others depending on a condition? Or can it repeat itself when needed?
+
+Yes, with control structures!
+:::
+
+</br>
+
+---
+
+## What Are Control Structures?
+
+Control structures let us write code that can:
+
+- **Make decisions**  
+  → with **conditional statements** (`if`, `if...else`, etc.)
+
+- **Repeat actions**  
+  → with **loops** (`for`, `while`)
+
+Conditional statements and loops — that is, control structures — let us **control the flow of execution**.  They allow our code to **respond dynamically to different situations**, rather than always running in the same fixed order like we’ve done so far.
+
+<!-- 
+Make decisions: the code uses conditions, evaluates them, and chooses what to do  
+Repeat actions: the code runs certain lines multiple times when needed  
+
+*Today: Conditional Statements and Next time: Loops*
+-->
+
+# 2. Deeper Dive into Conditional Statements  {.slide .center .middle}
+
+---
+
+## Conditional Statements
+
+**Conditional statements let our code make decisions: the code checks conditions, evaluates them, and chooses what to do.**
+
+Said more formally, we use logical tests to determine which code should run:
+
+1. Single test with `if... else`
+
+2. Multiple tests with `if... else if... else`
+
+3. Nested tests by placing one `if` inside another
+
+4. Vectorized tests with `ifelse()` (or `if_else()` in tidyverse) to apply a condition to each element of a vector
+
+<!--
+## Loops
+
+**Loops let our code repeat actions by running certain lines multiple times when needed**
+
+1. For Loop
+
+2. While Loops
+
+-->
 
 ---
 
 ## 💻 Practice
 
+1. Download today's class materials from the course website.
+
+2. Open the file called `warm-up.R`.
+
+3. Before running the code: look over the syntax and try to predict what the code will output
+
+4. Run the code and compare it to your prediction.
+
+5. Be ready to share at least one question about what the code.
+
+---
+
+## 1. Single test with if... else
+
+Use `if...else` when your code needs to test **one condition** and take one of two possible actions, depending on whether the condition is `TRUE` or `FALSE`.
+
+Syntax:
+```r
+if (condition) {
+    # action performed when condition is TRUE
+    action1
+} else {
+    # action performed when condition is FALSE
+    action2
+}
+```
+
+Example:
+```{r echo = TRUE, results = "hide"}
+age <- 14
+
+if (age > 16) {
+  print("You can get a driving license")
+} else {
+  print("You cannot drive")
+}
+```
+
+<!-- NOTE IN CLASS
+Examine the syntax and the curly braces and indentation
+-->
+
+---
+
+## 1. Single test with if... else
+
+Another Example: What's the output of this code?
+
+```{r, echo = TRUE, results = "hide"}
+movie_rating <- c(4.5, 4.2, 5.0, 3.8, 2.9, 1.7)
+movie_avg_rating <- mean(movie_rating)
+
+if (movie_avg_rating >= 4) {
+  print("This movie is great!")
+} else {
+  print("Not a favorite.")
+}
+```
+
+---
+
+## 2. Multiple tests with if... else if... else
+
+Use `if...else if...else` when your code needs to test **multiple conditions** and take different actions depending on which condition is `TRUE`.
+
+Syntax:
+```r
+if (condition1) {
+    # action performed when condition 1 is TRUE
+    action1
+} else if (condition2) {
+    # action performed when condition 2 is TRUE
+    action2
+} else {
+    # action performed when conditions 1 and 2 are FALSE
+    action3
+}
+```
+<!-- IN CLASS
+Note all we do is adding one or more **`else if`** statement(s) between the initial `if` and the final `else`
+-->
+
+Example:
+
+```{r, echo = TRUE, results = "hide"}
+x <- 0
+
+if (x > 0) {
+  print("x is positive")
+} else if (x < 0) {
+  print("x is negative")
+} else {
+  print("x is zero")
+}
+```
+
+---
+
+## Note: with conditional statements sequence matters!
+
+Conditional statements are evaluated **in order** so the sequence of your code matters:
+
+- R checks each condition **one by one**, from top to bottom  
+- As soon as it finds a condition that is `TRUE`, it **runs that block** and **skips the rest**
+
+---
+
+## 2. Multiple tests with if... else if... else
+
+Another Example with multiple `else if` statements:
+
+```r
+# Take user input
+temperature <- as.integer(readline(prompt = "Enter today's temperature in Celsius: "))
+
+# Determine weather based on temperature
+if (temperature >= 30) {
+  weather <- "Hot"
+} else if (temperature >= 20) {
+  weather <- "Cool"
+} else if (temperature >= 10) {
+  weather <- "Breezy"
+} else {
+  weather <- "Freezing"
+}
+print(weather)
+```
+
+---
+
+## 💻 Practice
+
+1. What happens if the conditions are out of order? Move `temperature >= 10` before `temperature >= 20` in the code and run it with temperature 25
+
+<!--
+```r
+temperature <- as.integer(readline(prompt = "Enter today's temperature in Celsius: "))
+
+if (temperature >= 30) {
+  weather <- "Hot"
+} else if (temperature >= 10) {   # moved up
+  weather <- "Breezy"
+} else if (temperature >= 20) {
+  weather <- "Cool"
+} else {
+  weather <- "Freezing"
+}
+print(weather)
+```
+
+Problem: If temperature is 25, R hits temperature >= 10 first (which is TRUE) and never reaches temperature >= 20. So it assigns "Breezy" instead of "Cool".
+-->
+
+2. Add another `else if` statement to further refine the code:
+If the temperature is between 0 and 10 (inclusive of 0, exclusive of 10), set the weather to "Cold". Hint: use the `&` operator to combine two conditions.
+
+<!--
+```r
+# Take user input
+temperature <- as.integer(readline(prompt = "Enter today's temperature in Celsius: "))
+
+# Determine weather based on temperature
+if (temperature >= 30) {
+  weather <- "Hot"
+} else if (temperature >= 20) {
+  weather <- "Cool"
+} else if (temperature >= 10) {
+  weather <- "Breezy"
+} else if (temperature >= 0 & temperature < 10) {  
+  weather <- "Cold"
+} else {
+  weather <- "Freezing"
+}
+print(weather)
+```
+
+Takeaway: Use & when both conditions must be TRUE (here, >= 0 and < 10). If both are TRUE, then the code inside the {} runs
+
+-->
+ 
+Once done, [share your code here](https://codeshare.io/29X3QM){target="_blank"}.
+ 
+---
+
+## 3. Nested tests by placing one if inside another
+
+<!-- The %% modulo operator calculates the remainder from a division operation. Here 15 : 2 = 7, 1 is the reminder, thus the number is odd -->
+
+Use nested `if...else` statements when your code needs to check **conditions within conditions**. This allows you to make a second decision **only after** a first condition is met.
+
+Example (note the `%%` returns the remainder after division):
+
+```{r, echo = TRUE, results = "hide"}
+x <- 15
+
+if (x > 0) {
+  if (x %% 2 == 0) {
+    print("x is a positive even number")
+  } else {
+    print("x is a positive odd number")
+  }
+} else {
+  if (x %% 2 == 0) {
+    print("x is a negative even number")
+  } else {
+    print("x is a negative odd number")
+  }
+}
+```
+
+<!-- ASK IN CLASS
+- What output do you expect if `x <- -6`?
+- What about if `x <- 0
+-->
+
+---
+
+## 3. Nested tests by placing one if inside another
+
+Same example, but this checks also the condition `x <- 0`:
+
+```{r, echo = TRUE, results = "hide"}
+x <- 0
+
+if (x > 0) {
+  if (x %% 2 == 0) {
+    print("x is a positive even number")
+  } else {
+    print("x is a positive odd number")
+  }
+} else if (x < 0) {
+  if (x %% 2 == 0) {
+    print("x is a negative even number")
+  } else {
+    print("x is a negative odd number")
+  }
+} else {
+  print("x is zero")
+}
+
+```
+
+<!-- NOTES IN CLASS
+What will the output be for:
+- x <- 4
+- x <- -3
+- x <- 0
+-->
+
+---
+
+## 4. Vectorized tests with ifelse() 
+
+Use `ifelse()` to apply a condition to **each element of a vector** thus we call this a "vectorized" test.  
+
+Syntax:
+```
+ifelse (condition to be evaluated,
+    action performed when condition is TRUE,
+    action performed when condition is FALSE)
+```
+
+Example:
+```{r, echo = TRUE, results = "hide"}
+y <- 3
+
+ifelse(sqrt(16) > y, 
+       sqrt(16),
+       0)
+```
+
+<!--
+if-else: more flexibile and handles complex conditional logic; returns a scalar
+
+ifelse(): simpler and more suited for simple assignments or to transform variables in a dataframe; returns a vector
+-->
+
+---
+
+## 4. Vectorized tests with ifelse() 
+
+Another example: What is the output of this code?
+
+```{r, echo = TRUE, results = "hide"}
+numbers <- c(10, 6, 7)
+ifelse(numbers %% 2 == 1, 
+       "odd",
+       "even")
+```
+
+<br>
+
+::: {.callout-note title="How `ifelse()` works:"}
+
+- The input to `ifelse()` is a **vector**, not just a single value, so the output is also a **vector**. The code evaluates **each element of the vector**, applying the specified action for each case.
+
+- This works because **`ifelse()` supports vectorized operations**: operations directly applied on entire vectors, rather than looping through individual elements one-by-one.
+
+:::
+
+<!--
+How can we rewrite the same code using the standard `if-else` statement?
+
+```
+# won't work
+numbers <- c(10, 6, 7)
+if (numbers %% 2 == 1) { 
+  print("odd")
+} else {
+  print("even")
+}
+```
+
+```
+# need a loop
+numbers <- c(10, 6, 7)
+for (i in 1:length(numbers)) {
+  if (numbers[i] %% 2 == 1) {
+    print("odd")
+    } 
+else 
+  print("even")
+ }
+```
+-->
+
+---
+
+## 4. Vectorized tests with ifelse() 
+
+Example: What is the output of this code?
+
+```{r, echo = TRUE, results = "hide"}
+library(tidyverse)
+
+qualify <- tibble("Athlet" = c("Noah", "Julio", "Nick", "Maria"), 
+                  "Scores" = c(32, 37, 28, 30))
+
+ifelse(qualify$"Scores" > 30, 
+       "Admitted", 
+       "Rejected")
+```
+
+---
+
+## 4. Vectorized tests with ifelse() 
+
+People often use `ifelse()` also to recode variables in a dataframe.
+
+Example: the variable `decisionDirection` takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)
+
+```r
+data %>%
+  mutate(decisionDirection = ifelse(
+    decisionDirection == 3, # condition to be evaluated
+    NA,                     # if true, do NA
+    decisionDirection - 1   # if false, subtract one to value
+    ))
+```
+
+<!--
+More on this:
+https://docs.ycrc.yale.edu/r-novice-gapminder/07-control-flow/
+Comparing ifelse() and for loop:
+https://www.r-bloggers.com/2020/02/if-else-and-ifelse/
+-->
+
+---
+
+## 4. Vectorized tests with ifelse() 
+
+**Note there is also a tidyverse version of the base R `ifelse()` function!**
+
+The tidyverse version is called `if_else()` <https://dplyr.tidyverse.org/reference/if_else.html>
+
+The two are similar, hence I introduced only on here, pick the one you prefer.
+
+---
+
+## 💻 Practice
+
+You can fine more practice exercises in today's class materials (downloaded from the website)
+
 ---
 
 ## Recap: What We Learned Today
 
----
+- Control structures let us change the flow of execution in our code  
+- We focused on conditional statements: how to make decisions using `if`, `else`, and `else if`
+- We practiced different types of conditionals:
+  - single test, multiple tests, and nested tests  
+  - vectorized tests with `ifelse()` and `if_else()`
 
-## Reminders
 
 ---
 

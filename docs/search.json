@@ -154,11 +154,25 @@
     "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
   },
   {
-    "objectID": "lectures/09-slides.html#subtitles",
-    "href": "lectures/09-slides.html#subtitles",
+    "objectID": "lectures/09-slides.html#control-structures-whats-the-idea",
+    "href": "lectures/09-slides.html#control-structures-whats-the-idea",
     "title": "Introduction to R: Lecture 9",
-    "section": "Subtitles",
-    "text": "Subtitles"
+    "section": "Control Structures: What’s the Idea?",
+    "text": "Control Structures: What’s the Idea?\nUp to this point, our R code has been running line by line following in a fixed sequence.\n\n\n\n\n\n\n\n\nNow we ask: Can our code be dynamic vs fixed?\n\n\nFor Example: Can it skip some lines and run others depending on a condition? Or can it repeat itself when needed?\nYes, with control structures!"
+  },
+  {
+    "objectID": "lectures/09-slides.html#what-are-control-structures",
+    "href": "lectures/09-slides.html#what-are-control-structures",
+    "title": "Introduction to R: Lecture 9",
+    "section": "What Are Control Structures?",
+    "text": "What Are Control Structures?\nControl structures let us write code that can:\n\nMake decisions\n→ with conditional statements (if, if...else, etc.)\nRepeat actions\n→ with loops (for, while)\n\nConditional statements and loops — that is, control structures — let us control the flow of execution. They allow our code to respond dynamically to different situations, rather than always running in the same fixed order like we’ve done so far."
+  },
+  {
+    "objectID": "lectures/09-slides.html#conditional-statements",
+    "href": "lectures/09-slides.html#conditional-statements",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Conditional Statements",
+    "text": "Conditional Statements\nConditional statements let our code make decisions: the code checks conditions, evaluates them, and chooses what to do.\nSaid more formally, we use logical tests to determine which code should run:\n\nSingle test with if... else\nMultiple tests with if... else if... else\nNested tests by placing one if inside another\nVectorized tests with ifelse() (or if_else() in tidyverse) to apply a condition to each element of a vector"
   },
   {
     "objectID": "lectures/09-slides.html#practice",
@@ -168,18 +182,109 @@
     "text": "💻 Practice\n\nDownload today’s class materials from the course website.\nOpen the file called warm-up.R.\nBefore running the code: look over the syntax and try to predict what the code will output\nRun the code and compare it to your prediction.\nBe ready to share at least one question about what the code."
   },
   {
+    "objectID": "lectures/09-slides.html#single-test-with-if-else",
+    "href": "lectures/09-slides.html#single-test-with-if-else",
+    "title": "Introduction to R: Lecture 9",
+    "section": "1. Single test with if… else",
+    "text": "1. Single test with if… else\nUse if...else when your code needs to test one condition and take one of two possible actions, depending on whether the condition is TRUE or FALSE.\nSyntax:\nif (condition) {\n    # action performed when condition is TRUE\n    action1\n} else {\n    # action performed when condition is FALSE\n    action2\n}\nExample:\n\nage &lt;- 14\n\nif (age &gt; 16) {\n  print(\"You can get a driving license\")\n} else {\n  print(\"You cannot drive\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#single-test-with-if-else-1",
+    "href": "lectures/09-slides.html#single-test-with-if-else-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "1. Single test with if… else",
+    "text": "1. Single test with if… else\nAnother Example: What’s the output of this code?\n\nmovie_rating &lt;- c(4.5, 4.2, 5.0, 3.8, 2.9, 1.7)\nmovie_avg_rating &lt;- mean(movie_rating)\n\nif (movie_avg_rating &gt;= 4) {\n  print(\"This movie is great!\")\n} else {\n  print(\"Not a favorite.\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#multiple-tests-with-if-else-if-else",
+    "href": "lectures/09-slides.html#multiple-tests-with-if-else-if-else",
+    "title": "Introduction to R: Lecture 9",
+    "section": "2. Multiple tests with if… else if… else",
+    "text": "2. Multiple tests with if… else if… else\nUse if...else if...else when your code needs to test multiple conditions and take different actions depending on which condition is TRUE.\nSyntax:\nif (condition1) {\n    # action performed when condition 1 is TRUE\n    action1\n} else if (condition2) {\n    # action performed when condition 2 is TRUE\n    action2\n} else {\n    # action performed when conditions 1 and 2 are FALSE\n    action3\n}\n\nExample:\n\nx &lt;- 0\n\nif (x &gt; 0) {\n  print(\"x is positive\")\n} else if (x &lt; 0) {\n  print(\"x is negative\")\n} else {\n  print(\"x is zero\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#note-with-conditional-statements-sequence-matters",
+    "href": "lectures/09-slides.html#note-with-conditional-statements-sequence-matters",
+    "title": "Introduction to R: Lecture 9",
+    "section": "Note: with conditional statements sequence matters!",
+    "text": "Note: with conditional statements sequence matters!\nConditional statements are evaluated in order so the sequence of your code matters:\n\nR checks each condition one by one, from top to bottom\n\nAs soon as it finds a condition that is TRUE, it runs that block and skips the rest"
+  },
+  {
+    "objectID": "lectures/09-slides.html#multiple-tests-with-if-else-if-else-1",
+    "href": "lectures/09-slides.html#multiple-tests-with-if-else-if-else-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "2. Multiple tests with if… else if… else",
+    "text": "2. Multiple tests with if… else if… else\nAnother Example with multiple else if statements:\n# Take user input\ntemperature &lt;- as.integer(readline(prompt = \"Enter today's temperature in Celsius: \"))\n\n# Determine weather based on temperature\nif (temperature &gt;= 30) {\n  weather &lt;- \"Hot\"\n} else if (temperature &gt;= 20) {\n  weather &lt;- \"Cool\"\n} else if (temperature &gt;= 10) {\n  weather &lt;- \"Breezy\"\n} else {\n  weather &lt;- \"Freezing\"\n}\nprint(weather)"
+  },
+  {
+    "objectID": "lectures/09-slides.html#practice-1",
+    "href": "lectures/09-slides.html#practice-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "💻 Practice",
+    "text": "💻 Practice\n\nWhat happens if the conditions are out of order? Move temperature &gt;= 10 before temperature &gt;= 20 in the code and run it with temperature 25\n\n\n\nAdd another else if statement to further refine the code: If the temperature is between 0 and 10 (inclusive of 0, exclusive of 10), set the weather to “Cold”. Hint: use the & operator to combine two conditions.\n\n\nOnce done, share your code here."
+  },
+  {
+    "objectID": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another",
+    "href": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another",
+    "title": "Introduction to R: Lecture 9",
+    "section": "3. Nested tests by placing one if inside another",
+    "text": "3. Nested tests by placing one if inside another\n\nUse nested if...else statements when your code needs to check conditions within conditions. This allows you to make a second decision only after a first condition is met.\nExample (note the %% returns the remainder after division):\n\nx &lt;- 15\n\nif (x &gt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a positive even number\")\n  } else {\n    print(\"x is a positive odd number\")\n  }\n} else {\n  if (x %% 2 == 0) {\n    print(\"x is a negative even number\")\n  } else {\n    print(\"x is a negative odd number\")\n  }\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another-1",
+    "href": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "3. Nested tests by placing one if inside another",
+    "text": "3. Nested tests by placing one if inside another\nSame example, but this checks also the condition x &lt;- 0:\n\nx &lt;- 0\n\nif (x &gt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a positive even number\")\n  } else {\n    print(\"x is a positive odd number\")\n  }\n} else if (x &lt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a negative even number\")\n  } else {\n    print(\"x is a negative odd number\")\n  }\n} else {\n  print(\"x is zero\")\n}"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nUse ifelse() to apply a condition to each element of a vector. This is called a “vectorized test”, and fits well R’s vector-based design.\nSyntax:\nifelse (condition to be evaluated,\n    action performed when condition is TRUE,\n    action performed when condition is FALSE)\nExample:\n\ny &lt;- 3\n\nifelse(sqrt(16) &gt; y, \n       sqrt(16),\n       0)"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-1",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-1",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nAnother example: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n\n\n\n\n\n\n\n\nHow ifelse() works:\n\n\n\nThe input to ifelse() is often a vector, not just a single value, so the output is also a vector. The code evaluates each element of the vector, applying the specified action for each case.\nThis works because ifelse() supports vectorized operations: operations directly applied on entire vectors, rather than looping through individual elements one-by-one."
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-2",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-2",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nExample: What is the output of this code?\n\nlibrary(tidyverse)\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\nifelse(qualify$\"Scores\" &gt; 30, \n       \"Admitted\", \n       \"Rejected\")"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-3",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-3",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nPeople often use ifelse() also to recode variables in a dataframe.\nExample: the variable decisionDirection takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)\ndata %&gt;%\n  mutate(decisionDirection = ifelse(\n    decisionDirection == 3, # condition to be evaluated\n    NA,                     # if true, do NA\n    decisionDirection - 1   # if false, subtract one to value\n    ))"
+  },
+  {
+    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-4",
+    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-4",
+    "title": "Introduction to R: Lecture 9",
+    "section": "4. Vectorized tests with ifelse()",
+    "text": "4. Vectorized tests with ifelse()\nNote there is also a tidyverse version of the base R ifelse() function!\nThe tidyverse version is called if_else() https://dplyr.tidyverse.org/reference/if_else.html\nThe two are similar, hence I introduced only on here, pick the one you prefer."
+  },
+  {
+    "objectID": "lectures/09-slides.html#practice-2",
+    "href": "lectures/09-slides.html#practice-2",
+    "title": "Introduction to R: Lecture 9",
+    "section": "💻 Practice",
+    "text": "💻 Practice\nYou can fine more practice exercises in today’s class materials (downloaded from the website)"
+  },
+  {
     "objectID": "lectures/09-slides.html#recap-what-we-learned-today",
     "href": "lectures/09-slides.html#recap-what-we-learned-today",
     "title": "Introduction to R: Lecture 9",
     "section": "Recap: What We Learned Today",
     "text": "Recap: What We Learned Today\n\nControl structures let us change the flow of execution in our code\n\nWe focused on conditional statements: how to make decisions using if, else, and else if\nWe practiced different types of conditionals:\n\nsingle test, multiple tests, and nested tests\n\nvectorized tests with ifelse() and if_else()"
-  },
-  {
-    "objectID": "lectures/09-slides.html#reminders",
-    "href": "lectures/09-slides.html#reminders",
-    "title": "Introduction to R: Lecture 9",
-    "section": "Reminders",
-    "text": "Reminders"
   },
   {
     "objectID": "lectures/09-slides.html#to-print-these-slides-as-pdf",
@@ -189,11 +294,60 @@
     "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
   },
   {
-    "objectID": "lectures/08-slides.html#subtitles",
-    "href": "lectures/08-slides.html#subtitles",
+    "objectID": "lectures/08-slides.html#what-is-base-r",
+    "href": "lectures/08-slides.html#what-is-base-r",
     "title": "Introduction to R: Lecture 8",
-    "section": "Subtitles",
-    "text": "Subtitles"
+    "section": "What Is Base R?",
+    "text": "What Is Base R?\nWhen people say “base R”, they are referring to the core or basic features of the R language, developed before the tidyverse (hence the name as base R).\nThese include:\n\nProgramming Tools: if-else statements, loops, functions\n\nData Types: numeric, integer, character, logical, factor\n\nData Structures: vectors, matrices, lists, data frames\n\nBasic Operations: indexing/subsetting, arithmetic/logical comparisons"
+  },
+  {
+    "objectID": "lectures/08-slides.html#base-r-vs.-the-tidyverse",
+    "href": "lectures/08-slides.html#base-r-vs.-the-tidyverse",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Base R vs. the Tidyverse",
+    "text": "Base R vs. the Tidyverse\n\n\nBase R\n\nDeveloped in the early 1990s as part of R’s core language\n\nIncludes built-in functions like mean(), length(), etc. and key programming tools like loops, etc.\nOffers more direct control, but code can be longer or harder to read\n\n\n\n  \n\nTidyverse\n\nFormally introduced after 2016 as a set of user-friendly packages\nIncludes packages like ggplot2, dplyr, tidyr, forcats, tidyr, stringr, etc.\nPrioritizes readability and consistency, making code cleaner and easier to read"
+  },
+  {
+    "objectID": "lectures/08-slides.html#how-base-r-and-the-tidyverse-work-together",
+    "href": "lectures/08-slides.html#how-base-r-and-the-tidyverse-work-together",
+    "title": "Introduction to R: Lecture 8",
+    "section": "How Base R and the Tidyverse Work Together",
+    "text": "How Base R and the Tidyverse Work Together\n\nThe tidyverse is built on base R — it doesn’t replace it\n\nYou can combine base R and tidyverse functions in your code\n\nYou’ll often see both styles used in real-world scripts and examples\n\n\n\n\n\n\n\n\nTip\n\n\nUse the tidyverse for most of your daily work, but understand enough base R to follow and troubleshoot R code!"
+  },
+  {
+    "objectID": "lectures/08-slides.html#r-data-types-and-data-structures-1",
+    "href": "lectures/08-slides.html#r-data-types-and-data-structures-1",
+    "title": "Introduction to R: Lecture 8",
+    "section": "R Data Types and Data Structures",
+    "text": "R Data Types and Data Structures\nData Types and Data Structures are part of base R. They are the fundamentals — the “ABC” of how R stores and organizes data.\n\nData Type — what kind of value it is\n\nData Structure — how values are stored and organized\n\nWe look at each and at how they relate."
+  },
+  {
+    "objectID": "lectures/08-slides.html#r-data-types",
+    "href": "lectures/08-slides.html#r-data-types",
+    "title": "Introduction to R: Lecture 8",
+    "section": "R Data Types",
+    "text": "R Data Types\nData Type: describes the kind of value you’re working with.\n\n\nR has the following main data types (for more see here):\n\nNumeric – numbers, either with or without decimals\n\nDouble with decimals (default): 3.14, 2.0\n\nInteger whole numbers: 2L, 100L\n\nCharacter – text or strings (always in quotes): \"hello\"\nLogical – TRUE or FALSE values: TRUE, FALSE\nFactor – categorical values with levels: \"low\", \"medium\""
+  },
+  {
+    "objectID": "lectures/08-slides.html#r-data-structures",
+    "href": "lectures/08-slides.html#r-data-structures",
+    "title": "Introduction to R: Lecture 8",
+    "section": "R Data Structures",
+    "text": "R Data Structures\nData Structure: like a container that holds one or more values.\n\n\nR has the following main data structures (for more see here):\n\nVector – one-dimensional, all elements same type\nv &lt;- c(1, 2, 3)\nMatrix – two-dimensional, all elements same type\nm &lt;- matrix(1:6, nrow = 2)\nDataframe – two-dimensional, columns can have different types\ndf &lt;- data.frame(name = c(\"A\", \"B\"), age = c(25, 30))\nList – multi-dimensional, holds elements of any type, even mixed\nl &lt;- list(num = 1:3, name = c(\"Sabrina\", \"Laura\"))"
+  },
+  {
+    "objectID": "lectures/08-slides.html#how-data-types-and-data-structures-relate",
+    "href": "lectures/08-slides.html#how-data-types-and-data-structures-relate",
+    "title": "Introduction to R: Lecture 8",
+    "section": "How Data Types and Data Structures Relate",
+    "text": "How Data Types and Data Structures Relate\nEvery single element in R has a data type. That element is stored inside a larger data structure.\nExamples:\nx &lt;- c(1, 2, 3)      # a vector (structure) of three elements, all numeric values (type) \ny &lt;- list(\"a\", 5)    # a list (structure) of two elements, one character value and one numeric value (type)\n\n \n\n\n\n\n\n\n\nThe data structure you use affects what data types you can store:\n\n\nNot all data structures support every combination of data types. Some allow only one type, while others can store many types together."
+  },
+  {
+    "objectID": "lectures/08-slides.html#how-data-types-and-data-structures-relate-1",
+    "href": "lectures/08-slides.html#how-data-types-and-data-structures-relate-1",
+    "title": "Introduction to R: Lecture 8",
+    "section": "How Data Types and Data Structures Relate",
+    "text": "How Data Types and Data Structures Relate\n\n\n\n\n\n\n\n\n\nStructure\nDimensions\nAllow Mixed Types?\nNotes\n\n\n\n\nVector\n1D\nNo\nAll elements must be the same data type\n\n\nMatrix\n2D\nNo\nAll elements must be the same data type\n\n\nDataframe\n2D\nYes (by column)\nEach column is a vector; data types can vary by column\n\n\nList\nFlexible\nYes\nEach element can be anything: numbers, text, vectors, even data frames"
   },
   {
     "objectID": "lectures/08-slides.html#practice",
@@ -203,18 +357,88 @@
     "text": "💻 Practice\nRun the code below to create different R objects. Then use class() + str() or glimpse() on each object to explore their data structure.\n# vector\nnum_v &lt;- c(1:9)\nchar_v &lt;- c(\"hello\", \"ciao\", \"hey\")\nf_v &lt;- factor(c(\"low\", \"medium\", \"high\"))\ntest &lt;- c(\"hello\", 1, 2)\n\n# matrix\nnum_m &lt;- matrix(1:15, nrow = 3, ncol = 5, byrow = TRUE)\nchar_m &lt;- matrix(c(\"a\", \"b\", \"c\", \"d\"), nrow = 2, byrow = TRUE)\n\n# dataframe or tibble\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"Dave\", \"Ashley\", \"Rik\"),\n  age = c(15, 17, 20)) \n\n# list\nl &lt;- list(\n  num_v = c(1:3),\n  m = matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE),\n  another_num_v = c(1,2,4),\n  char_v = c(\"Sabrina\", \"Zach\"),\n  d = tibble(var_1 = c(1:4),\n              var_2 = c(2:5)))"
   },
   {
-    "objectID": "lectures/08-slides.html#recap-what-we-learned-today",
-    "href": "lectures/08-slides.html#recap-what-we-learned-today",
+    "objectID": "lectures/08-slides.html#why-this-matters-understanding-when-to-use-each-data-structure",
+    "href": "lectures/08-slides.html#why-this-matters-understanding-when-to-use-each-data-structure",
     "title": "Introduction to R: Lecture 8",
-    "section": "Recap: What We Learned Today",
-    "text": "Recap: What We Learned Today"
+    "section": "Why This Matters: Understanding When to Use Each Data Structure",
+    "text": "Why This Matters: Understanding When to Use Each Data Structure\nData Frames first!\nSo far, we’ve been working mostly with data frames — technically with tibbles, the tidyverse version of them. Data frames are the go-to structure for working with real-world, tabular data in R. Keep using them for most data analysis tasks in this course and beyond!\nStrengths of data frames:\n\nCan store columns of different data types (e.g., character, numeric, logical)\nWork easily with dplyr, ggplot2, and other tidyverse packages\nMake your data easier to manipulate, filter, summarize, and visualize"
   },
   {
-    "objectID": "lectures/08-slides.html#reminders",
-    "href": "lectures/08-slides.html#reminders",
+    "objectID": "lectures/08-slides.html#why-this-matters-understanding-when-to-use-each-data-structure-1",
+    "href": "lectures/08-slides.html#why-this-matters-understanding-when-to-use-each-data-structure-1",
     "title": "Introduction to R: Lecture 8",
-    "section": "Reminders",
-    "text": "Reminders"
+    "section": "Why This Matters: Understanding When to Use Each Data Structure",
+    "text": "Why This Matters: Understanding When to Use Each Data Structure\nBeyond Data Frames: Know Your Tools\nBut it’s helpful to understand the full set of R data structures, because each has its own strengths:\n\nVectors: The most basic structure in R; all elements must be the same type.\nYou are analyzing survey responses and want to store all participants’ ages in a separate vector for further manipulation.\nMatrices: Two-dimensional, all elements must be the same type.\nYou have numeric data that you want to analyze using matrix algebra or linear models.\nLists: Flexible containers that can hold anything — even other lists.\nYou are analyzing data and want to save multiple outputs (model results, plot, etc.) all in the same data structure.\nData Frames: Two-dimensional, columns can have different types.\nYou are analyzing survey responses with dplyr, ggplot, or other tidyverse packages."
+  },
+  {
+    "objectID": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors",
+    "href": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Example of filtering rows in a dataframe using logical vectors",
+    "text": "Example of filtering rows in a dataframe using logical vectors\n# load libraries and data\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# use dplyr filter() to get penguins where body mass is greater than 4000 grams\nfiltered_penguins &lt;- penguins %&gt;% filter(body_mass_g &gt; 4000)\nhead(filtered_penguins)"
+  },
+  {
+    "objectID": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors-1",
+    "href": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors-1",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Example of filtering rows in a dataframe using logical vectors",
+    "text": "Example of filtering rows in a dataframe using logical vectors\nLet’s analyze the previous code to see what’s happening under the hood: R defines a logical vector and applies it to the penguins dataframe:\n# use base R to get the column we need: gives a logical vector\nfilter_vector &lt;- penguins$body_mass_g &gt; 4000\n\n# check its structure\nis.vector(filter_vector)\nclass(filter_vector) \n\n# use this vector to manually filter the dataframe using base R \n# df[rows, columns]: rows to keep, all columns\nfiltered_p &lt;- penguins[filter_vector, ]"
+  },
+  {
+    "objectID": "lectures/08-slides.html#a-particular-vector-scalar",
+    "href": "lectures/08-slides.html#a-particular-vector-scalar",
+    "title": "Introduction to R: Lecture 8",
+    "section": "A particular vector: Scalar",
+    "text": "A particular vector: Scalar\nIn math a scalar is defined as a single real number but in R, a scalar is simply a vector of length one\nLet’s try this code:\n# set up a vector x of length 10\nx &lt;- sample(10)\nx\n\n# add 100 to x using the long way\nx + c(100, 100, 100, 100, 100, 100, 100, 100, 100, 100)\n\n# add 100 to x using the \"R\" way: vector recycling!\nx + 100"
+  },
+  {
+    "objectID": "lectures/08-slides.html#vector-recycling-in-r",
+    "href": "lectures/08-slides.html#vector-recycling-in-r",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Vector Recycling in R",
+    "text": "Vector Recycling in R\nLet’s see another example. We define two numeric vectors x1 and x2:\n# x1 is sequence of numbers from 1 to 2\nx1 &lt;- seq(from = 1, to = 2)\n\n# x2 is a sequence of numbers from 1 to 10\nx2 &lt;- seq(from = 1, to = 10)\n\n# what happens if we add them?\nx1 + x2\nWhat happens? The shorter vector x1 is duplicated five times in order to match the length of the longer vector x2. The same behavior happens for other operations like subtraction, multiplication, logical comparison, etc.\n\n\n\n\n\n\nWarning\n\n\nIf the shorter vector is not a multiple of the longer one, R will print a warning message!"
+  },
+  {
+    "objectID": "lectures/08-slides.html#vector-recycling-in-r-1",
+    "href": "lectures/08-slides.html#vector-recycling-in-r-1",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Vector Recycling in R",
+    "text": "Vector Recycling in R\n\n\n\n\n\n\nNote\n\n\nThis behavior is called Vector Recycling and happens automatically in R: When two vectors of different lengths are used in an operation, R repeats (recycles) the elements of the shorter vector to match the longer vector!\n\n\n\nWhy It Matters: Vector recycling can cause unexpected results. Check if recycling is what you want R to do — if not, adjust the vector lengths manually, like this:\nx1 &lt;- c(1, 2, rep(0, 7))\n\nx1 + x2"
+  },
+  {
+    "objectID": "lectures/08-slides.html#subsetting-data-structures-in-r",
+    "href": "lectures/08-slides.html#subsetting-data-structures-in-r",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Subsetting Data Structures in R",
+    "text": "Subsetting Data Structures in R\nThere are different ways to access parts of data structures in R.\nWe’ll cover:\n\nVectors\nMatrices\nData Frames\nLists\n\nEach structure uses square brackets [ ], but how you use them depends on the structure."
+  },
+  {
+    "objectID": "lectures/08-slides.html#subsetting-vectors",
+    "href": "lectures/08-slides.html#subsetting-vectors",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Subsetting Vectors",
+    "text": "Subsetting Vectors\nv &lt;- c(10, 20, 30, 40)\n\nv[2]         # 20 (2nd element)\nv[c(1, 3)]   # 10 and 30\nv[-1]        # all but the first\nv[v &gt; 25]    # elements greater than 25\nVectors are 1D — you just specify positions or logical tests in [ ]"
+  },
+  {
+    "objectID": "lectures/08-slides.html#subsetting-matrices",
+    "href": "lectures/08-slides.html#subsetting-matrices",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Subsetting Matrices",
+    "text": "Subsetting Matrices\nm &lt;- matrix(1:9, nrow = 3, byrow = TRUE)\n\nm[1, 2]           # value at row 1, column 2\nm[ , 3]           # entire 3rd column\nm[2,  ]           # entire 2nd row\nm[1:2, 2:3]       # top-right submatrix (rows 1–2, cols 2–3)\nm[ , c(1, 3)]     # columns 1 and 3\nMatrices are 2D: use [row, column]"
+  },
+  {
+    "objectID": "lectures/08-slides.html#subsetting-data-frames",
+    "href": "lectures/08-slides.html#subsetting-data-frames",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Subsetting Data Frames",
+    "text": "Subsetting Data Frames\ndf &lt;- data.frame(\n  name = c(\"Alex\", \"Betty\", \"Chad\", \"J\"),\n  age = c(20, 21, 22, 23))\n\ndf[1, ]            # first row (all columns)\ndf[ , 1]           # first column by index\ndf[ , \"name\"]      # first column by label\ndf$name            # same as above\ndf[[\"name\"]]       # same as above\n\ndf[1, 2]           # single value at row 1, column 2\ndf[2:3, \"name\"]    # values in rows 2 and 3 of column name\n\ndf[df$age &gt; 20, ]            # filter rows where age &gt; 20\ndf[df$name == \"J\", ]         # filter rows where name is \"J\"\ndf[df$age == max(df$age), ]  # filter rows with highest age\nData frames combine list and matrix behavior."
+  },
+  {
+    "objectID": "lectures/08-slides.html#subsetting-lists",
+    "href": "lectures/08-slides.html#subsetting-lists",
+    "title": "Introduction to R: Lecture 8",
+    "section": "Subsetting Lists",
+    "text": "Subsetting Lists\nmy_list &lt;- list(\n  a = c(1, 2, 3),\n  b = c(\"hello\", \"ciao\"),\n  c = TRUE\n)\n\nmy_list[1]         # list with one element\nmy_list[[1]]       # contents of first element: 1 2 3\nmy_list[[1]][1]    # first value of that vector: 1\nmy_list[\"b\"]       # list with one element named \"b\"\nmy_list$b          # same as my_list[[\"b\"]], only works with names\nmy_list[[\"c\"]]     # returns TRUE\n\nUse [ ] to extract a sublist\n\nUse [[ ]] or $ to extract actual elements"
   },
   {
     "objectID": "lectures/08-slides.html#to-print-these-slides-as-pdf",
@@ -224,18 +448,172 @@
     "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
   },
   {
-    "objectID": "lectures/07-slides.html#subtitles",
-    "href": "lectures/07-slides.html#subtitles",
+    "objectID": "lectures/07-slides.html#definitions",
+    "href": "lectures/07-slides.html#definitions",
     "title": "Introduction to R: Lecture 7",
-    "section": "Subtitles",
-    "text": "Subtitles"
+    "section": "Definitions",
+    "text": "Definitions\nRenaming: change variable names (column names)\nRecoding: change values/levels of categorical variables (column values; e.g., inside a column)"
   },
   {
-    "objectID": "lectures/07-slides.html#practice",
-    "href": "lectures/07-slides.html#practice",
+    "objectID": "lectures/07-slides.html#uses",
+    "href": "lectures/07-slides.html#uses",
     "title": "Introduction to R: Lecture 7",
-    "section": "💻 Practice",
-    "text": "💻 Practice"
+    "section": "Uses",
+    "text": "Uses\nWhat are some common scenarios where you’d want to rename variable names or recode variable values?\n\nYou are cleaning up imported data\n\nThe variable name is has issues (e.g., Flipper Length (mm) → flipper_length_mm)\nYou need to standardize categories (e.g., \"Good\" and \"GOOD\" → \"good\")\nEtc.\n\nYou are preparing data for modeling or visualization\n\nYou want to recode \"FEMALE\"/\"MALE\" to 0/1 for a regression model\n\nEtc."
+  },
+  {
+    "objectID": "lectures/07-slides.html#we-work-with-the-penguins-raw-data",
+    "href": "lectures/07-slides.html#we-work-with-the-penguins-raw-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "We work with the Penguins (raw) Data!",
+    "text": "We work with the Penguins (raw) Data!\n# Load libraries and data\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# Explore data\nhead(penguins_raw)\ntail(penguins_raw)\nrbind(head(penguins_raw, 3), tail(penguins_raw, 3))\nglimpse(penguins_raw)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#renaming-variables-with-rename",
+    "href": "lectures/07-slides.html#renaming-variables-with-rename",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Renaming Variables with rename",
+    "text": "Renaming Variables with rename\nTo change variable names (column names) the most common method is rename()\nChange the name of the variable studyName to study_name:\n# check before renaming\nstr(penguins_raw)\npenguins_raw %&gt;% select(studyName)\n\n# rename\npenguins_raw %&gt;% rename(study_name = studyName)   # new = old\n\n# remember to save to keep changes\np &lt;- penguins_raw %&gt;% rename(study_name = studyName)\np %&gt;% select(study_name)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-renaming-variables",
+    "href": "lectures/07-slides.html#practice-renaming-variables",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice Renaming Variables",
+    "text": "💻 Practice Renaming Variables\n\nUse select() to check the variable Comments in penguins_raw\nUse rename() to rename Comments to notes\nSave the result to a new object\nUse select() to check your result\n\nOnce done, copy your code here to share it."
+  },
+  {
+    "objectID": "lectures/07-slides.html#recoding-variables-method-1-with-mutate-recode",
+    "href": "lectures/07-slides.html#recoding-variables-method-1-with-mutate-recode",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recoding Variables Method 1: with mutate + recode",
+    "text": "Recoding Variables Method 1: with mutate + recode\nTo change variable values (usually levels of categorical variables), we learn two methods.\nChange the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0) with method 1:\n# check before recoding\npenguins_raw %&gt;% count(Sex)\n\n# mutate + recode\np &lt;- penguins_raw %&gt;%\n  mutate(sex = recode(Sex, \"MALE\" = 1, \"FEMALE\" = 0))\n\n# compare\npenguins_raw %&gt;% count(Sex)\np %&gt;% count(Sex)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#recoding-variables-method-2-with-mutate-case_when",
+    "href": "lectures/07-slides.html#recoding-variables-method-2-with-mutate-case_when",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Recoding Variables Method 2: with mutate + case_when",
+    "text": "Recoding Variables Method 2: with mutate + case_when\nChange the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0) with method 2:\n# mutate + case_when\npenguins_raw %&gt;%\n  mutate(Sex = case_when(Sex == \"MALE\" ~ 1,\n                         Sex == \"FEMALE\" ~ 0,\n                         TRUE ~ NA_real_))\n  \n# like for method 1 (previous code) save results to keep changes and compare\n\n\n\n\n\n\nNote\n\n\nWith case_when() each logical condition ~ value pair acts like if → then:\n\nfor each row, R looks if the condition is TRUE: “If you find the value MALE in Sex, then convert it to 1”\nTRUE ~ NA_real_ tells R: “If no previous condition was met, then return NA as as a number”"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-recoding-variables",
+    "href": "lectures/07-slides.html#practice-recoding-variables",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice Recoding Variables",
+    "text": "💻 Practice Recoding Variables\n\nUse count() to check the variable Species in penguins_raw\nPick method 1 or method 2 to recode the values of that variable into Adelie, Chinstrap, Gentoo\nSave the result to a new object\nUse count() to verify both results\n\nOnce done, copy your code here to share it."
+  },
+  {
+    "objectID": "lectures/07-slides.html#the-role-of-mutate-in-recoding",
+    "href": "lectures/07-slides.html#the-role-of-mutate-in-recoding",
+    "title": "Introduction to R: Lecture 7",
+    "section": "The Role of mutate in Recoding",
+    "text": "The Role of mutate in Recoding\nrename()\n\nSpecific use: change column names\n\nIt changes the column’s name, but leaves the column’s values unchanged\n\nmutate()\n\nMany uses: create new columns or modify existing columns values\n\nIt changes the column’s values, potentially can also rename the column\n\n\n\n\n\n\n\nNote\n\n\nFor recoding, we use mutate() because our first goal is changing the column’s values. We learned two methods:\n\nMethod 1: mutate(Sex = recode(Sex, \"MALE\" = 1, \"FEMALE\" = 0))\n\nMethod 2: mutate(Sex = case_when(sex == \"MALE\" ~ 1, sex == \"FEMALE\" ~ 0))"
+  },
+  {
+    "objectID": "lectures/07-slides.html#rename-vs-recode-syntax-reference",
+    "href": "lectures/07-slides.html#rename-vs-recode-syntax-reference",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Rename vs Recode: Syntax Reference",
+    "text": "Rename vs Recode: Syntax Reference\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nSyntax + Example\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)  rename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)  recode(Sex, \"MALE\" = 1)\nUse quotes around variable values if they are character\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)  case_when(Sex == \"MALE\" ~ 1)\nUse quotes around variable values if they are character\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
+  },
+  {
+    "objectID": "lectures/07-slides.html#syntactic-valid-variable-names-in-r",
+    "href": "lectures/07-slides.html#syntactic-valid-variable-names-in-r",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Syntactic (Valid) Variable Names in R",
+    "text": "Syntactic (Valid) Variable Names in R\n\n\nValid Names in R:\n\nUse letters, numbers, and the symbols . or _\nBut cannot start with a number or symbol\n\n\nExamples of Valid Names:\nflipper_length_mm\nflipper.length.mm\nflipper.length_mm     # valid but poor style\nFlipperLengthMm       # valid but poor style"
+  },
+  {
+    "objectID": "lectures/07-slides.html#non-syntactic-invalid-variable-names-in-r",
+    "href": "lectures/07-slides.html#non-syntactic-invalid-variable-names-in-r",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Non-syntactic (Invalid) Variable Names in R",
+    "text": "Non-syntactic (Invalid) Variable Names in R\n\n\nWhat Makes a Name Invalid:\n\nContains spaces or symbols\nStarts with a number or symbol\nUses reserved words (e.g., TRUE, NULL, if, function)\nType ?Reserved in the Console for the full list\n\n\nExamples of Invalid Names:\nFlipper Length (mm)\n@_flipper_length_mm\nflipper_ length_mm\nflipper-length-mm\n.flipper.length.mm"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-syntactic-and-non-syntactic-names",
+    "href": "lectures/07-slides.html#practice-syntactic-and-non-syntactic-names",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice: Syntactic and Non-Syntactic Names",
+    "text": "💻 Practice: Syntactic and Non-Syntactic Names\nWhich of the following are valid names?\n\n3_religion\n#3_religion\nq3_religion\nq3.religion\nq3-religion\nq3 religion\nTRUE\n\n\n\n\n\n\n\nTip\n\n\nFor best coding style, use snake_case for all your variables names and keep them to three words maximum. Example: q3_religion"
+  },
+  {
+    "objectID": "lectures/07-slides.html#how-to-handle-non-syntactic-names-and-why-it-matters",
+    "href": "lectures/07-slides.html#how-to-handle-non-syntactic-names-and-why-it-matters",
+    "title": "Introduction to R: Lecture 7",
+    "section": "How to Handle Non-syntactic Names — and Why It Matters",
+    "text": "How to Handle Non-syntactic Names — and Why It Matters\nYou should avoid creating non-syntactic names, BUT you’ll often encounter them, especially in datasets not created in R (from Excel or other external sources). If you don’t handle them properly, R will throw errors when you try to use them.\nWhat to Do:\n1. Use backticks to refer to them (e.g., `Flipper Length (mm)`)\n2. Use rename() to change them to syntactic names\nNon-syntactic names will break code if you forget to wrape them in backticks, so renaming avoids issues."
+  },
+  {
+    "objectID": "lectures/07-slides.html#working-with-non-syntactic-names-in-practice",
+    "href": "lectures/07-slides.html#working-with-non-syntactic-names-in-practice",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Working with Non-syntactic Names in Practice",
+    "text": "Working with Non-syntactic Names in Practice\nImagine you are working on political ideology by country, assembled by someone else. The data are in Excel and when you imported them in R they look like this:\ndf &lt;- tibble(country = c(\"Italy\", \"Germany\", \"France\", \"Italy\", \"United States\"),\n                  `4 ideology` = c(\"communism\", \"fascism\", \"anarchism\", \"fascism\", \"capitalism\"))\n\nTo use the non-syntactic variable name without changing it and without errors, you must use backticks:\nselect(df, `4 ideology`)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-syntactic-non-syntactic-variable-names",
+    "href": "lectures/07-slides.html#practice-syntactic-non-syntactic-variable-names",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice: Syntactic & Non-syntactic Variable Names",
+    "text": "💻 Practice: Syntactic & Non-syntactic Variable Names\nTry this in R:\n\nUse glimpse(penguins_raw) or str(penguins_raw) and identify non-syntactic variables names in this raw dataset\nPick one of them, and try accessing it with select() without backticks: what happens?\nUse rename() to give the variable a syntactic valid name\nSave the result to a new object\nVerify the name was changed and you can now access it\n\nOnce done, copy your code here to share it."
+  },
+  {
+    "objectID": "lectures/07-slides.html#what-are-missing-data",
+    "href": "lectures/07-slides.html#what-are-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "What Are Missing Data?",
+    "text": "What Are Missing Data?\nR distinguishes two types of missing data:\n\nExplicit missing: visible NA or NaN values in the dataset\nImplicit missing: data that was never recorded\n\nIn this course, we focus on explicit missing data. For implicit missing data, see R for Data Science Chapter 18\n\n\n\n\n\n\nNote\n\n\nExplicit = value is missing as NA (Not Available) or NaN (Not a Number)\nImplicit = value was never recorded (row or cell is absent)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#how-missing-data-behave",
+    "href": "lectures/07-slides.html#how-missing-data-behave",
+    "title": "Introduction to R: Lecture 7",
+    "section": "How Missing Data Behave",
+    "text": "How Missing Data Behave\nAny operation involving a missing value will also return a missing value (see Chapter 12.2.2 Missing values for more):\nNA &gt; 5\n\nsum(c(3, 1, 4, NA)\nsum(c(3, 1, 4, NA), na.rm = TRUE)\n\nmean(c(3,1,4,NA))\nmean(c(3, 1, 4, NA), na.rm = TRUE)"
+  },
+  {
+    "objectID": "lectures/07-slides.html#common-ways-to-handle-missing-data",
+    "href": "lectures/07-slides.html#common-ways-to-handle-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Common Ways to Handle Missing Data",
+    "text": "Common Ways to Handle Missing Data\nWe’ll review three main tools:\n\nis.na() – to detect missing values\nna.rm = TRUE – to ignore missing values\ndrop_na() – to remove missing values"
+  },
+  {
+    "objectID": "lectures/07-slides.html#detect-missing-data-with-is.na",
+    "href": "lectures/07-slides.html#detect-missing-data-with-is.na",
+    "title": "Introduction to R: Lecture 7",
+    "section": "1. Detect Missing Data with is.na():",
+    "text": "1. Detect Missing Data with is.na():\nUse is.na() to find the missing values in a specific variable. It returns TRUE for missing values, and FALSE otherwise.\nCheck for missing values in the penguins_raw dataset:\n# using base R syntax\nsum(is.na(penguins_raw$Sex))\ntable(is.na(penguins_raw$Sex))\n\n# using tidyverse syntax\npenguins_raw %&gt;% summarize(sum(is.na(Sex)))\npenguins_raw  %&gt;% count(is.na(Sex)) \n\n# filter rows where sex is missing\nfilter(penguins_raw, is.na(Sex))    # correct  \nfilter(penguins_raw, Sex == NA)     # incorrect"
+  },
+  {
+    "objectID": "lectures/07-slides.html#ignore-missing-data-with-na.rm-true",
+    "href": "lectures/07-slides.html#ignore-missing-data-with-na.rm-true",
+    "title": "Introduction to R: Lecture 7",
+    "section": "2. Ignore Missing Data with na.rm = TRUE",
+    "text": "2. Ignore Missing Data with na.rm = TRUE\nUse na.rm = TRUE to exclude missing values when performing calculations. Often used with summarize() when calculating things like mean, sum, standard deviation.\npenguins_raw %&gt;% summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))\npenguins_raw %&gt;% summarize(sum_mass = sum(`Body Mass (g)`, na.rm = TRUE))\n\n\n\n\n\n\n\n\nTip\n\n\nThe command na.rm = TRUE does not remove missing data from the variable(s), it just skips them for that operation, but they are not dropped!"
+  },
+  {
+    "objectID": "lectures/07-slides.html#remove-missing-data-with-drop_na",
+    "href": "lectures/07-slides.html#remove-missing-data-with-drop_na",
+    "title": "Introduction to R: Lecture 7",
+    "section": "3. Remove Missing Data with drop_na()",
+    "text": "3. Remove Missing Data with drop_na()\nUse drop_na() to remove rows with missing values. Either across all columns or in a specific column.\nDrop missing values in one specific column (preferred):\npenguins_raw %&gt;%\n  drop_na(`Body Mass (g)`) %&gt;%\n  summarize(avg_mass = mean(`Body Mass (g)`))\n\n\n\n\n\n\n\n\nWarning\n\n\nBe careful with drop_na() as it removes entire rows, which may unintentionally filter out relevant data. Check which variable(s) you are dropping, and avoid using it blindly across all columns."
+  },
+  {
+    "objectID": "lectures/07-slides.html#practice-handling-missing-data",
+    "href": "lectures/07-slides.html#practice-handling-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "💻 Practice: Handling Missing Data",
+    "text": "💻 Practice: Handling Missing Data\n\nRename: use the penguins_raw dataset and rename Flipper Length (mm) to flipper_length_mm. Save the result as a new dataframe, e.g., penguins_clean or p\n\nUse the new dataframe with the renamed variable for the tasks below:\n\nDetect missing values: use is.na() and sum() to count how many are missing in the variable flipper length\nExclude missing from calculations: use na.rm = TRUE inside mean() to calculate the average flipper length\nDrop missing values: use drop_na() to remove rows with missing values in flipper length\n\nOnce done, share your code here."
+  },
+  {
+    "objectID": "lectures/07-slides.html#ways-to-fill-or-replace-missing-data",
+    "href": "lectures/07-slides.html#ways-to-fill-or-replace-missing-data",
+    "title": "Introduction to R: Lecture 7",
+    "section": "Ways to Fill or Replace Missing Data",
+    "text": "Ways to Fill or Replace Missing Data\nMain functions to replace or fill missing values:\n\nreplace_na() – replace missing values with a specified value\n\nfill() – carry values forward or backward (from the package tidyr)\n\ncoalesce() – return the first non-missing value across multiple columns\n\nSee Chapter 18 of R for Data Science for more."
   },
   {
     "objectID": "lectures/07-slides.html#recap-what-we-learned-today",
@@ -243,13 +621,6 @@
     "title": "Introduction to R: Lecture 7",
     "section": "Recap: What We Learned Today",
     "text": "Recap: What We Learned Today\n\nHow to rename variables using rename()\nHow to recode values inside a variable using recode() and case_when()\nThe difference between syntactic and non-syntactic variable names, and how to handle them\nHow to detect, ignore, or drop missing values using:\n\nis.na() to detect\nna.rm = TRUE to ignore\ndrop_na() to remove"
-  },
-  {
-    "objectID": "lectures/07-slides.html#reminders",
-    "href": "lectures/07-slides.html#reminders",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Reminders",
-    "text": "Reminders"
   },
   {
     "objectID": "lectures/07-slides.html#to-print-these-slides-as-pdf",
@@ -322,11 +693,18 @@
     "text": "Levels and Labels in Factors\n\n\nWhen you input is a Character Vector\nExample values: \"Jan\", \"May\", \"Oct\"\n\nAlready readable by humans\n(Often) only want to control the order\n\nUse only levels\nExample: \"May\" stays \"May\", but will now sort correctly\n\n\nWhen you input is a Numeric Vector\nExample values: 1, 7, 12\n\nNot already readable by humans\nWant to control the order & add readable labels\nUse levels to order & labels to define what to show\nExample: 1 becomes \"Jan\", 2 becomes \"Feb\", etc."
   },
   {
-    "objectID": "lectures/06-slides.html#common-errors-mismatched-labels-and-levels",
-    "href": "lectures/06-slides.html#common-errors-mismatched-labels-and-levels",
+    "objectID": "lectures/06-slides.html#levels-and-labels-in-factors-examples",
+    "href": "lectures/06-slides.html#levels-and-labels-in-factors-examples",
     "title": "Introduction to R: Lecture 6",
-    "section": "Common Errors: Mismatched Labels and Levels",
-    "text": "Common Errors: Mismatched Labels and Levels\nTry the code below in R. What do you notice?\n# Numeric vector representing months\nx2 &lt;- c(12, 4, 1, 3)\nclass(x2)\n\n# Attempt 1\ny2 &lt;- factor(x2, labels = c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\"))\n\n# Attempt 2\ny2 &lt;- factor(x2, levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), \n                 labels = c(\"Jan\",\"Mar\", \"Apr\", \"Dec\"))\n\n# Attempt 3\ny2 &lt;- factor(x2, levels = c(1, 2, 3, 4),\n                 labels = c(\"Jan\", \"Mar\", \"Apr\", \"Dec\"))"
+    "section": "Levels and Labels in Factors: Examples",
+    "text": "Levels and Labels in Factors: Examples\nBefore you run the code below in R, take a moment to predict the output. What do you expect each code chunk to return, and why?\n# Example 1 with Input as Character Vector\na &lt;- c(\"Low\", \"High\", \"Medium\", \"Low\")\nb &lt;- factor(a, levels = c(\"Low\", \"Medium\", \"High\"))\nb\n\n# Example 2 with Input as Numeric vector\ni &lt;- c(1, 3, 2, 1)\nj &lt;- factor(i, levels = c(1, 2, 3),\n               labels = c(\"Low\", \"Medium\", \"High\"))\nj"
+  },
+  {
+    "objectID": "lectures/06-slides.html#common-error-mismatched-labels-and-levels",
+    "href": "lectures/06-slides.html#common-error-mismatched-labels-and-levels",
+    "title": "Introduction to R: Lecture 6",
+    "section": "Common Error: Mismatched Labels and Levels",
+    "text": "Common Error: Mismatched Labels and Levels\nTry the code below in R. What do you notice?\n# Numeric vector representing months\nx2 &lt;- c(12, 4, 1, 3)\nclass(x2)\n\n# Attempt 1\ny2 &lt;- factor(x2, labels = c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\"))\n\n# Attempt 2\ny2 &lt;- factor(x2, levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), \n                 labels = c(\"Jan\",\"Mar\", \"Apr\", \"Dec\"))\n\n# Attempt 3\ny2 &lt;- factor(x2, levels = c(1, 2, 3, 4),\n                 labels = c(\"Jan\", \"Mar\", \"Apr\", \"Dec\"))"
   },
   {
     "objectID": "lectures/06-slides.html#how-to-fix-it",
@@ -439,13 +817,6 @@
     "title": "Introduction to R: Lecture 6",
     "section": "To print these slides as pdf",
     "text": "To print these slides as pdf\nClick on the icon bottom-right corner &gt; Tools &gt; PDF Export Mode &gt; Print as a Pdf"
-  },
-  {
-    "objectID": "lectures/05-slides.html#agenda",
-    "href": "lectures/05-slides.html#agenda",
-    "title": "Introduction to R: Lecture 5",
-    "section": "Agenda",
-    "text": "Agenda\n\n\nThe scorecard Dataset\n\nMatch Graph Types to Variable Types\n\nPractice\n\n\n\n These slides were last updated on July 15, 2025"
   },
   {
     "objectID": "lectures/05-slides.html#our-goals-today",
@@ -1547,6 +1918,13 @@
     "text": "Course Information CSP Summer 2025\nMeeting Time: Tuesdays & Thursdays, 1:00–2:30 PM\nMeeting Location: Cobb Hall 319\nTeaching Team:\n\nInstructor: Sabrina Nardin (she/her) – nardin@uchicago.edu\n\nTeaching Assistant: Zach Meyer (he/him) – zmeyer@uchicago.edu\n\nOffice Hours:\n\nSabrina: Drop-in after every class (2:30–3:30 PM, Cobb Hall 319)\nZach: Drop-in after Tuesday class (2:30–3:30 PM, Cobb Hall 319)\n\nNo appointment needed for Office Hours — just stick around after class if you have questions about the lecture, homework, or anything course-related.\nQuick Links:\n\nR Workbench\n\nCanvas\n\nEd Discussion\nCourse Schedule"
   },
   {
+    "objectID": "hw/hw03.html",
+    "href": "hw/hw03.html",
+    "title": "HW03: Wrangling Data",
+    "section": "",
+    "text": "Overview\nDue: Thursday, July 31st by 11:59 PM (Chicago Time)\nIn the first assignment you have demonstrated knowledge of your software setup, Git/GitHub via RStudio, and R Markdown. In the second assignment you practiced transforming and exploring data with dplyr and ggplot2.\nThe goal of this final assignment is to reinforce and deepen your understanding of all these tools, with a focus on data wrangling tasks.\n\n\nAccessing and Cloning Your hw03 Repository\n\n\n\n\n\n\nImportant\n\n\n\nThis will work only if you have submitted your GitHub username (see Lecture 1) and accepted the email invitation to join our GitHub organization (check the email linked to your GitHub account). Make sure you’ve completed the setup under Software Setup and confirmed everything is working properly.\n\n\nAccessing the repo:\n\nGo at this link to accept the invitation and create your private hw03 repository on GitHub. Your repository will be named hw03-&lt;USERNAME&gt; and will be ready within a few seconds. If this does not work, see the note in red above.\nOnce the repository has been created, click the link provided to access it.\n\nCloning the repo into your Workbench:\n\nLog into Workbench and start a new project:\nFile &gt; New Project &gt; Version Control &gt; Git\nIn the Repository URL field:\n\nPaste the URL of your GitHub repository. To find the URL, go to your hw03 repo on GitHub, click the green Code button, and copy the SSH or HTTPS link (use the method you configured during setup: Workbench users must select SSH).\nThe project name should auto-fill. If not, type hw03-&lt;USERNAME&gt; manually.\n\nChoose where to save the project directory locally.\nTip: Use a dedicated folder such as homeworks to keep things organized and avoid moving folders after cloning them\nCheck the box “Open in new session” (optional but recommended for keeping projects separate and organized)\nClick Create Project. This will:\n\nCreate a new folder on your machine\n\nInitialize a Git repository linked to GitHub\n\nOpen an RStudio Project in a new session\n\n\n\n\nGeneral Homework Workflow\nSee Homework 1 for details. The workflow is the same for all assignments (e.g., accept the repo, edit the files, save, then Pull – Stage – Commit – Push).\n\n\nAssignment Description\nFor this assignment you will work with data from the U.S. Supreme Court. Your repository includes specific and open-ended questions. Answer all of them.\n\n\n\n\n\n\nNote\n\n\n\n\nThe questions—especially the open-ended ones—are designed to help you think like a university student and future researcher. They won’t walk you through every step but encourage you to apply what you’ve learned and work independently.\nPlan to complete this over multiple sessions. Start early, and remember to save, commit, and push your work regularly.\nDo not use AI tools to generate R code from scratch. You may use it to debug (after trying on your own) or to look up how functions work (check course materials first). Only submit code you fully understand.\n\n\n\n\n\nSubmit the Assignment\nTo submit your assignment on Canvas, follow these steps:\n\nBefore the deadline, push the final version of your work to your GitHub repository. Tip: don’t wait until the end to make your first commit—commit, stage, and push your work regularly as you go.\nYour GitHub repository should include (make sure to stage-commit-push all these files):\n\ncourt.Rmd: main file you will work on\ncourt.md: you will generate this file from the .Rmd by simply knitting it, like you did for HW01 (do not modify the output format)\nthe folder that contains all the graphs that you generated in your .Rmd (we need this file to be able to see your graphs and grade your homework)\n\nWhen you’re ready to submit:\n\nCopy the URL of your GitHub repository. It will look something like: https://github.com/csp-summer25/hw03-yourusername\nSubmit that URL on Canvas under HW03. Do not upload any files to Canvas. We only need the repository link.\n\n\n\n\nAssessment\nAll homework assignments are evaluated using a rubric (for more details, see the Assessment section of the Syllabus). Below are further guidelines for this specific homework to help you assess your work before submitting it.\nIn the past, “Excellent” or “Very Good” work included submissions that:\n\nCompleted all parts of the assignment correctly and accurately.\nIncluded code that:\n\nRan without errors\nFollowed good style (clean, readable, well-organized)\nWas well-documented but not over-commented\nUsed appropriate complexity and matched the prompt and course content\nDemonstrated understanding of key concepts and functions\n\nIncluded graphs and tables that were:\n\nWell-chosen for the variable types\nClearly labeled, visually polished, and customized beyond defaults\nInterpreted in a clear and concise analysis\n\nShowed strong use of:\n\nRequired packages, showing curiosity to use them beyond the basics\nR Markdown syntax (e.g., no rendering errors, appropriate use of syntax, etc.)\n\nFollowed good GitHub practices:\n\nMultiple informative commits showing progress over time\nAll required files present and displaying correctly, including rendered graphs"
+  },
+  {
     "objectID": "hw/hw01.html",
     "href": "hw/hw01.html",
     "title": "HW01: Test software setup and practice editing files",
@@ -2056,866 +2434,5 @@
     "title": "Tools for R Programming and Collaboration",
     "section": "Shell",
     "text": "Shell\nThe shell (or bash or terminal) is a program on your computer whose job is to run other programs, rather than do calculations itself. The shell is a very old program and in a time before the mouse it was the only way to interact with a computer. It is still extremely popular among programmers because it is fast and powerful at automating repetitive tasks.\nHere we use the shell for a more modest goal: to navigate the file system, confirm the present working directory, and cement the git to GitHub connection.\n\nStarting the shell\nIn RStudio, go to Tools &gt; Shell. This should take you to the shell (on Mac: Terminal, on Windows: GitBash or equivalent). It should be a simple blinking cursor, waiting for input (white text on black background, or black text on white background)\n\n\nUsing the shell\nThe most basic commands are listed below:\n\npwd (print working directory). Shows the folder (or directory) you are currently operating in. This is not necessarily the same as the R working directory you get from getwd().\nls (list all files). Shows all files in the current working directory. This is equivalent to looking at the files in your Finder/Explorer/File Manager. Use ls -a to also list hidden files, such as .Rhistory and .git.\ncd (change directory). Allows you to navigate through your folders by changing the shell’s working directory. You can navigate like so:\n\ngo to subfolder foo of current working directory: cd foo\ngo to parent folder of current working directory: cd ..\ngo to home folder: cd ~ or simply cd\ngo to folder using absolute path, works regardless of your current working directory: cd /home/my_username/Desktop. Windows uses a slightly different syntax with the slashes between the folder names reversed, \\, e.g. cd C:\\Users\\MY_USERNAME\\Desktop.\n\nTip 1: Dragging and dropping a file or folder into the terminal window will paste the absolute path into the window.\nTip 2: Use the tab key to autocomplete unambiguous folder and file names. Hit tab twice to see all ambiguous options.\n\n\nUse arrow-up and arrow-down to repeat previous commands. Or search for previous commands with CTRL+r.\ngit status is the most used git command and informs you of your current branch, any changes or untracked files, and whether you are in sync with your remotes.\ngit remote -v lists all remotes. Very useful for making sure git knows about your remote and that the remote address is correct.\ngit remote add origin GITHUB_URL adds the remote GITHUB_URL with nickname origin.\ngit remote set-url origin GITHUB_URL changes the remote url of origin to GITHUB_URL. This way you can fix typos in the remote url.\n\n\n\nA note for Windows users\nOn Windows, the program that runs the shell is called Command Prompt or cmd.exe.\nUnfortunately, the default Windows shell does not support all the commands that other operating systems do. This is where GitBash comes in handy: it installs a light version of a shell that does support all the above commands. When you access the shell through RStudio, RStudio actually tries to open GitBash if it can find it, but it will open the default Windows Command Prompt if GitBash is not found.\nIf you get an error message such as `pwd is not recognized as an internal or external command, operable program or batch file.` from any of the previous commands, that means that RStudio could not find GitBash. The most likely cause of this is that you did not install git using the recommended method so try re-installing git.\nIf you followed the installation instructions and still cannot run GitBash, you should find it under “Menu &gt; Git &gt; Git Bash”. If you’re still confused, go back and watch the first three minutes of this video tutorial on installing Git for Windows."
-  },
-  {
-    "objectID": "lectures/06-slides.html#agenda",
-    "href": "lectures/06-slides.html#agenda",
-    "title": "Introduction to R: Lecture 6",
-    "section": "Agenda",
-    "text": "Agenda\n\n\nDefine and use Factors in R\nReview and expand our knowledge of dplyr “verbs” for data manipulation\n\n\nThese slides were last updated on July 16, 2025"
-  },
-  {
-    "objectID": "lectures/06-slides.html#levels-and-labels-in-factors-examples",
-    "href": "lectures/06-slides.html#levels-and-labels-in-factors-examples",
-    "title": "Introduction to R: Lecture 6",
-    "section": "Levels and Labels in Factors: Examples",
-    "text": "Levels and Labels in Factors: Examples\nBefore you run the code below in R, take a moment to predict the output. What do you expect each code chunk to return, and why?\n# Example 1 with Input as Character Vector\na &lt;- c(\"Low\", \"High\", \"Medium\", \"Low\")\nb &lt;- factor(a, levels = c(\"Low\", \"Medium\", \"High\"))\nb\n\n# Example 2 with Input as Numeric vector\ni &lt;- c(1, 3, 2, 1)\nj &lt;- factor(i, levels = c(1, 2, 3),\n               labels = c(\"Low\", \"Medium\", \"High\"))\nj"
-  },
-  {
-    "objectID": "lectures/06-slides.html#for-more-functions-see-the-forcats-documentation",
-    "href": "lectures/06-slides.html#for-more-functions-see-the-forcats-documentation",
-    "title": "Introduction to R: Lecture 6",
-    "section": "For more functions, see the forcats documentation",
-    "text": "For more functions, see the forcats documentation"
-  },
-  {
-    "objectID": "lectures/06-slides.html#common-error-mismatched-labels-and-levels",
-    "href": "lectures/06-slides.html#common-error-mismatched-labels-and-levels",
-    "title": "Introduction to R: Lecture 6",
-    "section": "Common Error: Mismatched Labels and Levels",
-    "text": "Common Error: Mismatched Labels and Levels\nTry the code below in R. What do you notice?\n# Numeric vector representing months\nx2 &lt;- c(12, 4, 1, 3)\nclass(x2)\n\n# Attempt 1\ny2 &lt;- factor(x2, labels = c(\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\"))\n\n# Attempt 2\ny2 &lt;- factor(x2, levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), \n                 labels = c(\"Jan\",\"Mar\", \"Apr\", \"Dec\"))\n\n# Attempt 3\ny2 &lt;- factor(x2, levels = c(1, 2, 3, 4),\n                 labels = c(\"Jan\", \"Mar\", \"Apr\", \"Dec\"))"
-  },
-  {
-    "objectID": "lectures/07-slides.html#we-work-with-the-penguins-raw-data",
-    "href": "lectures/07-slides.html#we-work-with-the-penguins-raw-data",
-    "title": "Introduction to R: Lecture 7",
-    "section": "We work with the Penguins (raw) Data!",
-    "text": "We work with the Penguins (raw) Data!\n# Load libraries and data\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# Explore data\nhead(penguins_raw)\ntail(penguins_raw)\nrbind(head(penguins_raw, 3), tail(penguins_raw, 3))\nglimpse(penguins_raw)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#definitions",
-    "href": "lectures/07-slides.html#definitions",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Definitions",
-    "text": "Definitions\nRenaming: change variable names (column names)\nRecoding: change values/levels of categorical variables (column values; e.g., inside a column)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#renaming-variables-with-rename",
-    "href": "lectures/07-slides.html#renaming-variables-with-rename",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Renaming Variables with rename",
-    "text": "Renaming Variables with rename\nTo change variable names (column names) the most common method is rename()\nChange the name of the variable studyName to study_name:\n# check before renaming\nstr(penguins_raw)\npenguins_raw %&gt;% select(studyName)\n\n# rename\npenguins_raw %&gt;% rename(study_name = studyName)   # new = old\n\n# remember to save to keep changes\np &lt;- penguins_raw %&gt;% rename(study_name = studyName)\np %&gt;% select(study_name)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#practice-renaming-variables",
-    "href": "lectures/07-slides.html#practice-renaming-variables",
-    "title": "Introduction to R: Lecture 7",
-    "section": "💻 Practice Renaming Variables",
-    "text": "💻 Practice Renaming Variables\n\nUse select() to check the variable Comments in penguins_raw\nUse rename() to rename Comments to notes\nSave the result to a new object\nUse select() to check your result\n\nOnce done, copy your code here to share it."
-  },
-  {
-    "objectID": "lectures/07-slides.html#recoding-variables",
-    "href": "lectures/07-slides.html#recoding-variables",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Recoding Variables",
-    "text": "Recoding Variables\nMethod 1: mutate() + recode()\nFor example, rename the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0):\n# check before recoding\npenguins_raw %&gt;% count(Sex)\n\n# mutate + recode\np &lt;- penguins_raw %&gt;% \n     mutate(sex = recode(Sex, MALE = 1, FEMALE = 0))\n\n# compare\npenguins_raw %&gt;% count(Sex)\np %&gt;% count(Sex)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#recoding-variables-1",
-    "href": "lectures/07-slides.html#recoding-variables-1",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Recoding Variables",
-    "text": "Recoding Variables\nMethod 2: mutate() + case_when()\nLike before, we rename the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0):\n# mutate + case_when\npenguins_raw %&gt;%\n  mutate(Sex = case_when(\n    Sex == \"MALE\" ~ 1,\n    Sex == \"FEMALE\" ~ 0,\n    TRUE ~ NA_real_       # preserves missing values as numeric!\n  ))\n  \n# also here to keep the changes save results in a new object and compare (see previous code)\nNote with case_when() we need to use logical conditions and ~ operator The condition ~ value pair is like “if → then”"
-  },
-  {
-    "objectID": "lectures/07-slides.html#practice-recoding-variables",
-    "href": "lectures/07-slides.html#practice-recoding-variables",
-    "title": "Introduction to R: Lecture 7",
-    "section": "💻 Practice Recoding Variables",
-    "text": "💻 Practice Recoding Variables\n\nUse count() to check the variable Species in penguins_raw\nPick method 1 or method 2 to recode the values of that variable into Adelie, Chinstrap, Gentoo\nSave the result to a new object\nUse count() to verify both results\n\nOnce done, copy your code here to share it."
-  },
-  {
-    "objectID": "lectures/07-slides.html#recap",
-    "href": "lectures/07-slides.html#recap",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Recap",
-    "text": "Recap\nrename()\n\nSpecific use: change column names\n\nIt changes the column’s name, but leaves the column’s values unchanged\n\nmutate()\n\nMany uses: create new columns or modify existing columns values\n\nIt changes the column’s values, potentially can also rename the column\n\n\n\n\n\n\n\nNote\n\n\nFor recoding, we use mutate() because our first goal is changing the column’s values. We learned two methods:\n\nMethod 1: mutate(Sex = recode(Sex, \"MALE\" = 1, \"FEMALE\" = 0))\n\nMethod 2: mutate(Sex = case_when(sex == \"MALE\" ~ 1, sex == \"FEMALE\" ~ 0))"
-  },
-  {
-    "objectID": "lectures/07-slides.html#recap-1",
-    "href": "lectures/07-slides.html#recap-1",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Recap",
-    "text": "Recap\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nBasic Syntax\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old_value\" = new_value)\nUse quotes for variable values if they are character\n\n\ncase_when()\nColumn values (with logic)\ncase_when(variable == \"old_value\" ~ new_value)\nUse quotes for variable values if they are character"
-  },
-  {
-    "objectID": "lectures/07-slides.html#syntactic-variable-names",
-    "href": "lectures/07-slides.html#syntactic-variable-names",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Syntactic Variable Names",
-    "text": "Syntactic Variable Names\nSyntactic Variable Names are names that R considers valid.\nValid name follow these rules: - Letters, numbers, ., and _ (all the rest is invalid) - Cannot start with a number or symbol\nExamples of syntactic or valid variable names:\nflipper_length_mm\nflipper.length.mm\nflipper.length_mm    # poor coding style but valid name\nFlipperLengthMm      # poor coding style but valid name"
-  },
-  {
-    "objectID": "lectures/07-slides.html#non-syntactic-variable-names",
-    "href": "lectures/07-slides.html#non-syntactic-variable-names",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Non-syntactic Variable Names",
-    "text": "Non-syntactic Variable Names\nNon-syntactic Variable Names are names that R considers invalid.\nInvalid names: - Contain spaces or symbols - Start with numbers or symbols - Use reserved words such as TRUE, NULL, if, or function names (see the complete list by typing ?Reserved in your Console)\nExamples of non-syntactic or invalid variable names:\nFlipper Length (mm)\nflipper_ length_mm\nflipper-length-mm\n_flippr_length_mm"
-  },
-  {
-    "objectID": "lectures/07-slides.html#practice-syntactic-and-non-syntactic-names",
-    "href": "lectures/07-slides.html#practice-syntactic-and-non-syntactic-names",
-    "title": "Introduction to R: Lecture 7",
-    "section": "💻 Practice: Syntactic and Non-Syntactic Names",
-    "text": "💻 Practice: Syntactic and Non-Syntactic Names\nWhich of the following are valid names?\n\n3_religion\n#3_religion\nq3_religion\nq3.religion\nq3-religion\nq3 religion\nTRUE\n\n\n\n\n\n\n\nTip\n\n\nFor best coding style, use snake_case for all your variables names and keep them to three words maximum. Example: q3_religion"
-  },
-  {
-    "objectID": "lectures/07-slides.html#how-to-use-non-syntactic-names-and-why-this-matters",
-    "href": "lectures/07-slides.html#how-to-use-non-syntactic-names-and-why-this-matters",
-    "title": "Introduction to R: Lecture 7",
-    "section": "How to Use Non-syntactic Names and Why this Matters",
-    "text": "How to Use Non-syntactic Names and Why this Matters\nDo not deliberately create non-syntactic names, BUT you will encounter non-syntactic names more frequently than you might think (for example when you use data not built in R). If you do not know how to handle them, you will run into errors.\nTo handle non-syntactic names:\n\nrefer to them using backticks\nrename them as soon as possible"
-  },
-  {
-    "objectID": "lectures/07-slides.html#working-with-non-syntactic-names-in-practice",
-    "href": "lectures/07-slides.html#working-with-non-syntactic-names-in-practice",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Working with Non-syntactic Names in Practice",
-    "text": "Working with Non-syntactic Names in Practice\nImagine you are working on political ideology by country, assembled by someone else. The data are in Excel and when you imported them in R they look like this:\ndf &lt;- tibble(country = c(\"Italy\", \"Germany\", \"France\", \"Italy\", \"United States\"),\n                  `4 ideology` = c(\"communism\", \"fascism\", \"anarchism\", \"fascism\", \"capitalism\"))\n\nTo use the non-syntactic variable name without changing it and without errors, you must use backticks:\nselect(df, `4 ideology`)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#practice-non-syntactic-names",
-    "href": "lectures/07-slides.html#practice-non-syntactic-names",
-    "title": "Introduction to R: Lecture 7",
-    "section": "💻 Practice: Non-syntactic Names",
-    "text": "💻 Practice: Non-syntactic Names\nTry this in R:\n\nUse select() to select the variable without backticks: what happens?\nUse rename() to rename the variable to a syntactic name (e.g., a valid name)\n\nSee also the penguins_raw datasets for other examples with:\nglimpse(penguins_raw)\nselect(penguins_raw, `Flipper Length (mm)`)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#recoding-variables-method-1-with-mutate-recode",
-    "href": "lectures/07-slides.html#recoding-variables-method-1-with-mutate-recode",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Recoding Variables Method 1: with mutate + recode",
-    "text": "Recoding Variables Method 1: with mutate + recode\nTo change variable values (usually levels of categorical variables), we learn two methods.\nChange the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0) with method 1:\n# check before recoding\npenguins_raw %&gt;% count(Sex)\n\n# mutate + recode\np &lt;- penguins_raw %&gt;%\n  mutate(sex = recode(Sex, \"MALE\" = 1, \"FEMALE\" = 0))\n\n# compare\npenguins_raw %&gt;% count(Sex)\np %&gt;% count(Sex)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#recoding-variables-method-2-with-mutate-case_when",
-    "href": "lectures/07-slides.html#recoding-variables-method-2-with-mutate-case_when",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Recoding Variables Method 2: with mutate + case_when",
-    "text": "Recoding Variables Method 2: with mutate + case_when\nChange the levels of the categorical variable Sex (MALE becomes 1, FEMALE becomes 0) with method 2:\n# mutate + case_when\npenguins_raw %&gt;%\n  mutate(Sex = case_when(Sex == \"MALE\" ~ 1,\n                         Sex == \"FEMALE\" ~ 0,\n                         TRUE ~ NA_real_))\n  \n# like for method 1 (previous code) save results to keep changes and compare\n\n\n\n\n\n\nNote\n\n\nWith case_when() each logical condition ~ value pair acts like if → then:\n\nfor each row, R looks if the condition is TRUE: “If you find the value MALE in Sex, then convert it to 1”\nTRUE ~ NA_real_ tells R: “If no previous condition was met, then return NA as as a number”"
-  },
-  {
-    "objectID": "lectures/07-slides.html#recap-2",
-    "href": "lectures/07-slides.html#recap-2",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Recap",
-    "text": "Recap\n\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nBasic Syntax\nExample\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)\nrename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)\nrecode(Sex, \"MALE\" = 1)\nUse quotes for variable values if they are character\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)\ncase_when(Sex == \"MALE\" ~ 1)\nUse quotes for variable values if they are character\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
-  },
-  {
-    "objectID": "lectures/07-slides.html#rename-vs-recode-syntax-reference",
-    "href": "lectures/07-slides.html#rename-vs-recode-syntax-reference",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Rename vs Recode: Syntax Reference",
-    "text": "Rename vs Recode: Syntax Reference\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nSyntax + Example\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)  rename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)  recode(Sex, \"MALE\" = 1)\nUse quotes around variable values if they are character\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)  case_when(Sex == \"MALE\" ~ 1)\nUse quotes around variable values if they are character\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
-  },
-  {
-    "objectID": "lectures/07-slides.html#the-role-of-mutate-in-recoding",
-    "href": "lectures/07-slides.html#the-role-of-mutate-in-recoding",
-    "title": "Introduction to R: Lecture 7",
-    "section": "The Role of mutate in Recoding",
-    "text": "The Role of mutate in Recoding\nrename()\n\nSpecific use: change column names\n\nIt changes the column’s name, but leaves the column’s values unchanged\n\nmutate()\n\nMany uses: create new columns or modify existing columns values\n\nIt changes the column’s values, potentially can also rename the column\n\n\n\n\n\n\n\nNote\n\n\nFor recoding, we use mutate() because our first goal is changing the column’s values. We learned two methods:\n\nMethod 1: mutate(Sex = recode(Sex, \"MALE\" = 1, \"FEMALE\" = 0))\n\nMethod 2: mutate(Sex = case_when(sex == \"MALE\" ~ 1, sex == \"FEMALE\" ~ 0))"
-  },
-  {
-    "objectID": "lectures/07-slides.html#rename-vs-recode-syntax-reference-1",
-    "href": "lectures/07-slides.html#rename-vs-recode-syntax-reference-1",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Rename vs Recode: Syntax Reference",
-    "text": "Rename vs Recode: Syntax Reference\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nSyntax + Example\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)  rename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)  recode(Sex, \"MALE\" = 1)\nUse quotes around variable values if they are character\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)  case_when(Sex == \"MALE\" ~ 1)\nUse quotes around variable values if they are character\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
-  },
-  {
-    "objectID": "lectures/07-slides.html#syntactic-variable-names-valid-names-in-r",
-    "href": "lectures/07-slides.html#syntactic-variable-names-valid-names-in-r",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Syntactic Variable Names: VALID Names in R",
-    "text": "Syntactic Variable Names: VALID Names in R\nValid names in R:\n\nUse letters, numbers, and the symbols . and _\nBut cannot start with a number or symbol\n\n\nExamples of syntactic or valid variable names:\nflipper_length_mm\nflipper.length.mm\nflipper.length_mm    # poor coding style but valid name\nFlipperLengthMm      # poor coding style but valid name"
-  },
-  {
-    "objectID": "lectures/07-slides.html#non-syntactic-variable-names-invalid-names-in-r",
-    "href": "lectures/07-slides.html#non-syntactic-variable-names-invalid-names-in-r",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Non-syntactic Variable Names: INVALID Names in R",
-    "text": "Non-syntactic Variable Names: INVALID Names in R\nInvalid names in R:\n\nContain spaces or symbols\nStart with numbers or symbols\nUse reserved words such as TRUE, NULL, if, or function names (see the complete list by typing ?Reserved in your Console)\n\n\nExamples of non-syntactic or invalid variable names:\nFlipper Length (mm)\nflipper_ length_mm\nflipper-length-mm\n_flippr_length_mm"
-  },
-  {
-    "objectID": "lectures/07-slides.html#practice-syntactic-non-syntactic-variable-names",
-    "href": "lectures/07-slides.html#practice-syntactic-non-syntactic-variable-names",
-    "title": "Introduction to R: Lecture 7",
-    "section": "💻 Practice: Syntactic & Non-syntactic Variable Names",
-    "text": "💻 Practice: Syntactic & Non-syntactic Variable Names\nTry this in R:\n\nUse glimpse(penguins_raw) or str(penguins_raw) and identify non-syntactic variables names in this raw dataset\nPick one of them, and try accessing it with select() without backticks: what happens?\nUse rename() to give the variable a syntactic valid name\nSave the result to a new object\nVerify the name was changed and you can now access it\n\nOnce done, copy your code here to share it."
-  },
-  {
-    "objectID": "lectures/07-slides.html#syntactic-valid-variable-names-in-r",
-    "href": "lectures/07-slides.html#syntactic-valid-variable-names-in-r",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Syntactic (Valid) Variable Names in R",
-    "text": "Syntactic (Valid) Variable Names in R\n\n\nValid Names in R:\n\nUse letters, numbers, and the symbols . or _\nBut cannot start with a number or symbol\n\n\nExamples of Valid Names:\nflipper_length_mm\nflipper.length.mm\nflipper.length_mm     # valid but poor style\nFlipperLengthMm       # valid but poor style"
-  },
-  {
-    "objectID": "lectures/07-slides.html#non-syntactic-invalid-variable-names-in-r",
-    "href": "lectures/07-slides.html#non-syntactic-invalid-variable-names-in-r",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Non-syntactic (Invalid) Variable Names in R",
-    "text": "Non-syntactic (Invalid) Variable Names in R\n\n\nWhat Makes a Name Invalid:\n\nContains spaces or symbols\nStarts with a number or symbol\nUses reserved words (e.g., TRUE, NULL, if, function)\nType ?Reserved in the Console for the full list\n\n\nExamples of Invalid Names:\nFlipper Length (mm)\n@_flipper_length_mm\nflipper_ length_mm\nflipper-length-mm\n.flipper.length.mm"
-  },
-  {
-    "objectID": "lectures/07-slides.html#how-to-handle-non-syntactic-names-and-why-it-matters",
-    "href": "lectures/07-slides.html#how-to-handle-non-syntactic-names-and-why-it-matters",
-    "title": "Introduction to R: Lecture 7",
-    "section": "How to Handle Non-syntactic Names — and Why It Matters",
-    "text": "How to Handle Non-syntactic Names — and Why It Matters\nYou should avoid creating non-syntactic names, BUT you’ll often encounter them, especially in datasets not created in R (from Excel or other external sources). If you don’t handle them properly, R will throw errors when you try to use them.\nWhat to Do:\n1. Use backticks to refer to them (e.g., `Flipper Length (mm)`)\n2. Use rename() to change them to syntactic names\nNon-syntactic names will break code if you forget to wrape them in backticks, so renaming avoids issues."
-  },
-  {
-    "objectID": "lectures/07-slides.html#what-are-missing-data",
-    "href": "lectures/07-slides.html#what-are-missing-data",
-    "title": "Introduction to R: Lecture 7",
-    "section": "What Are Missing Data?",
-    "text": "What Are Missing Data?\nR distinguishes two types of missing data:\n\nExplicit missing: visible NA or NaN values in the dataset\nImplicit missing: data that was never recorded\n\nIn this course, we focus on explicit missing data. For implicit missing data, see R for Data Science Chapter 18\n\n\n\n\n\n\nNote\n\n\nExplicit = value is missing as NA (Not Available) or NaN (Not a Number)\nImplicit = value was never recorded (row or cell is absent)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#how-do-missing-values-behave",
-    "href": "lectures/07-slides.html#how-do-missing-values-behave",
-    "title": "Introduction to R: Lecture 7",
-    "section": "How Do Missing Values Behave?",
-    "text": "How Do Missing Values Behave?\nAny operation involving a missing value will also return a missing value (see Chapter 12.2.2 Missing values for more):\nNA &gt; 5\n\nsum(c(3, 1, 4, NA)\nsum(c(3, 1, 4, NA), na.rm = TRUE)\n\nmean(c(3,1,4,NA))\nmean(c(3, 1, 4, NA), na.rm = TRUE)"
-  },
-  {
-    "objectID": "lectures/07-slides.html#common-ways-to-handle-missing-data",
-    "href": "lectures/07-slides.html#common-ways-to-handle-missing-data",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Common Ways to Handle Missing Data",
-    "text": "Common Ways to Handle Missing Data\nWe’ll review three main tools:\n\nis.na() – to detect missing values\nna.rm = TRUE – to ignore missing values\ndrop_na() – to remove missing values"
-  },
-  {
-    "objectID": "lectures/07-slides.html#detect-missing-data-with-is.na",
-    "href": "lectures/07-slides.html#detect-missing-data-with-is.na",
-    "title": "Introduction to R: Lecture 7",
-    "section": "1. Detect Missing Data with is.na():",
-    "text": "1. Detect Missing Data with is.na():\nUse is.na() to find the missing values in a specific variable. It returns TRUE for missing values, and FALSE otherwise.\nCheck for missing values in the penguins_raw dataset:\n# using base R syntax\nsum(is.na(penguins_raw$Sex))\ntable(is.na(penguins_raw$Sex))\n\n# using tidyverse syntax\npenguins_raw %&gt;% summarize(sum(is.na(Sex)))\npenguins_raw  %&gt;% count(is.na(Sex)) \n\n# filter rows where sex is missing\nfilter(penguins_raw, is.na(Sex))    # correct  \nfilter(penguins_raw, Sex == NA)     # incorrect"
-  },
-  {
-    "objectID": "lectures/07-slides.html#ignore-missing-data-in-summaries-with-na.rm-true",
-    "href": "lectures/07-slides.html#ignore-missing-data-in-summaries-with-na.rm-true",
-    "title": "Introduction to R: Lecture 7",
-    "section": "2. Ignore Missing Data in Summaries with na.rm = TRUE",
-    "text": "2. Ignore Missing Data in Summaries with na.rm = TRUE\nUse na.rm = TRUE to exclude missing values when performing calculations. Often used with summarize() when calculating things like mean, sum, standard deviation.\npenguins_raw %&gt;% summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))\npenguins_raw %&gt;% summarize(sum_mass = sum(`Body Mass (g)`, na.rm = TRUE))\n\n\n\n\n\n\n\n\nTip\n\n\nThe command na.rm = TRUE does not remove missing data from the variable(s), it just skips them for that operation, but they are not dropped!"
-  },
-  {
-    "objectID": "lectures/07-slides.html#remove-missing-observations-with-drop_na",
-    "href": "lectures/07-slides.html#remove-missing-observations-with-drop_na",
-    "title": "Introduction to R: Lecture 7",
-    "section": "3. Remove Missing Observations with drop_na()",
-    "text": "3. Remove Missing Observations with drop_na()\nUse drop_na() to remove rows with missing values. Either across all columns or in a specific column.\nDrop missing values in one specific column (preferred):\npenguins_raw %&gt;%\n  drop_na(`Body Mass (g)`) %&gt;%\n  summarize(avg_mass = mean(`Body Mass (g)`))\n\n\n\n\n\n\n\n\nWarning\n\n\nBe careful with drop_na() as it removes entire rows, which may unintentionally filter out relevant data. Check which variable(s) you are dropping, and avoid using it blindly across all columns."
-  },
-  {
-    "objectID": "lectures/07-slides.html#ways-to-fill-or-replace-missing-data",
-    "href": "lectures/07-slides.html#ways-to-fill-or-replace-missing-data",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Ways to Fill or Replace Missing Data",
-    "text": "Ways to Fill or Replace Missing Data\nMain functions to replace or fill missing values:\n\nreplace_na() – replace missing values with a specified value\n\nfill() – carry values forward or backward (from the package tidyr)\n\ncoalesce() – return the first non-missing value across multiple columns\n\nSee Chapter 18 of R for Data Science for more."
-  },
-  {
-    "objectID": "lectures/07-slides.html#uses",
-    "href": "lectures/07-slides.html#uses",
-    "title": "Introduction to R: Lecture 7",
-    "section": "Uses",
-    "text": "Uses\nWhat are some common scenarios where you’d want to rename variable names or recode variable values?\n\nYou are cleaning up imported data\n\nThe variable name is has issues (e.g., Flipper Length (mm) → flipper_length_mm)\nYou need to standardize categories (e.g., \"Good\" and \"GOOD\" → \"good\")\nEtc.\n\nYou are preparing data for modeling or visualization\n\nYou want to recode \"FEMALE\"/\"MALE\" to 0/1 for a regression model\n\nEtc."
-  },
-  {
-    "objectID": "lectures/07-slides.html#in-class-practice-handling-missing-data",
-    "href": "lectures/07-slides.html#in-class-practice-handling-missing-data",
-    "title": "Introduction to R: Lecture 7",
-    "section": "💻 In-Class Practice: Handling Missing Data",
-    "text": "💻 In-Class Practice: Handling Missing Data\nUse the penguins_raw dataset to complete the tasks below:\n\nDetect missing values:\n\n\n\nuse is.na() and sum() to count how many missing values are in the variable Body Mass (g)\nuse filter() to: show all rows where Body Mass (g) is missing\n\n\nExclude missing value from calculations:\n\n\n\nuse summarize() with na.rm = TRUE to calculate: the average body mass of all penguins (do not drop the rows, just ignore the missing values)\n\n\nDrop missing values:\n\n\n\nuse drop_na(\\Body Mass (g)`)` to remove rows with missing values in body mass\ncalculate the average again\n\nOnce done, copy your code here to share it."
-  },
-  {
-    "objectID": "lectures/07-slides.html#in-class-practice-handling-missing-values",
-    "href": "lectures/07-slides.html#in-class-practice-handling-missing-values",
-    "title": "Introduction to R: Lecture 7",
-    "section": "💻 In-Class Practice: Handling Missing Values",
-    "text": "💻 In-Class Practice: Handling Missing Values\n\nRename: use the penguins_raw dataset and rename Flipper Length (mm) to flipper_length_mm. Save the result as a new dataframe, e.g., penguins_clean or p\n\nUse the new dataframe with the renamed variable for the tasks below:\n\nDetect missing values: use is.na() and sum() to count how many are missing in flipper_length_mm\nExclude missing from calculations: use na.rm = TRUE inside mean() to get the average flipper length\nDrop missing values: use drop_na(flipper_length_mm) to remove rows with missing values in that column\n\nOnce done, share your code here."
-  },
-  {
-    "objectID": "lectures/08-slides.html#what-is-base-r",
-    "href": "lectures/08-slides.html#what-is-base-r",
-    "title": "Introduction to R: Lecture 8",
-    "section": "What Is Base R?",
-    "text": "What Is Base R?\nWhen people say “base R”, they are referring to the core or basic features of the R language, developed before the tidyverse (hence the name as base R).\nThese include:\n\nProgramming Tools: if-else statements, loops, functions\n\nData Types: numeric, integer, character, logical, factor\n\nData Structures: vectors, matrices, lists, data frames\n\nBasic Operations: indexing/subsetting, arithmetic/logical comparisons"
-  },
-  {
-    "objectID": "lectures/08-slides.html#base-r-vs.-the-tidyverse",
-    "href": "lectures/08-slides.html#base-r-vs.-the-tidyverse",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Base R vs. the Tidyverse",
-    "text": "Base R vs. the Tidyverse\n\n\nBase R\n\nDeveloped in the early 1990s as part of R’s core language\n\nIncludes built-in functions like mean(), length(), etc. and key programming tools like loops, etc.\nOffers more direct control, but code can be longer or harder to read\n\n\n\n  \n\nTidyverse\n\nFormally introduced after 2016 as a set of user-friendly packages\nIncludes packages like ggplot2, dplyr, tidyr, forcats, tidyr, stringr, etc.\nPrioritizes readability and consistency, making code cleaner and easier to read"
-  },
-  {
-    "objectID": "lectures/08-slides.html#our-goal",
-    "href": "lectures/08-slides.html#our-goal",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Our Goal",
-    "text": "Our Goal\nUse the tidyverse for most of your daily work,\nbut know enough base R to understand what’s happening behind the scenes."
-  },
-  {
-    "objectID": "lectures/08-slides.html#how-they-relate",
-    "href": "lectures/08-slides.html#how-they-relate",
-    "title": "Introduction to R: Lecture 8",
-    "section": "How They Relate",
-    "text": "How They Relate\nEvery element in R has a data type. That element is stored inside a data structure\nExample:\nx &lt;- c(1, 2, 3)      # vector of numeric values  \ny &lt;- list(\"a\", 5)    # list with character and numeric values\n\nTo work with data types (numeric, character, logical, etc.) in R, we need to store them inside a data structure (vector, list, etc.)!"
-  },
-  {
-    "objectID": "lectures/08-slides.html#how-base-r-and-the-tidyverse-work-together",
-    "href": "lectures/08-slides.html#how-base-r-and-the-tidyverse-work-together",
-    "title": "Introduction to R: Lecture 8",
-    "section": "How Base R and the Tidyverse Work Together",
-    "text": "How Base R and the Tidyverse Work Together\n\nThe tidyverse is built on base R — it doesn’t replace it\n\nYou can combine base R and tidyverse functions in your code\n\nYou’ll often see both styles used in real-world scripts and examples\n\n\n\n\n\n\n\n\nTip\n\n\nUse the tidyverse for most of your daily work, but understand enough base R to follow and troubleshoot R code!"
-  },
-  {
-    "objectID": "lectures/08-slides.html#main-data-types-in-r",
-    "href": "lectures/08-slides.html#main-data-types-in-r",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Main Data Types in R",
-    "text": "Main Data Types in R\n\nNumeric\nNumbers, either with or without decimals\n\nDouble: default for decimal values\ne.g., 3.14, -2.5, 0.0\n\nInteger: whole numbers with L suffix\ne.g., 1L, 100L, -5L\n\nCharacter\nText or string values (always in quotes)\ne.g., \"hello\", \"R is fun\"\nLogical\nTRUE/FALSE values used in conditions\ne.g., TRUE, FALSE, 3 &gt; 5\nFactor\nCategorical values with defined levels\ne.g., factor(c(\"low\", \"medium\", \"high\"))"
-  },
-  {
-    "objectID": "lectures/08-slides.html#from-data-types-to-data-structures",
-    "href": "lectures/08-slides.html#from-data-types-to-data-structures",
-    "title": "Introduction to R: Lecture 8",
-    "section": "From Data Types to Data Structures",
-    "text": "From Data Types to Data Structures\nWe have just talked about data types — like numeric, characters, logical, etc.\nBut to actually work with data types in R, we need to store them inside a data structure.\nSo let’s talk about data structures!"
-  },
-  {
-    "objectID": "lectures/08-slides.html#data-types-and-data-structures",
-    "href": "lectures/08-slides.html#data-types-and-data-structures",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Data Types and Data Structures",
-    "text": "Data Types and Data Structures\nData Types and Data Structures are part of base R. They are the fundamentals — the “ABC” of how R stores and organizes data.\n\nData Type — what kind of value it is\n\nData Structure — how values are stored and organized\n\nWe look at each and at how they relate."
-  },
-  {
-    "objectID": "lectures/08-slides.html#data-types-in-r",
-    "href": "lectures/08-slides.html#data-types-in-r",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Data Types in R",
-    "text": "Data Types in R\nData Type: describes the kind of value you’re working with.\nR has the following main data types:\n\nNumeric – numbers, either with or without decimals\n\nDouble with decimals (default): 3.14, 2.0\n\ninteger whole numbers: 2L, 100L\n\nCharacter – text or strings (always in quotes): \"hello\"\nLogical – TRUE or FALSE values: TRUE, FALSE\nFactor – categorical values with levels: \"low\", \"medium\""
-  },
-  {
-    "objectID": "lectures/08-slides.html#data-structures-in-r",
-    "href": "lectures/08-slides.html#data-structures-in-r",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Data Structures in R",
-    "text": "Data Structures in R\nData Structure: like a container that holds one or more values.\nR has the following main data structures:\n\nVector – one-dimensional, all elements same type\n\nMatrix – two-dimensional, all elements same type\n\nList – multi-dimensional, holds elements of any type, even mixed\n\nDataframe – multi-dimensional, columns can have different types"
-  },
-  {
-    "objectID": "lectures/08-slides.html#data-structures-in-r-1",
-    "href": "lectures/08-slides.html#data-structures-in-r-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Data Structures in R",
-    "text": "Data Structures in R\nA data structure is like a container that holds one or more values.\n\nvector – one-dimensional, all elements must be the same type\nExample: c(1, 2, 3) → numeric vector\nmatrix – two-dimensional, all elements must be the same type\nExample: matrix(1:6, nrow = 2) → numeric matrix\nlist – one-dimensional, can hold mixed types\nExample: list(1, \"a\", TRUE) → numeric, character, logical\ndata frame – like a spreadsheet: each column can have a different type\nExample:\ndata.frame(name = c(\"a\", \"b\"), age = c(20, 30))"
-  },
-  {
-    "objectID": "lectures/08-slides.html#how-they-relate-1",
-    "href": "lectures/08-slides.html#how-they-relate-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "How They Relate",
-    "text": "How They Relate\nEvery value in R has one specific data type, even when it’s inside a larger data structure.\n\nHere are two examples:\nx is a vector and all values inside are of type numeric\nx &lt;- c(1, 2, 3)\ny is a list and a is character, 10 numeric, FALSE lofic\ny &lt;- list(\"a\", 10, FALSE)"
-  },
-  {
-    "objectID": "lectures/08-slides.html#structures-limit-the-types-they-can-hold",
-    "href": "lectures/08-slides.html#structures-limit-the-types-they-can-hold",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Structures Limit the Types They Can Hold",
-    "text": "Structures Limit the Types They Can Hold\n\nVectors and matrices can only hold one type\n→ If you mix types, R will automatically convert (coerce) them\nExample: c(1, \"a\", TRUE) becomes \"1\", \"a\", \"TRUE\" (all character)\nLists and data frames can hold multiple types\n→ Each list element or data frame column can be different\nExample: list(1, \"a\", TRUE) keeps all types as-is"
-  },
-  {
-    "objectID": "lectures/08-slides.html#how-data-types-and-data-structures-relate",
-    "href": "lectures/08-slides.html#how-data-types-and-data-structures-relate",
-    "title": "Introduction to R: Lecture 8",
-    "section": "How Data Types and Data Structures Relate",
-    "text": "How Data Types and Data Structures Relate\nEvery single element in R has a data type. That element is stored inside a larger data structure.\nExamples:\nx &lt;- c(1, 2, 3)      # a vector (structure) of three elements, all numeric values (type) \ny &lt;- list(\"a\", 5)    # a list (structure) of two elements, one character value and one numeric value (type)\n\n \n\n\n\n\n\n\n\nThe data structure you use affects what data types you can store:\n\n\nNot all data structures support every combination of data types. Some allow only one type, while others can store many types together."
-  },
-  {
-    "objectID": "lectures/08-slides.html#how-data-types-and-data-structures-relate-1",
-    "href": "lectures/08-slides.html#how-data-types-and-data-structures-relate-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "How Data Types and Data Structures Relate",
-    "text": "How Data Types and Data Structures Relate\n\n\n\n\n\n\n\n\n\nStructure\nDimensions\nAllow Mixed Types?\nNotes\n\n\n\n\nVector\n1D\nNo\nAll elements must be the same data type\n\n\nMatrix\n2D\nNo\nAll elements must be the same data type\n\n\nDataframe\n2D\nYes (by column)\nEach column is a vector; data types can vary by column\n\n\nList\nFlexible\nYes\nEach element can be anything: numbers, text, vectors, even data frames"
-  },
-  {
-    "objectID": "lectures/07-slides.html#ignore-missing-data-with-na.rm-true",
-    "href": "lectures/07-slides.html#ignore-missing-data-with-na.rm-true",
-    "title": "Introduction to R: Lecture 7",
-    "section": "2. Ignore Missing Data with na.rm = TRUE",
-    "text": "2. Ignore Missing Data with na.rm = TRUE\nUse na.rm = TRUE to exclude missing values when performing calculations. Often used with summarize() when calculating things like mean, sum, standard deviation.\npenguins_raw %&gt;% summarize(avg_mass = mean(`Body Mass (g)`, na.rm = TRUE))\npenguins_raw %&gt;% summarize(sum_mass = sum(`Body Mass (g)`, na.rm = TRUE))\n\n\n\n\n\n\n\n\nTip\n\n\nThe command na.rm = TRUE does not remove missing data from the variable(s), it just skips them for that operation, but they are not dropped!"
-  },
-  {
-    "objectID": "lectures/07-slides.html#remove-missing-data-with-drop_na",
-    "href": "lectures/07-slides.html#remove-missing-data-with-drop_na",
-    "title": "Introduction to R: Lecture 7",
-    "section": "3. Remove Missing Data with drop_na()",
-    "text": "3. Remove Missing Data with drop_na()\nUse drop_na() to remove rows with missing values. Either across all columns or in a specific column.\nDrop missing values in one specific column (preferred):\npenguins_raw %&gt;%\n  drop_na(`Body Mass (g)`) %&gt;%\n  summarize(avg_mass = mean(`Body Mass (g)`))\n\n\n\n\n\n\n\n\nWarning\n\n\nBe careful with drop_na() as it removes entire rows, which may unintentionally filter out relevant data. Check which variable(s) you are dropping, and avoid using it blindly across all columns."
-  },
-  {
-    "objectID": "lectures/07-slides.html#practice-handling-missing-data",
-    "href": "lectures/07-slides.html#practice-handling-missing-data",
-    "title": "Introduction to R: Lecture 7",
-    "section": "💻 Practice: Handling Missing Data",
-    "text": "💻 Practice: Handling Missing Data\n\nRename: use the penguins_raw dataset and rename Flipper Length (mm) to flipper_length_mm. Save the result as a new dataframe, e.g., penguins_clean or p\n\nUse the new dataframe with the renamed variable for the tasks below:\n\nDetect missing values: use is.na() and sum() to count how many are missing in the variable flipper length\nExclude missing from calculations: use na.rm = TRUE inside mean() to calculate the average flipper length\nDrop missing values: use drop_na() to remove rows with missing values in flipper length\n\nOnce done, share your code here."
-  },
-  {
-    "objectID": "lectures/07-slides.html#how-missing-data-behave",
-    "href": "lectures/07-slides.html#how-missing-data-behave",
-    "title": "Introduction to R: Lecture 7",
-    "section": "How Missing Data Behave",
-    "text": "How Missing Data Behave\nAny operation involving a missing value will also return a missing value (see Chapter 12.2.2 Missing values for more):\nNA &gt; 5\n\nsum(c(3, 1, 4, NA)\nsum(c(3, 1, 4, NA), na.rm = TRUE)\n\nmean(c(3,1,4,NA))\nmean(c(3, 1, 4, NA), na.rm = TRUE)"
-  },
-  {
-    "objectID": "lectures/08-slides.html#r-data-types",
-    "href": "lectures/08-slides.html#r-data-types",
-    "title": "Introduction to R: Lecture 8",
-    "section": "R Data Types",
-    "text": "R Data Types\nData Type: describes the kind of value you’re working with.\n\n\nR has the following main data types (for more see here):\n\nNumeric – numbers, either with or without decimals\n\nDouble with decimals (default): 3.14, 2.0\n\nInteger whole numbers: 2L, 100L\n\nCharacter – text or strings (always in quotes): \"hello\"\nLogical – TRUE or FALSE values: TRUE, FALSE\nFactor – categorical values with levels: \"low\", \"medium\""
-  },
-  {
-    "objectID": "lectures/08-slides.html#r-data-structures",
-    "href": "lectures/08-slides.html#r-data-structures",
-    "title": "Introduction to R: Lecture 8",
-    "section": "R Data Structures",
-    "text": "R Data Structures\nData Structure: like a container that holds one or more values.\n\n\nR has the following main data structures (for more see here):\n\nVector – one-dimensional, all elements same type\nv &lt;- c(1, 2, 3)\nMatrix – two-dimensional, all elements same type\nm &lt;- matrix(1:6, nrow = 2)\nDataframe – two-dimensional, columns can have different types\ndf &lt;- data.frame(name = c(\"A\", \"B\"), age = c(25, 30))\nList – multi-dimensional, holds elements of any type, even mixed\nl &lt;- list(num = 1:3, name = c(\"Sabrina\", \"Laura\"))"
-  },
-  {
-    "objectID": "lectures/08-slides.html#r-data-structures-1",
-    "href": "lectures/08-slides.html#r-data-structures-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "R Data Structures",
-    "text": "R Data Structures\n# vector\nn &lt;- c(1:9)\nc &lt;- c(\"hello\", \"ciao\", \"hey\")\nf &lt;- factor(c(\"low\", \"medium\", \"high\"))\ntest &lt;- c(\"hello\", 1, 2)\n\n# matrix\nm &lt;- matrix(1:15, nrow = 3, ncol = 5, byrow = TRUE)\n\n# dataframe or tibble\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"Dave\", \"Ashley\", \"Rik\"),\n  age = c(15, 17, 20)\n) \n\n# list\nl &lt;- list(\n  num_v = c(1:3),\n  m = matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE),\n  another_num_v = c(1,2,4),\n  char_v = c(\"Sabrina\", \"Zach\"),\n  d = tibble(var_1 = c(1:4),\n              var_2 = c(2:5))\n)"
-  },
-  {
-    "objectID": "lectures/08-slides.html#vector-1d-and-same-data-types",
-    "href": "lectures/08-slides.html#vector-1d-and-same-data-types",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Vector: 1D and same data types",
-    "text": "Vector: 1D and same data types\n\n\n[1] \"integer\""
-  },
-  {
-    "objectID": "lectures/08-slides.html#r-data-types-and-data-structures-1",
-    "href": "lectures/08-slides.html#r-data-types-and-data-structures-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "R Data Types and Data Structures",
-    "text": "R Data Types and Data Structures\nData Types and Data Structures are part of base R. They are the fundamentals — the “ABC” of how R stores and organizes data.\n\nData Type — what kind of value it is\n\nData Structure — how values are stored and organized\n\nWe look at each and at how they relate."
-  },
-  {
-    "objectID": "lectures/08-slides.html#r-data-structures-2",
-    "href": "lectures/08-slides.html#r-data-structures-2",
-    "title": "Introduction to R: Lecture 8",
-    "section": "R Data Structures",
-    "text": "R Data Structures\n\n\n\n\n\n\n\n\n\nStructure\nDimensions\nAllows Mixed Types?\nNotes\n\n\n\n\nVector\n1D\nNo\nAll elements must be the same type\n\n\nMatrix\n2D\nNo\nLike a 2D vector, same type required\n\n\nData Frame\n2D\nYes (by column)\nEach column is a vector; types can vary\n\n\nList\n1D\nYes\nCan hold different types in each element\n\n\n\nTip: Use vectors and matrices when your data is uniform.Use data frames or lists when you need to store different types."
-  },
-  {
-    "objectID": "lectures/08-slides.html#how-data-types-and-data-structures-relate-2",
-    "href": "lectures/08-slides.html#how-data-types-and-data-structures-relate-2",
-    "title": "Introduction to R: Lecture 8",
-    "section": "How Data Types and Data Structures Relate",
-    "text": "How Data Types and Data Structures Relate\nRun the code below to create different R objects. Then use class() + str() or glimpse() on each object to explore their data structure.\n# vector\nnum_v &lt;- c(1:9)\nchar_v &lt;- c(\"hello\", \"ciao\", \"hey\")\nf_v &lt;- factor(c(\"low\", \"medium\", \"high\"))\ntest &lt;- c(\"hello\", 1, 2)\n\n# matrix\nnum_m &lt;- matrix(1:15, nrow = 3, ncol = 5, byrow = TRUE)\nchar_m &lt;- matrix(c(\"a\", \"b\", \"c\", \"d\"), nrow = 2, byrow = TRUE)\n\n# dataframe or tibble\ndf &lt;- data.frame(\n  id = 1:3,\n  name = c(\"Dave\", \"Ashley\", \"Rik\"),\n  age = c(15, 17, 20)) \n\n# list\nl &lt;- list(\n  num_v = c(1:3),\n  m = matrix(1:9, nrow = 3, ncol = 3, byrow = TRUE),\n  another_num_v = c(1,2,4),\n  char_v = c(\"Sabrina\", \"Zach\"),\n  d = tibble(var_1 = c(1:4),\n              var_2 = c(2:5)))"
-  },
-  {
-    "objectID": "lectures/08-slides.html#why-should-we-care-when-to-use-each",
-    "href": "lectures/08-slides.html#why-should-we-care-when-to-use-each",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Why should we care? When to use each?",
-    "text": "Why should we care? When to use each?\nFor this course: 90% we use tibbles/data frames in the tidyverse\nBut…\nLet’s check a practical example of relevance of knowing the data types and structures when working with data we are used to…"
-  },
-  {
-    "objectID": "lectures/08-slides.html#a-closer-look-at-vectors",
-    "href": "lectures/08-slides.html#a-closer-look-at-vectors",
-    "title": "Introduction to R: Lecture 8",
-    "section": "A closer look at Vectors",
-    "text": "A closer look at Vectors\nExample of filtering rows in a dataframe using logical vectors\n# load libraries and data\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# use dplyr filter() to get penguins where body mass is greater than 4000 grams\nfiltered_penguins &lt;- penguins %&gt;% filter(body_mass_g &gt; 4000)\nhead(filtered_penguins)"
-  },
-  {
-    "objectID": "lectures/08-slides.html#why-should-we-care-when-to-use-each-data-structure",
-    "href": "lectures/08-slides.html#why-should-we-care-when-to-use-each-data-structure",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Why Should We Care? When to Use Each Data Structure",
-    "text": "Why Should We Care? When to Use Each Data Structure\nSo far, we’ve been working mostly with data frames (technically: tibbles), which are the go-to structure for real-world data. Keep using them!\nBut it’s helpful to understand the full set of R data structures, because each has its own strengths:\n\nVectors and data frames are the most commonly used structures in this course — and in most data analysis workflows.\nMatrices are ideal for numerical or algebraic operations, especially when all data are the same type.\nLists offer maximum flexibility — they’re useful when you need to store a mix of objects (e.g., models, plots, raw data) in one container."
-  },
-  {
-    "objectID": "lectures/08-slides.html#why-should-we-care-when-to-use-each-data-structure-1",
-    "href": "lectures/08-slides.html#why-should-we-care-when-to-use-each-data-structure-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Why should we care? When to use each data structure?",
-    "text": "Why should we care? When to use each data structure?\nSo far, we have been using predominantly data frames (technically tibbles!), which are very common when working with real-world data. Keep doing it!\n\nVectors and Data Frames: most commonly used data structures, both in this course and beyond.\nMatrices: Primarily used for matrix algebra operations.\nLists: Although data frames are generally preferred, lists can be useful when you need flexibility and need to store heterogeneous content.\n\nBut data frames are not the most fundamental type of object in R: (atomic) vectors are the ultimate building blocks of objects in R…\nLet’s check a practical example of relevance of knowing the data types and structures when working with data we are used to…"
-  },
-  {
-    "objectID": "lectures/08-slides.html#why-this-matters-understanding-when-to-use-each-data-structure",
-    "href": "lectures/08-slides.html#why-this-matters-understanding-when-to-use-each-data-structure",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Why This Matters: Understanding When to Use Each Data Structure",
-    "text": "Why This Matters: Understanding When to Use Each Data Structure\nData Frames first!\nSo far, we’ve been working mostly with data frames — technically with tibbles, the tidyverse version of them. Data frames are the go-to structure for working with real-world, tabular data in R. Keep using them for most data analysis tasks in this course and beyond!\nStrengths of data frames:\n\nCan store columns of different data types (e.g., character, numeric, logical)\nWork easily with dplyr, ggplot2, and other tidyverse packages\nMake your data easier to manipulate, filter, summarize, and visualize"
-  },
-  {
-    "objectID": "lectures/08-slides.html#why-this-matters-understanding-when-to-use-each-data-structure-1",
-    "href": "lectures/08-slides.html#why-this-matters-understanding-when-to-use-each-data-structure-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Why This Matters: Understanding When to Use Each Data Structure",
-    "text": "Why This Matters: Understanding When to Use Each Data Structure\nBeyond Data Frames: Know Your Tools\nBut it’s helpful to understand the full set of R data structures, because each has its own strengths:\n\nVectors: The most basic structure in R; all elements must be the same type.\nYou are analyzing survey responses and want to store all participants’ ages in a separate vector for further manipulation.\nMatrices: Two-dimensional, all elements must be the same type.\nYou have numeric data that you want to analyze using matrix algebra or linear models.\nLists: Flexible containers that can hold anything — even other lists.\nYou are analyzing data and want to save multiple outputs (model results, plot, etc.) all in the same data structure.\nData Frames: Two-dimensional, columns can have different types.\nYou are analyzing survey responses with dplyr, ggplot, or other tidyverse packages."
-  },
-  {
-    "objectID": "lectures/08-slides.html#a-closer-look-at-vectors-1",
-    "href": "lectures/08-slides.html#a-closer-look-at-vectors-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "A closer look at Vectors",
-    "text": "A closer look at Vectors\nExample of filtering rows in a dataframe using logical vectors\nLet’s break the previous code down to see what’s happening under the hood: R defines a logical vector and applies it to the penguins dataframe:\n# use base R to get the column we need: gives a logical vector\nfilter_vector &lt;- penguins$body_mass_g &gt; 4000\n\n# check its structure\nis.vector(filter_vector)\nclass(filter_vector) \n\n# use this vector to manually filter the dataframe using base R \nfiltered_p &lt;- penguins[filter_vector, ]  # df[rows, columns]: rows to keep, include all columns \nhead(filtered_p)"
-  },
-  {
-    "objectID": "lectures/08-slides.html#a-closer-look-at-vectors-2",
-    "href": "lectures/08-slides.html#a-closer-look-at-vectors-2",
-    "title": "Introduction to R: Lecture 8",
-    "section": "A closer look at Vectors",
-    "text": "A closer look at Vectors\nA particular vector: Scalar\nIn math a scalar is defined as a single real number but in R, a scalar is simply a vector of length one\n# set up a vector x of length 10\nx &lt;- sample(10)\nx\n\n# add 100 to x using the long way\nx + c(100, 100, 100, 100, 100, 100, 100, 100, 100, 100)\n\n# add 100 to x using the \"R\" way: vector recycling!\nx + 100"
-  },
-  {
-    "objectID": "lectures/08-slides.html#a-closer-look-at-vectors-3",
-    "href": "lectures/08-slides.html#a-closer-look-at-vectors-3",
-    "title": "Introduction to R: Lecture 8",
-    "section": "A closer look at Vectors",
-    "text": "A closer look at Vectors\nVector Recycling\nWhen two vectors are involved in an operation R repeats the elements of the shorter vector to match the length of the longer vector\nFor example, let’s define two numeric vectors x1 and x2:\n# x1 is sequence of numbers from 1 to 2\nx1 &lt;- seq(from = 1, to = 2)\n\n# x2 is a sequence of numbers from 1 to 10\nx2 &lt;- seq(from = 1, to = 10)\nIf we add x1 and x2, R will do it, but the result might not be what we expect:\nx1 + x2\nWhat happens? The shorter vector x1 is duplicated five times in order to match the length of the longer vector x2. The same behavior is for other operations like subtraction, multiplication, logical comparison, etc."
-  },
-  {
-    "objectID": "lectures/08-slides.html#a-closer-look-at-vectors-4",
-    "href": "lectures/08-slides.html#a-closer-look-at-vectors-4",
-    "title": "Introduction to R: Lecture 8",
-    "section": "A closer look at Vectors",
-    "text": "A closer look at Vectors\nVector Recycling\nThis behavior is called vector recycling and happens automatically in R. You need check if this is what you intended to do. If not, extend the length of the shorter vector manually first, then add them up.\nx1 &lt;- c(1, 2, rep(0, 7))\n\nx1 + x2\nNote that if the shorter vector is not a multiple of the longer one, R will print a warning message!"
-  },
-  {
-    "objectID": "lectures/08-slides.html#a-closer-look-at-vectors-5",
-    "href": "lectures/08-slides.html#a-closer-look-at-vectors-5",
-    "title": "Introduction to R: Lecture 8",
-    "section": "A closer look at Vectors",
-    "text": "A closer look at Vectors\nVector Recycling\nThis behavior is called vector recycling and happens automatically in R. You need check if this is what you intended to do. If not, extend the length of the shorter vector manually first, then add them up.\nx1 &lt;- c(1, 2, rep(0, 7))\nx1 + x2\nNote that if the shorter vector is not a multiple of the longer one, R will print a warning message!\n\nSubset Data Structures with Base R {.slide .center .middle}"
-  },
-  {
-    "objectID": "lectures/08-slides.html#subsetting-data-structures-in-r",
-    "href": "lectures/08-slides.html#subsetting-data-structures-in-r",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Subsetting Data Structures in R",
-    "text": "Subsetting Data Structures in R\nThere are different ways to access parts of data structures in R.\nWe’ll cover:\n\nVectors\nMatrices\nData Frames\nLists\n\nEach structure uses square brackets [ ], but how you use them depends on the structure."
-  },
-  {
-    "objectID": "lectures/08-slides.html#subsetting-vectors",
-    "href": "lectures/08-slides.html#subsetting-vectors",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Subsetting Vectors",
-    "text": "Subsetting Vectors\nv &lt;- c(10, 20, 30, 40)\n\nv[2]         # 20 (2nd element)\nv[c(1, 3)]   # 10 and 30\nv[-1]        # all but the first\nv[v &gt; 25]    # elements greater than 25\nVectors are 1D — you just specify positions or logical tests in [ ]"
-  },
-  {
-    "objectID": "lectures/08-slides.html#subsetting-matrices",
-    "href": "lectures/08-slides.html#subsetting-matrices",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Subsetting Matrices",
-    "text": "Subsetting Matrices\nm &lt;- matrix(1:9, nrow = 3, byrow = TRUE)\n\nm[1, 2]           # value at row 1, column 2\nm[ , 3]           # entire 3rd column\nm[2,  ]           # entire 2nd row\nm[1:2, 2:3]       # top-right submatrix (rows 1–2, cols 2–3)\nm[ , c(1, 3)]     # columns 1 and 3\nMatrices are 2D: use [row, column]"
-  },
-  {
-    "objectID": "lectures/08-slides.html#subsetting-data-frames",
-    "href": "lectures/08-slides.html#subsetting-data-frames",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Subsetting Data Frames",
-    "text": "Subsetting Data Frames\ndf &lt;- data.frame(\n  name = c(\"Alex\", \"Betty\", \"Chad\", \"J\"),\n  age = c(20, 21, 22, 23))\n\ndf[1, ]            # first row (all columns)\ndf[ , 1]           # first column by index\ndf[ , \"name\"]      # first column by label\ndf$name            # same as above\ndf[[\"name\"]]       # same as above\n\ndf[1, 2]           # single value at row 1, column 2\ndf[2:3, \"name\"]    # values in rows 2 and 3 of column name\n\ndf[df$age &gt; 20, ]            # filter rows where age &gt; 20\ndf[df$name == \"J\", ]         # filter rows where name is \"J\"\ndf[df$age == max(df$age), ]  # filter rows with highest age\nData frames combine list and matrix behavior."
-  },
-  {
-    "objectID": "lectures/08-slides.html#subsetting-lists",
-    "href": "lectures/08-slides.html#subsetting-lists",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Subsetting Lists",
-    "text": "Subsetting Lists\nmy_list &lt;- list(\n  a = c(1, 2, 3),\n  b = c(\"hello\", \"ciao\"),\n  c = TRUE\n)\n\nmy_list[1]         # list with one element\nmy_list[[1]]       # contents of first element: 1 2 3\nmy_list[[1]][1]    # first value of that vector: 1\nmy_list[\"b\"]       # list with one element named \"b\"\nmy_list$b          # same as my_list[[\"b\"]], only works with names\nmy_list[[\"c\"]]     # returns TRUE\n\nUse [ ] to extract a sublist\n\nUse [[ ]] or $ to extract actual elements"
-  },
-  {
-    "objectID": "lectures/08-slides.html#summary",
-    "href": "lectures/08-slides.html#summary",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Summary",
-    "text": "Summary\n\n\n\nStructure\nSubsetting Syntax Examples\n\n\n\n\nVector\nv[1], v[v &gt; 5]\n\n\nMatrix\nm[2, 3], m[,1]\n\n\nData Frame\ndf[ , \"age\"], df$age, df[1, ]\n\n\nList\nl[1], l[[1]], l$name\n\n\n\nUse subsetting to access, filter, and manipulate data flexibly in R."
-  },
-  {
-    "objectID": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors",
-    "href": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Example of filtering rows in a dataframe using logical vectors",
-    "text": "Example of filtering rows in a dataframe using logical vectors\n# load libraries and data\nlibrary(tidyverse)\nlibrary(palmerpenguins)\ndata(penguins)\n\n# use dplyr filter() to get penguins where body mass is greater than 4000 grams\nfiltered_penguins &lt;- penguins %&gt;% filter(body_mass_g &gt; 4000)\nhead(filtered_penguins)"
-  },
-  {
-    "objectID": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors-1",
-    "href": "lectures/08-slides.html#example-of-filtering-rows-in-a-dataframe-using-logical-vectors-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Example of filtering rows in a dataframe using logical vectors",
-    "text": "Example of filtering rows in a dataframe using logical vectors\nLet’s analyze the previous code to see what’s happening under the hood: R defines a logical vector and applies it to the penguins dataframe:\n# use base R to get the column we need: gives a logical vector\nfilter_vector &lt;- penguins$body_mass_g &gt; 4000\n\n# check its structure\nis.vector(filter_vector)\nclass(filter_vector) \n\n# use this vector to manually filter the dataframe using base R \n# df[rows, columns]: rows to keep, all columns\nfiltered_p &lt;- penguins[filter_vector, ]"
-  },
-  {
-    "objectID": "lectures/08-slides.html#a-particular-vector-scalar",
-    "href": "lectures/08-slides.html#a-particular-vector-scalar",
-    "title": "Introduction to R: Lecture 8",
-    "section": "A particular vector: Scalar",
-    "text": "A particular vector: Scalar\nIn math a scalar is defined as a single real number but in R, a scalar is simply a vector of length one\nLet’s try this code:\n# set up a vector x of length 10\nx &lt;- sample(10)\nx\n\n# add 100 to x using the long way\nx + c(100, 100, 100, 100, 100, 100, 100, 100, 100, 100)\n\n# add 100 to x using the \"R\" way: vector recycling!\nx + 100"
-  },
-  {
-    "objectID": "lectures/08-slides.html#vector-recycling-in-r",
-    "href": "lectures/08-slides.html#vector-recycling-in-r",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Vector Recycling in R",
-    "text": "Vector Recycling in R\nLet’s see another example. We define two numeric vectors x1 and x2:\n# x1 is sequence of numbers from 1 to 2\nx1 &lt;- seq(from = 1, to = 2)\n\n# x2 is a sequence of numbers from 1 to 10\nx2 &lt;- seq(from = 1, to = 10)\n\n# what happens if we add them?\nx1 + x2\nWhat happens? The shorter vector x1 is duplicated five times in order to match the length of the longer vector x2. The same behavior happens for other operations like subtraction, multiplication, logical comparison, etc.\n\n\n\n\n\n\nWarning\n\n\nIf the shorter vector is not a multiple of the longer one, R will print a warning message!"
-  },
-  {
-    "objectID": "lectures/08-slides.html#vector-recycling-in-r-1",
-    "href": "lectures/08-slides.html#vector-recycling-in-r-1",
-    "title": "Introduction to R: Lecture 8",
-    "section": "Vector Recycling in R",
-    "text": "Vector Recycling in R\n\n\n\n\n\n\nNote\n\n\nThis behavior is called Vector Recycling and happens automatically in R: When two vectors of different lengths are used in an operation, R repeats (recycles) the elements of the shorter vector to match the longer vector!\n\n\n\nWhy It Matters: Vector recycling can cause unexpected results. Check if recycling is what you want R to do — if not, adjust the vector lengths manually, like this:\nx1 &lt;- c(1, 2, rep(0, 7))\n\nx1 + x2"
-  },
-  {
-    "objectID": "lectures/09-slides.html#control-structures-whats-the-idea",
-    "href": "lectures/09-slides.html#control-structures-whats-the-idea",
-    "title": "Introduction to R: Lecture 9",
-    "section": "Control Structures: What’s the Idea?",
-    "text": "Control Structures: What’s the Idea?\nUp to this point, our R code has been running line by line following in a fixed sequence.\n\n\n\n\n\n\n\n\nNow we ask: Can our code be dynamic vs fixed?\n\n\nFor Example: Can it skip some lines and run others depending on a condition? Or can it repeat itself when needed?\nYes, with control structures!"
-  },
-  {
-    "objectID": "lectures/09-slides.html#what-are-control-structures",
-    "href": "lectures/09-slides.html#what-are-control-structures",
-    "title": "Introduction to R: Lecture 9",
-    "section": "What Are Control Structures?",
-    "text": "What Are Control Structures?\nControl structures let us write code that can:\n\nMake decisions\n→ with conditional statements (if, if...else, etc.)\nRepeat actions\n→ with loops (for, while)\n\nConditional statements and loops — that is, control structures — let us control the flow of execution. They allow our code to respond dynamically to different situations, rather than always running in the same fixed order like we’ve done so far."
-  },
-  {
-    "objectID": "lectures/09-slides.html#what-are-control-structures-1",
-    "href": "lectures/09-slides.html#what-are-control-structures-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "What Are Control Structures?",
-    "text": "What Are Control Structures?\nControl structures let us control the flow of execution by writing code that can:\n\nMake decisions — the code uses conditions, evaluates them, and chooses what to do\n➝ This is done with conditional statements (if, if...else, etc.)\nRepeat actions — the code runs certain lines multiple times when needed\n➝ This is done with loops (for and while loops)\n\nWith control structures, our code can respond dynamically to different situations, instead of always following a fixed line-by-line path like we’ve done so far."
-  },
-  {
-    "objectID": "lectures/09-slides.html#conditional-statements-1",
-    "href": "lectures/09-slides.html#conditional-statements-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "Conditional Statements",
-    "text": "Conditional Statements\nConditional Statements use logical tests to decide what code to run.\n\nSingle test with if... else\nMultiple tests with if... else if... else\nNested tests by placing one if inside another\nVectorized tests with ifelse() (or if_else() in tidyverse) to apply a condition to each element of a vector"
-  },
-  {
-    "objectID": "lectures/09-slides.html#single-test-with-if...-else",
-    "href": "lectures/09-slides.html#single-test-with-if...-else",
-    "title": "Introduction to R: Lecture 9",
-    "section": "1. Single test with if... else",
-    "text": "1. Single test with if... else\nThe code tests one condition and acts on it depending on whether the condition is evaluated as TRUE or FALSE.\nSyntax:\nif (condition to be evaluated) {\n    action performed when condition is TRUE\n} else {\n    action performed when condition is FALSE\n}\n–\nExample:\n\nage &lt;- 14\nif (age &gt; 16) {\n  print(\"You can get a driving license\")\n} else {\n  print(\"You cannot drive\")\n}"
-  },
-  {
-    "objectID": "lectures/09-slides.html#single-test-with-if...-else-1",
-    "href": "lectures/09-slides.html#single-test-with-if...-else-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "1. Single test with if... else",
-    "text": "1. Single test with if... else\nExample: What is the output of this code?\n\nmy_numbers &lt;- c(3,4,5,\"6\",7)\n\nif (!is.numeric(my_numbers)) {\n  print(\"At least one element is not numeric. Only provide numbers.\")\n} else {\n  print(\"All numeric elements\")\n}"
-  },
-  {
-    "objectID": "lectures/09-slides.html#multiple-tests-with-if...-else-if...-else",
-    "href": "lectures/09-slides.html#multiple-tests-with-if...-else-if...-else",
-    "title": "Introduction to R: Lecture 9",
-    "section": "2. Multiple tests with if... else if... else",
-    "text": "2. Multiple tests with if... else if... else\nWe can extend the basic if... else structure to test multiple conditions!\nBy adding one or more else if statement(s) between the initial if and the final else\nSyntax:\nif (condition1) {\n    # action performed when condition 1 is TRUE\n    action1\n} else if (condition2) {\n    # action performed when condition 2 is TRUE\n    action2\n} else {\n    # action performed when conditions 1 and 2 are FALSE\n    action3\n}\nConditional statements are evaluated sequentially (the order of your code matters!):\n\nconditions are checked one-by-one in the order they are written\nonce R finds a TRUE condition, it stops, and the remaining conditions are not evaluated"
-  },
-  {
-    "objectID": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another",
-    "href": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another",
-    "title": "Introduction to R: Lecture 9",
-    "section": "3. Nested tests by placing one if inside another",
-    "text": "3. Nested tests by placing one if inside another\n\nUse nested if...else statements when your code needs to check conditions within conditions. This allows you to make a second decision only after a first condition is met.\nExample (note the %% returns the remainder after division):\n\nx &lt;- 15\n\nif (x &gt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a positive even number\")\n  } else {\n    print(\"x is a positive odd number\")\n  }\n} else {\n  if (x %% 2 == 0) {\n    print(\"x is a negative even number\")\n  } else {\n    print(\"x is a negative odd number\")\n  }\n}"
-  },
-  {
-    "objectID": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another-1",
-    "href": "lectures/09-slides.html#nested-tests-by-placing-one-if-inside-another-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "3. Nested tests by placing one if inside another",
-    "text": "3. Nested tests by placing one if inside another\nSame example, but this checks also the condition x &lt;- 0:\n\nx &lt;- 0\n\nif (x &gt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a positive even number\")\n  } else {\n    print(\"x is a positive odd number\")\n  }\n} else if (x &lt; 0) {\n  if (x %% 2 == 0) {\n    print(\"x is a negative even number\")\n  } else {\n    print(\"x is a negative odd number\")\n  }\n} else {\n  print(\"x is zero\")\n}"
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
-    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nUse ifelse() to apply a condition to each element of a vector thus we call this (a “vectorized” test).\nSyntax:\nifelse (condition to be evaluated,\n    action performed when condition is TRUE,\n    action performed when condition is FALSE)\nExample:\n\n\n[1] 4"
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-1",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
-    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nExample: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n–\n\n\n[1] \"even\" \"even\" \"odd\" \n\n\nNote the input here is a vector, not a single number, thus the output is also a vector: the code will evaluate each element of the vector.\nThis is because ifelse() supports vectorized operations: operations directly applied on entire vectors of data, rather than looping through individual elements one-by-one."
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-2",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-2",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
-    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nExample: What is the output of this code?\n\nlibrary(tidyverse)\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                      \"Scores\" = c(32, 37, 28, 30))\n\nifelse(qualify$\"Scores\" &gt; 30, \"Admitted\", \"Rejected\")\n\n\nExample: What is the output of this code?\n\n\n[1] \"Admitted\" \"Admitted\" \"Rejected\" \"Rejected\""
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-3",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-3",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
-    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nExample: use ifelse() to recode variables in a dataframe…\nThe variable decisionDirection takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)"
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-4",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-or-if_else-in-tidyverse-4",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)",
-    "text": "4. Vectorized tests with ifelse() (or if_else() in tidyverse)\nSimilarly to other functions we have seen, there is also a dplyr version of the base R ifelse() function and it is called if_else(). They follow the same logic, but the latter is better to use with the tidyverse\nDocumentation here:https://dplyr.tidyverse.org/reference/if_else.html\nCompare the two!"
-  },
-  {
-    "objectID": "lectures/09-slides.html#practice-1",
-    "href": "lectures/09-slides.html#practice-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "💻 Practice",
-    "text": "💻 Practice\n\nWhat happens if the conditions are out of order? Move temperature &gt;= 10 before temperature &gt;= 20 in the code and run it with temperature 25\n\n\n\nAdd another else if statement to further refine the code: If the temperature is between 0 and 10 (inclusive of 0, exclusive of 10), set the weather to “Cold”. Hint: use the & operator to combine two conditions.\n\n\nOnce done, share your code here."
-  },
-  {
-    "objectID": "lectures/09-slides.html#single-test-with-if-else",
-    "href": "lectures/09-slides.html#single-test-with-if-else",
-    "title": "Introduction to R: Lecture 9",
-    "section": "1. Single test with if… else",
-    "text": "1. Single test with if… else\nUse if...else when your code needs to test one condition and take one of two possible actions, depending on whether the condition is TRUE or FALSE.\nSyntax:\nif (condition) {\n    # action performed when condition is TRUE\n    action1\n} else {\n    # action performed when condition is FALSE\n    action2\n}\nExample:\n\nage &lt;- 14\n\nif (age &gt; 16) {\n  print(\"You can get a driving license\")\n} else {\n  print(\"You cannot drive\")\n}"
-  },
-  {
-    "objectID": "lectures/09-slides.html#single-test-with-if-else-1",
-    "href": "lectures/09-slides.html#single-test-with-if-else-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "1. Single test with if… else",
-    "text": "1. Single test with if… else\nAnother Example: What’s the output of this code?\n\nmovie_rating &lt;- c(4.5, 4.2, 5.0, 3.8, 2.9, 1.7)\nmovie_avg_rating &lt;- mean(movie_rating)\n\nif (movie_avg_rating &gt;= 4) {\n  print(\"This movie is great!\")\n} else {\n  print(\"Not a favorite.\")\n}"
-  },
-  {
-    "objectID": "lectures/09-slides.html#multiple-tests-with-if-else-if-else",
-    "href": "lectures/09-slides.html#multiple-tests-with-if-else-if-else",
-    "title": "Introduction to R: Lecture 9",
-    "section": "2. Multiple tests with if… else if… else",
-    "text": "2. Multiple tests with if… else if… else\nUse if...else if...else when your code needs to test multiple conditions and take different actions depending on which condition is TRUE.\nSyntax:\nif (condition1) {\n    # action performed when condition 1 is TRUE\n    action1\n} else if (condition2) {\n    # action performed when condition 2 is TRUE\n    action2\n} else {\n    # action performed when conditions 1 and 2 are FALSE\n    action3\n}\n\nExample:\n\nx &lt;- 0\n\nif (x &gt; 0) {\n  print(\"x is positive\")\n} else if (x &lt; 0) {\n  print(\"x is negative\")\n} else {\n  print(\"x is zero\")\n}"
-  },
-  {
-    "objectID": "lectures/09-slides.html#section",
-    "href": "lectures/09-slides.html#section",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4.",
-    "text": "4.\nExample: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n–\n\n\n[1] \"even\" \"even\" \"odd\" \n\n\nNote the input here is a vector, not a single number, thus the output is also a vector: the code will evaluate each element of the vector.\nThis is because ifelse() supports vectorized operations: operations directly applied on entire vectors of data, rather than looping through individual elements one-by-one."
-  },
-  {
-    "objectID": "lectures/09-slides.html#section-1",
-    "href": "lectures/09-slides.html#section-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4.",
-    "text": "4.\nExample: What is the output of this code?\n\nlibrary(tidyverse)\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                      \"Scores\" = c(32, 37, 28, 30))\n\nifelse(qualify$\"Scores\" &gt; 30, \"Admitted\", \"Rejected\")\n\n\nExample: What is the output of this code?\n\n\n[1] \"Admitted\" \"Admitted\" \"Rejected\" \"Rejected\""
-  },
-  {
-    "objectID": "lectures/09-slides.html#section-2",
-    "href": "lectures/09-slides.html#section-2",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4.",
-    "text": "4.\nExample: use ifelse() to recode variables in a dataframe…\nThe variable decisionDirection takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)"
-  },
-  {
-    "objectID": "lectures/09-slides.html#section-3",
-    "href": "lectures/09-slides.html#section-3",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4.",
-    "text": "4.\nSimilarly to other functions we have seen, there is also a dplyr version of the base R ifelse() function and it is called if_else(). They follow the same logic, but the latter is better to use with the tidyverse\nDocumentation here:https://dplyr.tidyverse.org/reference/if_else.html\nCompare the two!"
-  },
-  {
-    "objectID": "lectures/09-slides.html#conditional-statements",
-    "href": "lectures/09-slides.html#conditional-statements",
-    "title": "Introduction to R: Lecture 9",
-    "section": "Conditional Statements",
-    "text": "Conditional Statements\nConditional statements let our code make decisions: the code checks conditions, evaluates them, and chooses what to do.\nSaid more formally, we use logical tests to determine which code should run:\n\nSingle test with if... else\nMultiple tests with if... else if... else\nNested tests by placing one if inside another\nVectorized tests with ifelse() (or if_else() in tidyverse) to apply a condition to each element of a vector"
-  },
-  {
-    "objectID": "lectures/09-slides.html#what-are-control-structures-2",
-    "href": "lectures/09-slides.html#what-are-control-structures-2",
-    "title": "Introduction to R: Lecture 9",
-    "section": "What Are Control Structures?",
-    "text": "What Are Control Structures?\nControl Structures let us control the flow of execution by writing code that can:\n\nMake decisions — the code uses conditions, evaluates them, and then chooses what to do = Conditional Statements\nRepeat actions — the code runs certain lines multiple times when needed = Loops\n\nNow our code can respond dynamically to different situations and not just follow a fixed line-by-line path like we have done so far."
-  },
-  {
-    "objectID": "lectures/09-slides.html#conditional-statements-decisions",
-    "href": "lectures/09-slides.html#conditional-statements-decisions",
-    "title": "Introduction to R: Lecture 9",
-    "section": "Conditional Statements = Decisions",
-    "text": "Conditional Statements = Decisions\nConditional statements let our code make decisions: the code checks conditions, evaluates them, and chooses what to do.\nFormally, we use logical tests to determine which code should run:\n\nSingle test with if... else\nMultiple tests with if... else if... else\nNested tests by placing one if inside another\nVectorized tests with ifelse() (or if_else() in tidyverse) to apply a condition to each element of a vector"
-  },
-  {
-    "objectID": "lectures/09-slides.html#note-with-conditional-statements-sequence-matters",
-    "href": "lectures/09-slides.html#note-with-conditional-statements-sequence-matters",
-    "title": "Introduction to R: Lecture 9",
-    "section": "Note: with conditional statements sequence matters!",
-    "text": "Note: with conditional statements sequence matters!\nConditional statements are evaluated in order so the sequence of your code matters:\n\nR checks each condition one by one, from top to bottom\n\nAs soon as it finds a condition that is TRUE, it runs that block and skips the rest"
-  },
-  {
-    "objectID": "lectures/09-slides.html#multiple-tests-with-if-else-if-else-1",
-    "href": "lectures/09-slides.html#multiple-tests-with-if-else-if-else-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "2. Multiple tests with if… else if… else",
-    "text": "2. Multiple tests with if… else if… else\nAnother Example with multiple else if statements:\n# Take user input\ntemperature &lt;- as.integer(readline(prompt = \"Enter today's temperature in Celsius: \"))\n\n# Determine weather based on temperature\nif (temperature &gt;= 30) {\n  weather &lt;- \"Hot\"\n} else if (temperature &gt;= 20) {\n  weather &lt;- \"Cool\"\n} else if (temperature &gt;= 10) {\n  weather &lt;- \"Breezy\"\n} else {\n  weather &lt;- \"Freezing\"\n}\nprint(weather)"
-  },
-  {
-    "objectID": "lectures/09-slides.html#practice-2",
-    "href": "lectures/09-slides.html#practice-2",
-    "title": "Introduction to R: Lecture 9",
-    "section": "💻 Practice",
-    "text": "💻 Practice\nYou can fine more practice exercises in today’s class materials (downloaded from the website)"
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nUse ifelse() to apply a condition to each element of a vector. This is called a “vectorized test”, and fits well R’s vector-based design.\nSyntax:\nifelse (condition to be evaluated,\n    action performed when condition is TRUE,\n    action performed when condition is FALSE)\nExample:\n\ny &lt;- 3\n\nifelse(sqrt(16) &gt; y, \n       sqrt(16),\n       0)"
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-1",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-1",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nAnother example: What is the output of this code?\n\nnumbers &lt;- c(10, 6, 7)\nifelse(numbers %% 2 == 1, \n       \"odd\",\n       \"even\")\n\n\n\n\n\n\n\n\n\nHow ifelse() works:\n\n\n\nThe input to ifelse() is often a vector, not just a single value, so the output is also a vector. The code evaluates each element of the vector, applying the specified action for each case.\nThis works because ifelse() supports vectorized operations: operations directly applied on entire vectors, rather than looping through individual elements one-by-one."
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-2",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-2",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nExample: What is the output of this code?\n\nlibrary(tidyverse)\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\nifelse(qualify$\"Scores\" &gt; 30, \n       \"Admitted\", \n       \"Rejected\")"
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-3",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-3",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nPeople often use ifelse() also to recode variables in a dataframe.\nExample: the variable decisionDirection takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)\ndata %&gt;%\n  mutate(decisionDirection = ifelse(\n    decisionDirection == 3, # condition to be evaluated\n    NA,                     # if true, do NA\n    decisionDirection - 1   # if false, subtract one to value\n    ))"
-  },
-  {
-    "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-4",
-    "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-4",
-    "title": "Introduction to R: Lecture 9",
-    "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nNote there is also a tidyverse version of the base R ifelse() function!\nThe tidyverse version is called if_else() https://dplyr.tidyverse.org/reference/if_else.html\nThe two are similar, hence I introduced only on here, pick the one you prefer."
-  },
-  {
-    "objectID": "hw/hw03.html",
-    "href": "hw/hw03.html",
-    "title": "HW03: Wrangling Data",
-    "section": "",
-    "text": "Overview\nDue: Thursday, July 31st by 11:59 PM (Chicago Time)\nIn the first assignment you have demonstrated knowledge of your software setup, Git/GitHub via RStudio, and R Markdown. In the second assignment you practiced transforming and exploring data with dplyr and ggplot2.\nThe goal of this final assignment is to reinforce and deepen your understanding of all these tools, with a focus on data wrangling tasks.\n\n\nAccessing and Cloning Your hw03 Repository\n\n\n\n\n\n\nImportant\n\n\n\nThis will work only if you have submitted your GitHub username (see Lecture 1) and accepted the email invitation to join our GitHub organization (check the email linked to your GitHub account). Make sure you’ve completed the setup under Software Setup and confirmed everything is working properly.\n\n\nAccessing the repo:\n\nGo at this link to accept the invitation and create your private hw03 repository on GitHub. Your repository will be named hw03-&lt;USERNAME&gt; and will be ready within a few seconds. If this does not work, see the note in red above.\nOnce the repository has been created, click the link provided to access it.\n\nCloning the repo into your Workbench:\n\nLog into Workbench and start a new project:\nFile &gt; New Project &gt; Version Control &gt; Git\nIn the Repository URL field:\n\nPaste the URL of your GitHub repository. To find the URL, go to your hw03 repo on GitHub, click the green Code button, and copy the SSH or HTTPS link (use the method you configured during setup: Workbench users must select SSH).\nThe project name should auto-fill. If not, type hw03-&lt;USERNAME&gt; manually.\n\nChoose where to save the project directory locally.\nTip: Use a dedicated folder such as homeworks to keep things organized and avoid moving folders after cloning them\nCheck the box “Open in new session” (optional but recommended for keeping projects separate and organized)\nClick Create Project. This will:\n\nCreate a new folder on your machine\n\nInitialize a Git repository linked to GitHub\n\nOpen an RStudio Project in a new session\n\n\n\n\nGeneral Homework Workflow\nSee Homework 1 for details. The workflow is the same for all assignments (e.g., accept the repo, edit the files, save, then Pull – Stage – Commit – Push).\n\n\nAssignment Description\nFor this assignment you will work with data from the U.S. Supreme Court. Your repository includes specific and open-ended questions. Answer all of them.\n\n\n\n\n\n\nNote\n\n\n\n\nThe questions—especially the open-ended ones—are designed to help you think like a university student and future researcher. They won’t walk you through every step but encourage you to apply what you’ve learned and work independently.\nPlan to complete this over multiple sessions. Start early, and remember to save, commit, and push your work regularly.\nDo not use AI tools to generate R code from scratch. You may use it to debug (after trying on your own) or to look up how functions work (check course materials first). Only submit code you fully understand.\n\n\n\n\n\nSubmit the Assignment\nTo submit your assignment on Canvas, follow these steps:\n\nBefore the deadline, push the final version of your work to your GitHub repository. Tip: don’t wait until the end to make your first commit—commit, stage, and push your work regularly as you go.\nYour GitHub repository should include (make sure to stage-commit-push all these files):\n\ncourt.Rmd: main file you will work on\ncourt.md: you will generate this file from the .Rmd by simply knitting it, like you did for HW01 (do not modify the output format)\nthe folder that contains all the graphs that you generated in your .Rmd (we need this file to be able to see your graphs and grade your homework)\n\nWhen you’re ready to submit:\n\nCopy the URL of your GitHub repository. It will look something like: https://github.com/csp-summer25/hw03-yourusername\nSubmit that URL on Canvas under HW03. Do not upload any files to Canvas. We only need the repository link.\n\n\n\n\nAssessment\nAll homework assignments are evaluated using a rubric (for more details, see the Assessment section of the Syllabus). Below are further guidelines for this specific homework to help you assess your work before submitting it.\nIn the past, “Excellent” or “Very Good” work included submissions that:\n\nCompleted all parts of the assignment correctly and accurately.\nIncluded code that:\n\nRan without errors\nFollowed good style (clean, readable, well-organized)\nWas well-documented but not over-commented\nUsed appropriate complexity and matched the prompt and course content\nDemonstrated understanding of key concepts and functions\n\nIncluded graphs and tables that were:\n\nWell-chosen for the variable types\nClearly labeled, visually polished, and customized beyond defaults\nInterpreted in a clear and concise analysis\n\nShowed strong use of:\n\nRequired packages, showing curiosity to use them beyond the basics\nR Markdown syntax (e.g., no rendering errors, appropriate use of syntax, etc.)\n\nFollowed good GitHub practices:\n\nMultiple informative commits showing progress over time\nAll required files present and displaying correctly, including rendered graphs"
   }
 ]

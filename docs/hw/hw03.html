@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HW03 – csp-website</title>
+<title>HW03: Wrangling Data – csp-website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta name="quarto:status" content="draft">
 
 
 <link rel="stylesheet" href="../style/styles.css">
@@ -76,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -121,15 +120,26 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#accessing-and-cloning-your-hw03-repository" id="toc-accessing-and-cloning-your-hw03-repository" class="nav-link" data-scroll-target="#accessing-and-cloning-your-hw03-repository">Accessing and Cloning Your <code>hw03</code> Repository</a></li>
+  <li><a href="#general-homework-workflow" id="toc-general-homework-workflow" class="nav-link" data-scroll-target="#general-homework-workflow">General Homework Workflow</a></li>
+  <li><a href="#assignment-description" id="toc-assignment-description" class="nav-link" data-scroll-target="#assignment-description">Assignment Description</a></li>
+  <li><a href="#submit-the-assignment" id="toc-submit-the-assignment" class="nav-link" data-scroll-target="#submit-the-assignment">Submit the Assignment</a></li>
+  <li><a href="#assessment" id="toc-assessment" class="nav-link" data-scroll-target="#assessment">Assessment</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW03</h1>
+<h1 class="title">HW03: Wrangling Data</h1>
 </div>
 
 
@@ -146,8 +156,131 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p><strong>Due: Thursday, July 31st by 11:59 PM (Chicago Time)</strong></p>
+<p>In the first assignment you have demonstrated knowledge of your software setup, Git/GitHub via RStudio, and R Markdown. In the second assignment you practiced transforming and exploring data with <code>dplyr</code> and <code>ggplot2</code>.</p>
+<p>The goal of this final assignment is to reinforce and deepen your understanding of all these tools, with a focus on data wrangling tasks.</p>
+</section>
+<section id="accessing-and-cloning-your-hw03-repository" class="level1">
+<h1>Accessing and Cloning Your <code>hw03</code> Repository</h1>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This will work only if you have submitted your GitHub username (see Lecture 1) and accepted the email invitation to join our GitHub organization (check the email linked to your GitHub account). Make sure you’ve completed the setup under <a href="../setup/index.html">Software Setup</a> and confirmed everything is working properly.</p>
+</div>
+</div>
+<p><strong>Accessing the repo:</strong></p>
+<ol type="1">
+<li><p>Go at <a href="https://classroom.github.com/a/MZni9eSL">this link</a> to accept the invitation and create your private <code>hw03</code> repository on GitHub. Your repository will be named <code>hw03-&lt;USERNAME&gt;</code> and will be ready within a few seconds. If this does not work, see the note in red above.</p></li>
+<li><p>Once the repository has been created, click the link provided to access it.</p></li>
+</ol>
+<p><strong>Cloning the repo into your Workbench:</strong></p>
+<ol type="1">
+<li><p>Log into <em>Workbench</em> and start a new project:<br>
+<em>File &gt; New Project &gt; Version Control &gt; Git</em></p></li>
+<li><p>In the <em>Repository URL</em> field:</p>
+<ul>
+<li>Paste the URL of your GitHub repository. To find the URL, go to your <code>hw03</code> repo on GitHub, click the green Code button, and copy the SSH or HTTPS link (use the method you configured during setup: Workbench users must select SSH).</li>
+<li>The project name should auto-fill. If not, type <code>hw03-&lt;USERNAME&gt;</code> manually.</li>
+</ul></li>
+<li><p>Choose where to save the project directory locally.<br>
+<em>Tip:</em> Use a dedicated folder such as <code>homeworks</code> to keep things organized and avoid moving folders after cloning them</p></li>
+<li><p>Check the box <em>“Open in new session”</em> (optional but recommended for keeping projects separate and organized)</p></li>
+<li><p>Click <em>Create Project</em>. This will:</p>
+<ul>
+<li>Create a new folder on your machine<br>
+</li>
+<li>Initialize a Git repository linked to GitHub<br>
+</li>
+<li>Open an RStudio Project in a new session</li>
+</ul></li>
+</ol>
+</section>
+<section id="general-homework-workflow" class="level1">
+<h1>General Homework Workflow</h1>
+<p>See <a href="../hw/hw01.html">Homework 1</a> for details. The workflow is the same for all assignments (e.g., accept the repo, edit the files, save, then Pull – Stage – Commit – Push).</p>
+</section>
+<section id="assignment-description" class="level1">
+<h1>Assignment Description</h1>
+<p>For this assignment you will work with data from the U.S. Supreme Court. Your repository includes specific and open-ended questions. Answer all of them.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>The questions—especially the open-ended ones—are designed to help you think like a university student and future researcher. They won’t walk you through every step but encourage you to apply what you’ve learned and work independently.</p></li>
+<li><p>Plan to complete this over multiple sessions. Start early, and remember to save, commit, and push your work regularly.</p></li>
+<li><p>Do not use AI tools to generate R code from scratch. You may use it to debug (after trying on your own) or to look up how functions work (check course materials first). Only submit code you fully understand.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="submit-the-assignment" class="level1">
+<h1>Submit the Assignment</h1>
+<p>To submit your assignment on Canvas, follow these steps:</p>
+<ol type="1">
+<li><p>Before the deadline, push the final version of your work to your GitHub repository. <em>Tip:</em> don’t wait until the end to make your first commit—commit, stage, and push your work regularly as you go.</p>
+<p>Your GitHub repository should include (make sure to stage-commit-push all these files):</p>
+<ul>
+<li><code>court.Rmd</code>: main file you will work on</li>
+<li><code>court.md</code>: you will generate this file from the <code>.Rmd</code> by simply knitting it, like you did for HW01 (do not modify the output format)</li>
+<li>the folder that contains all the graphs that you generated in your <code>.Rmd</code> (we need this file to be able to see your graphs and grade your homework)</li>
+</ul></li>
+<li><p>When you’re ready to submit:</p>
+<ul>
+<li>Copy the URL of your GitHub repository. It will look something like: <code>https://github.com/csp-summer25/hw03-yourusername</code></li>
+<li>Submit that URL on Canvas under HW03. Do not upload any files to Canvas. We only need the repository link.</li>
+</ul></li>
+</ol>
+</section>
+<section id="assessment" class="level1">
+<h1>Assessment</h1>
+<p>All homework assignments are evaluated using a rubric (for more details, see the <em>Assessment</em> section of the Syllabus). Below are further guidelines for this specific homework to help you assess your work before submitting it.</p>
+<p>In the past, <strong>“Excellent”</strong> or <strong>“Very Good”</strong> work included submissions that:</p>
+<ul>
+<li>Completed all parts of the assignment correctly and accurately.</li>
+<li>Included code that:
+<ul>
+<li>Ran without errors</li>
+<li>Followed good style (clean, readable, well-organized)</li>
+<li>Was well-documented but not over-commented</li>
+<li>Used appropriate complexity and matched the prompt and course content</li>
+<li>Demonstrated understanding of key concepts and functions</li>
+</ul></li>
+<li>Included graphs and tables that were:
+<ul>
+<li>Well-chosen for the variable types</li>
+<li>Clearly labeled, visually polished, and customized beyond defaults</li>
+<li>Interpreted in a clear and concise analysis</li>
+</ul></li>
+<li>Showed strong use of:
+<ul>
+<li>Required packages, showing curiosity to use them beyond the basics</li>
+<li>R Markdown syntax (e.g., no rendering errors, appropriate use of syntax, etc.)</li>
+</ul></li>
+<li>Followed good GitHub practices:
+<ul>
+<li>Multiple informative commits showing progress over time</li>
+<li>All required files present and displaying correctly, including rendered graphs</li>
+</ul></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

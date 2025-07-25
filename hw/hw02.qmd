@@ -83,7 +83,7 @@ Your repository includes specific and open-ended questions. Answer all of them.
 
 - Plan to complete this over multiple sessions. Start early, and remember to save, commit, and push your work regularly.
 
-- Do not use AI tools to generate R code from scratch. You may use it to debug (after trying on your own ) or look up how functions work (check course materials first). Only submit code you fully understand.
+- Do not use AI tools to generate R code from scratch. You may use it to debug (after trying on your own) or look up how functions work (check course materials first). Only submit code you fully understand.
 :::
 
 
@@ -135,7 +135,7 @@ To submit your assignment on Canvas, follow these steps:
 
 1. Before the deadline, push the final version of your work to your GitHub repository. *Tip:* don’t wait until the end to make your first commit—commit, stage, and push your work regularly as you go.
 
-   Your GitHub repository should include (ake sure to stage-commit-push all these files):
+   Your GitHub repository should include (make sure to stage-commit-push all these files):
    - `mass-shootings.Rmd`: main file you will work on
    - `mass-shootings.md`: you will generate this file from the `.Rmd` by simply knitting it, like you did for HW01 (do not modify the output format)
    - `mass-shootings_files/`: this folder contains all the graphs that you generated in your `.Rmd`

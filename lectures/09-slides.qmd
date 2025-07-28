@@ -444,16 +444,137 @@ library(tidyverse)
 qualify <- tibble("Athlet" = c("Noah", "Julio", "Nick", "Maria"), 
                   "Scores" = c(32, 37, 28, 30))
 
+# using base R to access column Scores
 ifelse(qualify$"Scores" > 30, 
        "Admitted", 
        "Rejected")
+
+# using dplyr
+qualify %>%
+  mutate(status = ifelse(Scores > 30,
+                       "Admitted",
+                       "Rejected"))
 ```
+
 
 ---
 
 ## 4. Vectorized tests with ifelse() 
 
-People often use `ifelse()` also to recode variables in a dataframe.
+In the previous example, we only had two possible categories: "Admitted" and "Rejected"
+
+What happens to our code if we add a third one, say "Waitlisted"? We need to use nested `ifelse()` statements:
+
+<!--
+```{r, echo = TRUE, results = "hide"}
+library(tidyverse)
+
+qualify <- tibble("Athlet" = c("Noah", "Julio", "Nick", "Maria"), 
+                  "Scores" = c(32, 37, 28, 30))
+
+ifelse(qualify$Scores > 35,  # condition to be evaluated
+       "Admitted",           # if true, assign "Admitted"
+       ifelse(qualify$Scores >= 30,  # if false, evaluate this other condition
+              "Waitlisted",          # if true, assign "Waitlisted"
+              "Rejected"))           # if false, assign "Rejected"
+
+```
+-->
+
+```{r, echo = TRUE, results = "hide"}
+
+qualify <- tibble("Athlet" = c("Noah", "Julio", "Nick", "Maria"), 
+                  "Scores" = c(32, 37, 28, 30))
+
+qualify %>%
+  mutate(Status = ifelse(Scores > 35,            # first condition
+                         "Admitted",             # if TRUE
+                         ifelse(Scores >= 30,    # second condition (only if first is FALSE)
+                                "Waitlisted",    # if TRUE
+                                "Rejected")))    # if both FALSE
+
+```
+
+
+<!--
+ifelse(condition1,
+       "Label1",           # used if condition1 is TRUE
+       ifelse(condition2,
+              "Label2",    # used if condition1 is FALSE and condition2 is TRUE
+              "Label3"))   # used if BOTH condition1 and condition2 are FALSE
+-->
+
+---
+
+## 4. Vectorized tests with ifelse() 
+
+Nested `ifelse()` statements work, but they can make the code harder to read. 
+
+Compare the previous code with this version that does not use them:
+
+```{r, echo = TRUE, results = "hide"}
+
+qualify <- tibble("Athlet" = c("Noah", "Julio", "Nick", "Maria"), 
+                  "Scores" = c(32, 37, 28, 30))
+
+qualify %>%
+  mutate(Status = "Rejected") %>%                                  # default label
+  mutate(Status = ifelse(Scores >= 30, "Waitlisted", Status)) %>%  # update if condition met
+  mutate(Status = ifelse(Scores > 35, "Admitted", Status))         # update if higher condition met
+```
+
+<!--
+# or can also start from Admittd and down
+
+qualify %>%
+  mutate(Status = "Admitted") %>%                                   # start with highest category
+  mutate(Status = ifelse(Scores <= 30, "Waitlisted", Status)) %>%  # downgrade if below admission threshold
+  mutate(Status = ifelse(Scores < 25, "Rejected", Status))          # downgrade again if below waitlist threshold
+-->
+
+
+
+<br>
+
+::: {.callout-tip title="Tip"}
+
+If you have multiple conditions (more than two):
+
+- Write multiple separate `mutate()` + `ifelse()` steps, as shown on this slide, rather than nesting them (as shown on the previous slide)
+
+- When possible, use `case_when()` instead of `ifelse()` for better readability
+
+:::
+
+</br>
+
+
+<!--
+## When to Use `ifelse()` Instead of `case_when()`
+
+While `case_when()` is better for multiple conditions, `ifelse()` is sometimes the better choice.
+
+Use `ifelse()` when:
+
+- You're checking **only one condition**
+- You want a **simple inline transformation**  
+  (e.g., `ifelse(x > 0, x * 2, x)`)
+- You're assigning `NA` for some values  
+  (e.g., `ifelse(x < 0, NA, x)`)
+
+Use `case_when()` when:
+
+- You have **3 or more conditions**
+- You want better readability for **categorical recoding**
+
+-->
+
+
+---
+
+## 4. Vectorized tests with ifelse() 
+
+People often use `ifelse()` to recode variables in a dataframe. It's a good choice when the recoding can be done with a single `ifelse()`, as shown in this example.
 
 Example: the variable `decisionDirection` takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)
 

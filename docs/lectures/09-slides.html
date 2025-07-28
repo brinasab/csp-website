@@ -216,10 +216,10 @@ Sabrina Nardin, Summer 2025
 <li>Deeper Dive into Conditional Statements</li>
 </ol>
 </div>
-<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 24, 2025 </span></p>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 28, 2025 </span></p>
 <!--
 <span style="font-size: 0.8em; color: #666;">
-*These slides were last updated on **July 24, 2025***
+*These slides were last updated on **July 28, 2025***
 </span>
 -->
 </section>
@@ -591,21 +591,132 @@ else
 <span id="cb12-3"><a></a>qualify <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Athlet"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Noah"</span>, <span class="st">"Julio"</span>, <span class="st">"Nick"</span>, <span class="st">"Maria"</span>), </span>
 <span id="cb12-4"><a></a>                  <span class="st">"Scores"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">37</span>, <span class="dv">28</span>, <span class="dv">30</span>))</span>
 <span id="cb12-5"><a></a></span>
-<span id="cb12-6"><a></a><span class="fu">ifelse</span>(qualify<span class="sc">$</span><span class="st">"Scores"</span> <span class="sc">&gt;</span> <span class="dv">30</span>, </span>
-<span id="cb12-7"><a></a>       <span class="st">"Admitted"</span>, </span>
-<span id="cb12-8"><a></a>       <span class="st">"Rejected"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a></a><span class="co"># using base R to access column Scores</span></span>
+<span id="cb12-7"><a></a><span class="fu">ifelse</span>(qualify<span class="sc">$</span><span class="st">"Scores"</span> <span class="sc">&gt;</span> <span class="dv">30</span>, </span>
+<span id="cb12-8"><a></a>       <span class="st">"Admitted"</span>, </span>
+<span id="cb12-9"><a></a>       <span class="st">"Rejected"</span>)</span>
+<span id="cb12-10"><a></a></span>
+<span id="cb12-11"><a></a><span class="co"># using dplyr</span></span>
+<span id="cb12-12"><a></a>qualify <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a></a>  <span class="fu">mutate</span>(<span class="at">status =</span> <span class="fu">ifelse</span>(Scores <span class="sc">&gt;</span> <span class="dv">30</span>,</span>
+<span id="cb12-14"><a></a>                       <span class="st">"Admitted"</span>,</span>
+<span id="cb12-15"><a></a>                       <span class="st">"Rejected"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="vectorized-tests-with-ifelse-3" class="slide level2 center">
 <h2>4. Vectorized tests with ifelse()</h2>
-<p>People often use <code>ifelse()</code> also to recode variables in a dataframe.</p>
+<p>In the previous example, we only had two possible categories: “Admitted” and “Rejected”</p>
+<p>What happens to our code if we add a third one, say “Waitlisted”? We need to use nested <code>ifelse()</code> statements:</p>
+<!--
+
+::: {.cell}
+
+```{.r .cell-code}
+library(tidyverse)
+
+qualify <- tibble("Athlet" = c("Noah", "Julio", "Nick", "Maria"), 
+                  "Scores" = c(32, 37, 28, 30))
+
+ifelse(qualify$Scores > 35,  # condition to be evaluated
+       "Admitted",           # if true, assign "Admitted"
+       ifelse(qualify$Scores >= 30,  # if false, evaluate this other condition
+              "Waitlisted",          # if true, assign "Waitlisted"
+              "Rejected"))           # if false, assign "Rejected"
+```
+:::
+
+-->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>qualify <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Athlet"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Noah"</span>, <span class="st">"Julio"</span>, <span class="st">"Nick"</span>, <span class="st">"Maria"</span>), </span>
+<span id="cb13-2"><a></a>                  <span class="st">"Scores"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">37</span>, <span class="dv">28</span>, <span class="dv">30</span>))</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a>qualify <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a></a>  <span class="fu">mutate</span>(<span class="at">Status =</span> <span class="fu">ifelse</span>(Scores <span class="sc">&gt;</span> <span class="dv">35</span>,            <span class="co"># first condition</span></span>
+<span id="cb13-6"><a></a>                         <span class="st">"Admitted"</span>,             <span class="co"># if TRUE</span></span>
+<span id="cb13-7"><a></a>                         <span class="fu">ifelse</span>(Scores <span class="sc">&gt;=</span> <span class="dv">30</span>,    <span class="co"># second condition (only if first is FALSE)</span></span>
+<span id="cb13-8"><a></a>                                <span class="st">"Waitlisted"</span>,    <span class="co"># if TRUE</span></span>
+<span id="cb13-9"><a></a>                                <span class="st">"Rejected"</span>)))    <span class="co"># if both FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!--
+ifelse(condition1,
+       "Label1",           # used if condition1 is TRUE
+       ifelse(condition2,
+              "Label2",    # used if condition1 is FALSE and condition2 is TRUE
+              "Label3"))   # used if BOTH condition1 and condition2 are FALSE
+-->
+</section>
+<section id="vectorized-tests-with-ifelse-4" class="slide level2 center">
+<h2>4. Vectorized tests with ifelse()</h2>
+<p>Nested <code>ifelse()</code> statements work, but they can make the code harder to read.</p>
+<p>Compare the previous code with this version that does not use them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>qualify <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Athlet"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Noah"</span>, <span class="st">"Julio"</span>, <span class="st">"Nick"</span>, <span class="st">"Maria"</span>), </span>
+<span id="cb14-2"><a></a>                  <span class="st">"Scores"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">37</span>, <span class="dv">28</span>, <span class="dv">30</span>))</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a>qualify <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a></a>  <span class="fu">mutate</span>(<span class="at">Status =</span> <span class="st">"Rejected"</span>) <span class="sc">%&gt;%</span>                                  <span class="co"># default label</span></span>
+<span id="cb14-6"><a></a>  <span class="fu">mutate</span>(<span class="at">Status =</span> <span class="fu">ifelse</span>(Scores <span class="sc">&gt;=</span> <span class="dv">30</span>, <span class="st">"Waitlisted"</span>, Status)) <span class="sc">%&gt;%</span>  <span class="co"># update if condition met</span></span>
+<span id="cb14-7"><a></a>  <span class="fu">mutate</span>(<span class="at">Status =</span> <span class="fu">ifelse</span>(Scores <span class="sc">&gt;</span> <span class="dv">35</span>, <span class="st">"Admitted"</span>, Status))         <span class="co"># update if higher condition met</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!--
+# or can also start from Admittd and down
+
+qualify %>%
+  mutate(Status = "Admitted") %>%                                   # start with highest category
+  mutate(Status = ifelse(Scores <= 30, "Waitlisted", Status)) %>%  # downgrade if below admission threshold
+  mutate(Status = ifelse(Scores < 25, "Rejected", Status))          # downgrade again if below waitlist threshold
+-->
+<p><br></p>
+<div title="Tip">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>If you have multiple conditions (more than two):</p>
+<ul>
+<li><p>Write multiple separate <code>mutate()</code> + <code>ifelse()</code> steps, as shown on this slide, rather than nesting them (as shown on the previous slide)</p></li>
+<li><p>When possible, use <code>case_when()</code> instead of <code>ifelse()</code> for better readability</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<!--
+## When to Use `ifelse()` Instead of `case_when()`
+
+While `case_when()` is better for multiple conditions, `ifelse()` is sometimes the better choice.
+
+Use `ifelse()` when:
+
+- You're checking **only one condition**
+- You want a **simple inline transformation**  
+  (e.g., `ifelse(x > 0, x * 2, x)`)
+- You're assigning `NA` for some values  
+  (e.g., `ifelse(x < 0, NA, x)`)
+
+Use `case_when()` when:
+
+- You have **3 or more conditions**
+- You want better readability for **categorical recoding**
+
+-->
+</section>
+<section id="vectorized-tests-with-ifelse-5" class="slide level2 center">
+<h2>4. Vectorized tests with ifelse()</h2>
+<p>People often use <code>ifelse()</code> to recode variables in a dataframe. It’s a good choice when the recoding can be done with a single <code>ifelse()</code>, as shown in this example.</p>
 <p>Example: the variable <code>decisionDirection</code> takes four values (1 conservative, 2 liberal, 3 unspecifiable, and NA). Recode it to take three values (0 conservative, 1 liberal, and NA for both NA and unspecifiable)</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a></a>  <span class="fu">mutate</span>(<span class="at">decisionDirection =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb13-3"><a></a>    decisionDirection <span class="sc">==</span> <span class="dv">3</span>, <span class="co"># condition to be evaluated</span></span>
-<span id="cb13-4"><a></a>    <span class="cn">NA</span>,                     <span class="co"># if true, do NA</span></span>
-<span id="cb13-5"><a></a>    decisionDirection <span class="sc">-</span> <span class="dv">1</span>   <span class="co"># if false, subtract one to value</span></span>
-<span id="cb13-6"><a></a>    ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">mutate</span>(<span class="at">decisionDirection =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb15-3"><a></a>    decisionDirection <span class="sc">==</span> <span class="dv">3</span>, <span class="co"># condition to be evaluated</span></span>
+<span id="cb15-4"><a></a>    <span class="cn">NA</span>,                     <span class="co"># if true, do NA</span></span>
+<span id="cb15-5"><a></a>    decisionDirection <span class="sc">-</span> <span class="dv">1</span>   <span class="co"># if false, subtract one to value</span></span>
+<span id="cb15-6"><a></a>    ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--
 More on this:
 https://docs.ycrc.yale.edu/r-novice-gapminder/07-control-flow/
@@ -613,7 +724,7 @@ Comparing ifelse() and for loop:
 https://www.r-bloggers.com/2020/02/if-else-and-ifelse/
 -->
 </section>
-<section id="vectorized-tests-with-ifelse-4" class="slide level2 center">
+<section id="vectorized-tests-with-ifelse-6" class="slide level2 center">
 <h2>4. Vectorized tests with ifelse()</h2>
 <p><strong>Note there is also a tidyverse version of the base R <code>ifelse()</code> function!</strong></p>
 <p>The tidyverse version is called <code>if_else()</code> <a href="https://dplyr.tidyverse.org/reference/if_else.html" class="uri">https://dplyr.tidyverse.org/reference/if_else.html</a></p>

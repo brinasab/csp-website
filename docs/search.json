@@ -256,7 +256,7 @@
     "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-2",
     "title": "Introduction to R: Lecture 9",
     "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nExample: What is the output of this code?\n\nlibrary(tidyverse)\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\n# using base R to access column Scores\nifelse(qualify$\"Scores\" &gt; 30, \n       \"Admitted\", \n       \"Rejected\")\n\n# using dplyr\nqualify %&gt;%\n  mutate(status = ifelse(Scores &gt; 30,\n                       \"Admitted\",\n                       \"Rejected\"))"
+    "text": "4. Vectorized tests with ifelse()\nExample: What is the output of this code?\n\nlibrary(tidyverse)\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\n# using base R to access column Scores\nifelse(qualify$Scores &gt; 30, \n       \"Admitted\", \n       \"Rejected\")\n\n# using dplyr\nqualify %&gt;%\n  mutate(status = ifelse(Scores &gt; 30,\n                       \"Admitted\",\n                       \"Rejected\"))"
   },
   {
     "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-3",

@@ -165,6 +165,11 @@ if (movie_avg_rating >= 4) {
 }
 ```
 
+<!-- Note this calculates the mean hence if... else evaluates one single element (number)
+wont work to evaluate each element of the vector, you ll have to put it into a look 
+or use a logical vector first and replace
+-->
+
 ---
 
 ## 2. Multiple tests with if... else if... else
@@ -445,7 +450,7 @@ qualify <- tibble("Athlet" = c("Noah", "Julio", "Nick", "Maria"),
                   "Scores" = c(32, 37, 28, 30))
 
 # using base R to access column Scores
-ifelse(qualify$"Scores" > 30, 
+ifelse(qualify$Scores > 30, 
        "Admitted", 
        "Rejected")
 
@@ -456,6 +461,26 @@ qualify %>%
                        "Rejected"))
 ```
 
+
+<!--  FOR CSS CLASS IF THIS COMES AFTER DATA STRUCTURES, ADD THIS SLIDE IN
+AND EXPLICITLY CONNECT IT BACK TO PREVOIUS CLASS 
+
+You can also use double square bracket to access column Scores by position vs name 
+
+# using base R to access column Scores by position
+# double square brackets on a df return a vector
+ifelse(qualify[[2]] > 30, 
+       "Admitted", 
+       "Rejected")
+
+# single square brackets on a df return a tibble
+ifelse(qualify[2] > 30, 
+       "Admitted", 
+       "Rejected")
+
+
+# stick with [[]] for ector operations, safer always returns a vector
+-->
 
 ---
 

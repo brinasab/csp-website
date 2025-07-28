@@ -342,6 +342,10 @@ Examine the syntax and the curly braces and indentation
 <span id="cb3-7"><a></a>  <span class="fu">print</span>(<span class="st">"Not a favorite."</span>)</span>
 <span id="cb3-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<!-- Note this calculates the mean hence if... else evaluates one single element (number)
+wont work to evaluate each element of the vector, you ll have to put it into a look 
+or use a logical vector first and replace
+-->
 </section>
 <section id="multiple-tests-with-if-else-if-else" class="slide level2 center">
 <h2>2. Multiple tests with if… else if… else</h2>
@@ -592,7 +596,7 @@ else
 <span id="cb12-4"><a></a>                  <span class="st">"Scores"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">37</span>, <span class="dv">28</span>, <span class="dv">30</span>))</span>
 <span id="cb12-5"><a></a></span>
 <span id="cb12-6"><a></a><span class="co"># using base R to access column Scores</span></span>
-<span id="cb12-7"><a></a><span class="fu">ifelse</span>(qualify<span class="sc">$</span><span class="st">"Scores"</span> <span class="sc">&gt;</span> <span class="dv">30</span>, </span>
+<span id="cb12-7"><a></a><span class="fu">ifelse</span>(qualify<span class="sc">$</span>Scores <span class="sc">&gt;</span> <span class="dv">30</span>, </span>
 <span id="cb12-8"><a></a>       <span class="st">"Admitted"</span>, </span>
 <span id="cb12-9"><a></a>       <span class="st">"Rejected"</span>)</span>
 <span id="cb12-10"><a></a></span>
@@ -602,6 +606,25 @@ else
 <span id="cb12-14"><a></a>                       <span class="st">"Admitted"</span>,</span>
 <span id="cb12-15"><a></a>                       <span class="st">"Rejected"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<!--  FOR CSS CLASS IF THIS COMES AFTER DATA STRUCTURES, ADD THIS SLIDE IN
+AND EXPLICITLY CONNECT IT BACK TO PREVOIUS CLASS 
+
+You can also use double square bracket to access column Scores by position vs name 
+
+# using base R to access column Scores by position
+# double square brackets on a df return a vector
+ifelse(qualify[[2]] > 30, 
+       "Admitted", 
+       "Rejected")
+
+# single square brackets on a df return a tibble
+ifelse(qualify[2] > 30, 
+       "Admitted", 
+       "Rejected")
+
+
+# stick with [[]] for ector operations, safer always returns a vector
+-->
 </section>
 <section id="vectorized-tests-with-ifelse-3" class="slide level2 center">
 <h2>4. Vectorized tests with ifelse()</h2>

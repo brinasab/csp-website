@@ -1,9 +1,9 @@
 ---
-title: "Lecture 11: Functions"
+title: "Lecture 11: Control Flow 3"
 date: 2025-07-31
-summary: "Organize and reuse code with functions"
+summary: "Writing Loops Part 2"
 url_slides: 11-slides.qmd
-url_code: csp-materials/functions
+url_code: csp-materials/loops
 page-layout: full
 draft: false
 ---
@@ -27,3 +27,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ## Readings
+
+<!--
+## Readings
+
+Skim the readings before or after class to get the big picture and prep for quizzes and assignments:
+
+- ["Chapter 26 Iteration"](https://r4ds.hadley.nz/iteration) from "R for Data Science" 2nd Edition
+-->

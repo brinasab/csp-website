@@ -216,10 +216,10 @@ Sabrina Nardin, Summer 2025
 <li>Deeper Dive into Conditional Statements</li>
 </ol>
 </div>
-<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 28, 2025 </span></p>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 29, 2025 </span></p>
 <!--
 <span style="font-size: 0.8em; color: #666;">
-*These slides were last updated on **July 28, 2025***
+*These slides were last updated on **July 29, 2025***
 </span>
 -->
 </section>
@@ -629,7 +629,7 @@ ifelse(qualify[2] > 30,
 <section id="vectorized-tests-with-ifelse-3" class="slide level2 center">
 <h2>4. Vectorized tests with ifelse()</h2>
 <p>In the previous example, we only had two possible categories: “Admitted” and “Rejected”</p>
-<p>What happens to our code if we add a third one, say “Waitlisted”? We need to use nested <code>ifelse()</code> statements:</p>
+<p>What happens to our code if we add a third one, say “Waitlisted”?</p>
 <!--
 
 ::: {.cell}
@@ -670,8 +670,8 @@ ifelse(condition1,
 </section>
 <section id="vectorized-tests-with-ifelse-4" class="slide level2 center">
 <h2>4. Vectorized tests with ifelse()</h2>
-<p>Nested <code>ifelse()</code> statements work, but they can make the code harder to read.</p>
-<p>Compare the previous code with this version that does not use them:</p>
+<p>Nested <code>ifelse()</code> statements work, but they make the code harder to read.</p>
+<p>Compare the previous code with this code that does not use them:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>qualify <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Athlet"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Noah"</span>, <span class="st">"Julio"</span>, <span class="st">"Nick"</span>, <span class="st">"Maria"</span>), </span>
 <span id="cb14-2"><a></a>                  <span class="st">"Scores"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">37</span>, <span class="dv">28</span>, <span class="dv">30</span>))</span>
@@ -702,7 +702,7 @@ qualify %>%
 <div class="callout-content">
 <p>If you have multiple conditions (more than two):</p>
 <ul>
-<li><p>Write multiple separate <code>mutate()</code> + <code>ifelse()</code> steps, as shown on this slide, rather than nesting them (as shown on the previous slide)</p></li>
+<li><p>Write several separate <code>mutate()</code> + <code>ifelse()</code> steps, as shown on this slide, rather than nesting them, as shown on the previous slide</p></li>
 <li><p>When possible, use <code>case_when()</code> instead of <code>ifelse()</code> for better readability</p></li>
 </ul>
 </div>

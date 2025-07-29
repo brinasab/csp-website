@@ -488,7 +488,7 @@ ifelse(qualify[2] > 30,
 
 In the previous example, we only had two possible categories: "Admitted" and "Rejected"
 
-What happens to our code if we add a third one, say "Waitlisted"? We need to use nested `ifelse()` statements:
+What happens to our code if we add a third one, say "Waitlisted"? 
 
 <!--
 ```{r, echo = TRUE, results = "hide"}
@@ -533,9 +533,9 @@ ifelse(condition1,
 
 ## 4. Vectorized tests with ifelse() 
 
-Nested `ifelse()` statements work, but they can make the code harder to read. 
+Nested `ifelse()` statements work, but they make the code harder to read. 
 
-Compare the previous code with this version that does not use them:
+Compare the previous code with this code that does not use them:
 
 ```{r, echo = TRUE, results = "hide"}
 
@@ -557,15 +557,13 @@ qualify %>%
   mutate(Status = ifelse(Scores < 25, "Rejected", Status))          # downgrade again if below waitlist threshold
 -->
 
-
-
 <br>
 
 ::: {.callout-tip title="Tip"}
 
 If you have multiple conditions (more than two):
 
-- Write multiple separate `mutate()` + `ifelse()` steps, as shown on this slide, rather than nesting them (as shown on the previous slide)
+- Write several separate `mutate()` + `ifelse()` steps, as shown on this slide, rather than nesting them, as shown on the previous slide
 
 - When possible, use `case_when()` instead of `ifelse()` for better readability
 

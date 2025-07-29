@@ -1,7 +1,7 @@
 ---
 title: "Lecture 10: Control Flow 2"
 date: 2025-07-29
-summary: "Writing loops for iteration and repetition"
+summary: "Writing Loops Part 1"
 url_slides: 10-slides.qmd
 url_code: csp-materials/loops
 page-layout: full
@@ -17,13 +17,22 @@ knitr::opts_chunk$set(echo = FALSE)
 * **Date**: {{< meta date >}}
 * **Topics**: {{< meta summary >}}
 * **Slides**: [View Slides]({{< meta url_slides >}})
-* **Code**: `usethis::use_course("{{< meta url_code >}}")`
+* **Code**: No in-class code to download
 
 
 ## Learning Objectives
 
+- Understand how for loops work and how to trace values at each iteration
+- Learn how to track and save results during a loop (e.g., running totals)
+- Recognize the difference between looping over indexes and over elements
+
 
 ## Before Class
 
+- Review Lecture 9 materials to get ready for today's in-class quiz
+- Bring your laptop to every class
+
 
 ## Readings
+
+No readings.

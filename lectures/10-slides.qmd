@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R: Lecture 10"
-subtitle: "Topics: Writing loops for iteration and repetition"
+subtitle: "Topics: Writing Loops Part 1"
 author: "Sabrina Nardin, Summer 2025"
 format:
   revealjs:
@@ -19,9 +19,9 @@ format:
 # Agenda {.center}
 
 ::: {.agenda-list}
-1. For Loops
-2. R Alternatives to For Loops
-3. While Loops
+1. For Loops: Introduction
+2. Tracking and Saving For Loop Output
+3. Looping Over Elements vs. Indexes
 :::
 
 ```{r, echo=FALSE, results='asis'}
@@ -41,9 +41,8 @@ When you teach for loops add the break and continue statements (currently not in
 
 -->
 
----
 
-# 1. For Loops {.slide .center .middle}
+# 1. For Loops: Introduction {.slide .center .middle}
 
 ---
 
@@ -57,13 +56,13 @@ Control structures let us write code that can:
 - **Repeat actions**  
   → with **loops** (`for`, `while`)
 
-Today we focus on loops!
+Today we focus on loops, and specifically on "For loops"!
 
 ---
 
 ## Definition of For Loops
 
-For loops are the most common looping construct in many programming languages. They are used to **iterate over the elements of an object** (usually a list or vector) and perform an action on each one.
+"For loops" are the most common looping construct in many programming languages. They are used to **iterate over the elements of an object** (usually a list or vector) and perform an action on each one.
 
 Syntax:
 ```
@@ -93,17 +92,17 @@ for (item in c(1,2,3)) {
 
 Let's break this code down:
 
-* the repeated action here is simple: `print(item)`
+- The repeated action here is simple: `print(item)`
 
-* `item` is a placeholder: its value changes with each loop iteration (it can be labeled any name you like)
+- `item` is a placeholder: its value changes with each loop iteration
 
-* the number of times the statement block repeats depends on the number of items in the sequence — in this example: three items, thus three times
+- the number of times the statement block repeats depends on the number of items in the sequence — in this example: three items, thus three times
 
 ---
 
-## Nested For Loop
+## Nested For Loops
 
-For loops can be nested. In this case, the outer loop controls how many times the entire inner loop runs from start to finish: 
+For loops can be nested, so the outer loop controls how many times the entire inner loop runs from start to finish: 
 
 ```{r echo = TRUE, results = "hide"}
 
@@ -117,7 +116,7 @@ for (i in c(1,2,3)) {
 
 Let's break this code down:
 
-- The outer loop `(i in 1:3)` runs 3 times
+- The outer loop runs 3 times
 
 - For each execution of the outer loop, the inner loop runs 4 times
 
@@ -135,9 +134,11 @@ for (i in 1:3) {
 }
 -->
 
+# 2. Tracking and Saving For Loop Output {.slide .center .middle}
+
 ---
 
-## For Loop Example #3
+## Tracing Execution in a For Loop
 
 Observe this code. What does this code output in each run?
 
@@ -146,7 +147,7 @@ Observe this code. What does this code output in each run?
 for (i in c(1,2,3)) {
   print(i)
   print("Hello")
-  sum <- 100 + 1
+  sum <- 100 + i
   print(sum)
 }
 
@@ -156,9 +157,9 @@ what happens if I add a print(i) at the end outside the loop: prints last i-->
 
 ---
 
-## For Loop Example #4
+## Tracing Execution in a For Loop
 
-This code takes the previous example, but defines the `sum` variable outside the loop (before it starts). What does this code output in each run?
+This code takes the previous example, but defines the `sum` variable outside the loop, before it starts. What does this code output in each run?
 
 ```{r echo = TRUE, results = "hide"}
 
@@ -175,29 +176,31 @@ for (i in c(1,2,3)) {
 
 ---
 
-## For Loop Example #4
+## Accumulating a Running Total 
 
-What we just observed is a simple example of a common task: accumulating a running total. Use it when you are adding up scores, votes, or counts one at a time, and want to track the growing sum after each step
+What we just observed is a simple example of a common task: accumulating a running total. Use it when you are adding up scores, votes, or counts one at a time, and want to keep track of how the total grows after each loop.
+
+Same code, but with clearer print statements to make each step easier to follow:
 
 ```{r echo = TRUE, results = "hide"}
 
 sum <- 0
 
 for (i in c(1,2,3)) {
-  print(paste("Current i is:", i))
+  print(paste("Current i is", i))
   print("Hello")
   sum <- sum + i
-  print(paste("Current sum is:", sum))
+  print(paste("Current sum is", sum))
 }
+
+sum
 ```
 
 ---
 
-## Save For Loop Output
+## Saving Results from For Loop
 
-The previous code correctly prints the updated sum (which changes in each loop) but it only saves the final one.
-
-To keep all intermediate values, we need to save them in a vector:
+The previous code prints the updated sum each time, but only saves the final value for sum. To keep all intermediate values, we need to store them in a vector:
 
 ```{r echo = TRUE, results = "hide"}
 
@@ -209,144 +212,221 @@ for (i in c(1,2,3)) {
   print("Hello")
   sum <- sum + i
   print(paste("Current sum is:", sum))
-  output[i] <- sum    # save the current sum at position i
+  output[i] <- sum     # saves sum in position i
 }
+
 output
 
 ```
 
-Why we write `output[i]`? 
+::: {.callout-note .fragment .small-text title="Why `output[i] <- sum`?"}
 
-This code is good but not yet optimal. Let's see why.
+When `i = 1`, `sum = 0 + 1 = 1` → store `1` in `output[1]` → output becomes: `1 0 0`  
+When `i = 2`, `sum = 1 + 2 = 3` → store `3` in `output[2]` → output becomes: `1 3 0`  
+When `i = 3`, `sum = 3 + 3 = 6` → store `6` in `output[3]` → output becomes: `1 3 6`
+
+This saves the running total at each position `i` in the vector output.
+:::
 
 ---
 
-## Looping over Indexes vs Looping over Elements 
+## Saving Results from a For Loop
+
+**Our current code works but it’s NOT yet optimal:**
+
+- It only behaves correctly because the input vector is exactly `c(1, 2, 3)`
+- If the values in the vector change, the current loop may produce incorrect or unexpected results
+
+**💻 Try this:** 
+
+Take the code from the previous slide and change the input vector to `c(1, 4, 6)` and observe what happens to the `output`. Can you explain why the result changes?
+
+---
+
+## Saving Results from a For Loop
 
 ```{r echo = TRUE, results = "hide"}
 
-# Looping over elements
-x <- c(2,4,3)
-for (value in x) {
-  print(value)
+sum <- 0
+output <- vector(mode = "integer", length = 3)
+
+for (i in c(1, 4, 6)) {
+  print(paste("Current i is:", i))
+  print("Hello")
+  sum <- sum + i
+  print(paste("Current sum is:", sum))
+  output[i] <- sum  # saves sum in position i
 }
 
-# Looping over indexes, can also use seq_along() 
-x <- c(2,4,6)
-for (i in 1:length(x)) {
-  print(x[i])
-}
+output
 
-# another slide with saving output vs printing, then go back to previous example and adjust also sum <- sum + i
 ```
 
-::: {.callout-tip title="Tip: Prefer looping over indexes"}
-Looping over indexes (i in 1:length(x)) gives you more control:
+::: {.callout-note .fragment .small title="What Happens in Each Iteration"}
 
-- You can access both the value and its position
+When `i = 1` → `sum = 0 + 1 = 1` → store `1` in `output[1]` → output becomes: `1 0 0`
 
-- You can store, replace, or compare values more flexibly
+When `i = 4` → `sum = 1 + 4 = 5` → store `5` in `output[4]` → output becomes: `1 0 0 5`
 
-- It's easier to save output or modify elements in-place
+When `i = 6` → `sum = 5 + 6 = 11` → store 11 in `output[6]` → output becomes: `1 0 0 5 NA 11`
 
-When you loop over values directly (e.g. for (value in x)):
-
-You lose the index, so you can't easily:
-
-store values by position
-
-modify the original vector
-
-track where you are in the loop
-
-This matters if you want to update values or build a new vector
-
-
-Best practice:
-oop over indexes, not elements, when you need to:
-
-Modify, save, or assign values by position (e.g., output[i] <- ...)
-
-Ensure your loop works even if values repeat or are not valid indices
-
-This gives you full control over both:
-
-the position (i)
-
-and the value at that position (x[i])
-
+**R won’t throw an error if you assign to an index beyond a vector’s original length: it silently extends the vector, which can lead to unexpected results.**
 :::
+
+
+# 3. Looping Over Elements vs. Indexes {.slide .center .middle}
+
 ---
 
+## Elements vs. Indexes: Why It Matters
 
-## Compare Two Loops – What’s the Difference?
-
-:::: {.columns}
-
-::: {.column width="50%"}
-### Version A
+To fix the previous code we need to understand the difference between looping over elements and over indexes:
 
 ```{r echo = TRUE, results = "hide"}
-sum <- 0
-numbers <- c(1, 2, 3)
-output <- vector(mode = "integer", 
-                 length = length(numbers))
 
-for (i in seq_along(numbers)) {
+# Looping over values/elements
+x <- c(1,4,6)
+for (i in x) {
+  print(i)        # value
+}
+
+# Looping over indexes (method 1)
+x <- c(1,4,6)
+for (i in 1:length(x)) {
+  print(i)        # index
+  print(x[i])     # value at that index
+}
+
+# Looping over indexes (method 2)
+x <- c(1,4,6)
+for (i in seq_along(x)) {
+  print(i)
+  print(x[i])
+}
+```
+
+
+::: {.callout-note .fragment .small title="`i` and `x[i]`"}
+
+Note: `i` is the loop **index** or "counter" and should always go 1, 2, 3, 4, etc., while `x[i]` is the **element** or value of the vector `x` at position `i` and can be any value
+
+:::
+
+---
+
+## Elements vs. Indexes: Why It Matters
+
+Let’s see what happens when we save the output instead of just printing:
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+### ❌ Version A 
+
+```{r echo = TRUE, results = "hide"}
+
+x <- c(1,4,6)
+sum <- 0
+output <- vector(mode = "integer", 
+                 length = length(x))
+
+# looping over elements
+for (i in x) {
   print(paste("Current i is:", i))
   sum <- sum + i
   print(paste("Current sum is:", sum))
   output[i] <- sum
 }
+
 output
 ```
 :::
 
 ::: {.column width="50%"}
 
-### Version B
+### ✅ Version B
 
 ```{r echo = TRUE, results = "hide"}
-sum <- 0
-numbers <- c(1, 2, 3)
-output <- vector(mode = "integer", 
-                 length = length(numbers))
 
-for (i in seq_along(numbers)) {
+x <- c(1,4,6)
+sum <- 0
+output <- vector(mode = "integer", 
+                 length = length(x))
+
+# looping over indexes
+for (i in seq_along(x)) {
   print(paste("Current i is:", i))
-  sum <- sum + numbers[i]
+  sum <- sum + x[i]
   print(paste("Current sum is:", sum))
   output[i] <- sum
 }
+
 output
+
 ```
 :::
 
 ::::
 
----
-
-## 💻 Practice
-
-Compare Version A and Version B from the previous slide and identify their differences:
-
-- Do they produce the same result the current `numbers` vector?
-- Will they still behave the same if the values in `numbers` change?
-
-**Try this:**
-  - Change `numbers` to `c(5, 3, 10)` in both versions
-  - Run both versions
-  - Observe the outputs and explain the difference
 
 ---
 
+## Best Practice: Loop Over Indexes
 
-## In sum
+Loop over indexes, like `i in 1:length(x)` or `seq_along(x)`, instead of elements/values to:
 
-Summarize use of [i] for both output and sum
-
+- Modify, save, or assign values by position (e.g., output[i] <- ...)
+- Ensure your loop works regardless of the values in the vector (e.g., if values repeat or are not valid indices)
+- Have you full control over both: the position `i` and the value at that position `x[i]`
 
 ---
+
+## 💻 Practice: Fix this For Looop
+
+You are a farmer writing a for loop to track `tomatoes` sold over three days. You want to add up the number of tomatoes sold and store the running total in a vector called `output`.
+
+But something is wrong with the code — can you spot and fix it? First, *think* about what the `output` vector should be, then look at the code and figure out why it's not giving you that.
+
+```{r echo = TRUE, results = "hide"}
+
+tomatoes <- c(10, 2, 100) 
+sum <- 0
+output <- vector(mode = "integer", 
+                 length = length(tomatoes))
+
+for (i in seq_along(tomatoes)) {
+  print(paste("Current i is:", i))
+  sum <- sum + i
+  print(paste("Current sum is:", sum))
+  output[i] <- sum
+}
+
+output
+
+```
+
+<!--
+```{r echo = TRUE, results = "hide"}
+
+tomatoes <- c(10, 2, 100) 
+sum <- 0
+output <- vector(mode = "integer", 
+                 length = length(tomatoes))
+
+for (i in seq_along(tomatoes)) {
+  print(paste("Current i is:", i))
+  sum <- sum + tomatoes[i]
+  print(paste("Current sum is:", sum))
+  output[i] <- sum
+}
+
+output
+
+```
+-->
+
+<!--
 
 ## 💻 Practice
 
@@ -377,33 +457,14 @@ for (i in seq_along(daily_sales)) {
 
 -->
 
-
----
-
-## Using For Loops with dataframes in R
-
-Add a slide here on how loops work with dataframes or tibbles since we work a lot with them
-
----
-
-Example with
-
----
- 
-Alternatives witout 
-
-
----
-
-## 💻 Practice
-
 ---
 
 ## Recap: What We Learned Today
 
----
-
-## Reminders
+- How for loops work and how to trace what happens at each iteration
+- How to track and save values (like running totals) during a for loop
+- Why it's important to loop over indexes instead of elements when saving or modifying values
+- Common mistakes with loop output and how to fix them
 
 ---
 

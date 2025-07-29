@@ -130,14 +130,14 @@
     "href": "lectures/10-slides.html#practice",
     "title": "Introduction to R: Lecture 10",
     "section": "💻 Practice",
-    "text": "💻 Practice\nCompare Version A and Version B from the previous slide and identify their differences:\n\nDo they produce the same result the current numbers vector?\nWill they still behave the same if the values in numbers change?\n\nTry this: - Change numbers to c(5, 3, 10) in both versions - Run both versions - Observe the outputs and explain the difference"
+    "text": "💻 Practice"
   },
   {
     "objectID": "lectures/10-slides.html#recap-what-we-learned-today",
     "href": "lectures/10-slides.html#recap-what-we-learned-today",
     "title": "Introduction to R: Lecture 10",
     "section": "Recap: What We Learned Today",
-    "text": "Recap: What We Learned Today"
+    "text": "Recap: What We Learned Today\n\nHow for loops work and how to trace what happens at each iteration\nHow to track and save values (like running totals) during a for loop\nWhy it’s important to loop over indexes instead of elements when saving or modifying values\nCommon mistakes with loop output and how to fix them"
   },
   {
     "objectID": "lectures/10-slides.html#reminders",
@@ -263,14 +263,14 @@
     "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-3",
     "title": "Introduction to R: Lecture 9",
     "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nIn the previous example, we only had two possible categories: “Admitted” and “Rejected”\nWhat happens to our code if we add a third one, say “Waitlisted”? We need to use nested ifelse() statements:\n\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\nqualify %&gt;%\n  mutate(Status = ifelse(Scores &gt; 35,            # first condition\n                         \"Admitted\",             # if TRUE\n                         ifelse(Scores &gt;= 30,    # second condition (only if first is FALSE)\n                                \"Waitlisted\",    # if TRUE\n                                \"Rejected\")))    # if both FALSE"
+    "text": "4. Vectorized tests with ifelse()\nIn the previous example, we only had two possible categories: “Admitted” and “Rejected”\nWhat happens to our code if we add a third one, say “Waitlisted”?\n\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\nqualify %&gt;%\n  mutate(Status = ifelse(Scores &gt; 35,            # first condition\n                         \"Admitted\",             # if TRUE\n                         ifelse(Scores &gt;= 30,    # second condition (only if first is FALSE)\n                                \"Waitlisted\",    # if TRUE\n                                \"Rejected\")))    # if both FALSE"
   },
   {
     "objectID": "lectures/09-slides.html#vectorized-tests-with-ifelse-4",
     "href": "lectures/09-slides.html#vectorized-tests-with-ifelse-4",
     "title": "Introduction to R: Lecture 9",
     "section": "4. Vectorized tests with ifelse()",
-    "text": "4. Vectorized tests with ifelse()\nNested ifelse() statements work, but they can make the code harder to read.\nCompare the previous code with this version that does not use them:\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\nqualify %&gt;%\n  mutate(Status = \"Rejected\") %&gt;%                                  # default label\n  mutate(Status = ifelse(Scores &gt;= 30, \"Waitlisted\", Status)) %&gt;%  # update if condition met\n  mutate(Status = ifelse(Scores &gt; 35, \"Admitted\", Status))         # update if higher condition met\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIf you have multiple conditions (more than two):\n\nWrite multiple separate mutate() + ifelse() steps, as shown on this slide, rather than nesting them (as shown on the previous slide)\nWhen possible, use case_when() instead of ifelse() for better readability"
+    "text": "4. Vectorized tests with ifelse()\nNested ifelse() statements work, but they make the code harder to read.\nCompare the previous code with this code that does not use them:\n\nqualify &lt;- tibble(\"Athlet\" = c(\"Noah\", \"Julio\", \"Nick\", \"Maria\"), \n                  \"Scores\" = c(32, 37, 28, 30))\n\nqualify %&gt;%\n  mutate(Status = \"Rejected\") %&gt;%                                  # default label\n  mutate(Status = ifelse(Scores &gt;= 30, \"Waitlisted\", Status)) %&gt;%  # update if condition met\n  mutate(Status = ifelse(Scores &gt; 35, \"Admitted\", Status))         # update if higher condition met\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nIf you have multiple conditions (more than two):\n\nWrite several separate mutate() + ifelse() steps, as shown on this slide, rather than nesting them, as shown on the previous slide\nWhen possible, use case_when() instead of ifelse() for better readability"
   },
   {
     "objectID": "lectures/09-slides.html#practice-2",
@@ -2265,68 +2265,68 @@
     "href": "lectures/10-home.html",
     "title": "Lecture 10: Control Flow 2",
     "section": "",
-    "text": "Date: July 29, 2025\nTopics: Writing loops for iteration and repetition\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/loops\")"
+    "text": "Date: July 29, 2025\nTopics: Writing Loops Part 1\nSlides: View Slides\nCode: No in-class code to download"
   },
   {
     "objectID": "lectures/10-home.html#info-and-materials",
     "href": "lectures/10-home.html#info-and-materials",
     "title": "Lecture 10: Control Flow 2",
     "section": "",
-    "text": "Date: July 29, 2025\nTopics: Writing loops for iteration and repetition\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/loops\")"
+    "text": "Date: July 29, 2025\nTopics: Writing Loops Part 1\nSlides: View Slides\nCode: No in-class code to download"
   },
   {
     "objectID": "lectures/10-home.html#learning-objectives",
     "href": "lectures/10-home.html#learning-objectives",
     "title": "Lecture 10: Control Flow 2",
     "section": "Learning Objectives",
-    "text": "Learning Objectives"
+    "text": "Learning Objectives\n\nUnderstand how for loops work and how to trace values at each iteration\nLearn how to track and save results during a loop (e.g., running totals)\nRecognize the difference between looping over indexes and over elements"
   },
   {
     "objectID": "lectures/10-home.html#before-class",
     "href": "lectures/10-home.html#before-class",
     "title": "Lecture 10: Control Flow 2",
     "section": "Before Class",
-    "text": "Before Class"
+    "text": "Before Class\n\nReview Lecture 9 materials to get ready for today’s in-class quiz\nBring your laptop to every class"
   },
   {
     "objectID": "lectures/10-home.html#readings",
     "href": "lectures/10-home.html#readings",
     "title": "Lecture 10: Control Flow 2",
     "section": "Readings",
-    "text": "Readings"
+    "text": "Readings\nNo readings."
   },
   {
     "objectID": "lectures/11-home.html",
     "href": "lectures/11-home.html",
-    "title": "Lecture 11: Functions",
+    "title": "Lecture 11: Control Flow 3",
     "section": "",
-    "text": "Date: July 31, 2025\nTopics: Organize and reuse code with functions\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/functions\")"
+    "text": "Date: July 31, 2025\nTopics: Writing Loops Part 2\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/loops\")"
   },
   {
     "objectID": "lectures/11-home.html#info-and-materials",
     "href": "lectures/11-home.html#info-and-materials",
-    "title": "Lecture 11: Functions",
+    "title": "Lecture 11: Control Flow 3",
     "section": "",
-    "text": "Date: July 31, 2025\nTopics: Organize and reuse code with functions\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/functions\")"
+    "text": "Date: July 31, 2025\nTopics: Writing Loops Part 2\nSlides: View Slides\nCode: usethis::use_course(\"csp-materials/loops\")"
   },
   {
     "objectID": "lectures/11-home.html#learning-objectives",
     "href": "lectures/11-home.html#learning-objectives",
-    "title": "Lecture 11: Functions",
+    "title": "Lecture 11: Control Flow 3",
     "section": "Learning Objectives",
     "text": "Learning Objectives"
   },
   {
     "objectID": "lectures/11-home.html#before-class",
     "href": "lectures/11-home.html#before-class",
-    "title": "Lecture 11: Functions",
+    "title": "Lecture 11: Control Flow 3",
     "section": "Before Class",
     "text": "Before Class"
   },
   {
     "objectID": "lectures/11-home.html#readings",
     "href": "lectures/11-home.html#readings",
-    "title": "Lecture 11: Functions",
+    "title": "Lecture 11: Control Flow 3",
     "section": "Readings",
     "text": "Readings"
   },
@@ -2335,7 +2335,7 @@
     "href": "lectures/index.html",
     "title": "Lectures",
     "section": "",
-    "text": "Each lecture page contains materials, slides, and relevant assignments or readings. For an overview, see the Course Schedule.\n\nLecture 1\nCourse Logistics, R, Markdown June 24, 2025\n\n\n\nLecture 2\nGit & GitHub June 26, 2025\n\n\n\nLecture 3\nIntro to ggplot2, Coding Style July 1, 2025\n\n\n\nNo Lecture\nJuly 3, 2025\n\n\n\nLecture 4\nIntro to dplyr, Pipes July 8, 2025\n\n\n\nLecture 5\nData Analysis and Graphs July 10, 2025\n\n\n\nLecture 6\nFactors, Intermediate dplyr July 15, 2025\n\n\n\nLecture 7\nData Cleaning July 17, 2025\n\n\n\nLecture 8\nData Structures, Base R July 22, 2025\n\n\n\nLecture 9\nControl Flow 1 July 24, 2025\n\n\n\nLecture 10\nControl Flow 2 July 29, 2025\n\n\n\nLecture 11\nFunctions July 31, 2025"
+    "text": "Each lecture page contains materials, slides, and relevant assignments or readings. For an overview, see the Course Schedule.\n\nLecture 1\nCourse Logistics, R, Markdown June 24, 2025\n\n\n\nLecture 2\nGit & GitHub June 26, 2025\n\n\n\nLecture 3\nIntro to ggplot2, Coding Style July 1, 2025\n\n\n\nNo Lecture\nJuly 3, 2025\n\n\n\nLecture 4\nIntro to dplyr, Pipes July 8, 2025\n\n\n\nLecture 5\nData Analysis and Graphs July 10, 2025\n\n\n\nLecture 6\nFactors, Intermediate dplyr July 15, 2025\n\n\n\nLecture 7\nData Cleaning July 17, 2025\n\n\n\nLecture 8\nData Structures, Base R July 22, 2025\n\n\n\nLecture 9\nControl Flow 1 July 24, 2025\n\n\n\nLecture 10\nControl Flow 2 July 29, 2025\n\n\n\nLecture 11\nControl Flow 3 July 31, 2025"
   },
   {
     "objectID": "setup/setup-test.html",
@@ -2454,42 +2454,42 @@
     "href": "lectures/10-slides.html#what-are-control-structures",
     "title": "Introduction to R: Lecture 10",
     "section": "What Are Control Structures?",
-    "text": "What Are Control Structures?\nControl structures let us write code that can:\n\nMake decisions\n→ with conditional statements (if, if...else, etc.)\nRepeat actions\n→ with loops (for, while)\n\nToday we focus on loops!"
+    "text": "What Are Control Structures?\nControl structures let us write code that can:\n\nMake decisions\n→ with conditional statements (if, if...else, etc.)\nRepeat actions\n→ with loops (for, while)\n\nToday we focus on loops, and specifically on “For loops”!"
   },
   {
     "objectID": "lectures/10-slides.html#for-loop-example-3",
     "href": "lectures/10-slides.html#for-loop-example-3",
     "title": "Introduction to R: Lecture 10",
     "section": "For Loop Example #3",
-    "text": "For Loop Example #3\nObserve this code. What does this code output in each run?\n\nfor (i in c(1,2,3)) {\n  print(i)\n  print(\"Hello\")\n  sum &lt;- 100 + 1\n  print(sum)\n}"
+    "text": "For Loop Example #3\nObserve this code. What does this code output in each run?\n\nfor (i in c(1,2,3)) {\n  print(i)\n  print(\"Hello\")\n  sum &lt;- 100 + i\n  print(sum)\n}"
   },
   {
     "objectID": "lectures/10-slides.html#for-loop-example-4",
     "href": "lectures/10-slides.html#for-loop-example-4",
     "title": "Introduction to R: Lecture 10",
     "section": "For Loop Example #4",
-    "text": "For Loop Example #4\nThis code takes the previous example, but defines the sum variable outside the loop (before it starts). What does this code output in each run?\n\nsum &lt;- 0\n\nfor (i in c(1,2,3)) {\n  print(i)\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(sum)\n}"
+    "text": "For Loop Example #4\nThis code takes the previous example, but defines the sum variable outside the loop, before it starts. What does this code output in each run?\n\nsum &lt;- 0\n\nfor (i in c(1,2,3)) {\n  print(i)\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(sum)\n}"
   },
   {
     "objectID": "lectures/10-slides.html#for-loop-example-4-1",
     "href": "lectures/10-slides.html#for-loop-example-4-1",
     "title": "Introduction to R: Lecture 10",
     "section": "For Loop Example #4",
-    "text": "For Loop Example #4\nWhat we just observed is a simple example of a common task: accumulating a running total. Use it when you are adding up scores, votes, or counts one at a time, and want to track the growing sum after each step\n\nsum &lt;- 0\n\nfor (i in c(1,2,3)) {\n  print(paste(\"Current i is:\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n}"
+    "text": "For Loop Example #4\nWhat we just observed is a simple example of a common task: accumulating a running total. Use it when you are adding up scores, votes, or counts one at a time, and want to keep track of how the total grows after each loop.\nSame code, but with clearer print statements to make each step easier to follow:\n\nsum &lt;- 0\n\nfor (i in c(1,2,3)) {\n  print(paste(\"Current i is\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is\", sum))\n}\n\nsum"
   },
   {
     "objectID": "lectures/10-slides.html#save-for-loop-output",
     "href": "lectures/10-slides.html#save-for-loop-output",
     "title": "Introduction to R: Lecture 10",
     "section": "Save For Loop Output",
-    "text": "Save For Loop Output\nThe previous code correctly prints the updated sum (which changes in each loop) but it only saves the final one.\nTo keep all intermediate values, we need to save them in a vector:\n\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", length = 3)\n\nfor (i in c(1,2,3)) {\n  print(paste(\"Current i is:\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum    # save the current sum at position i\n}\noutput\n\nWhy we write output[i]?\nThis code is good but not yet optimal. Let’s see why."
+    "text": "Save For Loop Output\nThe previous code prints the updated sum each time, but only saves the final value for sum. To keep all intermediate values, we need to store them in a vector:\n\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", length = 3)\n\nfor (i in c(1,2,3)) {\n  print(paste(\"Current i is:\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum     # saves sum in position i\n}\n\noutput\n\n\n\n\n\n\n\n\nWhy output[i] &lt;- sum?\n\n\nWhen i = 1, sum = 0 + 1 = 1 → store 1 in output[1] → output becomes: 1 0 0\nWhen i = 2, sum = 1 + 2 = 3 → store 3 in output[2] → output becomes: 1 3 0\nWhen i = 3, sum = 3 + 3 = 6 → store 6 in output[3] → output becomes: 1 3 6\nThis saves the running total at each position i in the vector output."
   },
   {
     "objectID": "lectures/10-slides.html#looping-over-indexes-vs-looping-over-elements",
     "href": "lectures/10-slides.html#looping-over-indexes-vs-looping-over-elements",
     "title": "Introduction to R: Lecture 10",
     "section": "Looping over Indexes vs Looping over Elements",
-    "text": "Looping over Indexes vs Looping over Elements\n\n# Looping over elements\nx &lt;- c(2,4,3)\nfor (value in x) {\n  print(value)\n}\n\n# Looping over indexes, can also use seq_along() \nx &lt;- c(2,4,6)\nfor (i in 1:length(x)) {\n  print(x[i])\n}\n\n# another slide with saving output vs printing, then go back to previous example and adjust also sum &lt;- sum + i\n\n\n\n\n\n\n\n\nTip: Prefer looping over indexes\n\n\nLooping over indexes (i in 1:length(x)) gives you more control:\n\nYou can access both the value and its position\nYou can store, replace, or compare values more flexibly\nIt’s easier to save output or modify elements in-place\n\nWhen you loop over values directly (e.g. for (value in x)):\nYou lose the index, so you can’t easily:\nstore values by position\nmodify the original vector\ntrack where you are in the loop\nThis matters if you want to update values or build a new vector\nBest practice: oop over indexes, not elements, when you need to:\nModify, save, or assign values by position (e.g., output[i] &lt;- …)\nEnsure your loop works even if values repeat or are not valid indices\nThis gives you full control over both:\nthe position (i)\nand the value at that position (x[i])"
+    "text": "Looping over Indexes vs Looping over Elements\nTo fix the previous code we need to understand the difference between looping over elements and looping over indexes:\n\n# Looping over elements\nx &lt;- c(1,4,6)\nfor (i in x) {\n  print(i)\n}\n\n# Looping over indexes (method 1)\nx &lt;- c(1,4,6)\nfor (i in 1:length(x)) {\n  print(i)\n  print(x[i])\n}\n\n# Looping over indexes (method 2)\nx &lt;- c(1,4,6)\nfor (i in seq_along(x)) {\n  print(i)\n  print(x[i])\n}\n\ni is the loop “counter” and should always go 1, 2, 3, 4, etc.\nx[i] is the value of the vector x at position i and can be anything"
   },
   {
     "objectID": "lectures/10-slides.html#using-for-loops-with-dataframes-in-r",
@@ -2510,7 +2510,7 @@
     "href": "lectures/10-slides.html#definition-of-for-loops",
     "title": "Introduction to R: Lecture 10",
     "section": "Definition of For Loops",
-    "text": "Definition of For Loops\nFor loops are the most common looping construct in many programming languages. They are used to iterate over the elements of an object (usually a list or vector) and perform an action on each one.\nSyntax:\nfor (item in sequence of items) {\n  action to be repeated for each item   \n}\nExample:\nfor (item in c(1,2,3)) {\n  print(item)\n}"
+    "text": "Definition of For Loops\n“For loops” are the most common looping construct in many programming languages. They are used to iterate over the elements of an object (usually a list or vector) and perform an action on each one.\nSyntax:\nfor (item in sequence of items) {\n  action to be repeated for each item   \n}\nExample:\nfor (item in c(1,2,3)) {\n  print(item)\n}"
   },
   {
     "objectID": "lectures/10-slides.html#for-loop-example-1",
@@ -2545,14 +2545,14 @@
     "href": "lectures/10-slides.html#simple-example",
     "title": "Introduction to R: Lecture 10",
     "section": "Simple Example",
-    "text": "Simple Example\n\nfor (item in c(1,2,3)) {\n  print(item)\n}\n\nLet’s break this code down:\n\nthe repeated action here is simple: print(item)\nitem is a placeholder: its value changes with each loop iteration (it can be labeled any name you like)\nthe number of times the statement block repeats depends on the number of items in the sequence — in this example: three items, thus three times"
+    "text": "Simple Example\n\nfor (item in c(1,2,3)) {\n  print(item)\n}\n\nLet’s break this code down:\n\nThe repeated action here is simple: print(item)\nitem is a placeholder: its value changes with each loop iteration\nthe number of times the statement block repeats depends on the number of items in the sequence — in this example: three items, thus three times"
   },
   {
     "objectID": "lectures/10-slides.html#nested-for-loop",
     "href": "lectures/10-slides.html#nested-for-loop",
     "title": "Introduction to R: Lecture 10",
     "section": "Nested For Loop",
-    "text": "Nested For Loop\nFor loops can be nested. In this case, the outer loop controls how many times the entire inner loop runs from start to finish:\n\nfor (i in c(1,2,3)) {\n  print(i)\n  for (j in c(\"cat\", \"dog\", \"squirrel\", \"rabbit\")) {\n    print(j)\n  }\n}\n\nLet’s break this code down:\n\nThe outer loop (i in 1:3) runs 3 times\nFor each execution of the outer loop, the inner loop runs 4 times\nThat’s a total of 3 × 4 = 12 inner loop outputs, plus 3 outer loop prints"
+    "text": "Nested For Loop\nFor loops can be nested. In this case, the outer loop controls how many times the entire inner loop runs from start to finish:\n\nfor (i in c(1,2,3)) {\n  print(i)\n  for (j in c(\"cat\", \"dog\", \"squirrel\", \"rabbit\")) {\n    print(j)\n  }\n}\n\nLet’s break this code down:\n\nThe outer loop runs 3 times\nFor each execution of the outer loop, the inner loop runs 4 times\nThat’s a total of 3 × 4 = 12 inner loop outputs, plus 3 outer loop prints"
   },
   {
     "objectID": "lectures/10-slides.html#in-sum",
@@ -2560,5 +2560,145 @@
     "title": "Introduction to R: Lecture 10",
     "section": "In sum",
     "text": "In sum\nSummarize use of [i] for both output and sum"
+  },
+  {
+    "objectID": "lectures/10-slides.html#save-for-loop-output-1",
+    "href": "lectures/10-slides.html#save-for-loop-output-1",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Save For Loop Output",
+    "text": "Save For Loop Output\nOur current code works but it’s NOT yet optimal:\n\nIt only behaves correctly because the input vector is exactly c(1, 2, 3)\nIf the values in the vector change, the current loop may produce incorrect or unexpected results\n\n💻 Try this: Take the code from the previous slide and change the input vector to c(1, 4, 6) and observe what happens to the output. Can you explain why the result changes?"
+  },
+  {
+    "objectID": "lectures/10-slides.html#save-for-loop-output-2",
+    "href": "lectures/10-slides.html#save-for-loop-output-2",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Save For Loop Output",
+    "text": "Save For Loop Output\n\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", length = 3)\n\nfor (i in c(1, 4, 6)) {\n  print(paste(\"Current i is:\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum  # saves sum in position i\n}\n\noutput\n\n\n\n\n\n\n\n\nWhat Happens in Each Iteration\n\n\nWhen i = 1 → sum = 0 + 1 = 1 → store 1 in output[1] → output becomes: 1 0 0\nWhen i = 4 → sum = 1 + 4 = 5 → store 5 in output[4] → output becomes: 1 0 0 5\nWhen i = 6 → sum = 5 + 6 = 11 → store 11 in output[6] → output becomes: 1 0 0 5 NA 11\nR won’t throw an error if you assign to an index beyond a vector’s original length — it silently extends the vector, which can lead to unexpected results."
+  },
+  {
+    "objectID": "lectures/10-slides.html#looping-over-indexes-vs-looping-over-elements-1",
+    "href": "lectures/10-slides.html#looping-over-indexes-vs-looping-over-elements-1",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Looping over Indexes vs Looping over Elements",
+    "text": "Looping over Indexes vs Looping over Elements\nLet’s see what happens when we save the output instead of just printing:\n\n\n❌ Version A\n\nx &lt;- c(1,4,6)\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", \n                 length = length(x))\n\n# looping over elements\nfor (i in x) {\n  print(paste(\"Current i is:\", i))\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum\n}\n\noutput\n\n\n✅ Version B\n\nx &lt;- c(1,4,6)\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", \n                 length = length(x))\n\n# looping over indexes\nfor (i in seq_along(x)) {\n  print(paste(\"Current i is:\", i))\n  sum &lt;- sum + x[i]\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum\n}\n\noutput"
+  },
+  {
+    "objectID": "lectures/10-slides.html#prefer-looping-over-indexes",
+    "href": "lectures/10-slides.html#prefer-looping-over-indexes",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Prefer Looping over Indexes",
+    "text": "Prefer Looping over Indexes\nLoop over indexes, like i in 1:length(x) or seq_along(x), instead of elements/values to:\n\nModify, save, or assign values by position (e.g., output[i] &lt;- …)\nEnsure your loop works regardless of the values in the vector (e.g., if values repeat or are not valid indices)\nHave you full control over both: the position i and the value at that position x[i]"
+  },
+  {
+    "objectID": "lectures/10-slides.html#practice-fix-the-mistake",
+    "href": "lectures/10-slides.html#practice-fix-the-mistake",
+    "title": "Introduction to R: Lecture 10",
+    "section": "💻 Practice: Fix the Mistake",
+    "text": "💻 Practice: Fix the Mistake\nYou are a farmer writing a for loop to track tomatoes sold over three days. You want to add up the number of tomatoes sold and store the running total in a vector called output.\nBut something is wrong with the code — can you spot and fix it? First, think about what the output vector should be, then look at the code and figure out why it’s not giving you that.\n\ntomatoes &lt;- c(10, 2, 100) \nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", \n                 length = length(tomatoes))\n\nfor (i in seq_along(tomatoes)) {\n  print(paste(\"Current i is:\", i))\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum\n}\n\noutput"
+  },
+  {
+    "objectID": "lectures/10-slides.html#what-happens-inside-a-for-loop",
+    "href": "lectures/10-slides.html#what-happens-inside-a-for-loop",
+    "title": "Introduction to R: Lecture 10",
+    "section": "What happens inside a For Loop?",
+    "text": "What happens inside a For Loop?\nObserve this code. What does this code output in each run?\n\nfor (i in c(1,2,3)) {\n  print(i)\n  print(\"Hello\")\n  sum &lt;- 100 + i\n  print(sum)\n}"
+  },
+  {
+    "objectID": "lectures/10-slides.html#tracking-a-running-total",
+    "href": "lectures/10-slides.html#tracking-a-running-total",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Tracking a Running Total",
+    "text": "Tracking a Running Total\nWhat we just observed is a simple example of a common task: accumulating a running total. Use it when you are adding up scores, votes, or counts one at a time, and want to keep track of how the total grows after each loop.\nSame code, but with clearer print statements to make each step easier to follow:\n\nsum &lt;- 0\n\nfor (i in c(1,2,3)) {\n  print(paste(\"Current i is\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is\", sum))\n}\n\nsum"
+  },
+  {
+    "objectID": "lectures/10-slides.html#tracking-a-running-total-1",
+    "href": "lectures/10-slides.html#tracking-a-running-total-1",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Tracking a Running Total",
+    "text": "Tracking a Running Total\nWhat we just observed is a simple example of a common task: accumulating a running total. Use it when you are adding up scores, votes, or counts one at a time, and want to keep track of how the total grows after each loop.\nSame code, but with clearer print statements to make each step easier to follow:\n\nsum &lt;- 0\n\nfor (i in c(1,2,3)) {\n  print(paste(\"Current i is\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is\", sum))\n}\n\nsum"
+  },
+  {
+    "objectID": "lectures/10-slides.html#in-sum-prefer-looping-over-indexes",
+    "href": "lectures/10-slides.html#in-sum-prefer-looping-over-indexes",
+    "title": "Introduction to R: Lecture 10",
+    "section": "In sum: Prefer Looping over Indexes",
+    "text": "In sum: Prefer Looping over Indexes\nLoop over indexes, like i in 1:length(x) or seq_along(x), instead of elements/values to:\n\nModify, save, or assign values by position (e.g., output[i] &lt;- …)\nEnsure your loop works regardless of the values in the vector (e.g., if values repeat or are not valid indices)\nHave you full control over both: the position i and the value at that position x[i]"
+  },
+  {
+    "objectID": "lectures/10-slides.html#tracing-execution-in-a-for-loop",
+    "href": "lectures/10-slides.html#tracing-execution-in-a-for-loop",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Tracing Execution in a For Loop",
+    "text": "Tracing Execution in a For Loop\nObserve this code. What does this code output in each run?\n\nfor (i in c(1,2,3)) {\n  print(i)\n  print(\"Hello\")\n  sum &lt;- 100 + i\n  print(sum)\n}"
+  },
+  {
+    "objectID": "lectures/10-slides.html#tracing-execution-in-a-for-loop-1",
+    "href": "lectures/10-slides.html#tracing-execution-in-a-for-loop-1",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Tracing Execution in a For Loop",
+    "text": "Tracing Execution in a For Loop\nThis code takes the previous example, but defines the sum variable outside the loop, before it starts. What does this code output in each run?\n\nsum &lt;- 0\n\nfor (i in c(1,2,3)) {\n  print(i)\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(sum)\n}"
+  },
+  {
+    "objectID": "lectures/10-slides.html#nested-for-loops",
+    "href": "lectures/10-slides.html#nested-for-loops",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Nested For Loops",
+    "text": "Nested For Loops\nFor loops can be nested, so the outer loop controls how many times the entire inner loop runs from start to finish:\n\nfor (i in c(1,2,3)) {\n  print(i)\n  for (j in c(\"cat\", \"dog\", \"squirrel\", \"rabbit\")) {\n    print(j)\n  }\n}\n\nLet’s break this code down:\n\nThe outer loop runs 3 times\nFor each execution of the outer loop, the inner loop runs 4 times\nThat’s a total of 3 × 4 = 12 inner loop outputs, plus 3 outer loop prints"
+  },
+  {
+    "objectID": "lectures/10-slides.html#accumulating-a-running-total",
+    "href": "lectures/10-slides.html#accumulating-a-running-total",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Accumulating a Running Total",
+    "text": "Accumulating a Running Total\nWhat we just observed is a simple example of a common task: accumulating a running total. Use it when you are adding up scores, votes, or counts one at a time, and want to keep track of how the total grows after each loop.\nSame code, but with clearer print statements to make each step easier to follow:\n\nsum &lt;- 0\n\nfor (i in c(1,2,3)) {\n  print(paste(\"Current i is\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is\", sum))\n}\n\nsum"
+  },
+  {
+    "objectID": "lectures/10-slides.html#saving-results-from-for-loop",
+    "href": "lectures/10-slides.html#saving-results-from-for-loop",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Saving Results from For Loop",
+    "text": "Saving Results from For Loop\nThe previous code prints the updated sum each time, but only saves the final value for sum. To keep all intermediate values, we need to store them in a vector:\n\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", length = 3)\n\nfor (i in c(1,2,3)) {\n  print(paste(\"Current i is:\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum     # saves sum in position i\n}\n\noutput\n\n\n\n\n\n\n\n\nWhy output[i] &lt;- sum?\n\n\nWhen i = 1, sum = 0 + 1 = 1 → store 1 in output[1] → output becomes: 1 0 0\nWhen i = 2, sum = 1 + 2 = 3 → store 3 in output[2] → output becomes: 1 3 0\nWhen i = 3, sum = 3 + 3 = 6 → store 6 in output[3] → output becomes: 1 3 6\nThis saves the running total at each position i in the vector output."
+  },
+  {
+    "objectID": "lectures/10-slides.html#saving-results-from-a-for-loop",
+    "href": "lectures/10-slides.html#saving-results-from-a-for-loop",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Saving Results from a For Loop",
+    "text": "Saving Results from a For Loop\nOur current code works but it’s NOT yet optimal:\n\nIt only behaves correctly because the input vector is exactly c(1, 2, 3)\nIf the values in the vector change, the current loop may produce incorrect or unexpected results\n\n💻 Try this:\nTake the code from the previous slide and change the input vector to c(1, 4, 6) and observe what happens to the output. Can you explain why the result changes?"
+  },
+  {
+    "objectID": "lectures/10-slides.html#saving-results-from-a-for-loop-1",
+    "href": "lectures/10-slides.html#saving-results-from-a-for-loop-1",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Saving Results from a For Loop",
+    "text": "Saving Results from a For Loop\n\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", length = 3)\n\nfor (i in c(1, 4, 6)) {\n  print(paste(\"Current i is:\", i))\n  print(\"Hello\")\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum  # saves sum in position i\n}\n\noutput\n\n\n\n\n\n\n\n\nWhat Happens in Each Iteration\n\n\nWhen i = 1 → sum = 0 + 1 = 1 → store 1 in output[1] → output becomes: 1 0 0\nWhen i = 4 → sum = 1 + 4 = 5 → store 5 in output[4] → output becomes: 1 0 0 5\nWhen i = 6 → sum = 5 + 6 = 11 → store 11 in output[6] → output becomes: 1 0 0 5 NA 11\nR won’t throw an error if you assign to an index beyond a vector’s original length: it silently extends the vector, which can lead to unexpected results."
+  },
+  {
+    "objectID": "lectures/10-slides.html#elements-vs.-indexes-why-it-matters",
+    "href": "lectures/10-slides.html#elements-vs.-indexes-why-it-matters",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Elements vs. Indexes: Why It Matters",
+    "text": "Elements vs. Indexes: Why It Matters\nTo fix the previous code we need to understand the difference between looping over elements and over indexes:\n\n# Looping over values/elements\nx &lt;- c(1,4,6)\nfor (i in x) {\n  print(i)        # value\n}\n\n# Looping over indexes (method 1)\nx &lt;- c(1,4,6)\nfor (i in 1:length(x)) {\n  print(i)        # index\n  print(x[i])     # value at that index\n}\n\n# Looping over indexes (method 2)\nx &lt;- c(1,4,6)\nfor (i in seq_along(x)) {\n  print(i)\n  print(x[i])\n}\n\n\n\n\n\n\n\n\ni and x[i]\n\n\nNote: i is the loop index or “counter” and should always go 1, 2, 3, 4, etc., while x[i] is the element or value of the vector x at position i and can be any value"
+  },
+  {
+    "objectID": "lectures/10-slides.html#elements-vs.-indexes-why-it-matters-1",
+    "href": "lectures/10-slides.html#elements-vs.-indexes-why-it-matters-1",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Elements vs. Indexes: Why It Matters",
+    "text": "Elements vs. Indexes: Why It Matters\nLet’s see what happens when we save the output instead of just printing:\n\n\n❌ Version A\n\nx &lt;- c(1,4,6)\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", \n                 length = length(x))\n\n# looping over elements\nfor (i in x) {\n  print(paste(\"Current i is:\", i))\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum\n}\n\noutput\n\n\n✅ Version B\n\nx &lt;- c(1,4,6)\nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", \n                 length = length(x))\n\n# looping over indexes\nfor (i in seq_along(x)) {\n  print(paste(\"Current i is:\", i))\n  sum &lt;- sum + x[i]\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum\n}\n\noutput"
+  },
+  {
+    "objectID": "lectures/10-slides.html#best-practice-loop-over-indexes",
+    "href": "lectures/10-slides.html#best-practice-loop-over-indexes",
+    "title": "Introduction to R: Lecture 10",
+    "section": "Best Practice: Loop Over Indexes",
+    "text": "Best Practice: Loop Over Indexes\nLoop over indexes, like i in 1:length(x) or seq_along(x), instead of elements/values to:\n\nModify, save, or assign values by position (e.g., output[i] &lt;- …)\nEnsure your loop works regardless of the values in the vector (e.g., if values repeat or are not valid indices)\nHave you full control over both: the position i and the value at that position x[i]"
+  },
+  {
+    "objectID": "lectures/10-slides.html#practice-fix-this-for-looop",
+    "href": "lectures/10-slides.html#practice-fix-this-for-looop",
+    "title": "Introduction to R: Lecture 10",
+    "section": "💻 Practice: Fix this For Looop",
+    "text": "💻 Practice: Fix this For Looop\nYou are a farmer writing a for loop to track tomatoes sold over three days. You want to add up the number of tomatoes sold and store the running total in a vector called output.\nBut something is wrong with the code — can you spot and fix it? First, think about what the output vector should be, then look at the code and figure out why it’s not giving you that.\n\ntomatoes &lt;- c(10, 2, 100) \nsum &lt;- 0\noutput &lt;- vector(mode = \"integer\", \n                 length = length(tomatoes))\n\nfor (i in seq_along(tomatoes)) {\n  print(paste(\"Current i is:\", i))\n  sum &lt;- sum + i\n  print(paste(\"Current sum is:\", sum))\n  output[i] &lt;- sum\n}\n\noutput"
   }
 ]

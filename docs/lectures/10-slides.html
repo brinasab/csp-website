@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-864c5404f4710dceefb0a9fe440f50a1.css">
   <link rel="stylesheet" href="../style/styles.css">
@@ -142,40 +208,304 @@ Sabrina Nardin, Summer 2025
 </div>
 
 </section>
-<section class="slide level2 center">
-
-<h3 id="slides-coming-soon">Slides coming soon!</h3>
-</section>
 <section>
 <section id="agenda" class="title-slide slide level1 center">
 <h1>Agenda</h1>
 <div class="agenda-list">
 <ol type="1">
-<li>Topic<br>
-</li>
-<li>Topic</li>
-<li>Topic<br>
-</li>
+<li>For Loops</li>
+<li>R Alternatives to For Loops</li>
+<li>While Loops</li>
 </ol>
 </div>
-<!--
-<span style="font-size: 0.8em; color: #666;">
-*These slides were last updated on **`r format(Sys.Date(), '%B %d, %Y')`***
-</span>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 28, 2025 </span></p>
+<!-- NOTES TO IMPROVE CURRENT LOOP SLIDES
+
+Add a few slides that show the differences of looping over indexes or looping over elements and 
+teach that concept form the slides; then leave the in-class demo code with the key and let students explore it in team and go around for questions. Total time 10 min slides and 10 go over code + 5 review
+
+In the demo for loop: add code on data structure, e.g. show how to access columns of a df and their elements with the double and single square brackets 
+
+Show difference of accessing single column in a df (that is a vector so use []) or elements of columns for which you need to use [[]]
+
+When you teach for loops add the break and continue statements (currently not in slides!)
+
 -->
 </section>
 <section class="slide level2 center">
 
 </section></section>
 <section>
-<section id="title-section" class="title-slide slide level1 center middle">
-<h1>1. Title Section</h1>
+<section id="for-loops" class="title-slide slide level1 center middle">
+<h1>1. For Loops</h1>
 
 </section>
-<section id="subtitles" class="slide level2 center">
-<h2>Subtitles</h2>
+<section id="what-are-control-structures" class="slide level2 center">
+<h2>What Are Control Structures?</h2>
+<p>Control structures let us write code that can:</p>
+<ul>
+<li><p><strong>Make decisions</strong><br>
+→ with <strong>conditional statements</strong> (<code>if</code>, <code>if...else</code>, etc.)</p></li>
+<li><p><strong>Repeat actions</strong><br>
+→ with <strong>loops</strong> (<code>for</code>, <code>while</code>)</p></li>
+</ul>
+<p>Today we focus on loops!</p>
+</section>
+<section id="definition-of-for-loops" class="slide level2 center">
+<h2>Definition of For Loops</h2>
+<p>For loops are the most common looping construct in many programming languages. They are used to <strong>iterate over the elements of an object</strong> (usually a list or vector) and perform an action on each one.</p>
+<p>Syntax:</p>
+<pre><code>for (item in sequence of items) {
+  action to be repeated for each item   
+}</code></pre>
+<p>Example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="cf">for</span> (item <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)) {</span>
+<span id="cb2-2"><a></a>  <span class="fu">print</span>(item)</span>
+<span id="cb2-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="simple-example" class="slide level2 center">
+<h2>Simple Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="cf">for</span> (item <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)) {</span>
+<span id="cb3-2"><a></a>  <span class="fu">print</span>(item)</span>
+<span id="cb3-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s break this code down:</p>
+<ul>
+<li><p>the repeated action here is simple: <code>print(item)</code></p></li>
+<li><p><code>item</code> is a placeholder: its value changes with each loop iteration (it can be labeled any name you like)</p></li>
+<li><p>the number of times the statement block repeats depends on the number of items in the sequence — in this example: three items, thus three times</p></li>
+</ul>
+</section>
+<section id="nested-for-loop" class="slide level2 center">
+<h2>Nested For Loop</h2>
+<p>For loops can be nested. In this case, the outer loop controls how many times the entire inner loop runs from start to finish:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)) {</span>
+<span id="cb4-2"><a></a>  <span class="fu">print</span>(i)</span>
+<span id="cb4-3"><a></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"squirrel"</span>, <span class="st">"rabbit"</span>)) {</span>
+<span id="cb4-4"><a></a>    <span class="fu">print</span>(j)</span>
+<span id="cb4-5"><a></a>  }</span>
+<span id="cb4-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s break this code down:</p>
+<ul>
+<li><p>The outer loop <code>(i in 1:3)</code> runs 3 times</p></li>
+<li><p>For each execution of the outer loop, the inner loop runs 4 times</p></li>
+<li><p>That’s a total of 3 × 4 = 12 inner loop outputs, plus 3 outer loop prints</p></li>
+</ul>
+<!--
+for (i in 1:3) {
+  print(i)
+  for (j in c('a', 'b')) {
+    print(i)
+    print(paste(i, "outer"))
+    print(j)
+    print(paste(i,j))
+  }
+}
+-->
+</section>
+<section id="for-loop-example-3" class="slide level2 center">
+<h2>For Loop Example #3</h2>
+<p>Observe this code. What does this code output in each run?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)) {</span>
+<span id="cb5-2"><a></a>  <span class="fu">print</span>(i)</span>
+<span id="cb5-3"><a></a>  <span class="fu">print</span>(<span class="st">"Hello"</span>)</span>
+<span id="cb5-4"><a></a>  sum <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">print</span>(sum)</span>
+<span id="cb5-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<!-- What is this loop doing? Have someone describing it 
+what happens if I add a print(i) at the end outside the loop: prints last i-->
+</section>
+<section id="for-loop-example-4" class="slide level2 center">
+<h2>For Loop Example #4</h2>
+<p>This code takes the previous example, but defines the <code>sum</code> variable outside the loop (before it starts). What does this code output in each run?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)) {</span>
+<span id="cb6-4"><a></a>  <span class="fu">print</span>(i)</span>
+<span id="cb6-5"><a></a>  <span class="fu">print</span>(<span class="st">"Hello"</span>)</span>
+<span id="cb6-6"><a></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb6-7"><a></a>  <span class="fu">print</span>(sum)</span>
+<span id="cb6-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="for-loop-example-4-1" class="slide level2 center">
+<h2>For Loop Example #4</h2>
+<p>What we just observed is a simple example of a common task: accumulating a running total. Use it when you are adding up scores, votes, or counts one at a time, and want to track the growing sum after each step</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)) {</span>
+<span id="cb7-4"><a></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Current i is:"</span>, i))</span>
+<span id="cb7-5"><a></a>  <span class="fu">print</span>(<span class="st">"Hello"</span>)</span>
+<span id="cb7-6"><a></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb7-7"><a></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Current sum is:"</span>, sum))</span>
+<span id="cb7-8"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="save-for-loop-output" class="slide level2 center">
+<h2>Save For Loop Output</h2>
+<p>The previous code correctly prints the updated sum (which changes in each loop) but it only saves the final one.</p>
+<p>To keep all intermediate values, we need to save them in a vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb8-2"><a></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"integer"</span>, <span class="at">length =</span> <span class="dv">3</span>)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)) {</span>
+<span id="cb8-5"><a></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Current i is:"</span>, i))</span>
+<span id="cb8-6"><a></a>  <span class="fu">print</span>(<span class="st">"Hello"</span>)</span>
+<span id="cb8-7"><a></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb8-8"><a></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Current sum is:"</span>, sum))</span>
+<span id="cb8-9"><a></a>  output[i] <span class="ot">&lt;-</span> sum    <span class="co"># save the current sum at position i</span></span>
+<span id="cb8-10"><a></a>}</span>
+<span id="cb8-11"><a></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Why we write <code>output[i]</code>?</p>
+<p>This code is good but not yet optimal. Let’s see why.</p>
+</section>
+<section id="looping-over-indexes-vs-looping-over-elements" class="slide level2 center">
+<h2>Looping over Indexes vs Looping over Elements</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Looping over elements</span></span>
+<span id="cb9-2"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>)</span>
+<span id="cb9-3"><a></a><span class="cf">for</span> (value <span class="cf">in</span> x) {</span>
+<span id="cb9-4"><a></a>  <span class="fu">print</span>(value)</span>
+<span id="cb9-5"><a></a>}</span>
+<span id="cb9-6"><a></a></span>
+<span id="cb9-7"><a></a><span class="co"># Looping over indexes, can also use seq_along() </span></span>
+<span id="cb9-8"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb9-9"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x)) {</span>
+<span id="cb9-10"><a></a>  <span class="fu">print</span>(x[i])</span>
+<span id="cb9-11"><a></a>}</span>
+<span id="cb9-12"><a></a></span>
+<span id="cb9-13"><a></a><span class="co"># another slide with saving output vs printing, then go back to previous example and adjust also sum &lt;- sum + i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div title="Tip: Prefer looping over indexes">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip: Prefer looping over indexes</strong></p>
+</div>
+<div class="callout-content">
+<p>Looping over indexes (i in 1:length(x)) gives you more control:</p>
+<ul>
+<li><p>You can access both the value and its position</p></li>
+<li><p>You can store, replace, or compare values more flexibly</p></li>
+<li><p>It’s easier to save output or modify elements in-place</p></li>
+</ul>
+<p>When you loop over values directly (e.g.&nbsp;for (value in x)):</p>
+<p>You lose the index, so you can’t easily:</p>
+<p>store values by position</p>
+<p>modify the original vector</p>
+<p>track where you are in the loop</p>
+<p>This matters if you want to update values or build a new vector</p>
+<p>Best practice: oop over indexes, not elements, when you need to:</p>
+<p>Modify, save, or assign values by position (e.g., output[i] &lt;- …)</p>
+<p>Ensure your loop works even if values repeat or are not valid indices</p>
+<p>This gives you full control over both:</p>
+<p>the position (i)</p>
+<p>and the value at that position (x[i])</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="compare-two-loops-whats-the-difference" class="slide level2 center">
+<h2>Compare Two Loops – What’s the Difference?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="version-a">Version A</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb10-2"><a></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb10-3"><a></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"integer"</span>, </span>
+<span id="cb10-4"><a></a>                 <span class="at">length =</span> <span class="fu">length</span>(numbers))</span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(numbers)) {</span>
+<span id="cb10-7"><a></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Current i is:"</span>, i))</span>
+<span id="cb10-8"><a></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> i</span>
+<span id="cb10-9"><a></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Current sum is:"</span>, sum))</span>
+<span id="cb10-10"><a></a>  output[i] <span class="ot">&lt;-</span> sum</span>
+<span id="cb10-11"><a></a>}</span>
+<span id="cb10-12"><a></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<h3 id="version-b">Version B</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>sum <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb11-2"><a></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb11-3"><a></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode =</span> <span class="st">"integer"</span>, </span>
+<span id="cb11-4"><a></a>                 <span class="at">length =</span> <span class="fu">length</span>(numbers))</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(numbers)) {</span>
+<span id="cb11-7"><a></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Current i is:"</span>, i))</span>
+<span id="cb11-8"><a></a>  sum <span class="ot">&lt;-</span> sum <span class="sc">+</span> numbers[i]</span>
+<span id="cb11-9"><a></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Current sum is:"</span>, sum))</span>
+<span id="cb11-10"><a></a>  output[i] <span class="ot">&lt;-</span> sum</span>
+<span id="cb11-11"><a></a>}</span>
+<span id="cb11-12"><a></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div></div>
 </section>
 <section id="practice" class="slide level2 center">
+<h2>💻 Practice</h2>
+<p>Compare Version A and Version B from the previous slide and identify their differences:</p>
+<ul>
+<li>Do they produce the same result the current <code>numbers</code> vector?</li>
+<li>Will they still behave the same if the values in <code>numbers</code> change?</li>
+</ul>
+<p><strong>Try this:</strong> - Change <code>numbers</code> to <code>c(5, 3, 10)</code> in both versions - Run both versions - Observe the outputs and explain the difference</p>
+</section>
+<section id="in-sum" class="slide level2 center">
+<h2>In sum</h2>
+<p>Summarize use of [i] for both output and sum</p>
+</section>
+<section id="practice-1" class="slide level2 center">
+<h2>💻 Practice</h2>
+<p>You run a store and want to keep track of how many items were sold each day: you sold 5 items in day 1, 3 items on day 2, and 7 items on day 3</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>daily_sales <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Your Task:</p>
+<ul>
+<li>Use a for loop to go through each day’s sales</li>
+<li>For each day, print something like: “Day 2 - Items sold: 3” (the message should change accordingly)</li>
+<li>Create an object called <code>total</code> to store a running total of all sales</li>
+<li>Create an object called <code>ouput</code> to store the total after each day (e.g.&nbsp;<code>output[2]</code> should store the total sales after day 2)</li>
+</ul>
+<!--
+daily_sales <- c(5, 3, 7)
+
+total <- 0
+output <- vector(mode = "integer", length = length(daily_sales))
+
+for (i in seq_along(daily_sales)) {
+  print(paste("Day", i, "- Items sold:", daily_sales[i]))
+  total <- total + daily_sales[i]
+  output[i] <- total
+}
+
+-->
+</section>
+<section id="using-for-loops-with-dataframes-in-r" class="slide level2 center">
+<h2>Using For Loops with dataframes in R</h2>
+<p>Add a slide here on how loops work with dataframes or tibbles since we work a lot with them</p>
+</section>
+<section class="slide level2 center">
+
+<p>Example with</p>
+</section>
+<section class="slide level2 center">
+
+<p>Alternatives witout</p>
+</section>
+<section id="practice-2" class="slide level2 center">
 <h2>💻 Practice</h2>
 </section>
 <section id="recap-what-we-learned-today" class="slide level2 center">
@@ -407,6 +737,82 @@ Sabrina Nardin, Summer 2025
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

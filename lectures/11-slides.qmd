@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R: Lecture 11"
-subtitle: "Topics: Functions"
+subtitle: "Topics: Writing Loops Part 2"
 author: "Sabrina Nardin, Summer 2025"
 format:
   revealjs:
@@ -16,23 +16,11 @@ format:
     center: true
 ---
 
-### Slides coming soon!
-
 # Agenda {.center}
 
 ::: {.agenda-list}
-1. Topic  
-2. Topic 
-3. Topic  
-:::
-
-<!--
-
-# Agenda {.center}
-
-::: {.agenda-list}
-1. For Loops with dataframes
-2. R Alternatives to For Loops
+1. Using For Loops with Dataframes 
+2. Alternatives to For Loops in R
 3. While Loops
 :::
 
@@ -40,28 +28,564 @@ format:
 cat('<span style="font-size: 0.8em; color: #666;">These slides were last updated on', format(Sys.Date(), '%B %d, %Y'), '</span>')
 ```
 
+
+
+# 1. Using For Loops with Dataframes {.slide .center .middle}
+
+---
+
+## Same Task: With and Without a For Loop
+
+```{r echo = TRUE, results = "hide"}
+
+library(tidyverse)
+library(palmerpenguins)
+data(penguins)
+```
+
+```{r}
+glimpse(penguins)
+```
+
+---
+
+## Calculate the mean value of several columns *without a loop*
+
+We can take the `mean()` function, and apply it to each column:
+
+```{r echo = TRUE, results = "hide"}
+
+penguins %>% summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE))
+penguins %>% summarize(avg_bill_depth = mean(bill_depth_mm, na.rm = TRUE))
+penguins %>% summarize(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
+penguins %>% summarize(avg_body_mass = mean(body_mass_g, na.rm = TRUE))
+                       
+```
+
+<!--
+```r
+mean(penguins_clean$bill_length_mm)
+mean(penguins_clean$bill_depth_mm)
+mean(penguins_clean$flipper_length_mm)
+mean(penguins_clean$body_mass_g)
+```
 -->
 
+This works — but requires a lot of copy/paste! How can we do the same thing with a for loop?
 
 ---
 
-# 1. Title Section {.slide .center .middle}
+## Automate the same task *with a loop*
+
+First, initialize an empty vector to store results. Second, use a for loop to calculate the mean of each (numeric) column of this penguins dataframe.
+
+```{r echo = TRUE, results = "hide"}
+
+output <- vector(mode = "double", length = ncol(penguins))
+
+for (i in seq_along(penguins)) {
+  #print(i)
+  #print(penguins[i])
+  output[i] <- mean(penguins[[i]], na.rm = TRUE)
+}
+
+output
+```
+
+<!--
+
+```r
+output <- vector(mode = "double", length = ncol(penguins))
+
+for (i in seq_along(penguins)) {
+  if (is.numeric(penguins[[i]])) {
+    output[i] <- mean(penguins[[i]], na.rm = TRUE)
+  }
+}
+
+output
+```
+-->
+
+<!-- 
+
+### Let's unpack this example: open the **demo.Rmd** from today's class materials!
+
+### Benefits of preallocation
+
+This explains why we are pre-allocating in the first place, and why we do so with a vector:
+having an object that is already of the same length of the output, where we are just plugging in  individual values increases speed, rather the more naive approach in which we store reuslts using an  mpty vector or an empty other object (e.g. a dataframe) of length zero, and then append or add on each of the values as we calculate them
+
+For example, let's take this mpg data (built in dataframe in R about auto, we do not really care about the content of the data); here what we are doing is creating duplicates of that dataframe 100 times and we are then putting them together into a single data frame. 
+
+Without preallocation: we can create an empty dataframe (here with the tibble function), iterate over 100 times, take this empty dataframe and combine the rows of it with the rows of the original dataframe, and replace the original object with the new copy and save in output (so we are appending 100 rows every time we iterate!) 
+
+If we do proper preallocation: we create a list of 100 empty elements, every time we store the results in the list, then we use the bind_rows() functions at the end
+
+The first approach does not preallocate by creating an empty space to store the output, the second does. See the difference in time of execution. From 80 milliseconds to less than 3. So you can see how inefficient is not to allocate since most of our data will have more than 100 rows!
+
+.panelset[
+.panel[.panel-name[Code]
+```r
+# no preallocation
+mpg_no_preall <- tibble()
+for(i in 1:100){
+  mpg_no_preall <- bind_rows(mpg_no_preall, mpg)
+}
+
+# with preallocation using a list
+mpg_preall <- vector(mode = "list", length = 100)
+for(i in 1:100){
+  mpg_preall[[i]] <- mpg
+}
+mpg_preall <- bind_rows(mpg_preall)
+```
+]
+
+.panel[.panel-name[Plot]
+```r
+#| out.width = "70%",
+#| echo = FALSE
+# load microbenchmark library to time code
+library(microbenchmark)
+# bind together 100 copies of mpg
+times <- microbenchmark(
+  `No preallocation` = {
+    mpg_no_preall <- tibble()
+    
+    for(i in 1:100){
+      mpg_no_preall <- bind_rows(mpg_no_preall, mpg)
+    }
+  },
+  `Preallocation` = {
+    mpg_preall <- vector(mode = "list", length = 100)
+    
+    for(i in 1:100){
+      mpg_preall[[i]] <- mpg
+    }
+    
+    mpg_preall <- bind_rows(mpg_preall)
+  }
+)
+autoplot(times)
+```
+]
+]
+-->
+
+# 2. Alternatives to For Loops in R {.slide .center .middle}
 
 ---
 
-## Subtitles
+## Why We Even Learn Loops in R?
+
+R is a **vectorized language**, so many tasks can and should be done **without writing a for loop**.
+
+Still, understanding loops is important:
+
+- to build foundational **logic and control flow** skills
+- for **non-vectorized tasks**, like row-by-row operations
+- to **debug** more complex workflows
+
+<!--
+> Even if you don’t use loops every day, knowing how they work will strengthen your ability to write efficient and readable R code.
+-->
 
 ---
 
+## Three Main Alternatives to For Loops in R
+
+When working with dataframes, R provides the following alternatives that are **often better** than writing a for loop:
+
+| Function Family        | Package     | Best Used For                                  | Docs / Link |
+|------------------------|-------------|------------------------------------------------|-------------|
+| `map_*()`              | `purrr`     | Applying functions to elements of lists or columns | [map docs](https://purrr.tidyverse.org/reference/map.html) |
+| `across()`             | `dplyr`     | Applying the same function to multiple columns inside `mutate()` or `summarize()` | [across docs](https://dplyr.tidyverse.org/reference/across.html) |
+| `*apply()`             | base R      | Row/column-wise operations on matrices or data frames | [apply docs](https://stat.ethz.ch/R-manual/R-devel/library/base/html/apply.html) |
+
+The asterisk `*` is a placeholder for a family of related functions (e.g., `map_dbl()`, `map_chr()`, `sapply()`, etc.)
+
+<!--
+1. `map_*()` functions from `purr` <https://purrr.tidyverse.org/reference/map.html>
+2. `across()` function from `dplyr` <https://dplyr.tidyverse.org/reference/across.html>
+3. `*apply()` functions from base R <https://stat.ethz.ch/R-manual/R-devel/library/base/html/apply.html>
+
+The asterisk `*` is a placeholder indicating a *family* of related functions (e.g., `map_dbl()`, `map_chr()`, `sapply()`, etc.).
+
+- Use the `map_*()` functions from the *purrr* package for flexible iteration  
+- Use `across()` with `summarize()` or `mutate()` for column-wise operations  
+- Use `apply()` to iterate over rows or columns in a matrix or data frame
+-->
+
+---
+
+## 1. Replacing for loops with "map()" functions in the tidyverse
+
+<!-- As we have seen in the slides and practice, we kind of have to write a lot of code for a for loop, for example to calculate a straightforward operation like the mean or median etc. so R gives us a shortcut: map functions which come from the purrr package in R and are much more compact (go to the documentation page)
+-->
+
+The so-called "map functions" come from the `purr` package in R: <https://purrr.tidyverse.org/reference/map.html>
+
+**There are several `map_*()` functions**  each creates a different type of output (this is the same idea as in the `for loop` when we specify the `mode` of our output vector):
+
+- `map()` makes a list
+- `map_lgl()` makes a logical vector
+- `map_int()` makes an integer vector
+- `map_dbl()` makes a double vector
+- `map_chr()` makes a character vector
+
+Let's see a few examples using the `penguins` data.
+
+---
+
+## 1. Replacing for loops with "map()" functions in the tidyverse
+
+Pick the appropriate `map()` function (there are several!) and specify at least two main arguments:
+
+- what you are iterating over
+- what you are calculating
+
+```{r echo = TRUE, results = "hide"}
+
+penguins %>% 
+  select(where(is.numeric)) %>%
+  map_dbl(mean, na.rm = TRUE)
+
+```
+
+<!-- ADD PRACTICE EXERCISE
 ## 💻 Practice
+-->
 
 ---
 
+## 2. Replacing for loops with "across()" in the tidyverse
+
+**Another popular option to replace a for loop is the `across()` function from `dplyr`** 
+
+**What it does:** applies the same operation (e.g., mean) to multiple columns at once  
+
+**Best use:** since it comes from `dplyr`, it works seamlessly inside `dplyr` verbs like `mutate()` and `summarize()` (these are its favorite verbs to work with!)
+
+---
+
+## 2. Replacing for loops with "across()" in the tidyverse
+
+We looked at this example earlier (which calculates the mean of several columns in a data frame) and rewrote it using a for loop. Now we rewrite it again but this time using `across()`:
+
+```{r echo = TRUE, results = "hide"}
+
+penguins %>% summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE))
+penguins %>% summarize(avg_bill_depth = mean(bill_depth_mm, na.rm = TRUE))
+penguins %>% summarize(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
+penguins %>% summarize(avg_body_mass = mean(body_mass_g, na.rm = TRUE))
+                       
+```
+
+---
+
+## 2. Replacing for loops with "across()" in the tidyverse
+
+Rewrite previous example using `across()`:
+
+```{r echo = TRUE, results = "hide"}
+
+penguins %>% 
+  summarize(
+    across(
+      .cols = where(is.numeric),           # select columns by type
+      .fns = ~ mean(.x, na.rm = TRUE)))   # apply mean, skipping NA
+```
+
+
+The function `across()` has two main arguments:
+
+- **`.cols`**: the columns to operate on. You can select them by position, name, or type (in this example, by type using `where(is.numeric)`).
+- **`.fns`**: the function, or list of functions, to apply to each column (in this example, we use `mean()` and `.x` is a placeholder for the current column being processed)
+
+You can omit `.cols` and `.fns` if you pass the arguments in the correct order.
+
+
+---
+
+## 2. Replacing for loops with "across()" in the tidyverse
+
+Add names to the newly computed means:
+
+```{r echo = TRUE, results = "hide"}
+
+penguins %>% 
+  summarize(
+    across(
+      .cols = where(is.numeric),                   
+      .fns = ~ mean(.x, na.rm = TRUE),             
+      .names = "avg_{.col}"                   
+    )
+  )
+```
+
+::: {.callout-note title="What does `\"avg_{.col}\"` mean?"}
+
+- `"avg_"` is a literal prefix that will be added to each new column name.  
+- `{.col}` is a placeholder that will be replaced with the original column name.
+
+So if you're applying `mean()` to a column named `bill_length_mm`, the result will be named `avg_bill_length_mm`
+
+:::
+
+<!-- FOR CSS CLASS: ADD THOSE EXAMPLES OR MORE + A PRACTICE EXERCISE
+
+## More examples using the [`worldbank` data](https://data.worldbank.org/)
+
+```{r worldbank}
+data("worldbank", package = "rcis")
+worldbank
+```
+
+---
+
+### `summarize()`, `across()`, and `where()`
+
+```{r summarize-across-where}
+# use across() with where() to pick variables based on type (e.g. is.numeric(), etc.)
+worldbank %>% 
+  group_by(country) %>%
+  summarize(across(.cols = where(is.numeric), .fns = mean, na.rm = TRUE))
+```
+
+```{r summarize-across-compound}
+
+# or pick variables based on type and whose name begins with "perc"
+worldbank %>%
+  group_by(country) %>%
+  summarize(across(
+    .cols = where(is.numeric) & starts_with("perc"),
+    .fn = mean, na.rm = TRUE
+  ))
+```
+
+
+---
+
+### `across()` and `filter()`
+
+To use `across()` with `filter()`, we need an extra step: `if_any()` or `if_all()`
+
+```{r filter-if-any, echo = TRUE, results = "hide"}
+
+# if_any() keeps rows where the predicate is true for at least one column
+worldbank %>%
+  filter(if_any(everything(), ~ !is.na(.x)))
+```
+
+```{r filter-if-all, echo = TRUE, results = "hide"}
+
+# if_all() keeps rows where the predicate is true for all selected columns
+worldbank %>%
+  filter(if_all(everything(), ~ !is.na(.x)))
+```
+
+-->
+
+---
+
+## 3. Replacing for loops with "apply()" functions in base R
+
+**Finally, a third option to replace a for loop in R is using one of the `apply()` functions from base R**
+
+**What it does:** applies the same operation (e.g., mean) to multiple columns at once  
+
+**Best use:** when working outside tidyverse verbs (this is from base R!) and can be applied across rows or columns (most common)
+
+---
+
+## 3. Replacing for loops with "apply()" functions in base R
+
+We looked at this example earlier (which calculates the mean of several columns in a data frame) and rewrote it using a `for` loop. Now we rewrite it again but this time using `apply()`:
+
+```{r echo = TRUE, results = "hide"}
+
+penguins %>% summarize(avg_bill_length = mean(bill_length_mm, na.rm = TRUE))
+penguins %>% summarize(avg_bill_depth = mean(bill_depth_mm, na.rm = TRUE))
+penguins %>% summarize(avg_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
+penguins %>% summarize(avg_body_mass = mean(body_mass_g, na.rm = TRUE))
+                       
+```
+
+---
+
+## 3. Replacing for loops with "apply()" functions in base R
+
+Rewrite previous example using `apply()`:
+
+```{r echo = TRUE, results = "hide"}
+
+# manually select only numeric column using base R syntax
+penguins_numeric <- penguins[ , c("bill_length_mm", "bill_depth_mm", 
+                                  "flipper_length_mm", "body_mass_g")]
+
+# apply mean to these columns
+apply(penguins_numeric, 2, mean, na.rm = TRUE)  
+
+```
+
+Note the `2` stays for `MARGIN = 2` (apply on the columns). If you write 1 it means rows. Type `?apply` in your Console for more info.
+
+---
+
+## 3. Replacing for loops with "apply()" functions in base R
+
+The `apply()` is a family meaning there are several similar apply function you can use:
+
+| Function     | Use Case                              | Input Type           | Output Type     | Why Use It                                |
+|--------------|----------------------------------------|-----------------------|------------------|--------------------------------------------|
+| `apply()`    | Apply a function to rows or columns    | Matrix, data frame    | Vector or matrix | For row/column-wise operations             |
+| `lapply()`   | Apply a function to each element       | List, data frame      | List            | Keeps outputs as list (safe, flexible)     |
+| `sapply()`   | Like `lapply()` but simplifies output  | List, data frame      | Vector or matrix| Shorter output, easier to read             |
+| `vapply()`   | Like `sapply()`, but type-safe         | List, data frame      | Vector or matrix| Safer than `sapply()`—explicit type check  |
+
+
+---
+
+## 3. Replacing for loops with "apply()" functions in base R
+
+```{r echo = TRUE, results = "hide"}
+
+# Use numeric columns from penguins dataset
+num_data <- penguins[ , 3:6]
+
+# apply(): function across columns (MARGIN = 2)
+apply(num_data, 2, mean, na.rm = TRUE)
+
+# lapply(): list output
+lapply(num_data, mean, na.rm = TRUE)
+
+# sapply(): simplified vector output
+sapply(num_data, mean, na.rm = TRUE)
+
+# vapply(): safe version of sapply()
+vapply(num_data, mean, na.rm = TRUE, FUN.VALUE = numeric(1))
+
+```
+
+- `apply()` works best with matrix-like structures
+- `lapply()` is list-safe; `sapply()` is more concise
+- `vapply()` avoids surprises by enforcing output type (here: return a single numeric value)
+
+
+
+# 3. While Loops {.slide .center .middle}
+
+---
+
+## Definition of While Loops
+
+We focused on "for loops" because they are the most common, but R, and many other programming languages, also supports "while loops"
+
+**How while loops works:**
+
+- Evaluate a condition
+- If the condition is `TRUE`, run the loop body
+- Start over: re-evaluate the condition
+- Repeat until the condition is `FALSE` (then the while loop is over)
+
+---
+
+## While Loop Syntax
+
+Syntax:
+```
+while (condition to be evaluated) {
+  statement(s)
+}
+```
+
+Example:
+```r
+counter <- 1
+
+while(counter <= 4) {
+  print(counter)
+  counter <- counter + 1
+}
+```
+
+<!-- 
+set the counter outside the loop, usually to 1
+set a condition to be evaluated: here the condition says the counter has to be smaller or equal to 4
+if the condition is TRUE, the loop is executed, here we only print(counter)
+thus the first time it prints 1
+but if we leave it as it is (without the last line of code), the while loops will keep going infinitely: we need a way to break the loop
+thus we increment our counter inside the loop by redefining it as counter + 1
+-->
+---
+
+## While Loop Examples
+
+Take the previous code, but this time print `counter` also at the end:
+
+```r
+counter <- 1
+
+while(counter <= 3) {
+  print(counter)
+  counter <- counter + 1
+  print(counter)
+}
+```
+
+Why are the results different from the previous code?
+
+---
+
+## While Loop Examples
+
+Take the previous code, but this time we do not increment our `counter` variable.
+
+```r
+counter <- 1
+while(counter < 3){
+  print(counter)
+}
+```
+
+What is the output of this code?
+
+---
+
+## While Loop Examples
+
+What is the output of this code?
+
+```r
+counter <- 1
+while(counter < 4){
+  print(counter)
+  multiply <- counter * 100
+  print(multiply)
+  counter <- counter + 1
+  print(counter)
+}
+```
+
+---
+
+## While Loop Uses
+
+While Loops are useful **when you don't know in advance how many times to iterate** — you want the loop to continue **until a condition is met**.
+
+#### Example use cases:
+
+- Keep looping until you get **three heads in a row** from random coin flips  
+- Keep accepting user input **until you reach a target number of responses**
+
+While loops require a **"count variable"** to be set outside the loop.
+
+While loops are important but less common than for loops especially for the types of tasks we do in this course. For this reason, we don’t cover them in-depth.
+
+<!--
 ## Recap: What We Learned Today
-
----
-
-## Reminders
+-->
 
 ---
 

@@ -515,7 +515,7 @@
     "href": "lectures/07-slides.html#rename-vs-recode-syntax-reference",
     "title": "Introduction to R: Lecture 7",
     "section": "Rename vs Recode: Syntax Reference",
-    "text": "Rename vs Recode: Syntax Reference\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nSyntax + Example\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)  rename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)  recode(Sex, \"MALE\" = 1)\nUse quotes around variable values if they are character\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)  case_when(Sex == \"MALE\" ~ 1)\nUse quotes around variable values if they are character\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
+    "text": "Rename vs Recode: Syntax Reference\n\n\n\n\n\n\n\n\n\n\nFunction\nWhat It Changes\nSyntax + Example\nTips\n\n\n\n\nrename()\nColumn names\nrename(new_name = old_name)  rename(notes = Comments)\nNo quotes around variable names\n\n\nrecode()\nColumn values\nrecode(variable, \"old\" = new)  recode(Sex, \"MALE\" = 1)\nCheck function doc to see when quotes are needed\n\n\ncase_when()\nColumn values\ncase_when(variable == \"old\" ~ new)  case_when(Sex == \"MALE\" ~ 1)\nCheck function doc to see when quotes are needed\n\n\n\n\n\n\n\n\n\nNote\n\n\nAll recoding is typically done inside mutate()."
   },
   {
     "objectID": "lectures/07-slides.html#syntactic-valid-variable-names-in-r",

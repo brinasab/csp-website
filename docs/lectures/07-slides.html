@@ -217,7 +217,7 @@ Sabrina Nardin, Summer 2025
 <li>Data Cleaning: Missing Data</li>
 </ol>
 </div>
-<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on July 24, 2025 </span></p>
+<p><span style="font-size: 0.8em; color: #666;">These slides were last updated on August 07, 2025 </span></p>
 </section>
 
 <section>
@@ -411,6 +411,14 @@ p2 %>% count(Species)
 </section>
 <section id="rename-vs-recode-syntax-reference" class="slide level2 center">
 <h2>Rename vs Recode: Syntax Reference</h2>
+<!--
+DOUBLE CHECK TIPS WITH REAL R CODE
+| Function       | What It Changes    | Syntax + Example                                                | Tips                                                             |
+|----------------|--------------------|------------------------------------------------------------------|------------------------------------------------------------------|
+| `rename()`     | Column names       | `rename(new_name = old_name)`  <br> `rename(notes = Comments)` | No quotes around variable names                                  |
+| `recode()`     | Column values      | `recode(variable, "old" = new)`  <br> `recode(Sex, "MALE" = 1)` | Use quotes around variable values if they are character             |
+| `case_when()`  | Column values      | `case_when(variable == "old" ~ new)` <br> `case_when(Sex == "MALE" ~ 1)` | Use quotes around variable values if they are character |
+-->
 <table class="caption-top">
 <colgroup>
 <col style="width: 9%">
@@ -437,13 +445,13 @@ p2 %>% count(Species)
 <td><code>recode()</code></td>
 <td>Column values</td>
 <td><code>recode(variable, "old" = new)</code> <br> <code>recode(Sex, "MALE" = 1)</code></td>
-<td>Use quotes around variable values if they are character</td>
+<td>Check function doc to see when quotes are needed</td>
 </tr>
 <tr class="odd">
 <td><code>case_when()</code></td>
 <td>Column values</td>
 <td><code>case_when(variable == "old" ~ new)</code> <br> <code>case_when(Sex == "MALE" ~ 1)</code></td>
-<td>Use quotes around variable values if they are character</td>
+<td>Check function doc to see when quotes are needed</td>
 </tr>
 </tbody>
 </table>
